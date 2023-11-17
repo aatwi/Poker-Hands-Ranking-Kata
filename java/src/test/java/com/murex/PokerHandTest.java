@@ -23,13 +23,29 @@ SOFTWARE.
 package com.murex;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PokerHandTest {
 
     @Test
-    public void acceptance_test() {
-        // TODO Replace with an acceptance test relevant for this kata
-        assertEquals(42, PokerHand.doSomething());
+    public void
+    test1 (){
+        String black = "2H 3D 5S 9C KD";
+        String white = "2C 3H 4S 8C AH";
+
+        String expected = "White wins. - with high card: Ace";
+        assertEquals(expected, PokerHand.getWinner(black, white));
+    }
+
+    @Test
+    public void
+    test2 (){
+        String black = "2H 3D 5S 9C QD";
+        String white = "2C 3H 4S 8C JH";
+
+        String expected = "Black wins. - with high card: Jack";
+        assertEquals(expected, PokerHand.getWinner(black, white));
     }
 }

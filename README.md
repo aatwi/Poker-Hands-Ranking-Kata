@@ -1,6 +1,6 @@
 # Poker Hand
 
-![Kata Image](images/Team.jpg) <br>
+![Kata Image](images/PokerHandRanking.jpg) <br>
 "[Image Name](https://xxx)" by [Image Author](https://xxx/) is licenced under [License Name](https://xxx)
 _`Replace above picture and references with something more relevant for this kata`_
 
@@ -10,14 +10,7 @@ _`Add kata description here`_
 
 ## Getting Started
 
-- [C++](cpp/GETTING_STARTED.md)
-- [C#](csharp/GETTING_STARTED.md)
-- [Elixir](elixir/GETTING_STARTED.md)
-- [Go](go/GETTING_STARTED.md)
 - [Java](java/GETTING_STARTED.md)
-- [PHP](php/GETTING_STARTED.md)
-- [Python](python/GETTING_STARTED.md)
-- [Typescript](typescript/GETTING_STARTED.md)
 
 ## Session Quick Retrospective
 
@@ -57,14 +50,7 @@ _`Indicate main focus points covered during this kata`_
 
 ### Source Files
 
-- [C++](cpp)
-- [C#](csharp)
-- [Elixir](elixir)
-- [Go](go)
 - [Java](java)
-- [PHP](php)
-- [Python](python)
-- [Typescript](typescript)
 
 ## License
 

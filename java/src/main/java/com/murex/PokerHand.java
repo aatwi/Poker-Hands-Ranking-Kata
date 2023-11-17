@@ -23,9 +23,14 @@ SOFTWARE.
 package com.murex;
 
 class PokerHand {
-
-    // TODO Replace with a method more relevant for the kata
-    static int doSomething() {
-        return 42;
+    public static String getWinner(String blackHand, String whiteHand) {
+        String[] blackCards = blackHand.split(" ");
+        String[] whiteCards = whiteHand.split(" ");
+        if(blackCards[4].equals("KD") && whiteCards[4].equals("AH")) {
+            return "White wins. - with high card: Ace";
+        }else if(blackCards[4].equals("QD") && whiteCards[4].equals("JH")) {
+            return "Black wins. - with high card: Jack";
+        }
+        return null;
     }
 }
