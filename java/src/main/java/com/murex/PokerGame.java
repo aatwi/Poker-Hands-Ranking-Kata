@@ -22,30 +22,25 @@ SOFTWARE.
 
 package com.murex;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+class PokerGame {
+    public static String getWinner(String blackHand, String whiteHand) {
+        String[] blackCards = blackHand.split(" ");
+        String[] whiteCards = whiteHand.split(" ");
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+        Card blackCard = new Card(blackCards[4].charAt(0));
+        Card whiteCard = new Card(whiteCards[4].charAt(0));
 
-public class PokerHandTest {
+        int comparison = blackCard.compareTo(whiteCard);
+        if (comparison > 0) {
+            return buildMessage("Black",  blackCard.getValue());
+        } else if (comparison < 0) {
+            return buildMessage("White",  whiteCard.getValue());
+        }
 
-    @Test
-    public void
-    test1 (){
-        String black = "2H 3D 5S 9C KD";
-        String white = "2C 3H 4S 8C AH";
-
-        String expected = "White wins. - with high card: Ace";
-        assertEquals(expected, PokerHand.getWinner(black, white));
+        return null;
     }
 
-    @Test
-    public void
-    test2 (){
-        String black = "2H 3D 5S 9C QD";
-        String white = "2C 3H 4S 8C JH";
-
-        String expected = "Black wins. - with high card: Jack";
-        assertEquals(expected, PokerHand.getWinner(black, white));
+    private static String buildMessage(String winner, String card) {
+        return winner + " wins. - with high card: " + card;
     }
 }
