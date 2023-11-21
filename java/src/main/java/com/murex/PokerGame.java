@@ -35,8 +35,20 @@ class PokerGame {
             return buildMessage("Black",  blackCard.getValue());
         } else if (comparison < 0) {
             return buildMessage("White",  whiteCard.getValue());
+        } else {
+            boolean isTie = true;
+            for (int i = 0; i < 5; i++) {
+                Card bCard = new Card(blackCards[i].charAt(0));
+                Card wCard = new Card(whiteCards[i].charAt(0));
+                if(bCard.compareTo(wCard) != 0) {
+                    isTie = false;
+                    break;
+                }
+            }
+            if(isTie) {
+                return "Tie.";
+            }
         }
-
         return null;
     }
 

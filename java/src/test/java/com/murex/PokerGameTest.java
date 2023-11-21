@@ -67,4 +67,15 @@ public class PokerGameTest {
         String expected = "Black wins. - with high card: 9";
         assertEquals(expected, PokerGame.getWinner(black, white));
     }
+
+    @Test
+    public void
+    TIE_test1() {
+        String black = "2H 3D 5S 9C KD";
+        String white = "2D 3H 5C 9S KH";
+
+        String expected = "Tie.";
+        assertEquals(expected, PokerGame.getWinner(black, white));
+
+    }
 }
