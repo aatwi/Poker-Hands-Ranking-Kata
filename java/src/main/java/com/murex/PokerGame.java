@@ -38,18 +38,17 @@ class PokerGame {
     public String getWinner() {
         String highCard = checkHighCard();
         if (highCard != null) return highCard;
-        boolean isTie = true;
+
+        return checkTie();
+    }
+
+    private String checkTie() {
         for (int i = 0; i < 5; i++) {
             if (compareCardAt(i) != 0) {
-                isTie = false;
-                break;
+                return null;
             }
         }
-        if (isTie) {
-            return "Tie.";
-        }
-
-        return null;
+        return "Tie.";
     }
 
     private String checkHighCard() {
