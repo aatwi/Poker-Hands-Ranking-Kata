@@ -61,7 +61,7 @@ class PokerGame {
         Optional<Card> any = collect.keySet().stream().filter(card -> collect.get(card) == 2).findAny();
 
         if(any.isPresent()) {
-            return "Black wins. - with Pair cards: Ace";
+            return "Black wins. - with Pair cards: " + any.get().getValue();
         }
         return null;
     }
