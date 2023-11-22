@@ -98,15 +98,6 @@ class PokerGame {
         return cardsPairMap.keySet().stream().filter(card -> cardsPairMap.get(card) == 2).findAny();
     }
 
-    private String checkTie() {
-        for (int i = 0; i < 5; i++) {
-            if (compareCardAt(i) != 0) {
-                return null;
-            }
-        }
-        return "Tie.";
-    }
-
     private String checkHighCard() {
         int comparison = compareCardAt(4);
         if (comparison > 0) {
