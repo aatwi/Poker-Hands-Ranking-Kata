@@ -25,7 +25,7 @@ package com.murex;
 class PokerGame {
 
     public PokerGame() {
-        
+
     }
 
     private static int compareCardAt(int index, String[] blackCards, String[] whiteCards) {
