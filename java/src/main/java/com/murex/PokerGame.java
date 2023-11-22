@@ -50,10 +50,10 @@ class PokerGame {
         String[] blackCards = this.blackCards.split(" ");
         String[] whiteCards = this.whiteCards.split(" ");
 
-        Card blackCard = new Card(blackCards[4].charAt(0));
-        Card whiteCard = new Card(whiteCards[4].charAt(0));
+        Card blackCard = blackHand.getCards()[4];
+        Card whiteCard = whiteHand.getCards()[4]; 
 
-        int comparison =  compareCardAt(4, blackCards, whiteCards);
+        int comparison = compareCardAt(4, blackCards, whiteCards);
         if (comparison > 0) {
             return buildMessage("Black", blackCard.getValue());
         } else if (comparison < 0) {
