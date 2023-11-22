@@ -33,13 +33,17 @@ class PokerGame {
     public PokerGame(String blackCards, String whiteCards) {
         this.blackHand = Hand.buildFrom("Black", blackCards);
         this.whiteHand = Hand.buildFrom("White", whiteCards);
+        addPossibleRanks();
     }
 
     public String getWinner() {
+        return ranks.stream().map(PokerHandRank::getResult).filter(Result::status).findFirst().map(Result::message).orElse(null);
+    }
+
+    private void addPossibleRanks() {
         ranks.add(new PairCardRank(blackHand, whiteHand));
         ranks.add(new HighCardRank(blackHand, whiteHand));
         ranks.add(new TieRank(blackHand, whiteHand));
-        return ranks.stream().map(PokerHandRank::getResult).filter(Result::status).findFirst().map(Result::message).orElse(null);
     }
 
 }
