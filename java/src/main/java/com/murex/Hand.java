@@ -33,6 +33,10 @@ public class Hand {
         return cards;
     }
 
+    public Card getCardAt(int index) {
+        return cards[index];
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
