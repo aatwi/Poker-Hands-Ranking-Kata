@@ -42,6 +42,10 @@ class PokerGame {
         return winner + " wins. - with high card: " + card;
     }
 
+    public String getWinner() {
+        return getString(getBlackHand(), getWhiteHand());
+    }
+
 
     public String getBlackHand() {
         return blackHand;
@@ -49,10 +53,6 @@ class PokerGame {
 
     public String getWhiteHand() {
         return whiteHand;
-    }
-
-    public static String getWinner(PokerGame pokerGame) {
-        return getString(pokerGame.getBlackHand(), pokerGame.getWhiteHand());
     }
 
     private static String getString(String blackHand, String whiteHand) {
