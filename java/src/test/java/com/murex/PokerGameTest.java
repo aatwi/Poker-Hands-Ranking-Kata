@@ -35,7 +35,7 @@ public class PokerGameTest {
         String white = "2C 3H 4S 8C AH";
 
         String expected = "White wins. - with high card: Ace";
-        assertEquals(expected, PokerGame.getWinner(black, white));
+        assertEquals(expected, PokerGame.getWinner(new PokerGame(black, white)));
     }
 
     @Test
@@ -45,7 +45,7 @@ public class PokerGameTest {
         String white = "2C 3H 4S 8C JH";
 
         String expected = "Black wins. - with high card: Queen";
-        assertEquals(expected, PokerGame.getWinner(black, white));
+        assertEquals(expected, PokerGame.getWinner(new PokerGame(black, white)));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class PokerGameTest {
         String white = "2C 3H 4S 8C JH";
 
         String expected = "White wins. - with high card: Jack";
-        assertEquals(expected, PokerGame.getWinner(black, white));
+        assertEquals(expected, PokerGame.getWinner(new PokerGame(black, white)));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class PokerGameTest {
         String white = "2C 3H 4S 7C 8H";
 
         String expected = "Black wins. - with high card: 9";
-        assertEquals(expected, PokerGame.getWinner(black, white));
+        assertEquals(expected, PokerGame.getWinner(new PokerGame(black, white)));
     }
 
     @Test
@@ -74,6 +74,6 @@ public class PokerGameTest {
         String black = "2H 3D 5S 9C KD";
         String white = "2D 3H 5C 9S KH";
 
-        assertEquals("Tie.", PokerGame.getWinner(black, white));
+        assertEquals("Tie.", PokerGame.getWinner(new PokerGame(black, white)));
     }
 }
