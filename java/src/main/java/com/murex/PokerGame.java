@@ -62,14 +62,14 @@ class PokerGame {
         if(blackPairCard.isPresent() && whitePairCard.isPresent()) {
             int comparison = blackPairCard.get().compareTo(whitePairCard.get());
             if (comparison > 0) {
-                return "Black wins. - with Pair cards: " + blackPairCard.get().getValue();
+                return buildPairCardsMessage(blackHand, blackPairCard.get());
             } else if (comparison < 0) {
                 return buildPairCardsMessage(whiteHand, whitePairCard.get());
             }
         }
 
         if(blackPairCard.isPresent()) {
-            return "Black wins. - with Pair cards: " + blackPairCard.get().getValue();
+            return buildPairCardsMessage(blackHand, blackPairCard.get());
         }
 
         if(whitePairCard.isPresent()) {
