@@ -33,12 +33,12 @@ public class PairCardRank extends PokerHandRank{
             if(comparison == 0) {
                 int highCardComparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
                 if (highCardComparison > 0) {
-                    return Optional.of(blackHand.getName() + " wins. - with Pair cards and higher rank: " + blackPairCard.get().getValue() + " and " + blackHand.getCardAt(4).getValue());
+                    return Optional.of(buildPairAndHighHandMessage(blackHand, blackPairCard.get()));
                 }
                 if (highCardComparison < 0) {
-                    return Optional.of(whiteHand.getName() + " wins. - with Pair cards and higher rank: " + whitePairCard.get().getValue() + " and " + whiteHand.getCardAt(4).getValue());
+                    return Optional.of(buildPairAndHighHandMessage(whiteHand, whitePairCard.get()));
                 }
-                return Optional.empty(); 
+                return Optional.empty();
             }
         }
 
@@ -48,6 +48,10 @@ public class PairCardRank extends PokerHandRank{
             return Optional.of(buildPairCardsMessage(whiteHand, whitePairCard.get()));
         }
 
+    }
+
+    private String buildPairAndHighHandMessage(Hand hand, Card card) {
+        return hand.getName() + " wins. - with Pair cards and higher rank: " + card.getValue() + " and " + hand.getCardAt(4).getValue();
     }
 
     private static String buildPairCardsMessage(Hand hand, Card card) {
