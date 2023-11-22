@@ -61,7 +61,12 @@ class PokerGame {
         Optional<Card> whitePairCard = getCardOfPairs(whiteHand);
 
         if(blackPairCard.isPresent() && whitePairCard.isPresent()) {
-            return "White wins. - with Pair cards: Ace";
+            int comparison = blackPairCard.get().compareTo(whitePairCard.get());
+            if (comparison > 0) {
+                return "Black wins. - with Pair cards: " + blackPairCard.get().getValue();
+            } else if (comparison < 0) {
+                return "White wins. - with Pair cards: " + whitePairCard.get().getValue();
+            }
         }
 
         if(blackPairCard.isPresent()) {
