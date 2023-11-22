@@ -17,9 +17,6 @@ public abstract class PokerHandRank {
 
     public Result getResult() {
         Optional<String> verify = verify();
-        if(verify.isPresent()) {
-            return new Result(true, verify.get());
-        }
-        return new Result(false, "");
+        return verify.map(s -> new Result(true, s)).orElseGet(() -> new Result(false, ""));
     }
 }
