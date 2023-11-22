@@ -42,8 +42,8 @@ class PokerGame {
         return bCard.compareTo(wCard);
     }
 
-    private static String buildMessage(String winner, String card) {
-        return winner + " wins. - with high card: " + card;
+    private static String buildMessage(String winner, Card blackCard) {
+        return winner + " wins. - with high card: " + blackCard.getValue();
     }
 
     public String getWinner() {
@@ -51,13 +51,13 @@ class PokerGame {
         String[] whiteCards = this.whiteCards.split(" ");
 
         Card blackCard = blackHand.getCards()[4];
-        Card whiteCard = whiteHand.getCards()[4]; 
+        Card whiteCard = whiteHand.getCards()[4];
 
         int comparison = compareCardAt(4, blackCards, whiteCards);
         if (comparison > 0) {
-            return buildMessage("Black", blackCard.getValue());
+            return buildMessage("Black", blackCard);
         } else if (comparison < 0) {
-            return buildMessage("White", whiteCard.getValue());
+            return buildMessage("White", whiteCard);
         } else {
             boolean isTie = true;
             for (int i = 0; i < 5; i++) {
