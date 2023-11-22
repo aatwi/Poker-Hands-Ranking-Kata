@@ -23,15 +23,10 @@ SOFTWARE.
 package com.murex;
 
 class PokerGame {
-
-    private final String blackCards;
-    private final String whiteCards;
     private final Hand blackHand;
     private final Hand whiteHand;
 
     public PokerGame(String blackCards, String whiteCards) {
-        this.blackCards = blackCards;
-        this.whiteCards = whiteCards;
         this.blackHand = Hand.buildFrom("Black", blackCards);
         this.whiteHand = Hand.buildFrom("White", whiteCards);
     }
