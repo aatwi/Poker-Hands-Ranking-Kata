@@ -36,14 +36,14 @@ class PokerGame {
         this.whiteHand = Hand.buildFrom("White", whiteCards);
     }
 
-    private static int compareCardAt(int index, String[] blackCards, String[] whiteCards) {
+    private static String buildMessage(Hand hand) {
+        return hand.getName() + " wins. - with high card: " + hand.getCards()[4].getValue();
+    }
+
+    private int compareCardAt(int index, String[] blackCards, String[] whiteCards) {
         Card bCard = new Card(blackCards[index].charAt(0));
         Card wCard = new Card(whiteCards[index].charAt(0));
         return bCard.compareTo(wCard);
-    }
-
-    private static String buildMessage(Hand hand) {
-        return hand.getName() + " wins. - with high card: " + hand.getCards()[4].getValue();
     }
 
     public String getWinner() {
@@ -58,12 +58,12 @@ class PokerGame {
         } else {
             boolean isTie = true;
             for (int i = 0; i < 5; i++) {
-                if(compareCardAt(i, blackCards, whiteCards) != 0) {
+                if (compareCardAt(i, blackCards, whiteCards) != 0) {
                     isTie = false;
                     break;
                 }
             }
-            if(isTie) {
+            if (isTie) {
                 return "Tie.";
             }
         }
