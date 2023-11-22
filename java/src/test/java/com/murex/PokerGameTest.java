@@ -94,4 +94,13 @@ public class PokerGameTest {
 
         assertEquals("Black wins. - with Pair cards: Jack", new PokerGame(black, white).getWinner());
     }
+
+    @Test
+    public void
+    PAIR_white_wins_with_jack_as_pair() {
+        String black = "JH AS 5D 6C 7H";
+        String white = "2D 4H 4C 9S KH";
+
+        assertEquals("White wins. - with Pair cards: 4", new PokerGame(black, white).getWinner());
+    }
 }

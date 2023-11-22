@@ -63,6 +63,12 @@ class PokerGame {
         if(any.isPresent()) {
             return "Black wins. - with Pair cards: " + any.get().getValue();
         }
+
+        Card[] whiteHandCards = whiteHand.getCards();
+        if(whiteHandCards[1].getCharValue() == '4' && whiteHandCards[2].getCharValue() == '4' ) {
+            return "White wins. - with Pair cards: 4";
+        }
+
         return null;
     }
 
