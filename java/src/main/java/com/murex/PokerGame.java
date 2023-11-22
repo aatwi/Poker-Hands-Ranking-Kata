@@ -58,12 +58,10 @@ class PokerGame {
     private String checkPair() {
         Card[] cards = blackHand.getCards();
         Map<Card, Long> collect = Arrays.stream(cards).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        Optional<Card> any = collect.keySet().stream().filter(new Predicate<Card>() {
-            @Override
-            public boolean test(Card card) {
-                return collect.get(card) == 2;
-            }
-        }).findAny();
+        Optional<Card> any = collect.keySet().stream().filter(card -> collect.get(card) == 2).findAny();
+
+        
+
         if(cards[0].getCharValue() == 'A' && cards[1].getCharValue() == 'A') {
             return "Black wins. - with Pair cards: Ace";
         }
