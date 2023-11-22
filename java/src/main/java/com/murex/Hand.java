@@ -12,7 +12,13 @@ public class Hand {
         this.cards = cards;
     }
 
-    public static Hand buildFrom(String blackHand, String cardsString) {
+    public static Hand buildFrom(String blackHand, String cards) {
+        String[] cardsValues = cards.split(" ");
+        Card[] handCards = new Card[5];
+        for (int index = 0; index < 5; index++) {
+            handCards[index] = new Card(cardsValues[index].charAt(0));
+        }
+
         return new Hand(blackHand,
                 new Card[]{
                         new Card('2'),
