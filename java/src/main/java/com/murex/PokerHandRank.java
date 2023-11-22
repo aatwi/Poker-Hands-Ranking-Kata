@@ -14,6 +14,10 @@ public abstract class PokerHandRank {
     }
 
     public Result getResult() {
+        String verify = verify();
+        if(verify != null) {
+            return new Result(true, verify);
+        }
         return new Result(false, "");
     }
 }
