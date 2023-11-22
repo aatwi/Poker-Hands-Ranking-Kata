@@ -19,6 +19,6 @@ public class HighCardRank extends PokerHandRank{
     }
 
     private String buildMessage(Hand hand) {
-        return hand.getName() + " wins. - with high card: " + hand.getCards()[4].getValue();
+        return hand.getName() + " wins. - with high card: " + hand.getCardAt(4).getValue();
     }
 }
