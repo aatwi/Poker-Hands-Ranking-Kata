@@ -24,7 +24,7 @@ package com.murex;
 
 class PokerGame {
 
-    public PokerGame() {
+    public PokerGame(String blackHand, String whiteHand) {
 
     }
 
@@ -38,7 +38,8 @@ class PokerGame {
         return winner + " wins. - with high card: " + card;
     }
 
-    public String getWinner(String blackHand, String whiteHand) {
+    public static String getWinner(String blackHand, String whiteHand) {
+        PokerGame pokerGame = new PokerGame(blackHand, whiteHand);
         String[] blackCards = blackHand.split(" ");
         String[] whiteCards = whiteHand.split(" ");
 
