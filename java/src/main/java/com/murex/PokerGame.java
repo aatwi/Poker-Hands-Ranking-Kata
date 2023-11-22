@@ -91,11 +91,4 @@ class PokerGame {
         Map<Card, Long> cardsPairMap = Arrays.stream(pokerHand.getCards()).collect(groupingBy(Function.identity(), counting()));
         return cardsPairMap.keySet().stream().filter(card -> cardsPairMap.get(card) == 2).findAny();
     }
-
-    private int compareCardAt(int index) {
-        Card bCard = blackHand.getCards()[index];
-        Card wCard = whiteHand.getCards()[index];
-        return bCard.compareTo(wCard);
-    }
-
 }
