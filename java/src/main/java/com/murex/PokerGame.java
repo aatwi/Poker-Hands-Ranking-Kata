@@ -22,6 +22,9 @@ SOFTWARE.
 
 package com.murex;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class PokerGame {
     private final Hand blackHand;
     private final Hand whiteHand;
@@ -32,14 +35,17 @@ class PokerGame {
     }
 
     public String getWinner() {
-        Result pair = new PairCardRank(blackHand, whiteHand).getResult();
-        if (pair.status()) return pair.message();
+        List<PokerHandRank> ranks = new ArrayList<>();
+        ranks.add(new PairCardRank(blackHand, whiteHand));
+        ranks.add(new HighCardRank(blackHand, whiteHand));
+        ranks.add(new TieRank(blackHand, whiteHand));
 
-        Result highCard = new HighCardRank(blackHand, whiteHand).getResult();
-        if (highCard.status()) return highCard.message();
-
-        Result tieResult = new TieRank(blackHand, whiteHand).getResult();
-        if(tieResult.status()) return tieResult.message();
+        for (PokerHandRank rank : ranks) {
+            Result result = rank.getResult();
+            if (result.status()) {
+                return result.message();
+            }
+        }
 
         return null;
     }
