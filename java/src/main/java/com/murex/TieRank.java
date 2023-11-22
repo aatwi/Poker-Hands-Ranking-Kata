@@ -17,4 +17,13 @@ public class TieRank extends PokerHandRank {
         }
         return "Tie.";
     }
+
+    @Override
+    public Result getResult() {
+        String verify = verify();
+        if(verify != null) {
+            return new Result(true, verify);
+        }
+        return super.getResult();
+    }
 }
