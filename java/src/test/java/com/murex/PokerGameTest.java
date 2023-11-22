@@ -76,4 +76,12 @@ public class PokerGameTest {
 
         assertEquals("Tie.", new PokerGame(black, white).getWinner());
     }
+
+    @Test
+    public void
+    PAIR_test() {
+        String black = "AH AS KD JC 7H";
+        String white = "2D 3H 5C 9S KH";
+
+    }
 }
