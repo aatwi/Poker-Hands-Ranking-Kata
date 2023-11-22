@@ -57,16 +57,18 @@ class PokerGame {
 
     private String checkPair() {
         Card[] blackCards = blackHand.getCards();
-        Map<Card, Long> collect = Arrays.stream(blackCards).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        Optional<Card> any = collect.keySet().stream().filter(card -> collect.get(card) == 2).findAny();
+        Map<Card, Long> blackCardsPairMap = Arrays.stream(blackCards).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Optional<Card> blackPairCard = blackCardsPairMap.keySet().stream().filter(card -> blackCardsPairMap.get(card) == 2).findAny();
 
-        if(any.isPresent()) {
-            return "Black wins. - with Pair cards: " + any.get().getValue();
+        if(blackPairCard.isPresent()) {
+            return "Black wins. - with Pair cards: " + blackPairCard.get().getValue();
         }
 
         Card[] whiteHandCards = whiteHand.getCards();
-        if(whiteHandCards[1].getCharValue() == '4' && whiteHandCards[2].getCharValue() == '4' ) {
-            return "White wins. - with Pair cards: 4";
+        Map<Card, Long> whiteCardsPairMap = Arrays.stream(whiteHandCards).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Optional<Card> whitePairCard = whiteCardsPairMap.keySet().stream().filter(card -> whiteCardsPairMap.get(card) == 2).findAny();
+        if(whitePairCard.isPresent()) {
+            return "White wins. - with Pair cards: " + whitePairCard.get().getValue();
         }
 
         return null;
