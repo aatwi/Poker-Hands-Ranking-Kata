@@ -50,14 +50,11 @@ class PokerGame {
         String[] blackCards = this.blackCards.split(" ");
         String[] whiteCards = this.whiteCards.split(" ");
 
-        Card blackCard = blackHand.getCards()[4];
-        Card whiteCard = whiteHand.getCards()[4];
-
         int comparison = compareCardAt(4, blackCards, whiteCards);
         if (comparison > 0) {
-            return buildMessage("Black", blackCard);
+            return buildMessage("Black", blackHand.getCards()[4]);
         } else if (comparison < 0) {
-            return buildMessage("White", whiteCard);
+            return buildMessage("White", whiteHand.getCards()[4]);
         } else {
             boolean isTie = true;
             for (int i = 0; i < 5; i++) {
