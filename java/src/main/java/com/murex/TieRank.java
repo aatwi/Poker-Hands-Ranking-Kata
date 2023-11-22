@@ -12,8 +12,8 @@ public class TieRank extends PokerHandRank {
         Card[] blackCards = this.blackHand.getCards();
         Card[] whiteCards = this.blackHand.getCards();
 
-        for (int index = 0; index < blackCards.length; index++) {
-            if (blackCards[index].compareTo(whiteCards[index]) != 0) {
+        for (int index = 0; index < 5; index++) {
+            if (blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index)) != 0) {
                 return Optional.empty();
             }
         }
