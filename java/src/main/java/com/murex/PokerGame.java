@@ -42,7 +42,7 @@ class PokerGame {
         return bCard.compareTo(wCard);
     }
 
-    private static String buildMessage(Card blackCard, Hand hand) {
+    private static String buildMessage(Hand hand) {
         return hand.getName() + " wins. - with high card: " + hand.getCards()[4].getValue();
     }
 
@@ -52,9 +52,9 @@ class PokerGame {
 
         int comparison = compareCardAt(4, blackCards, whiteCards);
         if (comparison > 0) {
-            return buildMessage(blackHand.getCards()[4], blackHand);
+            return buildMessage(blackHand);
         } else if (comparison < 0) {
-            return buildMessage(whiteHand.getCards()[4], whiteHand);
+            return buildMessage(whiteHand);
         } else {
             boolean isTie = true;
             for (int i = 0; i < 5; i++) {
