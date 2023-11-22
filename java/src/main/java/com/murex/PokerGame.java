@@ -24,12 +24,14 @@ package com.murex;
 
 class PokerGame {
 
-    private final String blackHand;
-    private final String whiteHand;
+    private final String blackCards;
+    private final String whiteCards;
+    private final Hand blackHand;
 
-    public PokerGame(String blackHand, String whiteHand) {
-        this.blackHand = blackHand;
-        this.whiteHand = whiteHand;
+    public PokerGame(String blackCards, String whiteCards) {
+        this.blackCards = blackCards;
+        blackHand = Hand.buildFrom("Black", blackCards);
+        this.whiteCards = whiteCards;
     }
 
     private static int compareCardAt(int index, String[] blackCards, String[] whiteCards) {
@@ -43,8 +45,8 @@ class PokerGame {
     }
 
     public String getWinner() {
-        String[] blackCards = blackHand.split(" ");
-        String[] whiteCards = whiteHand.split(" ");
+        String[] blackCards = this.blackCards.split(" ");
+        String[] whiteCards = this.whiteCards.split(" ");
 
         Card blackCard = new Card(blackCards[4].charAt(0));
         Card whiteCard = new Card(whiteCards[4].charAt(0));
