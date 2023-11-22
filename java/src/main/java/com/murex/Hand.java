@@ -13,7 +13,7 @@ public class Hand {
     }
 
     public static Hand buildFrom(String blackHand, String input) {
-        return new Hand("blackHand",
+        return new Hand(blackHand,
                 new Card[]{
                         new Card('2'),
                         new Card('3'),
