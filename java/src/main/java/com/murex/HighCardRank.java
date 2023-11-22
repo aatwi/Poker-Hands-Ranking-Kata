@@ -15,7 +15,6 @@ public class HighCardRank extends PokerHandRank{
         }
 
         Hand winner = comparison > 0 ? blackHand : whiteHand;
-        
         return Optional.of(buildMessage(winner));
     }
 
