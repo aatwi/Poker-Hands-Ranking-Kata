@@ -42,7 +42,7 @@ class PokerGame {
         String pair = checkPair();
         if (pair != null) return pair;
 
-        String highCard = checkHighCard();
+        String highCard = new HighCardRank(blackHand, whiteHand).verify();
         if (highCard != null) return highCard;
 
         String tieResult = new TieRank(blackHand, whiteHand).verify();
