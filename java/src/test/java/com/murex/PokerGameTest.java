@@ -112,4 +112,13 @@ public class PokerGameTest {
 
         assertEquals("White wins. - with Pair cards: Ace", new PokerGame(black, white).getWinner());
     }
+
+    @Test
+    public void
+    PAIR_white_wins_with_ace_over_a_pair_of_ace_due_to_other_rank() {
+        String black = "2H 2D 5S 6C JS";
+        String white = "2C 2S 6H 8H AC";
+
+        assertEquals("White wins. - with Pair cards and higher rank: 2 and Ace", new PokerGame(black, white).getWinner());
+    }
 }

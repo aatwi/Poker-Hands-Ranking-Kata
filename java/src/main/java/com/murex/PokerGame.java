@@ -65,6 +65,15 @@ class PokerGame {
                 return buildPairCardsMessage(blackHand, blackPairCard.get());
             } else if (comparison < 0) {
                 return buildPairCardsMessage(whiteHand, whitePairCard.get());
+            }else {
+                int highCardComparison = compareCardAt(4);
+                if (highCardComparison > 0) {
+                    return blackHand.getName() + " wins. - with Pair cards and higher rank: " + blackPairCard.get().getValue() + " and " + blackHand.getCards()[4].getValue();
+                }
+                if (highCardComparison < 0) {
+                    return whiteHand.getName() + " wins. - with Pair cards and higher rank: " + whitePairCard.get().getValue() + " and " + whiteHand.getCards()[4].getValue();
+                }
+                
             }
         }
 
