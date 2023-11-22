@@ -33,11 +33,11 @@ class PokerGame {
 
     private static String buildMessage(Hand hand) {
         return hand.getName() + " wins. - with high card: " + hand.getCards()[4].getValue();
-    } 
+    }
 
     public String getWinner() {
-        String blackHand1 = checkHighCard();
-        if (blackHand1 != null) return blackHand1;
+        String highCard = checkHighCard();
+        if (highCard != null) return highCard;
         boolean isTie = true;
         for (int i = 0; i < 5; i++) {
             if (compareCardAt(i) != 0) {
