@@ -42,6 +42,15 @@ class PokerGame {
         return winner + " wins. - with high card: " + card;
     }
 
+
+    public String getBlackHand() {
+        return blackHand;
+    }
+
+    public String getWhiteHand() {
+        return whiteHand;
+    }
+
     public static String getWinner(String blackHand, String whiteHand) {
         PokerGame pokerGame = new PokerGame(blackHand, whiteHand);
         String[] blackCards = blackHand.split(" ");
