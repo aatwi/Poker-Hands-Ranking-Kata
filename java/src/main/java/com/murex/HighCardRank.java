@@ -9,7 +9,7 @@ public class HighCardRank extends PokerHandRank{
 
     @Override
     public Optional<String> verify() {
-        int comparison = blackHand.getCards()[4].compareTo(whiteHand.getCards()[4]);
+        int comparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
         if (comparison > 0) {
             return Optional.of(buildMessage(blackHand));
         } else if (comparison < 0) {
