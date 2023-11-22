@@ -19,13 +19,7 @@ public class Hand {
             handCards[index] = new Card(cardsValues[index].charAt(0));
         }
 
-        return new Hand(blackHand,
-                new Card[]{
-                        new Card('2'),
-                        new Card('3'),
-                        new Card('5'),
-                        new Card('9'),
-                        new Card('K')});
+        return new Hand(blackHand,handCards);
     }
 
     public String getName() {
