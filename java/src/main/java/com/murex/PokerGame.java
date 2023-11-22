@@ -40,17 +40,11 @@ class PokerGame {
         return hand.getName() + " wins. - with high card: " + hand.getCards()[4].getValue();
     }
 
-    private int compareCardAt(int index, String[] blackCards, String[] whiteCards) {
-        Card bCard = new Card(blackCards[index].charAt(0));
-        Card wCard = new Card(whiteCards[index].charAt(0));
-        return bCard.compareTo(wCard);
-    }
-
     public String getWinner() {
         String[] blackCards = this.blackCards.split(" ");
         String[] whiteCards = this.whiteCards.split(" ");
 
-        int comparison = compareCardAt(4, blackCards, whiteCards);
+        int comparison = compareCardAt(4);
         if (comparison > 0) {
             return buildMessage(blackHand);
         } else if (comparison < 0) {
@@ -58,7 +52,7 @@ class PokerGame {
         } else {
             boolean isTie = true;
             for (int i = 0; i < 5; i++) {
-                if (compareCardAt(i, blackCards, whiteCards) != 0) {
+                if (compareCardAt(i) != 0) {
                     isTie = false;
                     break;
                 }
@@ -68,6 +62,12 @@ class PokerGame {
             }
         }
         return null;
+    }
+
+    private int compareCardAt(int index) {
+        Card bCard = blackHand.getCards()[index];
+        Card wCard = whiteHand.getCards()[index];
+        return bCard.compareTo(wCard);
     }
 
 }
