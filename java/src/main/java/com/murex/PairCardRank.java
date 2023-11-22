@@ -14,6 +14,15 @@ public class PairCardRank extends PokerHandRank{
     }
 
     @Override
+    public Result getResult() {
+        String verify = verify();
+        if(verify != null) {
+            return new Result(true, verify);
+        }
+        return super.getResult();
+    }
+
+    @Override
     public String verify() {
         Optional<Card> blackPairCard = getCardOfPairs(blackHand);
         Optional<Card> whitePairCard = getCardOfPairs(whiteHand);
