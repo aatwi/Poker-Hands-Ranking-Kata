@@ -60,6 +60,10 @@ class PokerGame {
         Optional<Card> blackPairCard = getCardOfPairs(blackHand);
         Optional<Card> whitePairCard = getCardOfPairs(whiteHand);
 
+        if(blackPairCard.isPresent() && whitePairCard.isPresent()) {
+            return "White wins. - with Pair cards: Ace";
+        }
+
         if(blackPairCard.isPresent()) {
             return "Black wins. - with Pair cards: " + blackPairCard.get().getValue();
         }
