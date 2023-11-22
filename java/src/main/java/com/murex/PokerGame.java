@@ -40,8 +40,7 @@ class PokerGame {
         if (highCard != null) return highCard;
 
         String tieResult = checkTie();
-        if (tieResult != null) return tieResult;
-        
+        if(tieResult != null) return tieResult;
         return null;
     }
 
