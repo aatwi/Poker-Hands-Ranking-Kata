@@ -53,6 +53,10 @@ class PokerGame {
 
     public static String getWinner(String blackHand, String whiteHand) {
         PokerGame pokerGame = new PokerGame(blackHand, whiteHand);
+        return getString(pokerGame.getBlackHand(), pokerGame.getWhiteHand());
+    }
+
+    private static String getString(String blackHand, String whiteHand) {
         String[] blackCards = blackHand.split(" ");
         String[] whiteCards = whiteHand.split(" ");
 
@@ -61,9 +65,9 @@ class PokerGame {
 
         int comparison =  compareCardAt(4, blackCards, whiteCards);
         if (comparison > 0) {
-            return buildMessage("Black",  blackCard.getValue());
+            return buildMessage("Black", blackCard.getValue());
         } else if (comparison < 0) {
-            return buildMessage("White",  whiteCard.getValue());
+            return buildMessage("White", whiteCard.getValue());
         } else {
             boolean isTie = true;
             for (int i = 0; i < 5; i++) {
