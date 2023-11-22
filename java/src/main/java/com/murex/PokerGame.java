@@ -28,6 +28,7 @@ import java.util.List;
 class PokerGame {
     private final Hand blackHand;
     private final Hand whiteHand;
+    private List<PokerHandRank> ranks;
 
     public PokerGame(String blackCards, String whiteCards) {
         this.blackHand = Hand.buildFrom("Black", blackCards);
@@ -35,7 +36,7 @@ class PokerGame {
     }
 
     public String getWinner() {
-        List<PokerHandRank> ranks = new ArrayList<>();
+        ranks = new ArrayList<>();
         ranks.add(new PairCardRank(blackHand, whiteHand));
         ranks.add(new HighCardRank(blackHand, whiteHand));
         ranks.add(new TieRank(blackHand, whiteHand));
