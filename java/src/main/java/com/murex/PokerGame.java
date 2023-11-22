@@ -22,6 +22,13 @@ SOFTWARE.
 
 package com.murex;
 
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 class PokerGame {
     private final Hand blackHand;
     private final Hand whiteHand;
@@ -36,10 +43,8 @@ class PokerGame {
     }
 
     public String getWinner() {
-        Card[] cards = blackHand.getCards();
-        if(cards[0].getCharValue() == 'A' && cards[1].getCharValue() == 'A') {
-            return "Black wins. - with Pair cards: Ace";
-        }
+        String pair = checkPair();
+        if (pair != null) return pair;
 
         String highCard = checkHighCard();
         if (highCard != null) return highCard;
@@ -47,6 +52,21 @@ class PokerGame {
         String tieResult = checkTie();
         if(tieResult != null) return tieResult;
 
+        return null;
+    }
+
+    private String checkPair() {
+        Card[] cards = blackHand.getCards();
+        Map<Card, Long> collect = Arrays.stream(cards).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Optional<Card> any = collect.keySet().stream().filter(new Predicate<Card>() {
+            @Override
+            public boolean test(Card card) {
+                return collect.get(card) == 2;
+            }
+        }).findAny();
+        if(cards[0].getCharValue() == 'A' && cards[1].getCharValue() == 'A') {
+            return "Black wins. - with Pair cards: Ace";
+        }
         return null;
     }
 
