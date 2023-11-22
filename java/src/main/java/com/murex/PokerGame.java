@@ -69,15 +69,6 @@ class PokerGame {
         return null;
     }
 
-
-    public String getBlackHand() {
-        return blackHand;
-    }
-
-    public String getWhiteHand() {
-        return whiteHand;
-    }
-
     private static String getString(String blackHand, String whiteHand) {
         String[] blackCards = blackHand.split(" ");
         String[] whiteCards = whiteHand.split(" ");
