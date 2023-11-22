@@ -26,8 +26,9 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 class PokerGame {
     private final Hand blackHand;
@@ -56,22 +57,22 @@ class PokerGame {
     }
 
     private String checkPair() {
-        Card[] blackCards = blackHand.getCards();
-        Map<Card, Long> blackCardsPairMap = Arrays.stream(blackCards).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        Optional<Card> blackPairCard = blackCardsPairMap.keySet().stream().filter(card -> blackCardsPairMap.get(card) == 2).findAny();
-
+        Optional<Card> blackPairCard = getCardOfPairs(blackHand);
         if(blackPairCard.isPresent()) {
             return "Black wins. - with Pair cards: " + blackPairCard.get().getValue();
         }
 
-        Card[] whiteHandCards = whiteHand.getCards();
-        Map<Card, Long> whiteCardsPairMap = Arrays.stream(whiteHandCards).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        Optional<Card> whitePairCard = whiteCardsPairMap.keySet().stream().filter(card -> whiteCardsPairMap.get(card) == 2).findAny();
+        Optional<Card> whitePairCard = getCardOfPairs(whiteHand);
         if(whitePairCard.isPresent()) {
             return "White wins. - with Pair cards: " + whitePairCard.get().getValue();
         }
 
         return null;
+    }
+
+    private Optional<Card> getCardOfPairs(Hand pokerHand) {
+        Map<Card, Long> cardsPairMap = Arrays.stream(pokerHand.getCards()).collect(groupingBy(Function.identity(), counting()));
+        return cardsPairMap.keySet().stream().filter(card -> cardsPairMap.get(card) == 2).findAny();
     }
 
     private String checkTie() {
