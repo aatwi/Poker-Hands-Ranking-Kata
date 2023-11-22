@@ -49,6 +49,7 @@ class PokerGame {
         String highCard = checkHighCard();
         if (highCard != null) return highCard;
 
+        TieRank tieRank = new TieRank(blackHand, whiteHand);
         String tieResult = checkTie();
         if(tieResult != null) return tieResult;
 
