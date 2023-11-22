@@ -40,14 +40,7 @@ class PokerGame {
         ranks.add(new HighCardRank(blackHand, whiteHand));
         ranks.add(new TieRank(blackHand, whiteHand));
 
-        for (PokerHandRank rank : ranks) {
-            Result result = rank.getResult();
-            if (result.status()) {
-                return result.message();
-            }
-        }
-
-        return null;
+        return ranks.stream().map(PokerHandRank::getResult).filter(Result::status).findFirst().map(Result::message).orElse(null);
     }
 
 }
