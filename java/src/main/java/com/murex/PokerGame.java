@@ -37,7 +37,7 @@ class PokerGame {
     }
 
     public String getWinner() {
-        return ranks.stream().map(PokerHandRank::getResult).filter(Result::status).findFirst().map(Result::message).orElse(null);
+        return ranks.stream().map(PokerHandRank::getResult).filter(Result::isMatch).findFirst().map(Result::message).orElse(null);
     }
 
     private void addPossibleRanks() {

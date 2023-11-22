@@ -1,4 +1,4 @@
 package com.murex;
 
-public record Result(boolean status, String message) {
+public record Result(boolean isMatch, String message) {
 }
