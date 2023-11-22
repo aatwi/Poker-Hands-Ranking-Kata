@@ -6,6 +6,15 @@ public class HighCardRank extends PokerHandRank{
     }
 
     @Override
+    public Result getResult() {
+        String verify = verify();
+        if(verify != null) {
+            return new Result(true, verify);
+        }
+        return super.getResult();
+    }
+
+    @Override
     public String verify() {
         int comparison = blackHand.getCards()[4].compareTo(whiteHand.getCards()[4]);
         if (comparison > 0) {
