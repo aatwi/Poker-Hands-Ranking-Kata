@@ -1,19 +1,21 @@
 package com.murex;
 
+import java.util.Optional;
+
 public class HighCardRank extends PokerHandRank{
     public HighCardRank(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 
     @Override
-    public String verify() {
+    public Optional<String> verify() {
         int comparison = blackHand.getCards()[4].compareTo(whiteHand.getCards()[4]);
         if (comparison > 0) {
-            return buildMessage(blackHand);
+            return Optional.of(buildMessage(blackHand));
         } else if (comparison < 0) {
-            return buildMessage(whiteHand);
+            return Optional.of(buildMessage(whiteHand));
         }
-        return null;
+        return Optional.empty();
     }
 
     private String buildMessage(Hand hand) {

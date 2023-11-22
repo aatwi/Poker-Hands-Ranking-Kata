@@ -14,36 +14,36 @@ public class PairCardRank extends PokerHandRank{
     }
 
     @Override
-    public String verify() {
+    public Optional<String> verify() {
         Optional<Card> blackPairCard = getCardOfPairs(blackHand);
         Optional<Card> whitePairCard = getCardOfPairs(whiteHand);
 
         if(blackPairCard.isPresent() && whitePairCard.isPresent()) {
             int comparison = blackPairCard.get().compareTo(whitePairCard.get());
             if (comparison > 0) {
-                return buildPairCardsMessage(blackHand, blackPairCard.get());
+                return Optional.of(buildPairCardsMessage(blackHand, blackPairCard.get()));
             } else if (comparison < 0) {
-                return buildPairCardsMessage(whiteHand, whitePairCard.get());
+                return Optional.of(buildPairCardsMessage(whiteHand, whitePairCard.get()));
             }else {
                 int highCardComparison = blackHand.getCards()[4].compareTo(whiteHand.getCards()[4]);
                 if (highCardComparison > 0) {
-                    return blackHand.getName() + " wins. - with Pair cards and higher rank: " + blackPairCard.get().getValue() + " and " + blackHand.getCards()[4].getValue();
+                    return Optional.of(blackHand.getName() + " wins. - with Pair cards and higher rank: " + blackPairCard.get().getValue() + " and " + blackHand.getCards()[4].getValue());
                 }
                 if (highCardComparison < 0) {
-                    return whiteHand.getName() + " wins. - with Pair cards and higher rank: " + whitePairCard.get().getValue() + " and " + whiteHand.getCards()[4].getValue();
+                    return Optional.of(whiteHand.getName() + " wins. - with Pair cards and higher rank: " + whitePairCard.get().getValue() + " and " + whiteHand.getCards()[4].getValue());
                 }
             }
         }
 
         if(blackPairCard.isPresent()) {
-            return buildPairCardsMessage(blackHand, blackPairCard.get());
+            return Optional.of(buildPairCardsMessage(blackHand, blackPairCard.get()));
         }
 
         if(whitePairCard.isPresent()) {
-            return buildPairCardsMessage(whiteHand, whitePairCard.get());
+            return Optional.of(buildPairCardsMessage(whiteHand, whitePairCard.get()));
         }
 
-        return null;
+        return Optional.empty();
     }
 
     private static String buildPairCardsMessage(Hand hand, Card card) {

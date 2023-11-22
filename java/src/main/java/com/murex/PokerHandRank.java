@@ -1,5 +1,7 @@
 package com.murex;
 
+import java.util.Optional;
+
 public abstract class PokerHandRank {
     protected final Hand blackHand;
     protected final Hand whiteHand;
@@ -9,14 +11,14 @@ public abstract class PokerHandRank {
         this.whiteHand = whiteHand;
     }
 
-    public String verify() {
-        return null;
+    public Optional<String> verify() {
+        return Optional.empty();
     }
 
     public Result getResult() {
-        String verify = verify();
-        if(verify != null) {
-            return new Result(true, verify);
+        Optional<String> verify = verify();
+        if(verify.isPresent()) {
+            return new Result(true, verify.get());
         }
         return new Result(false, "");
     }
