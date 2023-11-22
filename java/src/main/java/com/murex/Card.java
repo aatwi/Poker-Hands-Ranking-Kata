@@ -14,6 +14,10 @@ public class Card implements Comparable<Card> {
         return CardValueConverter.getCardName(value);
     }
 
+    public char getCharValue() {
+        return value;
+    }
+
     @Override
     public int compareTo(Card otherCard) {
         int otherValue = CardValueConverter.getIntegerValueOf(otherCard.value);
