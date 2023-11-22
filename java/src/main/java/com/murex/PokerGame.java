@@ -38,8 +38,8 @@ class PokerGame {
         String highCard = new HighCardRank(blackHand, whiteHand).verify();
         if (highCard != null) return highCard;
 
-        String tieResult = new TieRank(blackHand, whiteHand).verify();
-        if(tieResult != null) return tieResult;
+        Result tieResult = new TieRank(blackHand, whiteHand).getResult();
+        if(tieResult.status()) return tieResult.message();
 
         return null;
     }
