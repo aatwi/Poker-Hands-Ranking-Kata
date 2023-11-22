@@ -24,8 +24,12 @@ package com.murex;
 
 class PokerGame {
 
-    public PokerGame(String blackHand, String whiteHand) {
+    private final String blackHand;
+    private final String whiteHand;
 
+    public PokerGame(String blackHand, String whiteHand) {
+        this.blackHand = blackHand;
+        this.whiteHand = whiteHand;
     }
 
     private static int compareCardAt(int index, String[] blackCards, String[] whiteCards) {
