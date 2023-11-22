@@ -26,7 +26,6 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 
@@ -65,7 +64,7 @@ class PokerGame {
             if (comparison > 0) {
                 return "Black wins. - with Pair cards: " + blackPairCard.get().getValue();
             } else if (comparison < 0) {
-                return "White wins. - with Pair cards: " + whitePairCard.get().getValue();
+                return buildPairCardsMessage(whiteHand, whitePairCard.get());
             }
         }
 
@@ -74,10 +73,14 @@ class PokerGame {
         }
 
         if(whitePairCard.isPresent()) {
-            return "White wins. - with Pair cards: " + whitePairCard.get().getValue();
+            return buildPairCardsMessage(whiteHand, whitePairCard.get());
         }
 
         return null;
+    }
+
+    private static String buildPairCardsMessage(Hand hand, Card card) {
+        return hand.getName() + " wins. - with Pair cards: " + card.getValue();
     }
 
     private Optional<Card> getCardOfPairs(Hand pokerHand) {
