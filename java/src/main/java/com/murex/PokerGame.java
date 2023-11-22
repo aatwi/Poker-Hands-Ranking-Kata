@@ -39,7 +39,10 @@ class PokerGame {
         String highCard = checkHighCard();
         if (highCard != null) return highCard;
 
-        return checkTie();
+        String tieResult = checkTie();
+        if (tieResult != null) return tieResult;
+        
+        return null;
     }
 
     private String checkTie() {
