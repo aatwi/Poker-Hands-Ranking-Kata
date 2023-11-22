@@ -39,7 +39,7 @@ class PokerGame {
     }
 
     public String getWinner() {
-        String pair = checkPair();
+        String pair = new PairCardRank(blackHand, whiteHand).verify();
         if (pair != null) return pair;
 
         String highCard = new HighCardRank(blackHand, whiteHand).verify();
