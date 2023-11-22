@@ -51,7 +51,7 @@ class PokerGame {
 
         TieRank tieRank = new TieRank(blackHand, whiteHand);
 
-        String tieResult = checkTie();
+        String tieResult = tieRank.verify();
         if(tieResult != null) return tieResult;
 
         return null;

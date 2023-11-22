@@ -18,6 +18,6 @@ public class TieRank extends PokerHandRank {
                 return null;
             }
         }
-        return "Tie";
+        return "Tie.";
     }
 }
