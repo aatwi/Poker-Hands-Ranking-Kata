@@ -23,7 +23,18 @@ SOFTWARE.
 package com.murex;
 
 class PokerGame {
-    public static String getWinner(String blackHand, String whiteHand) {
+
+    private static int compareCardAt(int index, String[] blackCards, String[] whiteCards) {
+        Card bCard = new Card(blackCards[index].charAt(0));
+        Card wCard = new Card(whiteCards[index].charAt(0));
+        return bCard.compareTo(wCard);
+    }
+
+    private static String buildMessage(String winner, String card) {
+        return winner + " wins. - with high card: " + card;
+    }
+
+    public String getWinner(String blackHand, String whiteHand) {
         String[] blackCards = blackHand.split(" ");
         String[] whiteCards = whiteHand.split(" ");
 
@@ -48,15 +59,5 @@ class PokerGame {
             }
         }
         return null;
-    }
-
-    private static int compareCardAt(int index, String[] blackCards, String[] whiteCards) {
-        Card bCard = new Card(blackCards[index].charAt(0));
-        Card wCard = new Card(whiteCards[index].charAt(0));
-        return bCard.compareTo(wCard);
-    }
-
-    private static String buildMessage(String winner, String card) {
-        return winner + " wins. - with high card: " + card;
     }
 }
