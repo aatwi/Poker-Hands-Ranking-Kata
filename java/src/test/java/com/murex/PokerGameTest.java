@@ -98,7 +98,7 @@ public class PokerGameTest {
     @Test
     public void
     PAIR_white_wins_with_4_as_pair() {
-        String black = "JH AS 5D 6C 7H";
+        String black = "5D 6C 7H JH AS";
         String white = "2D 4H 4C 9S KH";
 
         assertEquals("White wins. - with Pair cards: 4", new PokerGame(black, white).getWinner());
