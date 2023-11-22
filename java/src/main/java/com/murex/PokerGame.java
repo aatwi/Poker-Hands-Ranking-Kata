@@ -30,7 +30,7 @@ class PokerGame {
         Card blackCard = new Card(blackCards[4].charAt(0));
         Card whiteCard = new Card(whiteCards[4].charAt(0));
 
-        int comparison = blackCard.compareTo(whiteCard);
+        int comparison =  compareCardAt(4, blackCards, whiteCards);
         if (comparison > 0) {
             return buildMessage("Black",  blackCard.getValue());
         } else if (comparison < 0) {
@@ -38,9 +38,7 @@ class PokerGame {
         } else {
             boolean isTie = true;
             for (int i = 0; i < 5; i++) {
-                Card bCard = new Card(blackCards[i].charAt(0));
-                Card wCard = new Card(whiteCards[i].charAt(0));
-                if(bCard.compareTo(wCard) != 0) {
+                if(compareCardAt(i, blackCards, whiteCards) != 0) {
                     isTie = false;
                     break;
                 }
@@ -50,6 +48,12 @@ class PokerGame {
             }
         }
         return null;
+    }
+
+    private static int compareCardAt(int index, String[] blackCards, String[] whiteCards) {
+        Card bCard = new Card(blackCards[index].charAt(0));
+        Card wCard = new Card(whiteCards[index].charAt(0));
+        return bCard.compareTo(wCard);
     }
 
     private static String buildMessage(String winner, String card) {
