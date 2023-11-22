@@ -15,7 +15,7 @@ public abstract class PokerHandRank {
         return Optional.empty();
     }
 
-    public Result getResult() {
+    public Result getMatchResult() {
         Optional<String> verify = verify();
         return verify.map(Result::aMatchResult).orElseGet(Result::aNoMatchResult);
     }
