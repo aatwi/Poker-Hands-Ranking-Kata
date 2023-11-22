@@ -41,9 +41,6 @@ class PokerGame {
     }
 
     public String getWinner() {
-        String[] blackCards = this.blackCards.split(" ");
-        String[] whiteCards = this.whiteCards.split(" ");
-
         int comparison = compareCardAt(4);
         if (comparison > 0) {
             return buildMessage(blackHand);
