@@ -38,6 +38,7 @@ public class PairCardRank extends PokerHandRank{
                 if (highCardComparison < 0) {
                     return Optional.of(whiteHand.getName() + " wins. - with Pair cards and higher rank: " + whitePairCard.get().getValue() + " and " + whiteHand.getCardAt(4).getValue());
                 }
+                return Optional.empty(); 
             }
         }
 
