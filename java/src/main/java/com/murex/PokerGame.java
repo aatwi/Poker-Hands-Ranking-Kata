@@ -92,20 +92,6 @@ class PokerGame {
         return cardsPairMap.keySet().stream().filter(card -> cardsPairMap.get(card) == 2).findAny();
     }
 
-    private String checkHighCard() {
-        int comparison = compareCardAt(4);
-        if (comparison > 0) {
-            return buildMessage(blackHand);
-        } else if (comparison < 0) {
-            return buildMessage(whiteHand);
-        }
-        return null;
-    }
-
-    private String buildMessage(Hand hand) {
-        return hand.getName() + " wins. - with high card: " + hand.getCards()[4].getValue();
-    }
-
     private int compareCardAt(int index) {
         Card bCard = blackHand.getCards()[index];
         Card wCard = whiteHand.getCards()[index];
