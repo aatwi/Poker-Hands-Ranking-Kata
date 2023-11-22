@@ -22,13 +22,6 @@ SOFTWARE.
 
 package com.murex;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-
-import static java.util.stream.Collectors.*;
-
 class PokerGame {
     private final Hand blackHand;
     private final Hand whiteHand;
