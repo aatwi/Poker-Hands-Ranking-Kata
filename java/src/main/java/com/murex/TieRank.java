@@ -2,6 +2,7 @@ package com.murex;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class TieRank extends PokerHandRank {
     public TieRank(Hand blackHand, Hand whiteHand) {
@@ -10,10 +11,10 @@ public class TieRank extends PokerHandRank {
 
     @Override
     public String verify() {
-        List<Card> blackCards = Arrays.stream(this.blackHand.getCards()).toList();
-        List<Card> whiteCards = Arrays.stream(this.blackHand.getCards()).toList();
-        for (int i = 0; i < blackCards.size(); i++) {
-            if(blackCards.get(i).compareTo(whiteCards.get(i)) != 0) {
+        Card[] blackCards = this.blackHand.getCards();
+        Card[] whiteCards = this.blackHand.getCards();
+        for (int index = 0; index < blackCards.length; index++) {
+            if(blackCards[index].compareTo(whiteCards[index])!= 0) {
                 return null;
             }
         }
