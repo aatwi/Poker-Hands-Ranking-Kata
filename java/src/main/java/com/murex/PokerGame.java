@@ -38,10 +38,6 @@ class PokerGame {
         this.whiteHand = Hand.buildFrom("White", whiteCards);
     }
 
-    private static String buildMessage(Hand hand) {
-        return hand.getName() + " wins. - with high card: " + hand.getCards()[4].getValue();
-    }
-
     public String getWinner() {
         String pair = checkPair();
         if (pair != null) return pair;
@@ -49,9 +45,7 @@ class PokerGame {
         String highCard = checkHighCard();
         if (highCard != null) return highCard;
 
-        TieRank tieRank = new TieRank(blackHand, whiteHand);
-
-        String tieResult = tieRank.verify();
+        String tieResult = new TieRank(blackHand, whiteHand).verify();
         if(tieResult != null) return tieResult;
 
         return null;
@@ -106,6 +100,10 @@ class PokerGame {
             return buildMessage(whiteHand);
         }
         return null;
+    }
+
+    private String buildMessage(Hand hand) {
+        return hand.getName() + " wins. - with high card: " + hand.getCards()[4].getValue();
     }
 
     private int compareCardAt(int index) {
