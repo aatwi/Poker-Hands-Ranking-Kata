@@ -73,30 +73,4 @@ class PokerGame {
         return null;
     }
 
-    private static String getString(String blackHand, String whiteHand) {
-        String[] blackCards = blackHand.split(" ");
-        String[] whiteCards = whiteHand.split(" ");
-
-        Card blackCard = new Card(blackCards[4].charAt(0));
-        Card whiteCard = new Card(whiteCards[4].charAt(0));
-
-        int comparison =  compareCardAt(4, blackCards, whiteCards);
-        if (comparison > 0) {
-            return buildMessage("Black", blackCard.getValue());
-        } else if (comparison < 0) {
-            return buildMessage("White", whiteCard.getValue());
-        } else {
-            boolean isTie = true;
-            for (int i = 0; i < 5; i++) {
-                if(compareCardAt(i, blackCards, whiteCards) != 0) {
-                    isTie = false;
-                    break;
-                }
-            }
-            if(isTie) {
-                return "Tie.";
-            }
-        }
-        return null;
-    }
 }
