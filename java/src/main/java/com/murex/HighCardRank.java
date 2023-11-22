@@ -10,12 +10,11 @@ public class HighCardRank extends PokerHandRank{
     @Override
     public Optional<String> verify() {
         int comparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
-        if (comparison > 0) {
-            return Optional.of(buildMessage(blackHand));
-        } else if (comparison < 0) {
-            return Optional.of(buildMessage(whiteHand));
+        if (comparison == 0) {
+            return Optional.empty();
         }
-        return Optional.empty();
+        String message = comparison > 0 ? buildMessage(blackHand) : buildMessage(whiteHand);
+        return Optional.of(message);
     }
 
     private String buildMessage(Hand hand) {
