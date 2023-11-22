@@ -27,10 +27,10 @@ public class PairCardRank extends PokerHandRank{
             }else {
                 int highCardComparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
                 if (highCardComparison > 0) {
-                    return Optional.of(blackHand.getName() + " wins. - with Pair cards and higher rank: " + blackPairCard.get().getValue() + " and " + blackHand.getCards()[4].getValue());
+                    return Optional.of(blackHand.getName() + " wins. - with Pair cards and higher rank: " + blackPairCard.get().getValue() + " and " + blackHand.getCardAt(4).getValue());
                 }
                 if (highCardComparison < 0) {
-                    return Optional.of(whiteHand.getName() + " wins. - with Pair cards and higher rank: " + whitePairCard.get().getValue() + " and " + whiteHand.getCards()[4].getValue());
+                    return Optional.of(whiteHand.getName() + " wins. - with Pair cards and higher rank: " + whitePairCard.get().getValue() + " and " + whiteHand.getCardAt(4).getValue());
                 }
             }
         }
