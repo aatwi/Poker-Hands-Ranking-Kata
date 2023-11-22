@@ -1,8 +1,8 @@
 package com.murex;
 
 public abstract class PokerHandRank {
-    private final Hand blackHand;
-    private final Hand whiteHand;
+    protected final Hand blackHand;
+    protected final Hand whiteHand;
 
     public PokerHandRank(Hand blackHand, Hand whiteHand) {
         this.blackHand = blackHand;

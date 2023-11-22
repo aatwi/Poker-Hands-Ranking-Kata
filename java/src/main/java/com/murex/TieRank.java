@@ -7,6 +7,7 @@ public class TieRank extends PokerHandRank {
 
     @Override
     public String verify() {
+
         return "Tie";
     }
 }
