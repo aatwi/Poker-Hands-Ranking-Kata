@@ -51,7 +51,7 @@ public class PokerGameTest {
     @Test
     public void
     HIGH_CARD_white_wins_Jack(){
-        String black = "2H 3D 5S 9C 9D";
+        String black = "2H 3D 5S 7C 9D";
         String white = "2C 3H 4S 8C JH";
 
         String expected = "White wins. - with high card: Jack";

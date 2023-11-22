@@ -60,9 +60,7 @@ class PokerGame {
         Map<Card, Long> collect = Arrays.stream(cards).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         Optional<Card> any = collect.keySet().stream().filter(card -> collect.get(card) == 2).findAny();
 
-        
-
-        if(cards[0].getCharValue() == 'A' && cards[1].getCharValue() == 'A') {
+        if(any.isPresent()) {
             return "Black wins. - with Pair cards: Ace";
         }
         return null;
