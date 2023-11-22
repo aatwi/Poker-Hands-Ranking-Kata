@@ -56,8 +56,8 @@ class PokerGame {
     }
 
     private String checkPair() {
-        Card[] cards = blackHand.getCards();
-        Map<Card, Long> collect = Arrays.stream(cards).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Card[] blackCards = blackHand.getCards();
+        Map<Card, Long> collect = Arrays.stream(blackCards).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         Optional<Card> any = collect.keySet().stream().filter(card -> collect.get(card) == 2).findAny();
 
         if(any.isPresent()) {
