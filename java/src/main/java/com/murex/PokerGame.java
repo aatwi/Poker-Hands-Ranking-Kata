@@ -73,7 +73,7 @@ class PokerGame {
                 if (highCardComparison < 0) {
                     return whiteHand.getName() + " wins. - with Pair cards and higher rank: " + whitePairCard.get().getValue() + " and " + whiteHand.getCards()[4].getValue();
                 }
-                
+
             }
         }
 
