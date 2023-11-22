@@ -58,11 +58,12 @@ class PokerGame {
 
     private String checkPair() {
         Optional<Card> blackPairCard = getCardOfPairs(blackHand);
+        Optional<Card> whitePairCard = getCardOfPairs(whiteHand);
+
         if(blackPairCard.isPresent()) {
             return "Black wins. - with Pair cards: " + blackPairCard.get().getValue();
         }
 
-        Optional<Card> whitePairCard = getCardOfPairs(whiteHand);
         if(whitePairCard.isPresent()) {
             return "White wins. - with Pair cards: " + whitePairCard.get().getValue();
         }
