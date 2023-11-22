@@ -37,7 +37,7 @@ class PokerGame {
 
     public String getWinner() {
         Card[] cards = blackHand.getCards();
-        if(cards[0].getCharValue() == 'A' && cards[0].getCharValue() == 'A') {
+        if(cards[0].getCharValue() == 'A' && cards[1].getCharValue() == 'A') {
             return "Black wins. - with Pair cards: Ace";
         }
 
