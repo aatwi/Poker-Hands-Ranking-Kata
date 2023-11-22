@@ -12,7 +12,7 @@ public class Hand {
         this.cards = cards;
     }
 
-    public static Hand buildFrom(String blackHand, String input) {
+    public static Hand buildFrom(String blackHand, String cardsString) {
         return new Hand(blackHand,
                 new Card[]{
                         new Card('2'),
