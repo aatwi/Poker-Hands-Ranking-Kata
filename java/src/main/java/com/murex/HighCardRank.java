@@ -13,8 +13,10 @@ public class HighCardRank extends PokerHandRank{
         if (comparison == 0) {
             return Optional.empty();
         }
-        String message = comparison > 0 ? buildMessage(blackHand) : buildMessage(whiteHand);
-        return Optional.of(message);
+
+        Hand winner = comparison > 0 ? blackHand : whiteHand;
+        
+        return Optional.of(buildMessage(winner));
     }
 
     private String buildMessage(Hand hand) {
