@@ -24,6 +24,10 @@ package com.murex;
 
 class PokerGame {
 
+    public PokerGame() {
+        
+    }
+
     private static int compareCardAt(int index, String[] blackCards, String[] whiteCards) {
         Card bCard = new Card(blackCards[index].charAt(0));
         Card wCard = new Card(whiteCards[index].charAt(0));
