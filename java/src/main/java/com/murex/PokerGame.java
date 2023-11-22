@@ -43,10 +43,8 @@ class PokerGame {
     }
 
     public String getWinner() {
-        String blackHand1 = getBlackHand();
-        String whiteHand1 = getWhiteHand();
-        String[] blackCards = blackHand1.split(" ");
-        String[] whiteCards = whiteHand1.split(" ");
+        String[] blackCards = blackHand.split(" ");
+        String[] whiteCards = whiteHand.split(" ");
 
         Card blackCard = new Card(blackCards[4].charAt(0));
         Card whiteCard = new Card(whiteCards[4].charAt(0));
