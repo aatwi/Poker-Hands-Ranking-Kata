@@ -43,7 +43,7 @@ class PokerGame {
     }
 
     private static String buildMessage(Card blackCard, Hand hand) {
-        return hand.getName() + " wins. - with high card: " + blackCard.getValue();
+        return hand.getName() + " wins. - with high card: " + hand.getCards()[4].getValue();
     }
 
     public String getWinner() {
