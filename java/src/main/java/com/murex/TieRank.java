@@ -9,9 +9,6 @@ public class TieRank extends PokerHandRank {
 
     @Override
     public Optional<String> verify() {
-        Card[] blackCards = this.blackHand.getCards();
-        Card[] whiteCards = this.blackHand.getCards();
-
         for (int index = 0; index < 5; index++) {
             if (blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index)) != 0) {
                 return Optional.empty();
