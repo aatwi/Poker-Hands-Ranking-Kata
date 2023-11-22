@@ -6,7 +6,6 @@ public abstract class PokerHandRank {
 
     public PokerHandRank(Hand blackHand, Hand whiteHand) {
         this.blackHand = blackHand;
-
         this.whiteHand = whiteHand;
     }
 
