@@ -41,18 +41,18 @@ class PokerGame {
             return buildMessage(blackHand);
         } else if (comparison < 0) {
             return buildMessage(whiteHand);
-        } else {
-            boolean isTie = true;
-            for (int i = 0; i < 5; i++) {
-                if (compareCardAt(i) != 0) {
-                    isTie = false;
-                    break;
-                }
-            }
-            if (isTie) {
-                return "Tie.";
+        }
+        boolean isTie = true;
+        for (int i = 0; i < 5; i++) {
+            if (compareCardAt(i) != 0) {
+                isTie = false;
+                break;
             }
         }
+        if (isTie) {
+            return "Tie.";
+        }
+        
         return null;
     }
 
