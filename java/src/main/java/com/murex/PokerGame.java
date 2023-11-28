@@ -28,7 +28,7 @@ import java.util.List;
 class PokerGame {
     private final Hand blackHand;
     private final Hand whiteHand;
-    private final List<PokerHandRank> ranks = new ArrayList<>();
+    private final List<PokerHandRanking> ranks = new ArrayList<>();
 
     public PokerGame(String blackCards, String whiteCards) {
         this.blackHand = Hand.buildFrom("Black", blackCards);
@@ -37,13 +37,13 @@ class PokerGame {
     }
 
     public String getWinner() {
-        return ranks.stream().map(PokerHandRank::getMatchResult).filter(Result::isMatch).findFirst().map(Result::message).orElse(null);
+        return ranks.stream().map(PokerHandRanking::getMatchResult).filter(Result::isMatch).findFirst().map(Result::message).orElse(null);
     }
 
     private void addPossibleRanks() {
-        ranks.add(new PairCardRank(blackHand, whiteHand));
-        ranks.add(new HighCardRank(blackHand, whiteHand));
-        ranks.add(new TieRank(blackHand, whiteHand));
+        ranks.add(new PairCardRanking(blackHand, whiteHand));
+        ranks.add(new HighCardRanking(blackHand, whiteHand));
+        ranks.add(new TieRanking(blackHand, whiteHand));
     }
 
 }

@@ -2,8 +2,8 @@ package com.murex;
 
 import java.util.Optional;
 
-public class TieRank extends PokerHandRank {
-    public TieRank(Hand blackHand, Hand whiteHand) {
+public class TieRanking extends PokerHandRanking {
+    public TieRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 

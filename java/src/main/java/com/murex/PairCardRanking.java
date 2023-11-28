@@ -8,8 +8,8 @@ import java.util.function.Function;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
-public class PairCardRank extends PokerHandRank{
-    public PairCardRank(Hand blackHand, Hand whiteHand) {
+public class PairCardRanking extends PokerHandRanking {
+    public PairCardRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 
@@ -35,11 +35,10 @@ public class PairCardRank extends PokerHandRank{
             if (comparison > 0) {
                 return Optional.of(buildPairCardsMessage(blackHand, winnerPairCard));
             } else if (comparison < 0) {
-
                 return Optional.of(buildPairCardsMessage(whiteHand, winnerPairCard));
             }
             if(comparison == 0) {
-                HighCardRank highCardRank = new HighCardRank(blackHand, whiteHand);
+                HighCardRanking highCardRank = new HighCardRanking(blackHand, whiteHand);
                 Optional<Hand> higherHand = highCardRank.getHigherHand();
                 int highCardComparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
                 if (highCardComparison > 0) {

@@ -2,11 +2,11 @@ package com.murex;
 
 import java.util.Optional;
 
-public abstract class PokerHandRank {
+public abstract class PokerHandRanking {
     protected final Hand blackHand;
     protected final Hand whiteHand;
 
-    public PokerHandRank(Hand blackHand, Hand whiteHand) {
+    public PokerHandRanking(Hand blackHand, Hand whiteHand) {
         this.blackHand = blackHand;
         this.whiteHand = whiteHand;
     }
