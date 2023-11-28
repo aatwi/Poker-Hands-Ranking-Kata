@@ -28,7 +28,7 @@ import java.util.List;
 class PokerGame {
     private final Hand blackHand;
     private final Hand whiteHand;
-    private List<PokerHandRank> ranks = new ArrayList<>();
+    private final List<PokerHandRank> ranks = new ArrayList<>();
 
     public PokerGame(String blackCards, String whiteCards) {
         this.blackHand = Hand.buildFrom("Black", blackCards);
