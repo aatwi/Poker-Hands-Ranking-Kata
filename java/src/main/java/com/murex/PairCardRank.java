@@ -25,18 +25,28 @@ public class PairCardRank extends PokerHandRank{
         if(blackPairCard.isPresent() && whitePairCard.isPresent()) {
             int comparison = blackPairCard.get().compareTo(whitePairCard.get());
 
+            Card winnerPairCard = null;
             if (comparison > 0) {
-                return Optional.of(buildPairCardsMessage(blackHand, blackPairCard.get()));
+                winnerPairCard = blackPairCard.get();
             } else if (comparison < 0) {
-                return Optional.of(buildPairCardsMessage(whiteHand, whitePairCard.get()));
+                winnerPairCard = whitePairCard.get();
+            }
+
+            if (comparison > 0) {
+                return Optional.of(buildPairCardsMessage(blackHand, winnerPairCard));
+            } else if (comparison < 0) {
+
+                return Optional.of(buildPairCardsMessage(whiteHand, winnerPairCard));
             }
             if(comparison == 0) {
+                HighCardRank highCardRank = new HighCardRank(blackHand, whiteHand);
+                Optional<Hand> higherHand = highCardRank.getHigherHand();
                 int highCardComparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
                 if (highCardComparison > 0) {
-                    return Optional.of(buildPairAndHighHandMessage(blackHand, blackPairCard.get()));
+                    return Optional.of(buildPairAndHighHandMessage(higherHand.get(), blackPairCard.get()));
                 }
                 if (highCardComparison < 0) {
-                    return Optional.of(buildPairAndHighHandMessage(whiteHand, whitePairCard.get()));
+                    return Optional.of(buildPairAndHighHandMessage(higherHand.get(), whitePairCard.get()));
                 }
                 return Optional.empty();
             }
