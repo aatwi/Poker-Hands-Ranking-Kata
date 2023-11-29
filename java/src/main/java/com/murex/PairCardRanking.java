@@ -47,9 +47,8 @@ public class PairCardRanking extends PokerHandRanking {
                 message = buildPairCardsMessage(winningHad, winnerCardValue);
             }
         } else {
-            Hand winningHad = blackPairHand.hasPair() ? blackHand : whiteHand;
-            String winningPairCard = blackPairHand.hasPair() ? blackPairHand.getPairValue() : whitePairHand.getPairValue();
-            message = buildPairCardsMessage(winningHad, winningPairCard);
+            PairHand winningPairHand = blackPairHand.hasPair() ? blackPairHand : whitePairHand;
+            message = buildPairCardsMessage(winningPairHand.getHand(), winningPairHand.getPairValue());
         }
         return Optional.of(message);
     }
