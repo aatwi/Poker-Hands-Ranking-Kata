@@ -13,57 +13,44 @@ public class PairCardRanking extends PokerHandRanking {
         super(blackHand, whiteHand);
     }
 
+    private static String buildPairAndHighHandMessage(Hand hand, String cardValue) {
+        return hand.getName() + " wins. - with Pair cards and higher rank: " + cardValue + " and " + hand.getCardAt(4).getValue();
+    }
+
+    private static String buildPairCardsMessage(Hand hand, String cardValue) {
+        return hand.getName() + " wins. - with Pair cards: " + cardValue;
+    }
+
     @Override
     public Optional<String> verify() {
-        Optional<Card> blackPairCard = getCardOfPairs(blackHand);
-        Optional<Card> whitePairCard = getCardOfPairs(whiteHand);
+        PairHand blackPairHand = new PairHand(blackHand);
+        PairHand whitePairHand = new PairHand(whiteHand);
 
-        if (blackPairCard.isEmpty() && whitePairCard.isEmpty()) {
+        if (!blackPairHand.hasPair() && !whitePairHand.hasPair()) {
             return Optional.empty();
         }
 
-        if(blackPairCard.isPresent() && whitePairCard.isPresent()) {
-            int comparison = blackPairCard.get().compareTo(whitePairCard.get());
+        String message;
+        if (blackPairHand.hasPair() && whitePairHand.hasPair()) {
+            int comparison = blackPairHand.getPairValue().compareTo(whitePairHand.getPairValue());
+            String winnerCardValue = comparison > 0 ? blackPairHand.getPairValue() : whitePairHand.getPairValue();
 
-            Card winnerPairCard = comparison > 0 ? blackPairCard.get() : whitePairCard.get();
-
-            if (comparison > 0) {
-                return Optional.of(buildPairCardsMessage(blackHand, winnerPairCard));
-            } else if (comparison < 0) {
-                return Optional.of(buildPairCardsMessage(whiteHand, winnerPairCard));
-            }
-            if(comparison == 0) {
+            if (comparison == 0) {
                 HighCardRanking highCardRank = new HighCardRanking(blackHand, whiteHand);
                 Optional<Hand> higherHand = highCardRank.getHigherHand();
                 if (higherHand.isEmpty()) {
                     return Optional.empty();
                 }
-//                int highCardComparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
-//                if (highCardComparison == 0) {
-//                    return Optional.empty();
-//                }
-                return Optional.of(buildPairAndHighHandMessage(higherHand.get(), winnerPairCard));
+                message = buildPairAndHighHandMessage(higherHand.get(), winnerCardValue);
+            } else {
+                Hand winningHad = comparison > 0 ? blackHand : whiteHand;
+                message = buildPairCardsMessage(winningHad, winnerCardValue);
             }
+        } else {
+            Hand winningHad = blackPairHand.hasPair() ? blackHand : whiteHand;
+            String winningPairCard = blackPairHand.hasPair() ? blackPairHand.getPairValue() : whitePairHand.getPairValue();
+            message = buildPairCardsMessage(winningHad, winningPairCard);
         }
-
-        if(blackPairCard.isPresent()) {
-            return Optional.of(buildPairCardsMessage(blackHand, blackPairCard.get()));
-        }else {
-            return Optional.of(buildPairCardsMessage(whiteHand, whitePairCard.get()));
-        }
-
-    }
-
-    private String buildPairAndHighHandMessage(Hand hand, Card card) {
-        return hand.getName() + " wins. - with Pair cards and higher rank: " + card.getValue() + " and " + hand.getCardAt(4).getValue();
-    }
-
-    private static String buildPairCardsMessage(Hand hand, Card card) {
-        return hand.getName() + " wins. - with Pair cards: " + card.getValue();
-    }
-
-    private Optional<Card> getCardOfPairs(Hand pokerHand) {
-        Map<Card, Long> cardsPairMap = Arrays.stream(pokerHand.getCards()).collect(groupingBy(Function.identity(), counting()));
-        return cardsPairMap.keySet().stream().filter(card -> cardsPairMap.get(card) == 2).findAny();
+        return Optional.of(message);
     }
 }
