@@ -1,4 +1,7 @@
-package com.murex;
+package com.murex.ranking;
+
+import com.murex.Hand;
+import com.murex.Result;
 
 import java.util.Optional;
 

@@ -1,11 +1,12 @@
-package com.murex;
+package com.murex.ranking;
 
-import java.util.Arrays;
-import java.util.Map;
+import com.murex.Hand;
+import com.murex.PairHand;
+import com.murex.ranking.HighCardRanking;
+import com.murex.ranking.PokerHandRanking;
+
 import java.util.Optional;
-import java.util.function.Function;
 
-import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 public class PairCardRanking extends PokerHandRanking {
@@ -13,11 +14,11 @@ public class PairCardRanking extends PokerHandRanking {
         super(blackHand, whiteHand);
     }
 
-    private static String buildPairAndHighHandMessage(Hand hand, String cardValue) {
+    private String buildPairAndHighHandMessage(Hand hand, String cardValue) {
         return hand.getName() + " wins. - with Pair cards and higher rank: " + cardValue + " and " + hand.getCardAt(4).getValue();
     }
 
-    private static String buildPairCardsMessage(Hand hand, String cardValue) {
+    private String buildPairCardsMessage(Hand hand, String cardValue) {
         return hand.getName() + " wins. - with Pair cards: " + cardValue;
     }
 

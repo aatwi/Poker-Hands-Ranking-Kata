@@ -22,6 +22,11 @@ SOFTWARE.
 
 package com.murex;
 
+import com.murex.ranking.HighCardRanking;
+import com.murex.ranking.PairCardRanking;
+import com.murex.ranking.PokerHandRanking;
+import com.murex.ranking.TieRanking;
+
 import java.util.ArrayList;
 import java.util.List;
 

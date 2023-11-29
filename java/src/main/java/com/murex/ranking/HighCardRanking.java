@@ -1,4 +1,7 @@
-package com.murex;
+package com.murex.ranking;
+
+import com.murex.Hand;
+import com.murex.ranking.PokerHandRanking;
 
 import java.util.Optional;
 
@@ -13,7 +16,7 @@ public class HighCardRanking extends PokerHandRanking {
         return winner.isEmpty() ? Optional.empty():  Optional.of(buildMessage(winner.get()));
     }
 
-    protected Optional<Hand> getHigherHand() {
+    public Optional<Hand> getHigherHand() {
         int cardComparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
         if(cardComparison == 0) {
             return Optional.empty();
