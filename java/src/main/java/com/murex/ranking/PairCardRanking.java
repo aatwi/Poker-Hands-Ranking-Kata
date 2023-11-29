@@ -2,16 +2,54 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.PairHand;
-import com.murex.ranking.HighCardRanking;
-import com.murex.ranking.PokerHandRanking;
+import com.murex.Result;
 
 import java.util.Optional;
 
-import static java.util.stream.Collectors.groupingBy;
+import static com.murex.Result.aMatchResult;
 
 public class PairCardRanking extends PokerHandRanking {
+
+    private final PairHand blackPairHand;
+    private final PairHand whitePairHand;
+
     public PairCardRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
+        blackPairHand = new PairHand(this.blackHand);
+        whitePairHand = new PairHand(this.whiteHand);
+    }
+
+    @Override
+    public Result getMatchingResult() {
+        if (bothHandsHavePairs()) {
+            return compareHighHands();
+        }
+        if (bothHandsHaveNoPairs()) {
+            return Result.aNoMatchResult();
+        }
+        PairHand winningPairHand = blackPairHand.hasPair() ? blackPairHand : whitePairHand;
+        return aMatchResult(buildPairCardsMessage(winningPairHand.getHand(), winningPairHand.getPairValue()));
+    }
+
+    private Result compareHighHands() {
+        int comparison = blackPairHand.getPairValue().compareTo(whitePairHand.getPairValue());
+        String winnerCardValue = comparison > 0 ? blackPairHand.getPairValue() : whitePairHand.getPairValue();
+
+        if (comparison == 0) {
+            HighCardRanking highCardRank = new HighCardRanking(blackHand, whiteHand);
+            Optional<Hand> higherHand = highCardRank.getHigherHand();
+            if (higherHand.isEmpty()) {
+                return Result.aNoMatchResult();
+            }
+            return aMatchResult(buildPairAndHighHandMessage(higherHand.get(), winnerCardValue));
+        } else {
+            Hand winningHad = comparison > 0 ? blackHand : whiteHand;
+            return aMatchResult(buildPairCardsMessage(winningHad, winnerCardValue));
+        }
+    }
+
+    private boolean bothHandsHaveNoPairs() {
+        return !blackPairHand.hasPair() && !whitePairHand.hasPair();
     }
 
     private String buildPairAndHighHandMessage(Hand hand, String cardValue) {
@@ -22,35 +60,7 @@ public class PairCardRanking extends PokerHandRanking {
         return hand.getName() + " wins. - with Pair cards: " + cardValue;
     }
 
-    @Override
-    public Optional<String> verify() {
-        PairHand blackPairHand = new PairHand(blackHand);
-        PairHand whitePairHand = new PairHand(whiteHand);
-
-        if (!blackPairHand.hasPair() && !whitePairHand.hasPair()) {
-            return Optional.empty();
-        }
-
-        String message;
-        if (blackPairHand.hasPair() && whitePairHand.hasPair()) {
-            int comparison = blackPairHand.getPairValue().compareTo(whitePairHand.getPairValue());
-            String winnerCardValue = comparison > 0 ? blackPairHand.getPairValue() : whitePairHand.getPairValue();
-
-            if (comparison == 0) {
-                HighCardRanking highCardRank = new HighCardRanking(blackHand, whiteHand);
-                Optional<Hand> higherHand = highCardRank.getHigherHand();
-                if (higherHand.isEmpty()) {
-                    return Optional.empty();
-                }
-                message = buildPairAndHighHandMessage(higherHand.get(), winnerCardValue);
-            } else {
-                Hand winningHad = comparison > 0 ? blackHand : whiteHand;
-                message = buildPairCardsMessage(winningHad, winnerCardValue);
-            }
-        } else {
-            PairHand winningPairHand = blackPairHand.hasPair() ? blackPairHand : whitePairHand;
-            message = buildPairCardsMessage(winningPairHand.getHand(), winningPairHand.getPairValue());
-        }
-        return Optional.of(message);
+    private boolean bothHandsHavePairs() {
+        return this.blackPairHand.hasPair() && this.whitePairHand.hasPair();
     }
 }

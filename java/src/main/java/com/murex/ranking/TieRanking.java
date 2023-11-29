@@ -1,9 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import com.murex.ranking.PokerHandRanking;
-
-import java.util.Optional;
+import com.murex.Result;
 
 public class TieRanking extends PokerHandRanking {
     public TieRanking(Hand blackHand, Hand whiteHand) {
@@ -11,13 +9,12 @@ public class TieRanking extends PokerHandRanking {
     }
 
     @Override
-    public Optional<String> verify() {
+    public Result getMatchingResult() {
         for (int index = 0; index < 5; index++) {
             if (blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index)) != 0) {
-                return Optional.empty();
+                return Result.aNoMatchResult();
             }
         }
-        return Optional.of("Tie.");
+        return Result.aMatchResult("Tie.");
     }
-
 }

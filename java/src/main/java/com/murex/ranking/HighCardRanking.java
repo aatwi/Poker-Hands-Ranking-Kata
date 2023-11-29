@@ -1,24 +1,31 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import com.murex.ranking.PokerHandRanking;
+import com.murex.Result;
 
 import java.util.Optional;
 
+import static com.murex.Result.aMatchResult;
+import static com.murex.Result.aNoMatchResult;
+
 public class HighCardRanking extends PokerHandRanking {
+    
     public HighCardRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 
     @Override
-    public Optional<String> verify() {
+    public Result getMatchingResult() {
         Optional<Hand> winner = getHigherHand();
-        return winner.isEmpty() ? Optional.empty():  Optional.of(buildMessage(winner.get()));
+        if (winner.isEmpty()) {
+            return aNoMatchResult();
+        }
+        return aMatchResult(buildMessage(winner.get()));
     }
 
-    public Optional<Hand> getHigherHand() {
+    protected Optional<Hand> getHigherHand() {
         int cardComparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
-        if(cardComparison == 0) {
+        if (cardComparison == 0) {
             return Optional.empty();
         }
         return Optional.of(cardComparison > 0 ? blackHand : whiteHand);
