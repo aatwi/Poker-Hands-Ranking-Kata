@@ -41,6 +41,7 @@ class PairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", cards1);
         PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
 
+        String message = expected.message();
         assertEquals(expected, pairCardRanking.getMatchingResult());
     }
 
