@@ -10,19 +10,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class PairCardRankingTest {
 
     private static void assertNoMatchingResult(String blackCards, String whiteCards) {
-        Hand blackHand = Hand.buildFrom("Black", blackCards);
-        Hand whiteHand = Hand.buildFrom("White", whiteCards);
-        PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
+        PairCardRanking pairCardRanking = buildPairCardRanking(blackCards, whiteCards);
 
         assertEquals(aNoMatchResult(), pairCardRanking.getMatchingResult());
     }
 
     private static void assertMatchingResult(String blackCards, String whiteCards, String message) {
-        Hand blackHand = Hand.buildFrom("Black", blackCards);
-        Hand whiteHand = Hand.buildFrom("White", whiteCards);
-        PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
+        PairCardRanking pairCardRanking = buildPairCardRanking(blackCards, whiteCards);
 
         assertEquals(aMatchResult(message), pairCardRanking.getMatchingResult());
+    }
+
+    private static PairCardRanking buildPairCardRanking(String blackCards, String whiteCards) {
+        Hand blackHand = Hand.buildFrom("Black", blackCards);
+        Hand whiteHand = Hand.buildFrom("White", whiteCards);
+        return new PairCardRanking(blackHand, whiteHand);
     }
 
     @Test
