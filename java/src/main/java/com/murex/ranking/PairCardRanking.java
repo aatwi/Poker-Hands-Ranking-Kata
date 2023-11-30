@@ -7,6 +7,7 @@ import com.murex.Result;
 import java.util.Optional;
 
 import static com.murex.Result.aMatchResult;
+import static com.murex.Result.aNoMatchResult;
 
 public class PairCardRanking extends PokerHandRanking {
 
@@ -22,30 +23,34 @@ public class PairCardRanking extends PokerHandRanking {
     @Override
     public Result getMatchingResult() {
         if (bothHandsHavePairs()) {
-            return compareHighHands();
+            return getHigherPair();
         }
         if (bothHandsHaveNoPairs()) {
-            return Result.aNoMatchResult();
+            return aNoMatchResult();
         }
         PairHand winningPairHand = blackPairHand.hasPair() ? blackPairHand : whitePairHand;
         return aMatchResult(buildPairCardsMessage(winningPairHand.getHand(), winningPairHand.getPairValue()));
     }
 
-    private Result compareHighHands() {
+    private Result getHigherPair() {
         int comparison = blackPairHand.getPairValue().compareTo(whitePairHand.getPairValue());
         String winnerCardValue = comparison > 0 ? blackPairHand.getPairValue() : whitePairHand.getPairValue();
 
         if (comparison == 0) {
-            HighCardRanking highCardRank = new HighCardRanking(blackHand, whiteHand);
-            Optional<Hand> higherHand = highCardRank.getHigherHand();
-            if (higherHand.isEmpty()) {
-                return Result.aNoMatchResult();
-            }
-            return aMatchResult(buildPairAndHighHandMessage(higherHand.get(), winnerCardValue));
+            return getHigherHand(winnerCardValue);
         } else {
             Hand winningHad = comparison > 0 ? blackHand : whiteHand;
             return aMatchResult(buildPairCardsMessage(winningHad, winnerCardValue));
         }
+    }
+
+    private Result getHigherHand(String winnerCardValue) {
+        HighCardRanking highCardRank = new HighCardRanking(blackHand, whiteHand);
+        Optional<Hand> higherHand = highCardRank.getHigherHand();
+        if (higherHand.isEmpty()) {
+            return aNoMatchResult();
+        }
+        return aMatchResult(buildPairAndHighHandMessage(higherHand.get(), winnerCardValue));
     }
 
     private boolean bothHandsHaveNoPairs() {
