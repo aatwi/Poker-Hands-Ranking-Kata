@@ -22,11 +22,8 @@ class PairCardRankingTest {
     @Test
     public void
     PAIR_black_wins_with_jack_as_pair() {
-        String black = "7H JH JC KD AS";
-        String white = "2D 3H 5C 9S KH";
-
-        Hand blackHand = Hand.buildFrom("Black", black);
-        Hand whiteHand = Hand.buildFrom("White", white);
+        Hand blackHand = Hand.buildFrom("Black", "7H JH JC KD AS");
+        Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
         PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
 
         assertEquals(aMatchResult("Black wins. - with Pair cards: Jack"), pairCardRanking.getMatchingResult());
