@@ -1,13 +1,23 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import com.murex.Result;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Result.aMatchResult;
-import static org.junit.jupiter.api.Assertions.*;
+import static com.murex.Result.aNoMatchResult;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PairCardRankingTest {
+
+    @Test
+    public void
+    it_should_return_a_no_matching_result_when_no_pair_is_found() {
+        Hand blackHand = Hand.buildFrom("Black", "7H 8C TD KH AS");
+        Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
+        PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
+
+        assertEquals(aNoMatchResult(), pairCardRanking.getMatchingResult());
+    }
 
     @Test
     public void
