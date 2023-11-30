@@ -35,9 +35,9 @@ class PairCardRankingTest {
         assertMatchingResult("7H JC KD AH AS", "2D 3H 5C 9S KH", "Black wins. - with Pair cards: Ace");
     }
 
-    private static void assertMatchingResult(String cards, String cards1, String message) {
-        Hand blackHand = Hand.buildFrom("Black", cards);
-        Hand whiteHand = Hand.buildFrom("White", cards1);
+    private static void assertMatchingResult(String blackCards, String whiteCards, String message) {
+        Hand blackHand = Hand.buildFrom("Black", blackCards);
+        Hand whiteHand = Hand.buildFrom("White", whiteCards);
         PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
 
         assertEquals(aMatchResult(message), pairCardRanking.getMatchingResult());
