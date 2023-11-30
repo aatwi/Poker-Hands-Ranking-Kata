@@ -21,6 +21,16 @@ class PairCardRankingTest {
 
     @Test
     public void
+    it_should_return_a_no_matching_result_when_having_a_tie_with_pairs() {
+        Hand blackHand = Hand.buildFrom("Black", "7H 7C TD KH AS");
+        Hand whiteHand = Hand.buildFrom("White", "7D 7S TC KS AH");
+        PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
+
+        assertEquals(aNoMatchResult(), pairCardRanking.getMatchingResult());
+    }
+
+    @Test
+    public void
     PAIR_black_wins_with_ace_as_pair() {
         Hand blackHand = Hand.buildFrom("Black", "7H JC KD AH AS");
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
