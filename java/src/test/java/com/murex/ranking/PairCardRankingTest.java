@@ -1,6 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
+import com.murex.Result;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Result.aMatchResult;
@@ -12,21 +13,21 @@ class PairCardRankingTest {
     @Test
     public void
     it_should_return_a_no_matching_result_when_no_pair_is_found() {
-        Hand blackHand = Hand.buildFrom("Black", "7H 8C TD KH AS");
-        Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
+        assertNoMatchingResult("7H 8C TD KH AS", "2D 3H 5C 9S KH", aNoMatchResult());
+    }
+
+    private static void assertNoMatchingResult(String blackCards, String whiteCards, Result expected) {
+        Hand blackHand = Hand.buildFrom("Black", blackCards);
+        Hand whiteHand = Hand.buildFrom("White", whiteCards);
         PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
 
-        assertEquals(aNoMatchResult(), pairCardRanking.getMatchingResult());
+        assertEquals(expected, pairCardRanking.getMatchingResult());
     }
 
     @Test
     public void
     it_should_return_a_no_matching_result_when_having_a_tie_with_pairs() {
-        Hand blackHand = Hand.buildFrom("Black", "7H 7C TD KH AS");
-        Hand whiteHand = Hand.buildFrom("White", "7D 7S TC KS AH");
-        PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
-
-        assertEquals(aNoMatchResult(), pairCardRanking.getMatchingResult());
+        assertNoMatchingResult("7H 7C TD KH AS", "7D 7S TC KS AH", aNoMatchResult());
     }
 
     @Test
