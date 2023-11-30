@@ -4,6 +4,7 @@ import com.murex.Hand;
 import com.murex.Result;
 import org.junit.jupiter.api.Test;
 
+import static com.murex.Result.aMatchResult;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PairCardRankingTest {
@@ -15,17 +16,21 @@ class PairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
         PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
 
-        assertEquals(Result.aMatchResult("Black wins. - with Pair cards: Ace"), pairCardRanking.getMatchingResult());
+        assertEquals(aMatchResult("Black wins. - with Pair cards: Ace"), pairCardRanking.getMatchingResult());
     }
 
-//    @Test
-//    public void
-//    PAIR_black_wins_with_jack_as_pair() {
-//        String black = "7H JH JC KD AS";
-//        String white = "2D 3H 5C 9S KH";
-//
-//        assertEquals("Black wins. - with Pair cards: Jack", new PokerGame(black, white).getWinner());
-//    }
+    @Test
+    public void
+    PAIR_black_wins_with_jack_as_pair() {
+        String black = "7H JH JC KD AS";
+        String white = "2D 3H 5C 9S KH";
+
+        Hand blackHand = Hand.buildFrom("Black", black);
+        Hand whiteHand = Hand.buildFrom("White", white);
+        PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
+
+        assertEquals(aMatchResult("Black wins. - with Pair cards: Jack"), pairCardRanking.getMatchingResult());
+    }
 //
 //    @Test
 //    public void
