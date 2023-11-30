@@ -41,15 +41,16 @@ class PairCardRankingTest {
 
         assertEquals(aMatchResult("White wins. - with Pair cards: 4"), pairCardRanking.getMatchingResult());
     }
-//
-//    @Test
-//    public void
-//    PAIR_white_wins_with_ace_over_a_pair_of_2() {
-//        String black = "2H 2D 5S 6C AS";
-//        String white = "4D 9S KH AH AC";
-//
-//        assertEquals("White wins. - with Pair cards: Ace", new PokerGame(black, white).getWinner());
-//    }
+
+    @Test
+    public void
+    PAIR_white_wins_with_ace_over_a_pair_of_2() {
+        Hand blackHand = Hand.buildFrom("Black", "2H 2D 5S 6C AS");
+        Hand whiteHand = Hand.buildFrom("White", "4D 9S KH AH AC");
+        PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
+
+        assertEquals(aMatchResult("White wins. - with Pair cards: Ace"), pairCardRanking.getMatchingResult());
+    }
 //
 //    @Test
 //    public void
