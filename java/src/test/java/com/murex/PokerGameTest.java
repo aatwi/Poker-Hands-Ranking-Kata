@@ -95,9 +95,6 @@ public class PokerGameTest {
     @Test
     public void
     PAIR_black_wins_with_ace_over_a_pair_of_ace_due_to_other_rank() {
-        String black = "2H 2D 5S 6C KS";
-        String white = "2C 2S 6H 8H JC";
-
-        assertEquals("Black wins. - with Pair cards and higher rank: 2 and King", new PokerGame(black, white).getWinner());
+        assertWinner("2H 2D 5S 6C KS", "2C 2S 6H 8H JC", "Black wins. - with Pair cards and higher rank: 2 and King");
     }
 }
