@@ -65,10 +65,7 @@ public class PokerGameTest {
     @Test
     public void
     PAIR_black_wins_with_ace_as_pair() {
-        String black = "7H JC KD AH AS";
-        String white = "2D 3H 5C 9S KH";
-
-        assertWinner(black, white, "Black wins. - with Pair cards: Ace");
+        assertWinner("7H JC KD AH AS", "2D 3H 5C 9S KH", "Black wins. - with Pair cards: Ace");
     }
 
     @Test
