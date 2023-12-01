@@ -24,27 +24,23 @@ class HighCardRankingTest {
     @Test
     public void
     HIGH_CARD_black_wins_with_Queen(){
-        String expected = "Black wins. - with high card: Queen";
-
-        HighCardRanking highCardRanking = buildHighCardRanking("2H 3D 5S 9C QD", "2C 3H 4S 8C JH");
-
-        assertEquals(expected, highCardRanking.getMatchingResult().message());
+        assertMatchingResult("Black wins. - with high card: Queen", "2H 3D 5S 9C QD", "2C 3H 4S 8C JH");
     }
 
     @Test
     public void
     HIGH_CARD_white_wins_Jack(){
-        String expected = "White wins. - with high card: Jack";
-        HighCardRanking highCardRanking = buildHighCardRanking("2H 3D 5S 7C 9D", "2C 3H 4S 8C JH");
-
-        assertEquals(expected, highCardRanking.getMatchingResult().message());
+        assertMatchingResult("White wins. - with high card: Jack", "2H 3D 5S 7C 9D", "2C 3H 4S 8C JH");
     }
 
     @Test
     public void
     HIGH_CARD_black_wins_with_9(){
-        String expected = "Black wins. - with high card: 9";
-        HighCardRanking highCardRanking = buildHighCardRanking("2H 3D 5S 8C 9D", "2C 3H 4S 7C 8H");
+        assertMatchingResult("Black wins. - with high card: 9", "2H 3D 5S 8C 9D", "2C 3H 4S 7C 8H");
+    }
+
+    private static void assertMatchingResult(String expected, String black, String white) {
+        HighCardRanking highCardRanking = buildHighCardRanking(black, white);
 
         assertEquals(expected, highCardRanking.getMatchingResult().message());
     }
