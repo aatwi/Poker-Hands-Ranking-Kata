@@ -59,11 +59,7 @@ public class PokerGameTest {
     @Test
     public void
     TIE_between_two_hands() {
-
-        String black = "2H 3D 5S 9C KD";
-        String white = "2D 3H 5C 9S KH";
-
-        assertWinner(black, white, "Tie.");
+        assertWinner("2H 3D 5S 9C KD", "2D 3H 5C 9S KH", "Tie.");
     }
 
     @Test
