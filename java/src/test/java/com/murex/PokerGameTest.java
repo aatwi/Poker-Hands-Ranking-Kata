@@ -31,41 +31,29 @@ public class PokerGameTest {
     @Test
     public void
     HIGH_CARD_white_wins_with_Ace(){
-        String black = "2H 3D 5S 9C KD";
-        String white = "2C 3H 4S 8C AH";
+        assertWinner("2H 3D 5S 9C KD", "2C 3H 4S 8C AH", "White wins. - with high card: Ace");
+    }
 
-        String expected = "White wins. - with high card: Ace";
+    private static void assertWinner(String black, String white, String expected) {
         assertEquals(expected, new PokerGame(black, white).getWinner());
     }
 
     @Test
     public void
     HIGH_CARD_black_wins_with_Queen(){
-        String black = "2H 3D 5S 9C QD";
-        String white = "2C 3H 4S 8C JH";
-
-        String expected = "Black wins. - with high card: Queen";
-        assertEquals(expected, new PokerGame(black, white).getWinner());
+        assertWinner("2H 3D 5S 9C QD", "2C 3H 4S 8C JH", "Black wins. - with high card: Queen");
     }
 
     @Test
     public void
     HIGH_CARD_white_wins_Jack(){
-        String black = "2H 3D 5S 7C 9D";
-        String white = "2C 3H 4S 8C JH";
-
-        String expected = "White wins. - with high card: Jack";
-        assertEquals(expected, new PokerGame(black, white).getWinner());
+        assertWinner("2H 3D 5S 7C 9D", "2C 3H 4S 8C JH", "White wins. - with high card: Jack");
     }
 
     @Test
     public void
     HIGH_CARD_black_wins_with_9(){
-        String black = "2H 3D 5S 8C 9D";
-        String white = "2C 3H 4S 7C 8H";
-
-        String expected = "Black wins. - with high card: 9";
-        assertEquals(expected, new PokerGame(black, white).getWinner());
+        assertWinner("2H 3D 5S 8C 9D", "2C 3H 4S 7C 8H", "Black wins. - with high card: 9");
     }
 
     @Test
