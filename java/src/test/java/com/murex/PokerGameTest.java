@@ -22,17 +22,11 @@ SOFTWARE.
 
 package com.murex;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 
-public class PokerGameTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    @Test
-    public void
-    HIGH_CARD_white_wins_with_Ace(){
-        assertWinner("2H 3D 5S 9C KD", "2C 3H 4S 8C AH", "White wins. - with high card: Ace");
-    }
+public class PokerGameTest {
 
     private static void assertWinner(String black, String white, String expected) {
         assertEquals(expected, new PokerGame(black, white).getWinner());
@@ -40,29 +34,36 @@ public class PokerGameTest {
 
     @Test
     public void
-    HIGH_CARD_black_wins_with_Queen(){
+    HIGH_CARD_white_wins_with_Ace() {
+        assertWinner("2H 3D 5S 9C KD", "2C 3H 4S 8C AH", "White wins. - with high card: Ace");
+    }
+
+    @Test
+    public void
+    HIGH_CARD_black_wins_with_Queen() {
         assertWinner("2H 3D 5S 9C QD", "2C 3H 4S 8C JH", "Black wins. - with high card: Queen");
     }
 
     @Test
     public void
-    HIGH_CARD_white_wins_Jack(){
+    HIGH_CARD_white_wins_Jack() {
         assertWinner("2H 3D 5S 7C 9D", "2C 3H 4S 8C JH", "White wins. - with high card: Jack");
     }
 
     @Test
     public void
-    HIGH_CARD_black_wins_with_9(){
+    HIGH_CARD_black_wins_with_9() {
         assertWinner("2H 3D 5S 8C 9D", "2C 3H 4S 7C 8H", "Black wins. - with high card: 9");
     }
 
     @Test
     public void
     TIE_between_two_hands() {
+
         String black = "2H 3D 5S 9C KD";
         String white = "2D 3H 5C 9S KH";
 
-        assertEquals("Tie.", new PokerGame(black, white).getWinner());
+        assertWinner(black, white, "Tie.");
     }
 
     @Test
