@@ -18,7 +18,7 @@ class HighCardRankingTest {
 
         assertEquals(Result.aMatchResult(expected), highCardRanking.getMatchingResult());
     }
-
+  
     @Test
     public void
     it_should_return_a_no_matching_result_when_there_is_no_high_hand() {
@@ -48,4 +48,6 @@ class HighCardRankingTest {
     HIGH_CARD_black_wins_with_9() {
         assertMatchingResult("2H 3D 5S 8C 9D", "2C 3H 4S 7C 8H", "Black wins. - with high card: 9");
     }
+
+
 }
