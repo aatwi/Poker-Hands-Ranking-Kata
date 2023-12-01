@@ -68,7 +68,7 @@ public class PokerGameTest {
         String black = "7H JC KD AH AS";
         String white = "2D 3H 5C 9S KH";
 
-        assertEquals("Black wins. - with Pair cards: Ace", new PokerGame(black, white).getWinner());
+        assertWinner(black, white, "Black wins. - with Pair cards: Ace");
     }
 
     @Test
