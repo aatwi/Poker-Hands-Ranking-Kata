@@ -1,6 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
+import com.murex.Result;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,7 +43,7 @@ class HighCardRankingTest {
     private static void assertMatchingResult(String blackCards, String whiteCards, String expected) {
         HighCardRanking highCardRanking = buildHighCardRanking(blackCards, whiteCards);
 
-        assertEquals(expected, highCardRanking.getMatchingResult().message());
+        assertEquals(Result.aMatchResult(expected), highCardRanking.getMatchingResult());
     }
 
 
