@@ -11,7 +11,7 @@ class HighCardRankingTest {
     public void
     HIGH_CARD_white_wins_with_Ace(){
         String black = "2H 3D 5S 9C KD";
-        String white = "2C 3H 4S 8C AH"; 
+        String white = "2C 3H 4S 8C AH";
 
         String expected = "White wins. - with high card: Ace";
         HighCardRanking highCardRanking = new HighCardRanking(Hand.buildFrom("Black", black), Hand.buildFrom("White", white));
