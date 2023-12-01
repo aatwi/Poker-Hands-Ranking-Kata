@@ -4,18 +4,25 @@ import com.murex.Hand;
 import com.murex.Result;
 import org.junit.jupiter.api.Test;
 
+import static com.murex.Hand.buildFrom;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HighCardRankingTest {
 
     private static HighCardRanking buildHighCardRanking(String black, String white) {
-        return new HighCardRanking(Hand.buildFrom("Black", black), Hand.buildFrom("White", white));
+        return new HighCardRanking(buildFrom("Black", black), buildFrom("White", white));
     }
 
     private static void assertMatchingResult(String blackCards, String whiteCards, String expected) {
         HighCardRanking highCardRanking = buildHighCardRanking(blackCards, whiteCards);
 
         assertEquals(Result.aMatchResult(expected), highCardRanking.getMatchingResult());
+    }
+
+    @Test
+    public void
+    it_should_return_a_no_matching_result_when_there_is_no_high_hand() {
+        assertEquals(Result.aNoMatchResult(), buildHighCardRanking("2H 3D 5S 9C KD", "2D 3S 5C 9D KC").getMatchingResult());
     }
 
     @Test
