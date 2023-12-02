@@ -1,6 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
+import com.murex.HighHand;
 import com.murex.Result;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -65,8 +66,8 @@ class HighCardRankingTest {
         Hand whiteHand = buildFrom("White", "2S 3C 5D 9S AD");
 
         HighCardRanking highCardRanking1 = new HighCardRanking(blackHand, whiteHand);
-        Hand higherHand = highCardRanking1.getHigherHand().get();
-        assertEquals(whiteHand, higherHand);
+        HighHand higherHand = highCardRanking1.getHigherHand2().get();
+        assertEquals(whiteHand, higherHand.getHand());
     }
 
 }
