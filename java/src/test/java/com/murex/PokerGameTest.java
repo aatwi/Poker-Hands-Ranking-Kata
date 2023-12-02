@@ -57,11 +57,10 @@ public class PokerGameTest {
         assertWinner("2H 3D 5S 8C 9D", "2C 3H 4S 7C 8H", "Black wins. - with high card: 9");
     }
 
-    @Disabled
     @Test
     public void
     HIGH_CARD_black_wins_with_7() {
-        assertWinner("2H 3D 5S 8C 9D", "2C 3H 4S 7C 9H", "Black wins. - with high card: 7");
+        assertWinner("2H 3D 5S 8C 9D", "2C 3H 4S 7C 9H", "Black wins. - with high card: 8");
     }
 
     @Test
