@@ -94,7 +94,6 @@ class PairCardRankingTest {
                 "Black wins. - with Pair cards and higher rank: 2 and King");
     }
 
-    @Disabled
     @Test
     public void
     PAIR_black_wins_with_8_over_a_pair_of_ace_due_to_other_rank() {

@@ -1,6 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
+import com.murex.HighHand;
 import com.murex.PairHand;
 import com.murex.Result;
 
@@ -46,7 +47,7 @@ public class PairCardRanking extends PokerHandRanking {
 
     private Result getHigherHand(String winnerCardValue) {
         HighCardRanking highCardRank = new HighCardRanking(blackHand, whiteHand);
-        Optional<Hand> higherHand = highCardRank.getHigherHand();
+        Optional<HighHand> higherHand = highCardRank.getHigherHand2();
         if (higherHand.isEmpty()) {
             return aNoMatchResult();
         }
@@ -57,8 +58,8 @@ public class PairCardRanking extends PokerHandRanking {
         return !blackPairHand.hasPair() && !whitePairHand.hasPair();
     }
 
-    private String buildPairAndHighHandMessage(Hand hand, String cardValue) {
-        return hand.getName() + " wins. - with Pair cards and higher rank: " + cardValue + " and " + hand.getCardAt(4).getValue();
+    private String buildPairAndHighHandMessage(HighHand hand, String cardValue) {
+        return hand.getHand().getName() + " wins. - with Pair cards and higher rank: " + cardValue + " and " + hand.getHighCard().getValue();
     }
 
     private String buildPairCardsMessage(Hand hand, String cardValue) {
