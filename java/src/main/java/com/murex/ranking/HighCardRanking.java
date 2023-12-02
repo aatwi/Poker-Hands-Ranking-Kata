@@ -22,7 +22,7 @@ public class HighCardRanking extends PokerHandRanking {
         }
         return aMatchResult(buildMessage(winner.get()));
     }
-
+    
     protected Optional<Hand> getHigherHand() {
         for (int index = 4; index >= 0; index--) {
             int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));
