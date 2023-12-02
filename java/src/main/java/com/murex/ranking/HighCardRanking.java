@@ -17,28 +17,18 @@ public class HighCardRanking extends PokerHandRanking {
 
     @Override
     public Result getMatchingResult() {
-        Optional<HighHand> winner = getHigherHand2();
+        Optional<HighHand> winner = getHigherHand();
         if (winner.isEmpty()) {
             return aNoMatchResult();
         }
         return aMatchResult(buildMessage(winner.get()));
     }
 
-    protected Optional<HighHand> getHigherHand2() {
+    protected Optional<HighHand> getHigherHand() {
         for (int index = 4; index >= 0; index--) {
             int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));
             if (cardComparison != 0) {
                 return Optional.of(cardComparison > 0 ? new HighHand(blackHand, index) : new HighHand(whiteHand, index));
-            }
-        }
-        return Optional.empty();
-    }
-
-    protected Optional<Hand> getHigherHand() {
-        for (int index = 4; index >= 0; index--) {
-            int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));
-            if (cardComparison != 0) {
-                return Optional.of(cardComparison > 0 ? blackHand : whiteHand);
             }
         }
         return Optional.empty();

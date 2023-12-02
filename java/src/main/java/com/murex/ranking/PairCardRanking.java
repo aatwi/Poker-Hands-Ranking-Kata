@@ -47,7 +47,7 @@ public class PairCardRanking extends PokerHandRanking {
 
     private Result getHigherHand(String winnerCardValue) {
         HighCardRanking highCardRank = new HighCardRanking(blackHand, whiteHand);
-        Optional<HighHand> higherHand = highCardRank.getHigherHand2();
+        Optional<HighHand> higherHand = highCardRank.getHigherHand();
         if (higherHand.isEmpty()) {
             return aNoMatchResult();
         }
