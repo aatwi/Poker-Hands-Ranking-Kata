@@ -2,6 +2,7 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Hand.buildFrom;
@@ -49,6 +50,13 @@ class HighCardRankingTest {
     public void
     HIGH_CARD_black_wins_with_9() {
         assertMatchingResult("2H 3D 5S 8C 9D", "2C 3H 4S 7C 8H", "Black wins. - with high card: 9");
+    }
+
+    @Disabled
+    @Test
+    public void
+    white_wins_with_9() {
+        assertMatchingResult("2H 3D 5S 8C AD", "2S 3C 5D 9S AD", "White wins. - with high card: 9");
     }
 
     @Test
