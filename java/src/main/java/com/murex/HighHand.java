@@ -6,9 +6,9 @@ public final class HighHand {
     private final Hand hand;
     private final Card highCard;
 
-    public HighHand(Hand hand, Card highCard) {
+    public HighHand(Hand hand, int highCardIndex) {
         this.hand = hand;
-        this.highCard = highCard;
+        this.highCard = hand.getCardAt(highCardIndex);
     }
 
     public Hand getHand() {
