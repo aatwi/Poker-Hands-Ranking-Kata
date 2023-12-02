@@ -24,11 +24,13 @@ public class HighCardRanking extends PokerHandRanking {
     }
 
     protected Optional<Hand> getHigherHand() {
-        int cardComparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
-        if (cardComparison == 0) {
-            return Optional.empty();
+        for (int index = 4; index >= 0; index--) {
+            int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));
+            if (cardComparison != 0) {
+                return Optional.of(cardComparison > 0 ? blackHand : whiteHand);
+            }
         }
-        return Optional.of(cardComparison > 0 ? blackHand : whiteHand);
+        return Optional.empty();
     }
 
     private String buildMessage(Hand hand) {
