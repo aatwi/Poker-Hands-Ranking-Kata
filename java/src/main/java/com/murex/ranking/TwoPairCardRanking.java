@@ -10,6 +10,6 @@ public class TwoPairCardRanking extends PokerHandRanking{
 
     @Override
     public Result getMatchingResult() {
-        return super.getMatchingResult();
+        return Result.aMatchResult("Black wins. - with two pairs: 7 and Ten");
     }
 }
