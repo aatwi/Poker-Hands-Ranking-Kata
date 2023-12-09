@@ -3,6 +3,7 @@ package com.murex.ranking;
 import com.murex.Card;
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.TwoPairsHand;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,11 +17,15 @@ public class TwoPairCardRanking extends PokerHandRanking {
 
     private final List<Card> blackPairs;
     private final List<Card> whitePairs;
+    private final TwoPairsHand blackTwoPairsHand;
+    private final TwoPairsHand whiteTwoPairsHand;
 
     public TwoPairCardRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
         blackPairs = getTwoPairs(this.blackHand);
         whitePairs = getTwoPairs(this.whiteHand);
+        blackTwoPairsHand = new TwoPairsHand(blackHand);
+        whiteTwoPairsHand = new TwoPairsHand(whiteHand);
     }
 
     @Override
