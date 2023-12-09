@@ -13,15 +13,18 @@ import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 public class TwoPairCardRanking extends PokerHandRanking {
+
+    private final List<Card> blackPairs;
+    private final List<Card> whitePairs;
+
     public TwoPairCardRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
+        blackPairs = getTwoPairs(this.blackHand);
+        whitePairs = getTwoPairs(this.whiteHand);
     }
 
     @Override
     public Result getMatchingResult() {
-        List<Card> blackPairs = getTwoPairs(blackHand);
-        List<Card> whitePairs = getTwoPairs(whiteHand);
-
         if (noHandHasTwoPairs(blackPairs, whitePairs)) {
             return Result.aNoMatchResult();
         }
