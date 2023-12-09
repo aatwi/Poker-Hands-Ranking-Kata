@@ -35,7 +35,7 @@ class TwoPairCardRankingTest {
         Assertions.assertEquals(Result.aNoMatchResult(), twoPairCardRanking.getMatchingResult());
     }
 
-    @Disabled
+//    @Disabled
     @Test
     public void it_should_return_a_no_matching_result_when_only_one_pair_exists() {
         Hand blackHand = Hand.buildFrom("Black", "2H 7C 8D TH AS");
