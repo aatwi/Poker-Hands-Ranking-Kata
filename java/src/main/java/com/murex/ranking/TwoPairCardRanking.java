@@ -29,7 +29,8 @@ public class TwoPairCardRanking extends PokerHandRanking {
             if (blackPairs.get(0).getValue().equals("2") && blackPairs.get(1).getValue().equals("Ten")) {
                 return Result.aMatchResult(winner.getName() + " wins. - with two pairs: " + winnerCards.get(0).getValue() + " and " + winnerCards.get(1).getValue());
             }
-            return Result.aMatchResult("White wins. - with two pairs: 3 and 9");
+            return Result.aMatchResult(winner.getName() + " wins. - with two pairs: " + winnerCards.get(0).getValue() + " and " + winnerCards.get(1).getValue());
+//            return Result.aMatchResult("White wins. - with two pairs: 3 and 9");
         }
 
         if (blackPairs.size() == 2) {
