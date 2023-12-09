@@ -26,7 +26,14 @@ class TwoPairCardRankingTest {
         Assertions.assertEquals(Result.aMatchResult("White wins. - with two pairs: 1 and 7"), twoPairCardRanking.getMatchingResult());
     }
 
+    @Test
+    public void when_both_hands_has_two_pairs_the_higher_hand_wins() {
+        Hand blackHand = Hand.buildFrom("Black", "2H 2C 8D 8H AS");
+        Hand whiteHand = Hand.buildFrom("White", "3H 3C 9H 9D TS");
 
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        Assertions.assertEquals(Result.aMatchResult("White wins. - with two pairs: 3 and 9"), twoPairCardRanking.getMatchingResult());
+    }
 
     @Test
     public void it_should_return_a_no_matching_result_when_only_one_pair_exists() {
