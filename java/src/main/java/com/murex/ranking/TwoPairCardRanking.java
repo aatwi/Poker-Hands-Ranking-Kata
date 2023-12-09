@@ -5,7 +5,6 @@ import com.murex.Hand;
 import com.murex.Result;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -13,7 +12,7 @@ import java.util.function.Function;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
-public class TwoPairCardRanking extends PokerHandRanking{
+public class TwoPairCardRanking extends PokerHandRanking {
     public TwoPairCardRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
@@ -23,18 +22,18 @@ public class TwoPairCardRanking extends PokerHandRanking{
         List<Card> blackPairs = getTwoPairs(blackHand);
         List<Card> whitePairs = getTwoPairs(whiteHand);
 
-        if(blackPairs.size() == 2 && whitePairs.size() == 2) {
-            if(blackPairs.get(0).getValue().equals("2") && blackPairs.get(1).getValue().equals("Ten")) {
+        if (blackPairs.size() == 2 && whitePairs.size() == 2) {
+            if (blackPairs.get(0).getValue().equals("2") && blackPairs.get(1).getValue().equals("Ten")) {
                 return Result.aMatchResult("Black wins. - with two pairs: 2 and Ten");
             }
             return Result.aMatchResult("White wins. - with two pairs: 3 and 9");
         }
 
-        if(blackPairs.size() == 2){
-            return Result.aMatchResult("Black wins. - with two pairs: "+blackPairs.get(0).getValue()+" and " + blackPairs.get(1).getValue());
+        if (blackPairs.size() == 2) {
+            return Result.aMatchResult("Black wins. - with two pairs: " + blackPairs.get(0).getValue() + " and " + blackPairs.get(1).getValue());
         }
-        if(whitePairs.size() == 2) {
-            return Result.aMatchResult("White wins. - with two pairs: "+whitePairs.get(0).getValue()+" and " + whitePairs.get(1).getValue());
+        if (whitePairs.size() == 2) {
+            return Result.aMatchResult("White wins. - with two pairs: " + whitePairs.get(0).getValue() + " and " + whitePairs.get(1).getValue());
         }
         return Result.aNoMatchResult();
     }
