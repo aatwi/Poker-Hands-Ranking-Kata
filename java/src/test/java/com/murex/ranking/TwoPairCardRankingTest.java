@@ -27,12 +27,21 @@ class TwoPairCardRankingTest {
     }
 
     @Test
-    public void when_both_hands_has_two_pairs_the_higher_hand_wins() {
+    public void when_both_hands_has_two_pairs_the_higher_hand_wins_white_wins() {
         Hand blackHand = Hand.buildFrom("Black", "2H 2C 8D 8H AS");
         Hand whiteHand = Hand.buildFrom("White", "3H 3C 9H 9D TS");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
         Assertions.assertEquals(Result.aMatchResult("White wins. - with two pairs: 3 and 9"), twoPairCardRanking.getMatchingResult());
+    }
+
+    @Test
+    public void when_both_hands_has_two_pairs_the_higher_hand_wins_black_wins() {
+        Hand blackHand = Hand.buildFrom("Black", "2H 2C TD TH AS");
+        Hand whiteHand = Hand.buildFrom("White", "3H 3C 9H 9D TS");
+
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        Assertions.assertEquals(Result.aMatchResult("Black wins. - with two pairs: 2 and Ten"), twoPairCardRanking.getMatchingResult());
     }
 
     @Test
