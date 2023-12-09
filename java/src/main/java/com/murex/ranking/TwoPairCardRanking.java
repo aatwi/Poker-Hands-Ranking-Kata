@@ -25,7 +25,7 @@ public class TwoPairCardRanking extends PokerHandRanking{
             Map<Card, Long> collect = Arrays.stream(blackHand.getCards()).collect(groupingBy(Function.identity(), counting()));
             List<Card> twoPairs = collect.keySet().stream().filter(x -> collect.get(x) == 2).toList();
             List<Card> list = twoPairs.stream().sorted().toList();
-            return Result.aMatchResult("Black wins. - with two pairs: 7 and " + list.get(1).getValue());
+            return Result.aMatchResult("Black wins. - with two pairs: "+list.get(0).getValue()+" and " + list.get(1).getValue());
         }
         if(whiteHand.getCardAt(0).getValue().equals("1") && whiteHand.getCardAt(1).getValue().equals("1")
         && whiteHand.getCardAt(3).getValue().equals("7") && whiteHand.getCardAt(4).getValue().equals("7")) {
