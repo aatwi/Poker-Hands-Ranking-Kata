@@ -24,7 +24,7 @@ public class TwoPairCardRanking extends PokerHandRanking{
         List<Card> whitePairs = getTwoPairs(whiteHand);
 
         if(blackPairs.size() == 2 && whitePairs.size() == 2) {
-            if((blackPairs.get(0).getValue().equals("2") && blackPairs.get(1).getValue().equals("Ten"))) {
+            if(blackPairs.get(0).getValue().equals("2") && blackPairs.get(1).getValue().equals("Ten")) {
                 return Result.aMatchResult("Black wins. - with two pairs: 2 and Ten");
             }
             return Result.aMatchResult("White wins. - with two pairs: 3 and 9");
