@@ -14,7 +14,12 @@ class TwoPairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "1H 4C 5H 7D AD");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertEquals(Result.aMatchResult("Black wins. - with two pairs: 7 and Ten"), twoPairCardRanking.getMatchingResult());
+        String expectedMessage = "Black wins. - with two pairs: 7 and Ten";
+        assertResult(Result.aMatchResult(expectedMessage), twoPairCardRanking);
+    }
+
+    private static void assertResult(Result expectedMessage, TwoPairCardRanking twoPairCardRanking) {
+        assertEquals(expectedMessage, twoPairCardRanking.getMatchingResult());
     }
 
     @Test
@@ -23,7 +28,7 @@ class TwoPairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "1H 1C 6H 7D 7S");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertEquals(Result.aMatchResult("White wins. - with two pairs: 1 and 7"), twoPairCardRanking.getMatchingResult());
+        assertResult(Result.aMatchResult("White wins. - with two pairs: 1 and 7"), twoPairCardRanking);
     }
 
     @Test
@@ -32,7 +37,7 @@ class TwoPairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "3H 3C 9H 9D TS");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertEquals(Result.aMatchResult("White wins. - with two pairs: 3 and 9"), twoPairCardRanking.getMatchingResult());
+        assertResult(Result.aMatchResult("White wins. - with two pairs: 3 and 9"), twoPairCardRanking);
     }
 
     @Test
@@ -41,7 +46,7 @@ class TwoPairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "3H 3C 9H 9D TS");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertEquals(Result.aMatchResult("Black wins. - with two pairs: 2 and Ten"), twoPairCardRanking.getMatchingResult());
+        assertResult(Result.aMatchResult("Black wins. - with two pairs: 2 and Ten"), twoPairCardRanking);
     }
 
     @Test
@@ -50,7 +55,7 @@ class TwoPairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 2S 4C 4S AH");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertEquals(Result.aMatchResult("White wins. - with two pairs: 2 and 4"), twoPairCardRanking.getMatchingResult());
+        assertResult(Result.aMatchResult("White wins. - with two pairs: 2 and 4"), twoPairCardRanking);
     }
 
     @Test
@@ -59,7 +64,7 @@ class TwoPairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "1D 1S 4C 4S AH");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertEquals(Result.aMatchResult("Black wins. - with two pairs: 2 and 4"), twoPairCardRanking.getMatchingResult());
+        assertResult(Result.aMatchResult("Black wins. - with two pairs: 2 and 4"), twoPairCardRanking);
     }
 
     @Test
@@ -68,7 +73,7 @@ class TwoPairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "1H 1C 6H 7D 9S");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertEquals(Result.aNoMatchResult(), twoPairCardRanking.getMatchingResult());
+        assertResult(Result.aNoMatchResult(), twoPairCardRanking);
     }
 
     @Test
@@ -77,7 +82,7 @@ class TwoPairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2H 3C 6H 7D 8S");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertEquals(Result.aNoMatchResult(), twoPairCardRanking.getMatchingResult());
+        assertResult(Result.aNoMatchResult(), twoPairCardRanking);
     }
 
 
@@ -87,6 +92,6 @@ class TwoPairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "1D 1S 4C 4S AH");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertEquals(Result.aNoMatchResult(), twoPairCardRanking.getMatchingResult());
+        assertResult(Result.aNoMatchResult(), twoPairCardRanking);
     }
 }
