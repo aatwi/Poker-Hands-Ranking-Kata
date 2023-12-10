@@ -7,8 +7,6 @@ import com.murex.TwoPairsHand;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.groupingBy;
-
 public class TwoPairCardRanking extends PokerHandRanking {
 
     private final List<Card> blackPairs;
