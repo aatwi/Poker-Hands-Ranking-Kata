@@ -4,6 +4,9 @@ import com.murex.Hand;
 import com.murex.Result;
 import com.murex.TwoPairsHand;
 
+import static com.murex.Result.aMatchResult;
+import static com.murex.Result.aNoMatchResult;
+
 public class TwoPairCardRanking extends PokerHandRanking {
 
     private final TwoPairsHand blackTwoPairsHand;
@@ -18,7 +21,7 @@ public class TwoPairCardRanking extends PokerHandRanking {
     @Override
     public Result getMatchingResult() {
         if (noHandHasTwoPairs(blackTwoPairsHand, whiteTwoPairsHand)) {
-            return Result.aNoMatchResult();
+            return aNoMatchResult();
         }
 
         if (bothHandsHaveTwoPairs(blackTwoPairsHand, whiteTwoPairsHand)) {
@@ -26,21 +29,25 @@ public class TwoPairCardRanking extends PokerHandRanking {
         }
 
         TwoPairsHand winningPair = blackTwoPairsHand.hasTwoPairs() ? blackTwoPairsHand : whiteTwoPairsHand;
-        return Result.aMatchResult(winningPair.getHandName() + " wins. - with two pairs: " + winningPair.getFirstPair() + " and " + winningPair.getSecondPair());
+        return aMatchResult(buildWinningMessage(winningPair));
     }
 
-    private static boolean bothHandsHaveTwoPairs(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
+    private boolean bothHandsHaveTwoPairs(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
         return blackTwoPairsHand.hasTwoPairs() && whiteTwoPairsHand.hasTwoPairs();
     }
 
-    private static boolean noHandHasTwoPairs(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
+    private boolean noHandHasTwoPairs(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
         return !blackTwoPairsHand.hasTwoPairs() && !whiteTwoPairsHand.hasTwoPairs();
     }
 
     private Result getHigherHand(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
         int comparison = blackTwoPairsHand.getSecondPairCard().compareTo(whiteTwoPairsHand.getSecondPairCard());
         TwoPairsHand winningPair = comparison > 0 ? blackTwoPairsHand : whiteTwoPairsHand;
-        return Result.aMatchResult(winningPair.getHandName() + " wins. - with two pairs: " + winningPair.getFirstPair() + " and " + winningPair.getSecondPair());
+        return aMatchResult(buildWinningMessage(winningPair));
+    }
+
+    private static String buildWinningMessage(TwoPairsHand winningPair) {
+        return winningPair.getHandName() + " wins. - with two pairs: " + winningPair.getFirstPair() + " and " + winningPair.getSecondPair();
     }
 
 }
