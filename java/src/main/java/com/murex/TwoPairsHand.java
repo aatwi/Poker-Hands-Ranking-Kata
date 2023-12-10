@@ -14,7 +14,7 @@ public final class TwoPairsHand {
 
     public TwoPairsHand(Hand hand) {
         this.hand = hand;
-        pairOfCards = getTwoPairs();
+        pairOfCards = extractPairs();
     }
 
     public Hand getHand() {
@@ -25,7 +25,7 @@ public final class TwoPairsHand {
         return getHand().getName();
     }
 
-    private List<Card> getTwoPairs() {
+    private List<Card> extractPairs() {
         Map<Card, Long>  twoPairsMap = Arrays.stream(this.hand.getCards()).collect(groupingBy(Function.identity(), counting()));
         return twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 2).sorted().toList();
     }
