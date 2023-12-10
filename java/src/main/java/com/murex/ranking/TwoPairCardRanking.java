@@ -1,11 +1,8 @@
 package com.murex.ranking;
 
-import com.murex.Card;
 import com.murex.Hand;
 import com.murex.Result;
 import com.murex.TwoPairsHand;
-
-import java.util.List;
 
 public class TwoPairCardRanking extends PokerHandRanking {
 
@@ -29,10 +26,10 @@ public class TwoPairCardRanking extends PokerHandRanking {
         }
 
         if (blackTwoPairsHand.hasTwoPairs()) {
-            return Result.aMatchResult(blackTwoPairsHand.getHandName() + " wins. - with two pairs: " + blackTwoPairsHand.getFirstPair() + " and " + blackTwoPairsHand.getSecondPair().getValue());
+            return Result.aMatchResult(blackTwoPairsHand.getHandName() + " wins. - with two pairs: " + blackTwoPairsHand.getFirstPair() + " and " + blackTwoPairsHand.getSecondPair());
         }
 
-        return Result.aMatchResult(whiteTwoPairsHand.getHandName() + " wins. - with two pairs: " + whiteTwoPairsHand.getFirstPair() + " and " + whiteTwoPairsHand.getSecondPair().getValue());
+        return Result.aMatchResult(whiteTwoPairsHand.getHandName() + " wins. - with two pairs: " + whiteTwoPairsHand.getFirstPair() + " and " + whiteTwoPairsHand.getSecondPair());
     }
 
     private static boolean bothHandsHaveTwoPairs(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
@@ -44,10 +41,8 @@ public class TwoPairCardRanking extends PokerHandRanking {
     }
 
     private Result getHigherHand(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
-        int comparison = blackTwoPairsHand.getSecondPair().compareTo(whiteTwoPairsHand.getSecondPair());
+        int comparison = blackTwoPairsHand.getSecondPairCard().compareTo(whiteTwoPairsHand.getSecondPairCard());
         TwoPairsHand winningPair = comparison > 0 ? blackTwoPairsHand : whiteTwoPairsHand;
-        Hand winner = comparison > 0 ? blackTwoPairsHand.getHand(): whiteTwoPairsHand.getHand();
-        List<Card> winnerCards = winningPair.getTwoPairs() ;//  comparison > 0 ?  blackTwoPairsHand.getTwoPairs() : whiteTwoPairsHand.getTwoPairs();
-        return Result.aMatchResult(winner.getName() + " wins. - with two pairs: " + winnerCards.get(0).getValue() + " and " + winnerCards.get(1).getValue());
+        return Result.aMatchResult(winningPair.getHandName() + " wins. - with two pairs: " + winningPair.getFirstPair() + " and " + winningPair.getSecondPair());
     }
 }
