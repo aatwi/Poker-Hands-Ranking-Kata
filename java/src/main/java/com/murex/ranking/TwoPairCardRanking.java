@@ -9,8 +9,6 @@ import java.util.List;
 
 public class TwoPairCardRanking extends PokerHandRanking {
 
-    private final List<Card> blackPairs;
-    private final List<Card> whitePairs;
     private final TwoPairsHand blackTwoPairsHand;
     private final TwoPairsHand whiteTwoPairsHand;
 
@@ -18,8 +16,6 @@ public class TwoPairCardRanking extends PokerHandRanking {
         super(blackHand, whiteHand);
         whiteTwoPairsHand = new TwoPairsHand(whiteHand);
         blackTwoPairsHand = new TwoPairsHand(blackHand);
-        blackPairs = blackTwoPairsHand.getTwoPairs();
-        whitePairs = whiteTwoPairsHand.getTwoPairs();
     }
 
     @Override
