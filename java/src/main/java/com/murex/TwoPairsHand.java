@@ -27,4 +27,8 @@ public final class TwoPairsHand {
     public boolean hasTwoPairs() {
         return getTwoPairs().size() == 2;
     }
+
+    public String getHandName() {
+        return getHand().getName();
+    }
 }
