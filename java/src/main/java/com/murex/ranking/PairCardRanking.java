@@ -37,9 +37,7 @@ public class PairCardRanking extends HandRanking {
             return aNoMatchResult();
         }
 
-        String winnerCardValue = comparison > 0 ? blackPairHand.getPairValue() : whitePairHand.getPairValue();
         PairHand winningHand = comparison > 0 ? blackPairHand : whitePairHand;
-        Hand winningHad = comparison > 0 ? blackHand : whiteHand;
         return aMatchResult(buildPairCardsMessage(winningHand.getHand(), winningHand.getPairValue()));
 
     }
