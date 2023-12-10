@@ -2,8 +2,6 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
