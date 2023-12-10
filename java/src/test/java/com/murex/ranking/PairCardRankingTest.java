@@ -1,7 +1,6 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Result.aMatchResult;
@@ -42,7 +41,7 @@ class PairCardRankingTest {
 
     @Test
     public void
-    PAIR_black_wins_with_ace_as_pair() {
+    it_should_return_a_matching_result_when_having_a_winner_black_wins_with_ace_as_pair() {
         assertMatchingResult(
                 "7H JC KD AH AS",
                 "2D 3H 5C 9S KH",
@@ -51,7 +50,7 @@ class PairCardRankingTest {
 
     @Test
     public void
-    PAIR_black_wins_with_jack_as_pair() {
+    it_should_return_a_matching_result_when_having_a_winner_black_wins_with_jack() {
         assertMatchingResult(
                 "7H JH JC KD AS",
                 "2D 3H 5C 9S KH",
@@ -60,7 +59,7 @@ class PairCardRankingTest {
 
     @Test
     public void
-    PAIR_white_wins_with_4_as_pair() {
+    it_should_return_a_matching_result_when_having_a_winner_black_wins_4() {
         assertMatchingResult(
                 "5D 6C 7H JH AS",
                 "2D 4H 4C 9S KH",
@@ -69,7 +68,7 @@ class PairCardRankingTest {
 
     @Test
     public void
-    PAIR_white_wins_with_ace_over_a_pair_of_2() {
+    it_should_return_a_matching_result_when_having_a_winner_black_wins_with_ace() {
         assertMatchingResult(
                 "2H 2D 5S 6C AS",
                 "4D 9S KH AH AC",
