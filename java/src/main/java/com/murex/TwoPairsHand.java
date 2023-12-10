@@ -33,11 +33,19 @@ public final class TwoPairsHand {
     }
 
     public String getFirstPair() {
-        return getTwoPairs().get(0).getValue();
+        return getFirstPairCard().getValue();
     }
 
     public  String getSecondPair() {
-        return getTwoPairs().get(1).getValue();
+        return getSecondPairCard().getValue();
+    }
+
+    private Card getFirstPairCard() {
+        return getTwoPairs().get(0);
+    }
+
+    public Card getSecondPairCard() {
+        return getTwoPairs().get(1);
     }
 
 }
