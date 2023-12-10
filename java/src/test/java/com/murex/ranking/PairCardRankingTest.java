@@ -41,7 +41,7 @@ class PairCardRankingTest {
 
     @Test
     public void
-    it_should_return_a_non_matching_result_when_having_pairs_tied() {
+    it_should_return_a_non_matching_result_when_having_pairs_tied_as_2() {
         assertNoMatchingResult(
                 "2H 2D 5S 6C JS",
                 "2C 2S 6H 8H AC");
@@ -49,7 +49,7 @@ class PairCardRankingTest {
 
     @Test
     public void
-    PAIR_black_wins_with_8_over_a_pair_of_ace_due_to_other_rank() {
+    it_should_return_a_non_matching_result_when_having_pairs_tied_as_ace() {
         assertNoMatchingResult(
                 "2H 4D 8S AC AS",
                 "2C 3S 7H AH AD");
