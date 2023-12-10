@@ -22,10 +22,10 @@ public class TwoPairCardRanking extends PokerHandRanking {
 
     public TwoPairCardRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
+        whiteTwoPairsHand = new TwoPairsHand(whiteHand);
+        blackTwoPairsHand = new TwoPairsHand(blackHand);
         blackPairs = getTwoPairs(this.blackHand);
         whitePairs = getTwoPairs(this.whiteHand);
-        blackTwoPairsHand = new TwoPairsHand(blackHand);
-        whiteTwoPairsHand = new TwoPairsHand(whiteHand);
     }
 
     @Override
