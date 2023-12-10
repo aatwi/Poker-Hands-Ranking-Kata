@@ -99,5 +99,4 @@ class PairCardRankingTest {
                 "2H 4D 8S AC AS",
                 "2C 3S 7H AH AD");
     }
-
 }
