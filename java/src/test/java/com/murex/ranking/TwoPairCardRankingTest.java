@@ -5,22 +5,20 @@ import com.murex.Result;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Hand.buildFrom;
+import static com.murex.Result.aMatchResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TwoPairCardRankingTest {
 
+    private static void assertMatchingResult(String blackHand, String whiteHand, String message) {
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(buildFrom("Black", blackHand), buildFrom("White", whiteHand));
+
+        assertEquals(aMatchResult(message), twoPairCardRanking.getMatchingResult());
+    }
+
     @Test
     public void it_should_return_a_matching_result_when_the_black_player_has_two_pairs() {
         assertMatchingResult("7H 7C TD TH AS", "1H 4C 5H 7D AD", "Black wins. - with two pairs: 7 and Ten");
-    }
-
-    private static void assertMatchingResult(String blackHand, String whiteHand, String message) {
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(buildFrom("Black", blackHand), buildFrom("White", whiteHand));
-        assertResult(Result.aMatchResult(message), twoPairCardRanking);
-    }
-
-    private static void assertResult(Result expectedMessage, TwoPairCardRanking twoPairCardRanking) {
-        assertEquals(expectedMessage, twoPairCardRanking.getMatchingResult());
     }
 
     @Test
@@ -54,7 +52,8 @@ class TwoPairCardRankingTest {
         Hand whiteHand = buildFrom("White", "1H 1C 6H 7D 9S");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertResult(Result.aNoMatchResult(), twoPairCardRanking);
+        Result expectedMessage = Result.aNoMatchResult();
+        assertEquals(expectedMessage, twoPairCardRanking.getMatchingResult());
     }
 
     @Test
@@ -63,7 +62,8 @@ class TwoPairCardRankingTest {
         Hand whiteHand = buildFrom("White", "2H 3C 6H 7D 8S");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertResult(Result.aNoMatchResult(), twoPairCardRanking);
+        Result expectedMessage = Result.aNoMatchResult();
+        assertEquals(expectedMessage, twoPairCardRanking.getMatchingResult());
     }
 
 
@@ -73,6 +73,7 @@ class TwoPairCardRankingTest {
         Hand whiteHand = buildFrom("White", "1D 1S 4C 4S AH");
 
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        assertResult(Result.aNoMatchResult(), twoPairCardRanking);
+        Result expectedMessage = Result.aNoMatchResult();
+        assertEquals(expectedMessage, twoPairCardRanking.getMatchingResult());
     }
 }
