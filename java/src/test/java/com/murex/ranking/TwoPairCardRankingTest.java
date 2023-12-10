@@ -83,7 +83,7 @@ class TwoPairCardRankingTest {
     }
 
 
-    @Disabled
+//    @Disabled
     @Test
     public void it_should_return_a_no_matching_result_when_two_hands_have_same_card_values() {
         Hand blackHand = Hand.buildFrom("Black", "1H 1C 4D 4H AS");
