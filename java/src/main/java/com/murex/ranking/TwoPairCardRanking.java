@@ -5,12 +5,8 @@ import com.murex.Hand;
 import com.murex.Result;
 import com.murex.TwoPairsHand;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
 
-import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 public class TwoPairCardRanking extends PokerHandRanking {
@@ -24,8 +20,8 @@ public class TwoPairCardRanking extends PokerHandRanking {
         super(blackHand, whiteHand);
         whiteTwoPairsHand = new TwoPairsHand(whiteHand);
         blackTwoPairsHand = new TwoPairsHand(blackHand);
-        blackPairs = getTwoPairs(blackTwoPairsHand);
-        whitePairs = getTwoPairs(whiteTwoPairsHand);
+        blackPairs = blackTwoPairsHand.getTwoPairs();
+        whitePairs = whiteTwoPairsHand.getTwoPairs();
     }
 
     @Override
@@ -58,10 +54,5 @@ public class TwoPairCardRanking extends PokerHandRanking {
         Hand winner = comparison > 0 ? blackHand : whiteHand;
         List<Card> winnerCards = comparison > 0 ? blackPairs : whitePairs;
         return Result.aMatchResult(winner.getName() + " wins. - with two pairs: " + winnerCards.get(0).getValue() + " and " + winnerCards.get(1).getValue());
-    }
-
-    private List<Card> getTwoPairs(TwoPairsHand twoPairsHand) {
-        Map<Card, Long> collect = Arrays.stream(twoPairsHand.getHand().getCards()).collect(groupingBy(Function.identity(), counting()));
-        return collect.keySet().stream().filter(x -> collect.get(x) == 2).sorted().toList();
     }
 }
