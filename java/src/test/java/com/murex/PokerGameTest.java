@@ -100,7 +100,7 @@ public class PokerGameTest {
         assertWinner("2H 2D 5S 6C JS", "2C 2S 6H 8H AC", "White wins. - with high card: Ace");
     }
 
-    @Disabled
+//    @Disabled
     @Test
     public void
     PAIR_black_wins_with_king_over_a_pair_of_ace_due_to_higher_rank() {
