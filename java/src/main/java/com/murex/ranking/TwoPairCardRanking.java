@@ -7,7 +7,7 @@ import com.murex.hands.TwoPairsHand;
 import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
 
-public class TwoPairCardRanking extends PokerHandRanking {
+public class TwoPairCardRanking extends HandRanking {
 
     private final TwoPairsHand blackTwoPairsHand;
     private final TwoPairsHand whiteTwoPairsHand;

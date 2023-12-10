@@ -24,7 +24,7 @@ package com.murex;
 
 import com.murex.ranking.HighCardRanking;
 import com.murex.ranking.PairCardRanking;
-import com.murex.ranking.PokerHandRanking;
+import com.murex.ranking.HandRanking;
 import com.murex.ranking.TieRanking;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ import java.util.List;
 class PokerGame {
     private final Hand blackHand;
     private final Hand whiteHand;
-    private final List<PokerHandRanking> ranks = new ArrayList<>();
+    private final List<HandRanking> ranks = new ArrayList<>();
 
     public PokerGame(String blackCards, String whiteCards) {
         this.blackHand = Hand.buildFrom("Black", blackCards);
@@ -42,7 +42,7 @@ class PokerGame {
     }
 
     public String getWinner() {
-        return ranks.stream().map(PokerHandRanking::getMatchingResult).filter(Result::isMatch).findFirst().map(Result::message).orElse(null);
+        return ranks.stream().map(HandRanking::getMatchingResult).filter(Result::isMatch).findFirst().map(Result::message).orElse(null);
     }
 
     private void addPossibleRanks() {

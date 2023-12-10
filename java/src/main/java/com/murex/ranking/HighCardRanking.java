@@ -9,7 +9,7 @@ import java.util.Optional;
 import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
 
-public class HighCardRanking extends PokerHandRanking {
+public class HighCardRanking extends HandRanking {
 
     public HighCardRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);

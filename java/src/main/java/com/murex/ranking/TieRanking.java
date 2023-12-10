@@ -3,7 +3,7 @@ package com.murex.ranking;
 import com.murex.Hand;
 import com.murex.Result;
 
-public class TieRanking extends PokerHandRanking {
+public class TieRanking extends HandRanking {
     public TieRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
