@@ -33,7 +33,7 @@ public class TwoPairCardRanking extends PokerHandRanking {
         }
 
         if (blackTwoPairsHand.hasTwoPairs()) {
-            return Result.aMatchResult(blackHand.getName() + " wins. - with two pairs: " + blackPairs.get(0).getValue() + " and " + blackPairs.get(1).getValue());
+            return Result.aMatchResult(blackTwoPairsHand.getHand().getName() + " wins. - with two pairs: " + blackTwoPairsHand.getTwoPairs().get(0).getValue() + " and " + blackTwoPairsHand.getTwoPairs().get(1).getValue());
         }
 
         return Result.aMatchResult("White wins. - with two pairs: " + whitePairs.get(0).getValue() + " and " + whitePairs.get(1).getValue());
