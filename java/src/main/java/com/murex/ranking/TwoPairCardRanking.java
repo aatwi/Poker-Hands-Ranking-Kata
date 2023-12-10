@@ -27,12 +27,6 @@ public class TwoPairCardRanking extends PokerHandRanking {
 
         TwoPairsHand winningPair = blackTwoPairsHand.hasTwoPairs() ? blackTwoPairsHand : whiteTwoPairsHand;
         return Result.aMatchResult(winningPair.getHandName() + " wins. - with two pairs: " + winningPair.getFirstPair() + " and " + winningPair.getSecondPair());
-
-//        if (blackTwoPairsHand.hasTwoPairs()) {
-//            return Result.aMatchResult(blackTwoPairsHand.getHandName() + " wins. - with two pairs: " + blackTwoPairsHand.getFirstPair() + " and " + blackTwoPairsHand.getSecondPair());
-//        }
-//
-//        return Result.aMatchResult(whiteTwoPairsHand.getHandName() + " wins. - with two pairs: " + whiteTwoPairsHand.getFirstPair() + " and " + whiteTwoPairsHand.getSecondPair());
     }
 
     private static boolean bothHandsHaveTwoPairs(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
