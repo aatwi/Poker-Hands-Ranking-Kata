@@ -6,4 +6,8 @@ public final class TwoPairsHand {
     public TwoPairsHand(Hand hand) {
         this.hand = hand;
     }
+
+    public Hand getHand() {
+        return hand;
+    }
 }

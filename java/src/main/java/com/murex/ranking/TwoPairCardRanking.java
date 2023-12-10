@@ -24,8 +24,8 @@ public class TwoPairCardRanking extends PokerHandRanking {
         super(blackHand, whiteHand);
         whiteTwoPairsHand = new TwoPairsHand(whiteHand);
         blackTwoPairsHand = new TwoPairsHand(blackHand);
-        blackPairs = getTwoPairs(this.blackHand);
-        whitePairs = getTwoPairs(this.whiteHand);
+        blackPairs = getTwoPairs(this.blackHand, blackTwoPairsHand);
+        whitePairs = getTwoPairs(this.whiteHand, whiteTwoPairsHand);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class TwoPairCardRanking extends PokerHandRanking {
         return Result.aMatchResult(winner.getName() + " wins. - with two pairs: " + winnerCards.get(0).getValue() + " and " + winnerCards.get(1).getValue());
     }
 
-    private List<Card> getTwoPairs(Hand blackHand) {
+    private List<Card> getTwoPairs(Hand blackHand, TwoPairsHand twoPairsHand) {
         Map<Card, Long> collect = Arrays.stream(blackHand.getCards()).collect(groupingBy(Function.identity(), counting()));
         return collect.keySet().stream().filter(x -> collect.get(x) == 2).sorted().toList();
     }
