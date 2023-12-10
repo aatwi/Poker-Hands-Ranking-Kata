@@ -31,4 +31,12 @@ public final class TwoPairsHand {
     public boolean hasTwoPairs() {
         return getTwoPairs().size() == 2;
     }
+
+    public String getFirstPair() {
+        return getTwoPairs().get(0).getValue();
+    }
+
+    public Card getSecondPair() {
+        return getTwoPairs().get(1);
+    }
 }
