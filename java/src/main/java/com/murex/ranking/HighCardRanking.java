@@ -1,7 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import com.murex.HighHand;
+import com.murex.hands.HighHand;
 import com.murex.Result;
 
 import java.util.Optional;

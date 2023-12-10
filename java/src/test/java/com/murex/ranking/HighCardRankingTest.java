@@ -1,7 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import com.murex.HighHand;
+import com.murex.hands.HighHand;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Hand.buildFrom;

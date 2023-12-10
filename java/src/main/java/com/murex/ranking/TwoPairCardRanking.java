@@ -2,7 +2,7 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
-import com.murex.TwoPairsHand;
+import com.murex.hands.TwoPairsHand;
 
 import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;

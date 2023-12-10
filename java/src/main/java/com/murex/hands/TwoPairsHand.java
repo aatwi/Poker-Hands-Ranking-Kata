@@ -1,4 +1,7 @@
-package com.murex;
+package com.murex.hands;
+
+import com.murex.Card;
+import com.murex.Hand;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +29,7 @@ public final class TwoPairsHand {
     }
 
     private List<Card> extractPairs() {
-        Map<Card, Long>  twoPairsMap = Arrays.stream(this.hand.getCards()).collect(groupingBy(Function.identity(), counting()));
+        Map<Card, Long> twoPairsMap = Arrays.stream(this.hand.getCards()).collect(groupingBy(Function.identity(), counting()));
         return twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 2).sorted().toList();
     }
 
@@ -38,7 +41,7 @@ public final class TwoPairsHand {
         return getFirstPairCard().getValue();
     }
 
-    public  String getSecondPair() {
+    public String getSecondPair() {
         return getSecondPairCard().getValue();
     }
 

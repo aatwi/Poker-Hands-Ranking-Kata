@@ -1,4 +1,7 @@
-package com.murex;
+package com.murex.hands;
+
+import com.murex.Card;
+import com.murex.Hand;
 
 import java.util.Objects;
 
