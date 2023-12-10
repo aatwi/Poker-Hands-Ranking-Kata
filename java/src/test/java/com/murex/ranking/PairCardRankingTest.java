@@ -29,14 +29,30 @@ class PairCardRankingTest {
 
     @Test
     public void
-    it_should_return_a_no_matching_result_when_no_pair_is_found() {
+    it_should_return_a_non_matching_result_when_no_pair_is_found() {
         assertNoMatchingResult("7H 8C TD KH AS", "2D 3H 5C 9S KH");
     }
 
     @Test
     public void
-    it_should_return_a_no_matching_result_when_having_a_tie_with_pairs() {
+    it_should_return_a_non_matching_result_when_having_all_tie_with_pairs() {
         assertNoMatchingResult("7H 7C TD KH AS", "7D 7S TC KS AH");
+    }
+
+    @Test
+    public void
+    it_should_return_a_non_matching_result_when_having_pairs_tied() {
+        assertNoMatchingResult(
+                "2H 2D 5S 6C JS",
+                "2C 2S 6H 8H AC");
+    }
+
+    @Test
+    public void
+    PAIR_black_wins_with_8_over_a_pair_of_ace_due_to_other_rank() {
+        assertNoMatchingResult(
+                "2H 4D 8S AC AS",
+                "2C 3S 7H AH AD");
     }
 
     @Test
@@ -73,29 +89,5 @@ class PairCardRankingTest {
                 "2H 2D 5S 6C AS",
                 "4D 9S KH AH AC",
                 "White wins. - with Pair cards: Ace");
-    }
-
-    @Test
-    public void
-    PAIR_white_wins_with_ace_over_a_pair_of_ace_due_to_other_rank() {
-        assertNoMatchingResult(
-                "2H 2D 5S 6C JS",
-                "2C 2S 6H 8H AC");
-    }
-
-    @Test
-    public void
-    PAIR_black_wins_with_ace_over_a_pair_of_ace_due_to_other_rank() {
-        assertNoMatchingResult(
-                "2H 2D 5S 6C KS",
-                "2C 2S 6H 8H JC");
-    }
-
-    @Test
-    public void
-    PAIR_black_wins_with_8_over_a_pair_of_ace_due_to_other_rank() {
-        assertNoMatchingResult(
-                "2H 4D 8S AC AS",
-                "2C 3S 7H AH AD");
     }
 }
