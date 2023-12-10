@@ -56,6 +56,15 @@ class TwoPairCardRankingTest {
     }
 
     @Test
+    public void when_both_hands_has_two_pairs_the_higher_hand_wins_black_wins_higher_cards_are_equal_option2() {
+        Hand blackHand = Hand.buildFrom("Black", "2H 2C 4D 4H AS");
+        Hand whiteHand = Hand.buildFrom("White", "1D 1S 4C 4S AH");
+
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        assertEquals(Result.aMatchResult("Black wins. - with two pairs: 2 and 4"), twoPairCardRanking.getMatchingResult());
+    }
+
+    @Test
     public void it_should_return_a_no_matching_result_when_only_one_pair_exists() {
         Hand blackHand = Hand.buildFrom("Black", "2H 7C 8D TH AS");
         Hand whiteHand = Hand.buildFrom("White", "1H 1C 6H 7D 9S");

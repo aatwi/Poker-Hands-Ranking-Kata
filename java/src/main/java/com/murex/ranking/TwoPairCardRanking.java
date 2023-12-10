@@ -42,6 +42,11 @@ public class TwoPairCardRanking extends HandRanking {
 
     private Result getHigherHand(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
         int comparison = blackTwoPairsHand.getSecondPairCard().compareTo(whiteTwoPairsHand.getSecondPairCard());
+
+        if(comparison == 0) {
+            comparison = blackTwoPairsHand.getFirstPair().compareTo(whiteTwoPairsHand.getFirstPair());
+        }
+
         TwoPairsHand winningPair = comparison > 0 ? blackTwoPairsHand : whiteTwoPairsHand;
         return aMatchResult(buildWinningMessage(winningPair));
     }
