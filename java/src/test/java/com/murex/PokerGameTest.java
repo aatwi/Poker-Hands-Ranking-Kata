@@ -105,7 +105,6 @@ public class PokerGameTest {
         assertWinner("2H 2D 5S 6C KS", "2C 2S 6H 8H JC", "Black wins. - with Pair cards and higher rank: 2 and King");
     }
 
-    @Disabled
     @Test
     public void
     TWO_PAIR_black_wins_with_two_pairs() {

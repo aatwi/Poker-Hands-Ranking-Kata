@@ -22,10 +22,7 @@ SOFTWARE.
 
 package com.murex;
 
-import com.murex.ranking.HighCardRanking;
-import com.murex.ranking.PairCardRanking;
-import com.murex.ranking.HandRanking;
-import com.murex.ranking.TieRanking;
+import com.murex.ranking.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +43,7 @@ class PokerGame {
     }
 
     private void addPossibleRanks() {
+        ranks.add(new TwoPairCardRanking(blackHand, whiteHand));
         ranks.add(new PairCardRanking(blackHand, whiteHand));
         ranks.add(new HighCardRanking(blackHand, whiteHand));
         ranks.add(new TieRanking(blackHand, whiteHand));
