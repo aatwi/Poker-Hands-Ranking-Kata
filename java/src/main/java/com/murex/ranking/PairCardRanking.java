@@ -38,20 +38,11 @@ public class PairCardRanking extends HandRanking {
         String winnerCardValue = comparison > 0 ? blackPairHand.getPairValue() : whitePairHand.getPairValue();
 
         if (comparison == 0) {
-            return aNoMatchResult();// ngetHigherHand(winnerCardValue);
+            return aNoMatchResult();
         } else {
             Hand winningHad = comparison > 0 ? blackHand : whiteHand;
             return aMatchResult(buildPairCardsMessage(winningHad, winnerCardValue));
         }
-    }
-
-    private Result getHigherHand(String winnerCardValue) {
-        HighCardRanking highCardRank = new HighCardRanking(blackHand, whiteHand);
-        Optional<HighHand> higherHand = highCardRank.getHigherHand();
-        if (higherHand.isEmpty()) {
-            return aNoMatchResult();
-        }
-        return aMatchResult(buildPairAndHighHandMessage(higherHand.get(), winnerCardValue));
     }
 
     private boolean bothHandsHaveNoPairs() {
