@@ -28,7 +28,7 @@ public class TwoPairCardRanking extends PokerHandRanking {
             return Result.aNoMatchResult();
         }
 
-        if (bothHandsHaveTwoPairs(blackTwoPairsHand, whiteTwoPairsHand, blackPairs, whitePairs)) {
+        if (bothHandsHaveTwoPairs(blackTwoPairsHand, whiteTwoPairsHand)) {
             return getHigherHand(blackPairs, whitePairs);
         }
 
@@ -39,7 +39,7 @@ public class TwoPairCardRanking extends PokerHandRanking {
         return Result.aMatchResult("White wins. - with two pairs: " + whitePairs.get(0).getValue() + " and " + whitePairs.get(1).getValue());
     }
 
-    private static boolean bothHandsHaveTwoPairs(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand, List<Card> blackPairs, List<Card> whitePairs) {
+    private static boolean bothHandsHaveTwoPairs(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
         return blackTwoPairsHand.hasTwoPairs() && whiteTwoPairsHand.hasTwoPairs();
     }
 
