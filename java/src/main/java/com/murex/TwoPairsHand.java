@@ -10,9 +10,13 @@ import static java.util.stream.Collectors.groupingBy;
 
 public final class TwoPairsHand {
     private final Hand hand;
+    private final Map<Card, Long> twoPairsMap;
+    private final List<Card> pairOfCards;
 
     public TwoPairsHand(Hand hand) {
         this.hand = hand;
+        twoPairsMap = Arrays.stream(this.hand.getCards()).collect(groupingBy(Function.identity(), counting()));
+        pairOfCards = getTwoPairs();
     }
 
     public Hand getHand() {
@@ -23,13 +27,12 @@ public final class TwoPairsHand {
         return getHand().getName();
     }
 
-    public List<Card> getTwoPairs() {
-        Map<Card, Long> collect = Arrays.stream(getHand().getCards()).collect(groupingBy(Function.identity(), counting()));
-        return collect.keySet().stream().filter(x -> collect.get(x) == 2).sorted().toList();
+    private List<Card> getTwoPairs() {
+        return twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 2).sorted().toList();
     }
 
     public boolean hasTwoPairs() {
-        return getTwoPairs().size() == 2;
+        return pairOfCards.size() == 2;
     }
 
     public String getFirstPair() {
@@ -41,11 +44,11 @@ public final class TwoPairsHand {
     }
 
     private Card getFirstPairCard() {
-        return getTwoPairs().get(0);
+        return pairOfCards.get(0);
     }
 
     public Card getSecondPairCard() {
-        return getTwoPairs().get(1);
+        return pairOfCards.get(1);
     }
 
 }
