@@ -29,7 +29,7 @@ public class TwoPairCardRanking extends PokerHandRanking {
         }
 
         if (bothHandsHaveTwoPairs(blackTwoPairsHand, whiteTwoPairsHand)) {
-            return getHigherHand(blackPairs, whitePairs, blackTwoPairsHand, whiteTwoPairsHand);
+            return getHigherHand(blackTwoPairsHand, whiteTwoPairsHand);
         }
 
         if (blackTwoPairsHand.hasTwoPairs()) {
@@ -47,7 +47,7 @@ public class TwoPairCardRanking extends PokerHandRanking {
         return !blackTwoPairsHand.hasTwoPairs() && !whiteTwoPairsHand.hasTwoPairs();
     }
 
-    private Result getHigherHand(List<Card> blackPairs, List<Card> whitePairs, TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
+    private Result getHigherHand(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
         int comparison = blackTwoPairsHand.getTwoPairs().get(1).compareTo(whiteTwoPairsHand.getTwoPairs().get(1));
         Hand winner = comparison > 0 ? blackTwoPairsHand.getHand(): whiteTwoPairsHand.getHand();
         List<Card> winnerCards = comparison > 0 ?  blackTwoPairsHand.getTwoPairs() : whiteTwoPairsHand.getTwoPairs();
