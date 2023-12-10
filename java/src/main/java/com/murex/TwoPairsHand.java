@@ -23,4 +23,8 @@ public final class TwoPairsHand {
         Map<Card, Long> collect = Arrays.stream(getHand().getCards()).collect(groupingBy(Function.identity(), counting()));
         return collect.keySet().stream().filter(x -> collect.get(x) == 2).sorted().toList();
     }
+
+    public boolean hasTwoPairs() {
+        return getTwoPairs().size() == 2;
+    }
 }
