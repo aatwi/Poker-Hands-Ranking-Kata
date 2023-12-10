@@ -52,11 +52,11 @@ public class TwoPairCardRanking extends HandRanking {
 
     private static int compareForHigherHands(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
         int comparison = blackTwoPairsHand.getSecondPairCard().compareTo(whiteTwoPairsHand.getSecondPairCard());
-        if (comparison != 0) {
-            return comparison;
-        }
-        comparison = blackTwoPairsHand.getFirstPair().compareTo(whiteTwoPairsHand.getFirstPair());
-        return comparison;
+        return comparison != 0 ? comparison : blackTwoPairsHand.getFirstPair().compareTo(whiteTwoPairsHand.getFirstPair());
+//        if(comparison == 0) {
+//            comparison =
+//        }
+//        return comparison;
     }
 
     private static String buildWinningMessage(TwoPairsHand winningPair) {
