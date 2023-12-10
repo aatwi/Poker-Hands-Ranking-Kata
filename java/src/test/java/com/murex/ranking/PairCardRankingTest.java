@@ -79,28 +79,25 @@ class PairCardRankingTest {
     @Test
     public void
     PAIR_white_wins_with_ace_over_a_pair_of_ace_due_to_other_rank() {
-        assertMatchingResult(
+        assertNoMatchingResult(
                 "2H 2D 5S 6C JS",
-                "2C 2S 6H 8H AC",
-                "White wins. - with Pair cards and higher rank: 2 and Ace");
+                "2C 2S 6H 8H AC");
     }
 
     @Test
     public void
     PAIR_black_wins_with_ace_over_a_pair_of_ace_due_to_other_rank() {
-        assertMatchingResult(
+        assertNoMatchingResult(
                 "2H 2D 5S 6C KS",
-                "2C 2S 6H 8H JC",
-                "Black wins. - with Pair cards and higher rank: 2 and King");
+                "2C 2S 6H 8H JC");
     }
 
     @Test
     public void
     PAIR_black_wins_with_8_over_a_pair_of_ace_due_to_other_rank() {
-        assertMatchingResult(
+        assertNoMatchingResult(
                 "2H 4D 8S AC AS",
-                "2C 3S 7H AH AD",
-                "Black wins. - with Pair cards and higher rank: Ace and 8");
+                "2C 3S 7H AH AD");
     }
 
 }
