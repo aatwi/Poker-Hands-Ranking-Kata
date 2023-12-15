@@ -28,7 +28,7 @@ public class PairCardRanking extends HandRanking {
             return aNoMatchResult();
         }
         PairHand winningPairHand = blackPairHand.hasPair() ? blackPairHand : whitePairHand;
-        return aMatchResult(buildPairCardsMessage(winningPairHand.getHand(), winningPairHand.getPairCard(), winningPairHand.getPairValue()));
+        return aMatchResult(buildPairCardsMessage(winningPairHand.getHand(), winningPairHand.getPairCard()));
     }
 
     private Result getHigherPair() {
@@ -38,14 +38,14 @@ public class PairCardRanking extends HandRanking {
         }
 
         PairHand winningHand = comparison > 0 ? blackPairHand : whitePairHand;
-        return aMatchResult(buildPairCardsMessage(winningHand.getHand(), winningHand.getPairCard(), winningHand.getPairValue()));
+        return aMatchResult(buildPairCardsMessage(winningHand.getHand(), winningHand.getPairCard()));
     }
 
     private boolean bothHandsHaveNoPairs() {
         return !blackPairHand.hasPair() && !whitePairHand.hasPair();
     }
 
-    private String buildPairCardsMessage(Hand hand, Card pairCard, String cardValue) {
+    private String buildPairCardsMessage(Hand hand, Card pairCard) {
         return hand.getName() + " wins. - with Pair cards: " + pairCard.getValue();
     }
 
