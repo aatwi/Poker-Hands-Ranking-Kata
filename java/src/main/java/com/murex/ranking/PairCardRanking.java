@@ -46,7 +46,7 @@ public class PairCardRanking extends HandRanking {
     }
 
     private String buildPairCardsMessage(Hand hand, Card pairCard, String cardValue) {
-        return hand.getName() + " wins. - with Pair cards: " + cardValue;
+        return hand.getName() + " wins. - with Pair cards: " + pairCard.getValue();
     }
 
     private boolean bothHandsHavePairs() {
