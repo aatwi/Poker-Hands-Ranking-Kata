@@ -14,10 +14,12 @@ import static java.util.stream.Collectors.groupingBy;
 public final class PairHand {
     private final Hand hand;
     private final Map<Card, Long> cardsPairMap;
+    private Optional<Card> cardOfPairs;
 
     public PairHand(Hand hand) {
         this.hand = hand;
         cardsPairMap = buildPairMap();
+        cardOfPairs = extractCardOfPairs();
     }
 
     public Hand getHand() {
@@ -33,7 +35,12 @@ public final class PairHand {
     }
 
     public String getPairValue() {
-        Optional<Card> cardFound = cardsPairMap.keySet().stream().filter(card -> cardsPairMap.get(card) == 2).findAny();
+        Optional<Card> cardFound = extractCardOfPairs();
         return cardFound.isPresent() ? cardFound.get().getValue() : "";
+    }
+
+    private Optional<Card> extractCardOfPairs() {
+        cardOfPairs = cardsPairMap.keySet().stream().filter(card -> cardsPairMap.get(card) == 2).findAny();
+        return cardOfPairs;
     }
 }
