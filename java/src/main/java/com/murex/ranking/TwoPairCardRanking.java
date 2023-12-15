@@ -50,9 +50,9 @@ public class TwoPairCardRanking extends HandRanking {
         return aMatchResult(buildWinningMessage(winningPair));
     }
 
-    private static int compareForHigherHands(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
-        int comparison = blackTwoPairsHand.getSecondPairCard().compareTo(whiteTwoPairsHand.getSecondPairCard());
-        return comparison != 0 ? comparison : blackTwoPairsHand.getFirstPair().compareTo(whiteTwoPairsHand.getFirstPair());
+    private int compareForHigherHands(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
+        int comparison = this.blackTwoPairsHand.getSecondPairCard().compareTo(this.whiteTwoPairsHand.getSecondPairCard());
+        return comparison != 0 ? comparison : this.blackTwoPairsHand.getFirstPair().compareTo(whiteTwoPairsHand.getFirstPair());
     }
 
     private static String buildWinningMessage(TwoPairsHand winningPair) {
