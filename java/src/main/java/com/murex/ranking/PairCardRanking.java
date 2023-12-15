@@ -46,10 +46,6 @@ public class PairCardRanking extends HandRanking {
         return !blackPairHand.hasPair() && !whitePairHand.hasPair();
     }
 
-    private String buildPairAndHighHandMessage(HighHand hand, String cardValue) {
-        return hand.getHand().getName() + " wins. - with Pair cards and higher rank: " + cardValue + " and " + hand.getHighCard().getValue();
-    }
-
     private String buildPairCardsMessage(Hand hand, String cardValue) {
         return hand.getName() + " wins. - with Pair cards: " + cardValue;
     }
