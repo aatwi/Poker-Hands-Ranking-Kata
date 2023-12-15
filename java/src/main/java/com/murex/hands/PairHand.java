@@ -27,7 +27,7 @@ public final class PairHand {
     }
 
     public boolean hasPair() {
-        return cardsPairMap.keySet().stream().anyMatch(card -> cardsPairMap.get(card) == 2);
+        return cardOfPairs.isPresent();
     }
 
     private Map<Card, Long> buildPairMap() {
