@@ -13,12 +13,10 @@ import static java.util.stream.Collectors.groupingBy;
 
 public final class PairHand {
     private final Hand hand;
-    private final Map<Card, Long> cardsPairMap;
     private Optional<Card> cardOfPairs;
 
     public PairHand(Hand hand) {
         this.hand = hand;
-        cardsPairMap = buildPairMap();
         cardOfPairs = extractCardOfPairs();
     }
 
