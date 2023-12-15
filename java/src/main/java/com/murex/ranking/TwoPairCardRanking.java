@@ -24,7 +24,7 @@ public class TwoPairCardRanking extends HandRanking {
             return aNoMatchResult();
         }
 
-        if (bothHandsHaveTwoPairs(blackTwoPairsHand, whiteTwoPairsHand)) {
+        if (bothHandsHaveTwoPairs()) {
             return getHigherHand(blackTwoPairsHand, whiteTwoPairsHand);
         }
 
@@ -32,12 +32,12 @@ public class TwoPairCardRanking extends HandRanking {
         return aMatchResult(buildWinningMessage(winningPair));
     }
 
-    private boolean bothHandsHaveTwoPairs(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
+    private boolean bothHandsHaveTwoPairs() {
         return this.blackTwoPairsHand.hasTwoPairs() && this.whiteTwoPairsHand.hasTwoPairs();
     }
 
     private boolean noHandHasTwoPairs(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
-        return !blackTwoPairsHand.hasTwoPairs() && !whiteTwoPairsHand.hasTwoPairs();
+        return !this.blackTwoPairsHand.hasTwoPairs() && !this.whiteTwoPairsHand.hasTwoPairs();
     }
 
     private Result getHigherHand(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
