@@ -13,7 +13,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 public final class PairHand {
     private final Hand hand;
-    private Optional<Card> cardOfPairs;
+    private final Optional<Card> cardOfPairs;
 
     public PairHand(Hand hand) {
         this.hand = hand;
@@ -30,6 +30,10 @@ public final class PairHand {
 
     private Map<Card, Long> buildPairMap() {
         return Arrays.stream(hand.getCards()).collect(groupingBy(Function.identity(), counting()));
+    }
+
+    public Card getPairCard() {
+        return cardOfPairs.get();
     }
 
     public String getPairValue() {
