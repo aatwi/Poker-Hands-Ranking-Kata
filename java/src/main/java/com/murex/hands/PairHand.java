@@ -19,7 +19,7 @@ public final class PairHand {
     public PairHand(Hand hand) {
         this.hand = hand;
         cardsPairMap = buildPairMap();
-        cardOfPairs = extractCardOfPairs(cardsPairMap);
+        cardOfPairs = extractCardOfPairs();
     }
 
     public Hand getHand() {
@@ -39,7 +39,8 @@ public final class PairHand {
         return cardFound.isPresent() ? cardFound.get().getValue() : "";
     }
 
-    private Optional<Card> extractCardOfPairs(Map<Card, Long> cardsPairMap) {
+    private Optional<Card> extractCardOfPairs() {
+        Map<Card, Long> cardsPairMap = buildPairMap();
         return cardsPairMap.keySet().stream().filter(card -> cardsPairMap.get(card) == 2).findAny();
     }
 }
