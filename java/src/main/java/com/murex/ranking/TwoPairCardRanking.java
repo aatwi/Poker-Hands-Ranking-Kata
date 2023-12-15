@@ -41,12 +41,12 @@ public class TwoPairCardRanking extends HandRanking {
     }
 
     private Result getHigherHand(TwoPairsHand blackTwoPairsHand, TwoPairsHand whiteTwoPairsHand) {
-        int comparison = compareForHigherHands(this.blackTwoPairsHand, whiteTwoPairsHand);
+        int comparison = compareForHigherHands(this.blackTwoPairsHand, this.whiteTwoPairsHand);
         if(comparison == 0){
             return aNoMatchResult();
         }
 
-        TwoPairsHand winningPair = comparison > 0 ? this.blackTwoPairsHand : whiteTwoPairsHand;
+        TwoPairsHand winningPair = comparison > 0 ? this.blackTwoPairsHand : this.whiteTwoPairsHand;
         return aMatchResult(buildWinningMessage(winningPair));
     }
 
