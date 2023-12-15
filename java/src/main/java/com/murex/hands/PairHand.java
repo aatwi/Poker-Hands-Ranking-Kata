@@ -28,10 +28,6 @@ public final class PairHand {
         return cardOfPairs.isPresent();
     }
 
-    private Map<Card, Long> buildPairMap() {
-        return Arrays.stream(hand.getCards()).collect(groupingBy(Function.identity(), counting()));
-    }
-
     public Card getPairCard() {
         return cardOfPairs.orElse(null);
     }
@@ -42,7 +38,7 @@ public final class PairHand {
     }
 
     private Optional<Card> extractCardOfPairs() {
-        Map<Card, Long> cardsPairMap = buildPairMap();
+        Map<Card, Long> cardsPairMap = Arrays.stream(hand.getCards()).collect(groupingBy(Function.identity(), counting()));
         return cardsPairMap.keySet().stream().filter(card -> cardsPairMap.get(card) == 2).findAny();
     }
 }
