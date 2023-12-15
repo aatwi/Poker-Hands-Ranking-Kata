@@ -33,7 +33,7 @@ public final class PairHand {
     }
 
     public Card getPairCard() {
-        return cardOfPairs.get();
+        return cardOfPairs.orElse(null);
     }
 
     public String getPairValue() {

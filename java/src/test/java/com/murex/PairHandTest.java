@@ -20,12 +20,12 @@ class PairHandTest {
     @Test
     void it_returns_the_first_pair_of_cards() {
         PairHand blackHand = new PairHand(Hand.buildFrom("Black", "2H 2D 5S 6C JS"));
-        assertEquals("2", blackHand.getPairValue());
+        assertEquals("2", blackHand.getPairCard().getValue());
     }
 
     @Test
     void it_returns_an_empty_string_when_no_pairs_exist() {
         PairHand blackHand = new PairHand(Hand.buildFrom("Black", "2H 3D 5S 6C JS"));
-        assertEquals("", blackHand.getPairValue());
+        assertNull(blackHand.getPairCard());
     }
 }
