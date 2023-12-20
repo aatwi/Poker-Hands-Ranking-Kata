@@ -33,10 +33,6 @@ public final class ThreeOfAKindHand {
         return this.cards.size() == 1;
     }
 
-    public String getCardValue() {
-        return this.cards.get(0).getValue();
-    }
-
     public Card getCard() {
         return this.cards.get(0);
     }
