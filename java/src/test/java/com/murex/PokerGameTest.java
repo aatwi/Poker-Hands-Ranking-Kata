@@ -142,7 +142,7 @@ public class PokerGameTest {
     STRAIGHT_black_wins_with_three_of_a_kind_White_wins() {
         assertWinner("2H 2S 4D 5C KS", "7C 8S 9H TD JC", "White wins. - with straight cards");
     }
-    
+
     @Disabled
     @Test
     public void
