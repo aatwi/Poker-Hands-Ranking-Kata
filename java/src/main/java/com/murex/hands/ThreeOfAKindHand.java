@@ -30,4 +30,8 @@ public final class ThreeOfAKindHand {
     public boolean hasThreeOfAKind() {
         return extractThreeOfAKind().size() == 1;
     }
+
+    public String getCardValue() {
+        return extractThreeOfAKind().get(0).getValue();
+    }
 }
