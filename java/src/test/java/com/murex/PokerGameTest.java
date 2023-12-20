@@ -111,21 +111,18 @@ public class PokerGameTest {
         assertWinner("2H 2D 5S 5C KS", "2C 3S 6H 8H JC", "Black wins. - with two pairs: 2 and 5");
     }
 
-    @Disabled
     @Test
     public void
     THREE_OF_A_KIND_black_wins_with_three_of_a_kind_Black_wins() {
         assertWinner("2H 2D 2S 5C KS", "2C 3S 6H 8H JC", "Black wins. - with three of a kind: 2");
     }
 
-    @Disabled
     @Test
     public void
     THREE_OF_A_KIND_black_wins_with_three_of_a_kind_White_wins() {
         assertWinner("2H 2S 4D 5C KS", "2C 3S 6H 6D 6C", "White wins. - with three of a kind: 6");
     }
 
-    @Disabled
     @Test
     public void
     THREE_OF_A_KIND_black_wins_with_three_of_a_kind_White_wins_with_higher_card() {
