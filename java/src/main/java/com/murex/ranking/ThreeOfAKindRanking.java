@@ -25,15 +25,9 @@ public class ThreeOfAKindRanking extends HandRanking {
             return Result.aNoMatchResult();
         }
 
-        if (threeOfAKindWhiteHand.hasThreeOfAKind()) {
-            return Result.aMatchResult("White wins. - with three of a kind: " + threeOfAKindWhiteHand.getCard().getValue());
-        }
+        ThreeOfAKindHand winningHand = threeOfAKindBlackHand.hasThreeOfAKind() ? threeOfAKindBlackHand : threeOfAKindWhiteHand;
+        return Result.aMatchResult(winningHand.getHand().getName() +  " wins. - with three of a kind: " + winningHand.getCard().getValue());
 
-        if (threeOfAKindBlackHand.hasThreeOfAKind()) {
-            return Result.aMatchResult("Black wins. - with three of a kind: " + threeOfAKindBlackHand.getCard().getValue());
-        }
-
-        return Result.aNoMatchResult();
     }
 
     private Result getHigherHand() {
