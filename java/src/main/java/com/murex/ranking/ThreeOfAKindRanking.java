@@ -18,6 +18,9 @@ public class ThreeOfAKindRanking extends HandRanking {
         if(whiteHand.getCardAt(1).getCharValue() == '9' && whiteHand.getCardAt(2).getCharValue() == '9' && whiteHand.getCardAt(3).getCharValue() == '9') {
             return Result.aMatchResult("White wins. - with three of a kind: 9");
         }
+        if(blackHand.getCardAt(0).getCharValue() == '7' && blackHand.getCardAt(1).getCharValue() == '7' && blackHand.getCardAt(2).getCharValue() == '7') {
+            return Result.aMatchResult("Black wins. - with three of a kind: 7");
+        }
         return Result.aNoMatchResult();
     }
 }
