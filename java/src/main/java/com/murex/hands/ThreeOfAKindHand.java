@@ -24,7 +24,6 @@ public final class ThreeOfAKindHand {
 
     public List<Card> extractThreeOfAKind() {
         Map<Card, Long> twoPairsMap = Arrays.stream(this.hand.getCards()).collect(groupingBy(Function.identity(), counting()));
-        List<Card> list = twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).sorted().toList();
-        return list;
+        return twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).sorted().toList();
     }
 }
