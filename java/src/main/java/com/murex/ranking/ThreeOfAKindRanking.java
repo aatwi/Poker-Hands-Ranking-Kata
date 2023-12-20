@@ -37,9 +37,6 @@ public class ThreeOfAKindRanking extends HandRanking {
             return Result.aMatchResult("Black wins. - with three of a kind: " + blackList.get(0).getValue());
         }
         
-        if(blackHand.getCardAt(0).getCharValue() == '7' && blackHand.getCardAt(1).getCharValue() == '7' && blackHand.getCardAt(2).getCharValue() == '7') {
-            return Result.aMatchResult("Black wins. - with three of a kind: 7");
-        }
         return Result.aNoMatchResult();
     }
 }
