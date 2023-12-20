@@ -20,12 +20,12 @@ public class ThreeOfAKindRanking extends HandRanking {
 
     @Override
     public Result getMatchingResult() {
-        if(threeOfAKindWhiteHand.hasThreeOfAKind() && threeOfAKindBlackHand.hasThreeOfAKind()) {
-            Card whiteCard = threeOfAKindWhiteHand.getCard();
-            Card blackCard = threeOfAKindBlackHand.getCard();
-            int comparison = blackCard.compareTo(whiteCard);
-            ThreeOfAKindHand winningHand = comparison > 0 ? threeOfAKindBlackHand : threeOfAKindWhiteHand;
-            return Result.aMatchResult(winningHand.getHand().getName() + " wins. - with three of a kind: " + winningHand.getCard().getValue());
+        if(bothHaveThreeOfAKindCards()) {
+            return getHigherHand();
+        }
+
+        if(!threeOfAKindWhiteHand.hasThreeOfAKind() && !threeOfAKindBlackHand.hasThreeOfAKind()) {
+            return Result.aNoMatchResult();
         }
 
         if (threeOfAKindWhiteHand.hasThreeOfAKind()) {
@@ -37,6 +37,18 @@ public class ThreeOfAKindRanking extends HandRanking {
         }
 
         return Result.aNoMatchResult();
+    }
+
+    private Result getHigherHand() {
+        Card whiteCard = threeOfAKindWhiteHand.getCard();
+        Card blackCard = threeOfAKindBlackHand.getCard();
+        int comparison = blackCard.compareTo(whiteCard);
+        ThreeOfAKindHand winningHand = comparison > 0 ? threeOfAKindBlackHand : threeOfAKindWhiteHand;
+        return Result.aMatchResult(winningHand.getHand().getName() + " wins. - with three of a kind: " + winningHand.getCard().getValue());
+    }
+
+    private boolean bothHaveThreeOfAKindCards() {
+        return threeOfAKindWhiteHand.hasThreeOfAKind() && threeOfAKindBlackHand.hasThreeOfAKind();
     }
 
 }
