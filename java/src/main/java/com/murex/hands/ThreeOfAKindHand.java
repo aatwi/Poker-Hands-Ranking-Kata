@@ -13,16 +13,18 @@ import static java.util.stream.Collectors.groupingBy;
 
 public final class ThreeOfAKindHand {
     private final Hand hand;
+    private final List<Card> cards;
 
     public ThreeOfAKindHand(Hand hand) {
         this.hand = hand;
+        this.cards = extractThreeOfAKind();
     }
 
     public Hand getHand() {
         return hand;
     }
 
-    public List<Card> extractThreeOfAKind() {
+    private List<Card> extractThreeOfAKind() {
         Map<Card, Long> twoPairsMap = Arrays.stream(this.hand.getCards()).collect(groupingBy(Function.identity(), counting()));
         return twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).sorted().toList();
     }
