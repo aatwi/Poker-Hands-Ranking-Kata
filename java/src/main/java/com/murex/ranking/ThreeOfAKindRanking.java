@@ -23,18 +23,18 @@ public class ThreeOfAKindRanking extends HandRanking {
         super(blackHand, whiteHand);
         this.blackHand = blackHand;
         this.whiteHand = whiteHand;
-        threeOfAKindBlackHand = new ThreeOfAKindHand(blackHand);
-        threeOfAKindWhiteHand = new ThreeOfAKindHand(whiteHand);
+        this.threeOfAKindBlackHand = new ThreeOfAKindHand(blackHand);
+        this.threeOfAKindWhiteHand = new ThreeOfAKindHand(whiteHand);
     }
 
     @Override
     public Result getMatchingResult() {
-        List<Card> list = extractThreeOfAKind(whiteHand);
+        List<Card> list = extractThreeOfAKind(whiteHand, threeOfAKindWhiteHand);
         if (list.size() == 1) {
             return Result.aMatchResult("White wins. - with three of a kind: " + list.get(0).getValue());
         }
 
-        List<Card> blackList = extractThreeOfAKind(blackHand);
+        List<Card> blackList = extractThreeOfAKind(blackHand, threeOfAKindBlackHand);
         if (blackList.size() == 1) {
             return Result.aMatchResult("Black wins. - with three of a kind: " + blackList.get(0).getValue());
         }
@@ -42,7 +42,7 @@ public class ThreeOfAKindRanking extends HandRanking {
         return Result.aNoMatchResult();
     }
 
-    private List<Card> extractThreeOfAKind(Hand whiteHand) {
+    private List<Card> extractThreeOfAKind(Hand whiteHand, ThreeOfAKindHand threeOfAKindWhiteHand) {
         Map<Card, Long> twoPairsMap = Arrays.stream(whiteHand.getCards()).collect(groupingBy(Function.identity(), counting()));
         List<Card> list = twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).sorted().toList();
         return list;
