@@ -1,13 +1,11 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import com.murex.Result;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StraightCardRankingTest {
 
