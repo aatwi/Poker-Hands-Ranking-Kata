@@ -43,8 +43,8 @@ public class ThreeOfAKindRanking extends HandRanking {
     }
 
     private List<Card> extractThreeOfAKind(ThreeOfAKindHand threeOfAKindWhiteHand) {
-        Hand whiteHand = threeOfAKindWhiteHand.getHand();
-        Map<Card, Long> twoPairsMap = Arrays.stream(whiteHand.getCards()).collect(groupingBy(Function.identity(), counting()));
+        Hand hand = threeOfAKindWhiteHand.getHand();
+        Map<Card, Long> twoPairsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Function.identity(), counting()));
         List<Card> list = twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).sorted().toList();
         return list;
     }
