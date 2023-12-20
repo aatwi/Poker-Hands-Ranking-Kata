@@ -24,20 +24,12 @@ public class ThreeOfAKindRanking extends HandRanking {
 
     @Override
     public Result getMatchingResult() {
-        if(whiteHand.getCardAt(1).getCharValue() == '9' && whiteHand.getCardAt(2).getCharValue() == '9' && whiteHand.getCardAt(3).getCharValue() == '9') {
-            Map<Card, Long> twoPairsMap = Arrays.stream(whiteHand.getCards()).collect(groupingBy(Function.identity(), counting()));
-            List<Card> list = twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).sorted().toList();
-            if (list.size() == 1) {
-                return Result.aMatchResult("White wins. - with three of a kind: " + list.get(0).getCharValue());
-            }
+        Map<Card, Long> twoPairsMap = Arrays.stream(whiteHand.getCards()).collect(groupingBy(Function.identity(), counting()));
+        List<Card> list = twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).sorted().toList();
+        if (list.size() == 1) {
+            return Result.aMatchResult("White wins. - with three of a kind: " + list.get(0).getValue());
         }
-        if(whiteHand.getCardAt(2).getCharValue() == 'T' && whiteHand.getCardAt(3).getCharValue() == 'T' && whiteHand.getCardAt(4).getCharValue() == 'T') {
-            Map<Card, Long> twoPairsMap = Arrays.stream(whiteHand.getCards()).collect(groupingBy(Function.identity(), counting()));
-            List<Card> list = twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).sorted().toList();
-            if (list.size() == 1) {
-                return Result.aMatchResult("White wins. - with three of a kind: " + list.get(0).getValue());
-            }
-        }
+        
         if(blackHand.getCardAt(0).getCharValue() == '7' && blackHand.getCardAt(1).getCharValue() == '7' && blackHand.getCardAt(2).getCharValue() == '7') {
             return Result.aMatchResult("Black wins. - with three of a kind: 7");
         }
