@@ -29,6 +29,13 @@ public class ThreeOfAKindRanking extends HandRanking {
         if (list.size() == 1) {
             return Result.aMatchResult("White wins. - with three of a kind: " + list.get(0).getValue());
         }
+
+
+        Map<Card, Long> blackHandMap = Arrays.stream(blackHand.getCards()).collect(groupingBy(Function.identity(), counting()));
+        List<Card> blackList = blackHandMap.keySet().stream().filter(x -> blackHandMap.get(x) == 3).sorted().toList();
+        if (blackList.size() == 1) {
+            return Result.aMatchResult("Black wins. - with three of a kind: " + blackList.get(0).getValue());
+        }
         
         if(blackHand.getCardAt(0).getCharValue() == '7' && blackHand.getCardAt(1).getCharValue() == '7' && blackHand.getCardAt(2).getCharValue() == '7') {
             return Result.aMatchResult("Black wins. - with three of a kind: 7");
