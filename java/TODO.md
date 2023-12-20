@@ -1,9 +1,9 @@
-- [ ] "Three Of A Kind" ranking
+- [X] "Three Of A Kind" ranking
   - [x] Only one player has three cards of a kind 
   - [X] Two player have three cards of a kind
     - [X] The one with the highest value wins
   - [X] Connect the code to the full execution
-  - [ ] Refactor the tests
+  - [X] Refactor the tests
 - [ ] "Straight" ranking
 - [ ] "Flush" ranking
 - [ ] "Full House" ranking
