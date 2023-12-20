@@ -8,3 +8,5 @@
 - [ ] "Four of a Kind" ranking
 - [ ] "Straight Flush" ranking
 - [ ] "Royal Flush" ranking
+- [ ] Parking 
+  - [ ] Make the message consistent across all the different types of rankings  

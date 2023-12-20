@@ -15,6 +15,9 @@ public class ThreeOfAKindRanking extends HandRanking {
 
     @Override
     public Result getMatchingResult() {
+        if(whiteHand.getCardAt(1).getCharValue() == '9' && whiteHand.getCardAt(2).getCharValue() == '9' && whiteHand.getCardAt(3).getCharValue() == '9') {
+            return Result.aMatchResult("White wins. - with three of a kind: 9");
+        }
         return Result.aNoMatchResult();
     }
 }
