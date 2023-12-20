@@ -1,6 +1,5 @@
 package com.murex.ranking;
 
-import com.murex.Card;
 import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.ThreeOfAKindHand;
@@ -26,13 +25,13 @@ public class ThreeOfAKindRanking extends HandRanking {
         }
 
         ThreeOfAKindHand winningHand = threeOfAKindBlackHand.hasThreeOfAKind() ? threeOfAKindBlackHand : threeOfAKindWhiteHand;
-        return Result.aMatchResult(winningHand.getHand().getName() +  " wins. - with three of a kind: " + winningHand.getCard().getValue());
+        return Result.aMatchResult(winningHand.getHand().getName() + " wins. - with three of a kind: " + winningHand.getCard().getValue());
 
     }
 
     private Result getHigherHand() {
         int comparison = threeOfAKindBlackHand.getCard().compareTo(threeOfAKindWhiteHand.getCard());
-        if(comparison == 0) {
+        if (comparison == 0) {
             return Result.aNoMatchResult();
         }
 

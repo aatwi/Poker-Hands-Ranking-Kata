@@ -1,7 +1,7 @@
 - [ ] "Three Of A Kind" ranking
-  - [ ] Only one player has three cards of a kind 
-  - [ ] Two player have three cards of a kind
-    - [ ] The one with the highest value wins 
+  - [x] Only one player has three cards of a kind 
+  - [X] Two player have three cards of a kind
+    - [X] The one with the highest value wins 
 - [ ] "Straight" ranking
 - [ ] "Flush" ranking
 - [ ] "Full House" ranking
@@ -9,4 +9,5 @@
 - [ ] "Straight Flush" ranking
 - [ ] "Royal Flush" ranking
 - [ ] Parking 
-  - [ ] Make the message consistent across all the different types of rankings  
+  - [ ] Make the message consistent across all the different types of rankings 
+  - [ ] Make the Hand as an interface or remove the Hand fields from the HighHand objects
