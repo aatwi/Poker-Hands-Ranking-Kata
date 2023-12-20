@@ -2,7 +2,7 @@
   - [x] Only one player has three cards of a kind 
   - [X] Two player have three cards of a kind
     - [X] The one with the highest value wins
-  - [ ] Connect the code to the full execution
+  - [X] Connect the code to the full execution
   - [ ] Refactor the tests
 - [ ] "Straight" ranking
 - [ ] "Flush" ranking
