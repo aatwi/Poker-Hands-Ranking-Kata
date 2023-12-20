@@ -42,4 +42,12 @@ class ThreeOfAKindRankingTest {
         assertEquals(aMatchResult("Black wins. - with three of a kind: 7"), threeOfAKindRanking.getMatchingResult());
     }
 
+    @Test
+    public void it_should_return_a_matching_result_with_black_as_winner_having_three_cards_of_Ace_over_white_having_three_cards_of_9() {
+        Hand blackHand = Hand.buildFrom("Black", "2H 3C AD AH AS");
+        Hand whiteHand = Hand.buildFrom("White",  "2D 9H 9C 9S KH");
+        ThreeOfAKindRanking threeOfAKindRanking = new ThreeOfAKindRanking(blackHand, whiteHand);
+        assertEquals(aMatchResult("Black wins. - with three of a kind: Ace"), threeOfAKindRanking.getMatchingResult());
+    }
+
 }
