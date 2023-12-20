@@ -3,6 +3,7 @@ package com.murex.ranking;
 import com.murex.Card;
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.hands.ThreeOfAKindHand;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,11 +16,15 @@ import static java.util.stream.Collectors.groupingBy;
 public class ThreeOfAKindRanking extends HandRanking {
     private final Hand blackHand;
     private final Hand whiteHand;
+    private final ThreeOfAKindHand threeOfAKindBlackHand;
+    private final ThreeOfAKindHand threeOfAKindWhiteHand;
 
     public ThreeOfAKindRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
         this.blackHand = blackHand;
         this.whiteHand = whiteHand;
+        threeOfAKindBlackHand = new ThreeOfAKindHand(blackHand);
+        threeOfAKindWhiteHand = new ThreeOfAKindHand(whiteHand);
     }
 
     @Override
