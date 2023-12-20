@@ -8,15 +8,11 @@ import com.murex.hands.ThreeOfAKindHand;
 import java.util.List;
 
 public class ThreeOfAKindRanking extends HandRanking {
-    private final Hand blackHand;
-    private final Hand whiteHand;
     private final ThreeOfAKindHand threeOfAKindBlackHand;
     private final ThreeOfAKindHand threeOfAKindWhiteHand;
 
     public ThreeOfAKindRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
-        this.blackHand = blackHand;
-        this.whiteHand = whiteHand;
         this.threeOfAKindBlackHand = new ThreeOfAKindHand(blackHand);
         this.threeOfAKindWhiteHand = new ThreeOfAKindHand(whiteHand);
     }
