@@ -24,19 +24,22 @@ public class ThreeOfAKindRanking extends HandRanking {
 
     @Override
     public Result getMatchingResult() {
-        Map<Card, Long> twoPairsMap = Arrays.stream(whiteHand.getCards()).collect(groupingBy(Function.identity(), counting()));
-        List<Card> list = twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).sorted().toList();
+        List<Card> list = extractThreeOfAKind(whiteHand);
         if (list.size() == 1) {
             return Result.aMatchResult("White wins. - with three of a kind: " + list.get(0).getValue());
         }
 
-
-        Map<Card, Long> blackHandMap = Arrays.stream(blackHand.getCards()).collect(groupingBy(Function.identity(), counting()));
-        List<Card> blackList = blackHandMap.keySet().stream().filter(x -> blackHandMap.get(x) == 3).sorted().toList();
+        List<Card> blackList = extractThreeOfAKind(blackHand);
         if (blackList.size() == 1) {
             return Result.aMatchResult("Black wins. - with three of a kind: " + blackList.get(0).getValue());
         }
-        
+
         return Result.aNoMatchResult();
+    }
+
+    private List<Card> extractThreeOfAKind(Hand whiteHand) {
+        Map<Card, Long> twoPairsMap = Arrays.stream(whiteHand.getCards()).collect(groupingBy(Function.identity(), counting()));
+        List<Card> list = twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).sorted().toList();
+        return list;
     }
 }
