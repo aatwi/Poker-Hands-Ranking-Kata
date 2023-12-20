@@ -31,9 +31,11 @@ public class ThreeOfAKindRanking extends HandRanking {
     }
 
     private Result getHigherHand() {
-        Card whiteCard = threeOfAKindWhiteHand.getCard();
-        Card blackCard = threeOfAKindBlackHand.getCard();
-        int comparison = blackCard.compareTo(whiteCard);
+        int comparison = threeOfAKindBlackHand.getCard().compareTo(threeOfAKindWhiteHand.getCard());
+        if(comparison == 0) {
+            return Result.aNoMatchResult();
+        }
+
         ThreeOfAKindHand winningHand = comparison > 0 ? threeOfAKindBlackHand : threeOfAKindWhiteHand;
         return Result.aMatchResult(winningHand.getHand().getName() + " wins. - with three of a kind: " + winningHand.getCard().getValue());
     }
