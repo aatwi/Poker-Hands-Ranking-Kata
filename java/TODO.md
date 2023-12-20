@@ -1,0 +1,10 @@
+- [ ] "Three Of A Kind" ranking
+  - [ ] Only one player has three cards of a kind 
+  - [ ] Two player have three cards of a kind
+    - [ ] The one with the highest value wins 
+- [ ] "Straight" ranking
+- [ ] "Flush" ranking
+- [ ] "Full House" ranking
+- [ ] "Four of a Kind" ranking
+- [ ] "Straight Flush" ranking
+- [ ] "Royal Flush" ranking
