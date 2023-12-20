@@ -30,27 +30,42 @@ class ThreeOfAKindRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_having_three_cards_of_9() {
-        assertMatchingResult("7H 7C TD KH AS", "2D 9H 9C 9S KH", "White wins. - with three of a kind: 9");
+        assertMatchingResult(
+                "7H 7C TD KH AS",
+                "2D 9H 9C 9S KH",
+                "White wins. - with three of a kind: 9");
     }
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_having_three_cards_of_10() {
-        assertMatchingResult("7H 7C TD KH AS", "2D 9H TC TS TH", "White wins. - with three of a kind: Ten");
+        assertMatchingResult(
+                "7H 7C TD KH AS",
+                "2D 9H TC TS TH",
+                "White wins. - with three of a kind: Ten");
     }
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_three_cards_of_7() {
-        assertMatchingResult("7H 7C 7D KH AS", "2D 9H 8C TS KH", "Black wins. - with three of a kind: 7");
+        assertMatchingResult(
+                "7H 7C 7D KH AS",
+                "2D 9H 8C TS KH",
+                "Black wins. - with three of a kind: 7");
     }
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_three_cards_of_Ace_over_white_having_three_cards_of_9() {
-        assertMatchingResult("2H 3C AD AH AS", "2D 9H 9C 9S KH", "Black wins. - with three of a kind: Ace");
+        assertMatchingResult(
+                "2H 3C AD AH AS",
+                "2D 9H 9C 9S KH",
+                "Black wins. - with three of a kind: Ace");
     }
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_having_three_cards_of_Jack_over_black_having_three_cards_of_8() {
-        assertMatchingResult("2H 3C 8D 8H 8S", "2D JH JC JS KH", "White wins. - with three of a kind: Jack");
+        assertMatchingResult(
+                "2H 3C 8D 8H 8S",
+                "2D JH JC JS KH",
+                "White wins. - with three of a kind: Jack");
     }
 
 }
