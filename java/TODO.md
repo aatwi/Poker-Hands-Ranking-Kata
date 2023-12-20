@@ -5,6 +5,11 @@
   - [X] Connect the code to the full execution
   - [X] Refactor the tests
 - [ ] "Straight" ranking
+  - [ ] Only one player has a straight 
+  - [ ] Two player have straight cards 
+    - [ ] The one with the highest value wins
+  - [ ] Connect the code to the full execution
+  - [ ] Refactor the tests
 - [ ] "Flush" ranking
 - [ ] "Full House" ranking
 - [ ] "Four of a Kind" ranking

@@ -113,19 +113,40 @@ public class PokerGameTest {
 
     @Test
     public void
-    THREE_OF_A_KIND_black_wins_with_three_of_a_kind_Black_wins() {
+    THREE_OF_A_KIND_black_wins_having_three_cards_of_one_kind() {
         assertWinner("2H 2D 2S 5C KS", "2C 3S 6H 8H JC", "Black wins. - with three of a kind: 2");
     }
 
     @Test
     public void
-    THREE_OF_A_KIND_black_wins_with_three_of_a_kind_White_wins() {
+    THREE_OF_A_KIND_white_wins_having_three_cards_of_one_kind() {
         assertWinner("2H 2S 4D 5C KS", "2C 3S 6H 6D 6C", "White wins. - with three of a kind: 6");
     }
 
     @Test
     public void
-    THREE_OF_A_KIND_black_wins_with_three_of_a_kind_White_wins_with_higher_card() {
+    THREE_OF_A_KIND_black_wins_having_three_cards_of_one_kind_and_higher_card() {
         assertWinner("2H 5D 5S 5C KS", "2C 3S JH JD JC", "White wins. - with three of a kind: Jack");
+    }
+
+    @Disabled
+    @Test
+    public void
+    STRAIGHT_black_wins_with_a_straight_hand() {
+        assertWinner("2H 3D 4S 5C 6S", "2C 3S 6H 8H JC", "Black wins. - with straight cards");
+    }
+
+    @Disabled
+    @Test
+    public void
+    STRAIGHT_black_wins_with_three_of_a_kind_White_wins() {
+        assertWinner("2H 2S 4D 5C KS", "7C 8S 9H TD JC", "White wins. - with straight cards");
+    }
+    
+    @Disabled
+    @Test
+    public void
+    STRAIGHT_black_wins_with_three_of_a_kind_White_wins_with_higher_card() {
+        assertWinner("2H 3D 4S 5C 6S", "6C 7S 8H 9D TC", "White wins. - with straight cards & higher cards");
     }
 }
