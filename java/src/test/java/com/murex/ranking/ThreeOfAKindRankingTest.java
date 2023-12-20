@@ -19,7 +19,7 @@ class ThreeOfAKindRankingTest {
     }
 
     @Test
-    public void it_should_return_a_matching_result_with_white_as_winner() {
+    public void it_should_return_a_matching_result_with_white_as_winner_having_three_cards_of_9() {
         Hand blackHand = Hand.buildFrom("Black", "7H 7C TD KH AS");
         Hand whiteHand = Hand.buildFrom("White",  "2D 9H 9C 9S KH");
         ThreeOfAKindRanking threeOfAKindRanking = new ThreeOfAKindRanking(blackHand, whiteHand);
@@ -27,7 +27,7 @@ class ThreeOfAKindRankingTest {
     }
 
     @Test
-    public void it_should_return_a_matching_result_with_black_as_winner() {
+    public void it_should_return_a_matching_result_with_black_as_winner_having_three_cards_of_7() {
         Hand blackHand = Hand.buildFrom("Black", "7H 7C 7D KH AS");
         Hand whiteHand = Hand.buildFrom("White",  "2D 9H 8C TS KH");
         ThreeOfAKindRanking threeOfAKindRanking = new ThreeOfAKindRanking(blackHand, whiteHand);
