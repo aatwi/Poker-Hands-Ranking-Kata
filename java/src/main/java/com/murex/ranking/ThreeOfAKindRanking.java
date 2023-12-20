@@ -20,16 +20,20 @@ public class ThreeOfAKindRanking extends HandRanking {
     @Override
     public Result getMatchingResult() {
         List<Card> list = threeOfAKindWhiteHand.extractThreeOfAKind();
-        if (list.size() == 1) {
-            return Result.aMatchResult("White wins. - with three of a kind: " + list.get(0).getValue());
+        if (threeOfAKindWhiteHand.hasThreeOfAKind()) {
+            return Result.aMatchResult("White wins. - with three of a kind: " + getCardValue(threeOfAKindWhiteHand));
         }
 
         List<Card> blackList = threeOfAKindBlackHand.extractThreeOfAKind();
-        if (blackList.size() == 1) {
-            return Result.aMatchResult("Black wins. - with three of a kind: " + blackList.get(0).getValue());
+        if (threeOfAKindBlackHand.hasThreeOfAKind()) {
+            return Result.aMatchResult("Black wins. - with three of a kind: " + getCardValue(threeOfAKindBlackHand));
         }
 
         return Result.aNoMatchResult();
+    }
+
+    private static String getCardValue(ThreeOfAKindHand threeOfAKindWhiteHand) {
+        return threeOfAKindWhiteHand.extractThreeOfAKind().get(0).getValue();
     }
 
 }
