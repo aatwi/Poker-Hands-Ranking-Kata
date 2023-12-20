@@ -34,4 +34,8 @@ public final class ThreeOfAKindHand {
     public String getCardValue() {
         return extractThreeOfAKind().get(0).getValue();
     }
+
+    public Card getCard() {
+        return extractThreeOfAKind().get(0);
+    }
 }
