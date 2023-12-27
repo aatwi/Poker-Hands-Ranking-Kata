@@ -3,6 +3,7 @@ package com.murex.ranking;
 import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.FlushHand;
+import com.murex.hands.HighHand;
 
 import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
@@ -25,7 +26,8 @@ public class FlushCardRanking extends HandRanking {
             if (highCardRanking.getHigherHand().isEmpty()) {
                 return aNoMatchResult();
             }
-            return aMatchResult("White wins. - with flush and higher hand");
+            HighHand highHand = highCardRanking.getHigherHand().get();
+            return aMatchResult(highHand.getHand().getName() + " wins. - with flush and higher hand");
         }
 
         if(blackFlushHand.isFlush()) {
