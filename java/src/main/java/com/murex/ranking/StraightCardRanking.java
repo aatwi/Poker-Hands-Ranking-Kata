@@ -4,6 +4,8 @@ import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.StraightHand;
 
+import static com.murex.Result.aNoMatchResult;
+
 public class StraightCardRanking extends HandRanking{
 
     private final StraightHand whiteStraight;
@@ -17,6 +19,9 @@ public class StraightCardRanking extends HandRanking{
 
     @Override
     public Result getMatchingResult() {
+        if(whiteStraight.isStraight() && blackStraight.isStraight()) {
+            return aNoMatchResult();
+        }
         if(whiteStraight.isStraight()) {
             return Result.aMatchResult("White wins. - with straight cards");
         }
