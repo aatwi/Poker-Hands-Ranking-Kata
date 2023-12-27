@@ -24,6 +24,10 @@ public class Card implements Comparable<Card> {
         return CardValueConverter.getIntegerValueOf(value);
     }
 
+    public char getSuite() {
+        return suite;
+    }
+
     @Override
     public int compareTo(Card otherCard) {
         int otherValue = CardValueConverter.getIntegerValueOf(otherCard.value);
