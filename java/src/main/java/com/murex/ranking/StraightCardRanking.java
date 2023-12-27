@@ -11,8 +11,8 @@ public class StraightCardRanking extends HandRanking{
 
     public StraightCardRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
-        whiteStraight = new StraightHand(blackHand);
-        blackStraight = new StraightHand(whiteHand);
+        whiteStraight = new StraightHand(whiteHand);
+        blackStraight = new StraightHand(blackHand);
     }
 
     @Override
