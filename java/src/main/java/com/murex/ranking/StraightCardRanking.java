@@ -21,10 +21,16 @@ public class StraightCardRanking extends HandRanking{
     @Override
     public Result getMatchingResult() {
         if(whiteStraight.isStraight() && blackStraight.isStraight()) {
-            if(whiteHand.getCardAt(0).getCharValue()=='6') {
-                return aMatchResult("White wins. - with straight cards and higher cards");
+            int comparison = blackStraight.getHand().getCardAt(0).compareTo(whiteStraight.getHand().getCardAt(0));
+            if(comparison == 0) {
+                return aNoMatchResult();
             }
-            return aMatchResult("Black wins. - with straight cards and higher cards");
+            if(comparison > 0) {
+                return aMatchResult("Black wins. - with straight cards and higher cards");
+            }
+                return aMatchResult("White wins. - with straight cards and higher cards");
+//            }
+//            return aMatchResult("Black wins. - with straight cards and higher cards");
         }
         if(whiteStraight.isStraight()) {
             return buildMatchingResult(whiteStraight);
