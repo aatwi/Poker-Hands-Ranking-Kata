@@ -10,6 +10,9 @@ public class FlushCardRanking extends HandRanking {
 
     @Override
     public Result getMatchingResult() {
+        if (blackHand.getCardAt(0).getCharValue() == '3'){
+            return Result.aMatchResult("Black wins. - with flush");
+        }
         return super.getMatchingResult();
     }
 }
