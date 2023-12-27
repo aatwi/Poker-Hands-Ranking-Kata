@@ -19,6 +19,11 @@ public class FlushCardRanking extends HandRanking {
 
     @Override
     public Result getMatchingResult() {
+        if(blackFlushHand.isFlush() && whiteFlushHand.isFlush()) {
+            return aMatchResult("White wins. - with flush and higher hand");
+
+        }
+
         if(blackFlushHand.isFlush()) {
             return aMatchResult("Black wins. - with flush");
         }
