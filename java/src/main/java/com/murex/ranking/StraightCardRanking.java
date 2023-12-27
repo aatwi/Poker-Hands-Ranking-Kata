@@ -37,10 +37,7 @@ public class StraightCardRanking extends HandRanking{
         if(comparison == 0) {
             return aNoMatchResult();
         }
-        if(comparison > 0) {
-            return buildMessageWithHigherCards(blackStraight);
-        }
-        return aMatchResult("White wins. - with straight cards and higher cards");
+        return comparison > 0 ? buildMessageWithHigherCards(blackStraight) : buildMessageWithHigherCards(whiteStraight);
     }
 
     private static Result buildMessageWithHigherCards(StraightHand straightHand) {
