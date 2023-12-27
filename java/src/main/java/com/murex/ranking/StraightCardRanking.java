@@ -4,6 +4,7 @@ import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.StraightHand;
 
+import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
 
 public class StraightCardRanking extends HandRanking{
@@ -23,12 +24,16 @@ public class StraightCardRanking extends HandRanking{
             return aNoMatchResult();
         }
         if(whiteStraight.isStraight()) {
-            return Result.aMatchResult("White wins. - with straight cards");
+            return buildMatchingResult(whiteStraight);
         }
         if(blackStraight.isStraight()) {
-            return Result.aMatchResult("Black wins. - with straight cards");
+            return aMatchResult("Black wins. - with straight cards");
         }
         return super.getMatchingResult();
+    }
+
+    private static Result buildMatchingResult(StraightHand whiteStraight) {
+        return aMatchResult(whiteStraight.getHand().getName() + " wins. - with straight cards");
     }
 
 }
