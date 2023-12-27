@@ -17,8 +17,8 @@ public class StraightCardRanking extends HandRanking{
 
     @Override
     public Result getMatchingResult() {
-        boolean straightBlack = blackStraight.isAStraight();
-        boolean straightWhite = whiteStraight.isAStraight();
+        boolean straightBlack = blackStraight.isStraight();
+        boolean straightWhite = whiteStraight.isStraight();
         if(straightWhite) {
             return Result.aMatchResult("White wins. - with straight cards");
         }

@@ -13,7 +13,7 @@ public class StraightHand {
         return hand;
     }
 
-    public boolean isAStraight() {
+    public boolean isStraight() {
         for (int i = 1; i < hand.getCards().length; i++) {
             int previousCard = hand.getCardAt(i - 1).getIntValue();
             int currentCard = hand.getCardAt(i).getIntValue();
