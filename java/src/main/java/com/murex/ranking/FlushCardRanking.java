@@ -26,14 +26,11 @@ public class FlushCardRanking extends HandRanking {
     }
 
     private boolean isFlush(Hand blackHand) {
-        boolean allSameSuite = false;
         for (int index = 1; index < 5; index++) {
             if (blackHand.getCardAt(index - 1).getSuite() != blackHand.getCardAt(index).getSuite()) {
-                allSameSuite = false;
-                break;
+                return false;
             }
-            allSameSuite = true;
         }
-        return allSameSuite;
+        return true;
     }
 }
