@@ -4,6 +4,8 @@ import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.FlushHand;
 
+import static com.murex.Result.aMatchResult;
+
 public class FlushCardRanking extends HandRanking {
 
     private final FlushHand blackFlushHand;
@@ -17,23 +19,15 @@ public class FlushCardRanking extends HandRanking {
 
     @Override
     public Result getMatchingResult() {
-        if(isFlush(blackHand, blackFlushHand)) {
-            return Result.aMatchResult("Black wins. - with flush");
+        if(blackFlushHand.isFlush()) {
+            return aMatchResult("Black wins. - with flush");
         }
 
-        if(isFlush(whiteHand, whiteFlushHand)) {
-            return Result.aMatchResult("White wins. - with flush");
+        if(whiteFlushHand.isFlush()) {
+            return aMatchResult("White wins. - with flush");
         }
 
         return super.getMatchingResult();
     }
 
-    public boolean isFlush(Hand blackHand, FlushHand flushHand) {
-        for (int index = 1; index < 5; index++) {
-            if (flushHand.getHand().getCardAt(index - 1).getSuite() != flushHand.getHand().getCardAt(index).getSuite()) {
-                return false;
-            }
-        }
-        return true;
-    }
 }
