@@ -11,6 +11,7 @@ public class StraightCardRanking extends HandRanking{
     @Override
     public Result getMatchingResult() {
         boolean straightWhite = false;
+        boolean straightBlack = false;
         for (int i = 1; i < whiteHand.getCards().length; i++) {
             int previousCard = whiteHand.getCardAt(i - 1).getIntValue();
             int currentCard = whiteHand.getCardAt(i).getIntValue();
@@ -20,10 +21,19 @@ public class StraightCardRanking extends HandRanking{
             }
             straightWhite = true;
         }
+        for (int i = 1; i < blackHand.getCards().length; i++) {
+            int previousCard = blackHand.getCardAt(i - 1).getIntValue();
+            int currentCard = blackHand.getCardAt(i).getIntValue();
+            if(currentCard != previousCard + 1){
+                straightBlack = false;
+                break;
+            }
+            straightBlack = true;
+        }
         if(straightWhite) {
             return Result.aMatchResult("White wins. - with straight cards");
         }
-        if(blackHand.getCardAt(0).getCharValue() == '7' && blackHand.getCardAt(4).getCharValue() == 'J') {
+        if(straightBlack) {
             return Result.aMatchResult("Black wins. - with straight cards");
         }
         return super.getMatchingResult();
