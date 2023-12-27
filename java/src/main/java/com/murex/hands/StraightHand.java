@@ -8,4 +8,8 @@ public class StraightHand {
     public StraightHand(Hand hand) {
         this.hand = hand;
     }
+
+    public Hand getHand() {
+        return hand;
+    }
 }
