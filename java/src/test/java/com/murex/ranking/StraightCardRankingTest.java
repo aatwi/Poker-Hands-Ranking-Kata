@@ -49,22 +49,34 @@ class StraightCardRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_straight_cards_7_to_Jack() {
-        assertMatchingResult("7H 8C 9D TH JS", "2D 3H 7C JH AD", "Black wins. - with straight cards");
+        assertMatchingResult(
+                "7H 8C 9D TH JS",
+                "2D 3H 7C JH AD",
+                "Black wins. - with straight cards");
     }
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_straight_cards_3_to_7() {
-        assertMatchingResult("3H 4C 5D 6H 7S", "2D 3H 7C JH AD", "Black wins. - with straight cards");
+        assertMatchingResult(
+                "3H 4C 5D 6H 7S",
+                "2D 3H 7C JH AD",
+                "Black wins. - with straight cards");
     }
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_straight_and_higher_cards() {
-        assertMatchingResult("7H 8C 9D TH JS", "2D 3H 4C 5S 6H", "Black wins. - with straight cards and higher cards");
+        assertMatchingResult(
+                "7H 8C 9D TH JS",
+                "2D 3H 4C 5S 6H",
+                "Black wins. - with straight cards and higher cards");
     }
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_straight_and_higher_cards() {
-        assertMatchingResult("4H 5C 6D 7H 8S", "6D 7H 8C 9S TH", "White wins. - with straight cards and higher cards");
+        assertMatchingResult(
+                "4H 5C 6D 7H 8S",
+                "6D 7H 8C 9S TH",
+                "White wins. - with straight cards and higher cards");
     }
 
 
