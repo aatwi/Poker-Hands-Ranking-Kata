@@ -21,9 +21,18 @@ class FlushCardRankingTest {
     }
 
     @Test
-    public void it_should_return_a_matching_result_with_white_as_winner_having_flush() {
+    public void it_should_return_a_matching_result_with_black_as_winner_having_flush_with_hearts() {
         Hand blackHand = Hand.buildFrom("Black", "3H 4H 6H KH AH");
         Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
+
+        FlushCardRanking flushCardRanking = new FlushCardRanking(blackHand, whiteHand);
+        assertEquals(aMatchResult("Black wins. - with flush"), flushCardRanking.getMatchingResult());
+    }
+
+    @Test
+    public void it_should_return_a_matching_result_with_black_as_winner_having_flush_with_diamonds() {
+        Hand blackHand = Hand.buildFrom("Black", "3D 4D 6D KD AD");
+        Hand whiteHand = Hand.buildFrom("White", "2D 5S 7D JS AC");
 
         FlushCardRanking flushCardRanking = new FlushCardRanking(blackHand, whiteHand);
         assertEquals(aMatchResult("Black wins. - with flush"), flushCardRanking.getMatchingResult());
