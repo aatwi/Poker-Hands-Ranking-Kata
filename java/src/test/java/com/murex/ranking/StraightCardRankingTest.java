@@ -1,6 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Result.aMatchResult;
@@ -22,6 +23,16 @@ class StraightCardRankingTest {
     public void it_should_return_a_matching_result_with_white_as_winner_having_straight_cards_2_to_6() {
         Hand blackHand = Hand.buildFrom("Black", "7H 8C TD KH AS");
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 4C 5S 6H");
+
+        StraightCardRanking straightCardRanking = new StraightCardRanking(blackHand, whiteHand);
+        assertEquals(aMatchResult("White wins. - with straight cards"), straightCardRanking.getMatchingResult());
+    }
+
+    @Disabled
+    @Test
+    public void it_should_return_a_matching_result_with_white_as_winner_having_straight_cards_4_to_8() {
+        Hand blackHand = Hand.buildFrom("Black", "7H 8C TD KH AS");
+        Hand whiteHand = Hand.buildFrom("White", "4D 5H 6C 7S 8H");
 
         StraightCardRanking straightCardRanking = new StraightCardRanking(blackHand, whiteHand);
         assertEquals(aMatchResult("White wins. - with straight cards"), straightCardRanking.getMatchingResult());
