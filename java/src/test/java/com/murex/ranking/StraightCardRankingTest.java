@@ -20,15 +20,6 @@ class StraightCardRankingTest {
     }
 
     @Test
-    public void it_should_return_a_no_matching_result_when_both_hands_are_straights() {
-        Hand blackHand = Hand.buildFrom("Black", "7H 8C 9D TH JS");
-        Hand whiteHand = Hand.buildFrom("White", "2D 3H 4C 5S 6H");
-
-        StraightCardRanking straightCardRanking = new StraightCardRanking(blackHand, whiteHand);
-        assertEquals(aNoMatchResult(), straightCardRanking.getMatchingResult());
-    }
-
-    @Test
     public void it_should_return_a_matching_result_with_white_as_winner_having_straight_cards_2_to_6() {
         Hand blackHand = Hand.buildFrom("Black", "7H 8C TD KH AS");
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 4C 5S 6H");
@@ -63,5 +54,15 @@ class StraightCardRankingTest {
         StraightCardRanking straightCardRanking = new StraightCardRanking(blackHand, whiteHand);
         assertEquals(aMatchResult("Black wins. - with straight cards"), straightCardRanking.getMatchingResult());
     }
+
+    @Test
+    public void it_should_return_a_matching_result_with_black_as_winner_straight_and_higher_cards() {
+        Hand blackHand = Hand.buildFrom("Black", "7H 8C 9D TH JS");
+        Hand whiteHand = Hand.buildFrom("White", "2D 3H 4C 5S 6H");
+
+        StraightCardRanking straightCardRanking = new StraightCardRanking(blackHand, whiteHand);
+        assertEquals(aMatchResult("Black wins. - with straight cards and higher cards"), straightCardRanking.getMatchingResult());
+    }
+
 
 }

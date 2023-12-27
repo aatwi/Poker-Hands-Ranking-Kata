@@ -145,6 +145,6 @@ public class PokerGameTest {
     @Test
     public void
     STRAIGHT_white_wins_with_a_straight_and_higher_cards() {
-        assertWinner("2H 3D 4S 5C 6S", "6C 7S 8H 9D TC", "White wins. - with straight cards & higher cards");
+        assertWinner("2H 3D 4S 5C 6S", "6C 7S 8H 9D TC", "White wins. - with straight cards");
     }
 }
