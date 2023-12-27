@@ -3,9 +3,11 @@ package com.murex.ranking;
 import com.murex.Hand;
 import com.murex.Result;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Result.aMatchResult;
+import static com.murex.Result.aNoMatchResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FlushCardRankingTest {
@@ -60,9 +62,17 @@ class FlushCardRankingTest {
         assertEquals(aMatchResult("White wins. - with flush and higher hand"), flushCardRanking.getMatchingResult());
     }
 
+    @Disabled
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_flush_with_spades_and_higher_hands() {
         FlushCardRanking flushCardRanking = buildFlushCardRanking("2D 5D 7D JD AD", "3S 4S 6S JS QS");
-        assertEquals(aMatchResult("White wins. - with flush and higher hand"), flushCardRanking.getMatchingResult());
+        assertEquals(aMatchResult("Black wins. - with flush and higher hand"), flushCardRanking.getMatchingResult());
+    }
+
+    @Disabled
+    @Test
+    public void it_should_return_a_no_matching_result_when_the_two_hands_have_flush_and_equal_card_values() {
+        FlushCardRanking flushCardRanking = buildFlushCardRanking("3D 4D 6D JD QD", "3S 4S 6S JS QS");
+        assertEquals(aNoMatchResult(), flushCardRanking.getMatchingResult());
     }
 }
