@@ -28,9 +28,7 @@ public class StraightCardRanking extends HandRanking{
             if(comparison > 0) {
                 return aMatchResult("Black wins. - with straight cards and higher cards");
             }
-                return aMatchResult("White wins. - with straight cards and higher cards");
-//            }
-//            return aMatchResult("Black wins. - with straight cards and higher cards");
+            return aMatchResult("White wins. - with straight cards and higher cards");
         }
         if(whiteStraight.isStraight()) {
             return buildMatchingResult(whiteStraight);
