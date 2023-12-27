@@ -10,6 +10,19 @@ public class FlushCardRanking extends HandRanking {
 
     @Override
     public Result getMatchingResult() {
+        boolean allSameSuite = false;
+        for (int index = 1; index < 5; index++) {
+            if (blackHand.getCardAt(index-1).getSuite() != blackHand.getCardAt(index).getSuite()) {
+                allSameSuite = false;
+                break;
+            }
+            allSameSuite = true;
+        }
+
+        if(allSameSuite) {
+            return Result.aMatchResult("Black wins. - with flush");
+        }
+
         if (blackHand.getCardAt(0).getSuite() == 'H' && blackHand.getCardAt(1).getSuite() == 'H' && blackHand.getCardAt(2).getSuite() == 'H'
         && blackHand.getCardAt(3).getSuite() == 'H' && blackHand.getCardAt(4).getSuite() == 'H'){
             return Result.aMatchResult("Black wins. - with flush");
