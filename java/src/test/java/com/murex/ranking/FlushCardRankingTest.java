@@ -59,4 +59,10 @@ class FlushCardRankingTest {
         FlushCardRanking flushCardRanking = buildFlushCardRanking("2D 5D 7D JD AD", "3S 4S 6S KS AS");
         assertEquals(aMatchResult("White wins. - with flush and higher hand"), flushCardRanking.getMatchingResult());
     }
+
+    @Test
+    public void it_should_return_a_matching_result_with_black_as_winner_having_flush_with_spades_and_higher_hands() {
+        FlushCardRanking flushCardRanking = buildFlushCardRanking("2D 5D 7D JD AD", "3S 4S 6S JS QS");
+        assertEquals(aMatchResult("White wins. - with flush and higher hand"), flushCardRanking.getMatchingResult());
+    }
 }
