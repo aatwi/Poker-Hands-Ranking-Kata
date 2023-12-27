@@ -29,9 +29,9 @@ class StraightCardRankingTest {
     }
 
     @Test
-    public void it_should_return_a_matching_result_with_white_as_winner_having_straight_cards_4_to_8() {
+    public void it_should_return_a_matching_result_with_white_as_winner_having_straight_cards_8_to_Q() {
         Hand blackHand = Hand.buildFrom("Black", "7H 8C TD KH AS");
-        Hand whiteHand = Hand.buildFrom("White", "4D 5H 6C 7S 8H");
+        Hand whiteHand = Hand.buildFrom("White", "8D 9H TC JS QH");
 
         StraightCardRanking straightCardRanking = new StraightCardRanking(blackHand, whiteHand);
         assertEquals(aMatchResult("White wins. - with straight cards"), straightCardRanking.getMatchingResult());
