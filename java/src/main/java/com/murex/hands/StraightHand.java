@@ -3,6 +3,9 @@ package com.murex.hands;
 import com.murex.Hand;
 
 public class StraightHand {
-    public StraightHand() {
+    private final Hand hand;
+
+    public StraightHand(Hand hand) {
+        this.hand = hand;
     }
 }
