@@ -17,7 +17,7 @@ class StraightCardRankingTest {
 
     private static void assertMatchingResult(String blackCards, String whiteCards, Result expected, String s) {
         StraightCardRanking straightCardRanking = buildStraightCardRanking(blackCards, whiteCards);
-        assertEquals(expected, straightCardRanking.getMatchingResult());
+        assertEquals(aMatchResult(s), straightCardRanking.getMatchingResult());
     }
 
     private static StraightCardRanking buildStraightCardRanking(String blackCards, String whiteCards) {
