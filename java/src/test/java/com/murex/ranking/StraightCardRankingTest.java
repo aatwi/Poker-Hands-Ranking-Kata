@@ -19,13 +19,12 @@ class StraightCardRankingTest {
         StraightCardRanking straightCardRanking = buildStraightCardRanking(blackCards, whiteCards);
         assertEquals(expected, straightCardRanking.getMatchingResult());
     }
-    
+
     private static StraightCardRanking buildStraightCardRanking(String blackCards, String whiteCards) {
         Hand blackHand = Hand.buildFrom("Black", blackCards);
         Hand whiteHand = Hand.buildFrom("White", whiteCards);
 
-        StraightCardRanking straightCardRanking = new StraightCardRanking(blackHand, whiteHand);
-        return straightCardRanking;
+        return new StraightCardRanking(blackHand, whiteHand);
     }
 
     @Test
