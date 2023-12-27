@@ -13,7 +13,7 @@ class FlushCardRankingTest {
 
     @Test
     void it_should_return_a_non_matching_result_when_both_hands_have_no_flush() {
-        Hand blackHand = Hand.buildFrom("Black", "2D 4H 6S KC AH");
+        Hand blackHand = Hand.buildFrom("Black", "2D 4H 6S KC AH"); 
         Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
 
         FlushCardRanking flushCardRanking = new FlushCardRanking(blackHand, whiteHand);
