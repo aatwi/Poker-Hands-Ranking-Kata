@@ -55,4 +55,13 @@ class FlushCardRankingTest {
         FlushCardRanking flushCardRanking = new FlushCardRanking(blackHand, whiteHand);
         assertEquals(aMatchResult("Black wins. - with flush"), flushCardRanking.getMatchingResult());
     }
+
+    @Test
+    public void it_should_return_a_matching_result_with_white_as_winner_having_flush_with_spades() {
+        Hand blackHand = Hand.buildFrom("Black", "2D 5S 7D JS AD");
+        Hand whiteHand = Hand.buildFrom("White", "3S 4S 6S KS AS");
+
+        FlushCardRanking flushCardRanking = new FlushCardRanking(blackHand, whiteHand);
+        assertEquals(aMatchResult("White wins. - with flush"), flushCardRanking.getMatchingResult());
+    }
 }
