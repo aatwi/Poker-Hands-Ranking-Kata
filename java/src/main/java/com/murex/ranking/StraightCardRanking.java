@@ -22,16 +22,13 @@ public class StraightCardRanking extends HandRanking{
     }
 
     private boolean isAStraight(Hand hand) {
-        boolean straightWhite = false;
         for (int i = 1; i < hand.getCards().length; i++) {
             int previousCard = hand.getCardAt(i - 1).getIntValue();
             int currentCard = hand.getCardAt(i).getIntValue();
             if(currentCard != previousCard + 1){
-                straightWhite = false;
-                break;
+                return false;
             }
-            straightWhite = true;
         }
-        return straightWhite;
+        return true;
     }
 }
