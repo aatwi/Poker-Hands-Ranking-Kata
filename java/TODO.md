@@ -9,8 +9,13 @@
   - [X] Two player have straight cards 
     - [X] The one with the highest value wins
   - [X] Connect the code to the full execution
-  - [ ] Refactor the tests
+  - [X] Refactor the tests
 - [ ] "Flush" ranking
+  - [ ] Only one player has a straight
+  - [ ] Two player have straight cards
+    - [ ] The one with the highest value wins
+  - [ ] Connect the code to the full execution
+  - [ ] Refactor the tests
 - [ ] "Full House" ranking
 - [ ] "Four of a Kind" ranking
 - [ ] "Straight Flush" ranking

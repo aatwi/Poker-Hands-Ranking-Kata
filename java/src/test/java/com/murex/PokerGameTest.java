@@ -140,10 +140,31 @@ public class PokerGameTest {
     STRAIGHT_white_wins_with_a_straight_hand() {
         assertWinner("2H 2S 4D 5C KS", "7C 8S 9H TD JC", "White wins. - with straight cards");
     }
-    
+
     @Test
     public void
     STRAIGHT_white_wins_with_a_straight_and_higher_cards() {
         assertWinner("2H 3D 4S 5C 6S", "6C 7S 8H 9D TC", "White wins. - with straight cards and higher cards");
+    }
+
+    @Disabled
+    @Test
+    public void
+    FLUSH_white_wins_with_a_flush_cards() {
+        assertWinner( "6C 7S 8H 9D TC","3H 4H 8H QH AH", "White wins. - with flush");
+    }
+
+    @Disabled
+    @Test
+    public void
+    FLUSH_black_wins_with_a_flush_cards() {
+        assertWinner("2H 5H 6H JH KH", "6C 7S 8H 9D TC", "Black wins. - with flush");
+    }
+
+    @Disabled
+    @Test
+    public void
+    FLUSH_black_wins_with_a_flush_and_higher_cards() {
+        assertWinner("2H 5H 6H JH KH", "3D 4D 8D QD AD", "Black wins. - with flush and higher cards");
     }
 }
