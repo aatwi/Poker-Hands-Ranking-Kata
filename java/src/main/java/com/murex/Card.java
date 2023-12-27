@@ -5,9 +5,11 @@ import java.util.Objects;
 public class Card implements Comparable<Card> {
 
     private final char value;
+    private final char suite;
 
-    public Card(char value) {
+    public Card(char value, char suite) {
         this.value = value;
+        this.suite = suite;
     }
 
     public String getValue() {

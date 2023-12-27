@@ -12,11 +12,11 @@ public class HandTest {
         Hand pokerHand = Hand.buildFrom("blackHand", input);
         Hand expected = new Hand("blackHand",
                 new Card[]{
-                        new Card('2'),
-                        new Card('3'),
-                        new Card('5'),
-                        new Card('9'),
-                        new Card('K')});
+                        new Card('2', 'H'),
+                        new Card('3', 'D'),
+                        new Card('5', 'S'),
+                        new Card('9', 'C'),
+                        new Card('K', 'D')});
 
         Assertions.assertEquals(expected, pokerHand);
     }

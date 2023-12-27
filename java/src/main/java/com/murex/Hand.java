@@ -20,7 +20,7 @@ public class Hand {
         String[] cardsValues = cards.split(" ");
         Card[] handCards = new Card[5];
         for (int index = 0; index < 5; index++) {
-            handCards[index] = new Card(cardsValues[index].charAt(0));
+            handCards[index] = new Card(cardsValues[index].charAt(0), 'D');
         }
         return handCards;
     }
