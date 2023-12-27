@@ -29,7 +29,7 @@ public class StraightCardRanking extends HandRanking{
         if(blackStraight.isStraight()) {
             return buildMatchingResult(blackStraight);
         }
-        return super.getMatchingResult();
+        return aNoMatchResult();
     }
 
     private Result getHigherHand() {
