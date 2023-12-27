@@ -33,12 +33,18 @@ class StraightCardRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_having_straight_cards_2_to_6() {
-        assertMatchingResult("7H 8C TD KH AS", "2D 3H 4C 5S 6H", "White wins. - with straight cards");
+        assertMatchingResult(
+                "7H 8C TD KH AS",
+                "2D 3H 4C 5S 6H",
+                "White wins. - with straight cards");
     }
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_having_straight_cards_8_to_Q() {
-        assertMatchingResult("7H 8C TD KH AS", "8D 9H TC JS QH", "White wins. - with straight cards");
+        assertMatchingResult(
+                "7H 8C TD KH AS",
+                "8D 9H TC JS QH",
+                "White wins. - with straight cards");
     }
 
     @Test
