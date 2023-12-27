@@ -18,9 +18,12 @@ public class FlushCardRanking extends HandRanking {
                 && blackHand.getCardAt(3).getSuite() == 'D' && blackHand.getCardAt(4).getSuite() == 'D'){
             return Result.aMatchResult("Black wins. - with flush");
         }
-
         if (blackHand.getCardAt(0).getSuite() == 'C' && blackHand.getCardAt(1).getSuite() == 'C' && blackHand.getCardAt(2).getSuite() == 'C'
                 && blackHand.getCardAt(3).getSuite() == 'C' && blackHand.getCardAt(4).getSuite() == 'C'){
+            return Result.aMatchResult("Black wins. - with flush");
+        }
+        if (blackHand.getCardAt(0).getSuite() == 'S' && blackHand.getCardAt(1).getSuite() == 'S' && blackHand.getCardAt(2).getSuite() == 'S'
+                && blackHand.getCardAt(3).getSuite() == 'S' && blackHand.getCardAt(4).getSuite() == 'S'){
             return Result.aMatchResult("Black wins. - with flush");
         }
         return super.getMatchingResult();
