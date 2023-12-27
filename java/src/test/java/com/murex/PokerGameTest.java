@@ -140,8 +140,7 @@ public class PokerGameTest {
     STRAIGHT_white_wins_with_a_straight_hand() {
         assertWinner("2H 2S 4D 5C KS", "7C 8S 9H TD JC", "White wins. - with straight cards");
     }
-
-//    @Disabled
+    
     @Test
     public void
     STRAIGHT_white_wins_with_a_straight_and_higher_cards() {
