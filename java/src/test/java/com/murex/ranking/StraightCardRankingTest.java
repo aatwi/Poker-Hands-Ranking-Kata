@@ -12,9 +12,15 @@ class StraightCardRankingTest {
 
     @Test
     public void it_should_return_a_no_matching_result_when_non_of_the_players_have_straight_cards() {
-        assertMatchingResult("7H 8C TD KH AS", "2D 3H 5C 9S KH", aNoMatchResult(), "White wins. - with straight cards and higher cards");
+        assertNonMatchingResult("7H 8C TD KH AS", "2D 3H 5C 9S KH");//, aNoMatchResult(), "White wins. - with straight cards and higher cards");
     }
+    private static void assertNonMatchingResult(String blackCards, String whiteCards) {
+        Hand blackHand = Hand.buildFrom("Black", blackCards);
+        Hand whiteHand = Hand.buildFrom("White", whiteCards);
 
+        StraightCardRanking straightCardRanking = new StraightCardRanking(blackHand, whiteHand);
+        assertEquals(aNoMatchResult(), straightCardRanking.getMatchingResult());
+    }
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_having_straight_cards_2_to_6() {
         assertMatchingResult("7H 8C TD KH AS", "2D 3H 4C 5S 6H", aMatchResult("White wins. - with straight cards"), "White wins. - with straight cards");
