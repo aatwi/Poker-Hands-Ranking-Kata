@@ -28,13 +28,7 @@ public class StraightCardRanking extends HandRanking{
             return aNoMatchResult();
         }
 
-        if(whiteStraight.isStraight()) {
-            return buildMatchingResult(whiteStraight);
-        }
-        if(blackStraight.isStraight()) {
-            return buildMatchingResult(blackStraight);
-        }
-        return aNoMatchResult();
+        return blackStraight.isStraight() ? buildMatchingResult(blackStraight) : buildMatchingResult(whiteStraight);
     }
 
     private boolean bothHandsAreStraight() {
@@ -56,5 +50,4 @@ public class StraightCardRanking extends HandRanking{
     private static Result buildMatchingResult(StraightHand whiteStraight) {
         return aMatchResult(whiteStraight.getHand().getName() + " wins. - with straight cards");
     }
-
 }
