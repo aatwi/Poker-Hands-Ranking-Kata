@@ -5,6 +5,7 @@ import com.murex.Result;
 import com.murex.hands.FlushHand;
 
 import static com.murex.Result.aMatchResult;
+import static com.murex.Result.aNoMatchResult;
 
 public class FlushCardRanking extends HandRanking {
 
@@ -20,8 +21,11 @@ public class FlushCardRanking extends HandRanking {
     @Override
     public Result getMatchingResult() {
         if(blackFlushHand.isFlush() && whiteFlushHand.isFlush()) {
+            HighCardRanking highCardRanking = new HighCardRanking(blackHand, whiteHand);
+            if (highCardRanking.getHigherHand().isEmpty()) {
+                return aNoMatchResult();
+            }
             return aMatchResult("White wins. - with flush and higher hand");
-
         }
 
         if(blackFlushHand.isFlush()) {

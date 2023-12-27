@@ -69,7 +69,6 @@ class FlushCardRankingTest {
         assertEquals(aMatchResult("Black wins. - with flush and higher hand"), flushCardRanking.getMatchingResult());
     }
 
-    @Disabled
     @Test
     public void it_should_return_a_no_matching_result_when_the_two_hands_have_flush_and_equal_card_values() {
         FlushCardRanking flushCardRanking = buildFlushCardRanking("3D 4D 6D JD QD", "3S 4S 6S JS QS");
