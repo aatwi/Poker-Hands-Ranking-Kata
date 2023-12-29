@@ -163,7 +163,7 @@ public class PokerGameTest {
         assertWinner("8D TS TC TH TD", "JC JS JH JD AD", "White wins. - with four of a kind and higher hand");
     }
 
-    @Disabled
+
     @Test
     public void STRAIGHT_FLUSH_black_wins() {
         assertWinner("8S 9S TS JS QS", "JC JS JH JD AD", "Black wins. - with straight flush");

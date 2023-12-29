@@ -25,7 +25,6 @@ public class StraightFlushHandRanking extends HandRanking{
             if (comparison == 0) {
                 return Result.aNoMatchResult();
             }
-
             Hand winningHand = comparison > 0 ? blackHand : whiteHand;
             return buildResultWithHighHand(winningHand);
         }
