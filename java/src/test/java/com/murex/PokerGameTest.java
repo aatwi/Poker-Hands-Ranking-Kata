@@ -154,7 +154,6 @@ public class PokerGameTest {
         assertWinner( "6C 7S 8H 9D TC","3H 4H 8H QH AH", "White wins. - with flush");
     }
 
-    @Disabled
     @Test
     public void
     FLUSH_black_wins_with_a_flush_cards() {
