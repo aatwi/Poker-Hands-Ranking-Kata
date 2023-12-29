@@ -62,7 +62,6 @@ class StraightFlushHandRankingTest {
                 "Black wins. - with straight flush and higher hand");
     }
 
-    @Disabled
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_with_higher_hand() {
         assertMatchingResult(
