@@ -52,4 +52,11 @@ class FullHouseRankingTest {
         FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("4D 4S 4D JS JC", "5H 5S 5C TH TD");
         assertEquals(aMatchResult("White wins. - with full house and higher hand"), fullHouseCardRanking.getMatchingResult());
     }
+
+    @Disabled
+    @Test
+    public void it_should_return_a_matching_result_result_when_white_and_black_have_full_house_and_higher_cards_for_black() {
+        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking( "5H 5S 5C TH TD", "4D 4S 4D JS JC");
+        assertEquals(aMatchResult("Black wins. - with full house and higher hand"), fullHouseCardRanking.getMatchingResult());
+    }
 }

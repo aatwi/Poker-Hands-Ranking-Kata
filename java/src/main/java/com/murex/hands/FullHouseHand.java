@@ -25,6 +25,10 @@ public class FullHouseHand {
         return hand;
     }
 
+    public Optional<Card> getTrioCards() {
+        return trioCards;
+    }
+
     public boolean hasFullHouse() {
         return pairCards.isPresent() && trioCards.isPresent();
     }
