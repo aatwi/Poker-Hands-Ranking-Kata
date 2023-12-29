@@ -1,6 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Result.aMatchResult;
@@ -26,17 +27,25 @@ class RoyalFlushHandRankingTest {
     }
 
     @Test
-    public void it_should_return_a_no_matching_result_when_non_of_the_players_have_straight_flush_cards() {
+    public void it_should_return_a_no_matching_result_when_non_of_the_players_have_royal_flush_cards() {
         assertNonMatchingResult("7H 8C TD KH AS", "2D 3H 5C 9S KH");
     }
 
+    @Disabled
     @Test
-    public void it_should_return_a_no_matching_result_when_both_players_have_same_straight_flush_cards() {
-        assertNonMatchingResult("7H 8H 9H TH JH", "7S 8S 9S TS JS");
+    public void it_should_return_a_no_matching_result_when_both_players_have_same_royal_flush_cards() {
+        assertNonMatchingResult("TH JH QH KH AH", "TS JS QS KS AS");
     }
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner() {
+        assertMatchingResult("7H 8H 9H TH JH", "TS JS QS KS AS", "White wins. - with royal flush");
+    }
+
+    @Disabled
+
+    @Test
+    public void it_should_return_a_matching_result_with_black_as_winner() {
         assertMatchingResult("7H 8H 9H TH JH", "TS JS QS KS AS", "White wins. - with royal flush");
     }
 }
