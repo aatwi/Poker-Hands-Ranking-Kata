@@ -18,19 +18,17 @@ public class FourOfAKindRanking extends HandRanking {
 
     @Override
     public Result getMatchingResult() {
-        if (hasFourOfAKind()) {
+        if (hasFourOfAKind(blackHand)) {
             return Result.aMatchResult("Black wins. - with four of a kind");
         }
-        if (whiteHand.getCardAt(1).getCharValue() == whiteHand.getCardAt(2).getCharValue()
-                && whiteHand.getCardAt(2).getCharValue() == whiteHand.getCardAt(3).getCharValue()
-                && whiteHand.getCardAt(3).getCharValue() == whiteHand.getCardAt(4).getCharValue()) {
+        if (hasFourOfAKind(whiteHand)) {
             return Result.aMatchResult("White wins. - with four of a kind");
         }
         return super.getMatchingResult();
     }
 
-    private boolean hasFourOfAKind() {
-        Map<Card, Long> cardGroupsMap = Arrays.stream(blackHand.getCards()).collect(groupingBy(Function.identity(), counting()));
+    private boolean hasFourOfAKind(Hand hand) {
+        Map<Card, Long> cardGroupsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Function.identity(), counting()));
         return cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 4).findAny().isPresent();
     }
 }
