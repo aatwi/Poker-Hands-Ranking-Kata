@@ -34,9 +34,6 @@ public class FullHouseRanking extends HandRanking{
         Optional<Card> pairCards = cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 2).findAny();
         Optional<Card> trioCards = cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 3).findAny();
 
-        
-        return (hand.getCardAt(0).getCharValue() == hand.getCardAt(1).getCharValue()
-                && hand.getCardAt(1).getCharValue() == hand.getCardAt(2).getCharValue())
-                && hand.getCardAt(3).getCharValue() == hand.getCardAt(4).getCharValue();
+        return pairCards.isPresent() && trioCards.isPresent();
     }
 }
