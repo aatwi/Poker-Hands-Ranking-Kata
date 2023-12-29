@@ -43,12 +43,12 @@ public class PokerGameTest {
     @DisplayName("High Card")
     class HighCard {
         @Test
-        public void white_wins() {
+        void white_wins() {
             assertWinner("2H 2D 5S 6C JS", "2C 2S 6H 8H AC", "White wins. - with high card: Ace");
         }
 
         @Test
-        public void black_wins() {
+        void black_wins() {
             assertWinner("2H 2D 5S 6C KS", "2C 2S 6H 8H JC", "Black wins. - with high card: King");
         }
     }
@@ -57,27 +57,27 @@ public class PokerGameTest {
     @DisplayName("Pair")
     class Pair {
         @Test
-        public void black_wins() {
+        void black_wins() {
             assertWinner("7H JC KD AH AS", "2D 3H 5C 9S KH", "Black wins. - with Pair cards: Ace");
         }
 
         @Test
-        public void white_wins() {
+        void white_wins() {
             assertWinner("5D 6C 7H JH AS", "2D 4H 4C 9S KH", "White wins. - with Pair cards: 4");
         }
 
         @Test
-        public void black_wins_with_higher_pair() {
+        void black_wins_with_higher_pair() {
             assertWinner("7H JC KD AH AS", "2D 3H 5C KS KH", "Black wins. - with Pair cards: Ace");
         }
 
         @Test
-        public void white_wins_with_higher_pair() {
+        void white_wins_with_higher_pair() {
             assertWinner("7H 8C TD QH QS", "2D 3H 5C KS KH", "White wins. - with Pair cards: King");
         }
 
         @Test
-        public void white_wins_with_high_card() {
+        void white_wins_with_high_card() {
             assertWinner("7H 8C KD KC AS", "2D 3H 5C KS KH", "Black wins. - with high card: Ace");
         }
     }
@@ -86,27 +86,27 @@ public class PokerGameTest {
     @DisplayName("Two Pairs")
     class TwoPairs {
         @Test
-        public void black_wins() {
+        void black_wins() {
             assertWinner("2H 2D 5S 5C KS", "2C 3S 6H 8H JC", "Black wins. - with two pairs: 2 and 5");
         }
 
         @Test
-        public void white_wins() {
+        void white_wins() {
             assertWinner("2H 4D 5S 5C KS", "2C 6S 6H 8H 8C", "White wins. - with two pairs: 6 and 8");
         }
 
         @Test
-        public void white_wins_with_higher_two_pairs() {
+        void white_wins_with_higher_two_pairs() {
             assertWinner("6C 6D 5S 5C KS", "6S 6H 7H 7D AC", "White wins. - with two pairs: 6 and 7");
         }
 
         @Test
-        public void black_wins_with_higher_two_pairs() {
+        void black_wins_with_higher_two_pairs() {
             assertWinner("6S 6H QH QD AC", "6C 6D 5S 5C KS", "Black wins. - with two pairs: 6 and Queen");
         }
 
         @Test
-        public void black_wins_with_high_card() {
+        void black_wins_with_high_card() {
             assertWinner("6S 6H QH QD AC", "6C 6D QS QC KS", "Black wins. - with high card: Ace");
         }
     }
