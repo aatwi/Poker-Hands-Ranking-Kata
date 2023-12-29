@@ -183,6 +183,13 @@ public class PokerGameTest {
     @Test
     public void
     FOUR_OF_A_KINDS_black_wins_with_higher_cards() {
-        assertWinner( "8D TS TC TH TD","2C 4S 4H 4C AD", "Black wins. - with four of a kind");
+        assertWinner( "8D TS TC TH TD","2C 4S 4H 4C AD", "Black wins. - with four of a kind and higher hand");
+    }
+
+    @Disabled
+    @Test
+    public void
+    FOUR_OF_A_KINDS_white_wins_with_higher_cards() {
+        assertWinner( "8D TS TC TH TD","JC JS JH JD AD", "Black wins. - with four of a kind and higher hand");
     }
 }
