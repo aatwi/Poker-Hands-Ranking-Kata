@@ -35,5 +35,16 @@ class FullHouseRankingTest {
         assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
     }
 
+    @Test
+    public void it_should_return_a_matching_result_with_white_as_winner_having_flush_with_hearts() {
+        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("4D 5S 7D JS AC","5H 5S 5C KH KD");
+        assertEquals(aMatchResult("White wins. - with full house"), fullHouseCardRanking.getMatchingResult());
+    }
 
+    @Disabled
+    @Test
+    public void it_should_return_a_a_no_matching_result_result_when_white_has_only_3_cards_of_same_value() {
+        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("4D 5S 7D JS AC", "4H 4S 4C KH AD");
+        assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
+    }
 }

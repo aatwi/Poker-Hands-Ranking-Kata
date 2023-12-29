@@ -15,6 +15,12 @@ public class FullHouseRanking extends HandRanking{
         && blackHand.getCardAt(3).getCharValue() ==  blackHand.getCardAt(4).getCharValue()) {
             return Result.aMatchResult("Black wins. - with full house");
         }
+
+        if((whiteHand.getCardAt(0).getCharValue() == whiteHand.getCardAt(1).getCharValue()
+                && whiteHand.getCardAt(1).getCharValue() == whiteHand.getCardAt(2).getCharValue())
+                && whiteHand.getCardAt(3).getCharValue() ==  whiteHand.getCardAt(4).getCharValue()) {
+            return Result.aMatchResult("White wins. - with full house");
+        }
         return super.getMatchingResult();
     }
 }
