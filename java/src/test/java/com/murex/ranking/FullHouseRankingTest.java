@@ -28,4 +28,12 @@ class FullHouseRankingTest {
         FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("3H 3S 3C AH AD", "4D 5S 7D JS AC");
         assertEquals(aMatchResult("Black wins. - with full house"), fullHouseCardRanking.getMatchingResult());
     }
+
+    @Test
+    public void it_should_return_a_a_no_matching_result_result_when_black_has_only_3_cards_of_same_value() {
+        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("3H 3S 3C KH AD", "4D 5S 7D JS AC");
+        assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
+    }
+
+
 }

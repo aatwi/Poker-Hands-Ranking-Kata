@@ -10,8 +10,9 @@ public class FullHouseRanking extends HandRanking{
 
     @Override
     public Result getMatchingResult() {
-        if(blackHand.getCardAt(0).getCharValue() == blackHand.getCardAt(1).getCharValue()
-                && blackHand.getCardAt(1).getCharValue() == blackHand.getCardAt(2).getCharValue()) {
+        if((blackHand.getCardAt(0).getCharValue() == blackHand.getCardAt(1).getCharValue()
+                && blackHand.getCardAt(1).getCharValue() == blackHand.getCardAt(2).getCharValue())
+        && blackHand.getCardAt(3).getCharValue() ==  blackHand.getCardAt(4).getCharValue()) {
             return Result.aMatchResult("Black wins. - with full house");
         }
         return super.getMatchingResult();
