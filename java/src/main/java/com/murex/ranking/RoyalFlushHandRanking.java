@@ -21,13 +21,8 @@ public class RoyalFlushHandRanking extends HandRanking{
         if (isRoyalFlush(whiteHand)) {
             return Result.aMatchResult("White wins. - with royal flush");
         }
-        StraightFlushHand black = new StraightFlushHand(blackHand);
-        if(black.isStraightFlush()) {
-            if(black.isStraightFlush()) {
-                if (black.getHand().getCardAt(4).getCharValue() == 'A') {
-                    return Result.aMatchResult( "Black wins. - with royal flush");
-                }
-            }
+        if (isRoyalFlush(blackHand)) {
+            return Result.aMatchResult("Black wins. - with royal flush");
         }
         return super.getMatchingResult();
     }
