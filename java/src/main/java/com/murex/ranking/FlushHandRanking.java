@@ -8,12 +8,12 @@ import com.murex.hands.HighHand;
 import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
 
-public class FlushCardRanking extends HandRanking {
+public class FlushHandRanking extends HandRanking {
 
     private final FlushHand blackFlushHand;
     private final FlushHand whiteFlushHand;
 
-    public FlushCardRanking(Hand blackHand, Hand whiteHand) {
+    public FlushHandRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
         blackFlushHand = new FlushHand(blackHand);
         whiteFlushHand = new FlushHand(whiteHand);
