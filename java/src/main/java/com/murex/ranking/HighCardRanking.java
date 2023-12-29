@@ -22,7 +22,7 @@ public class HighCardRanking extends HandRanking {
             return aNoMatchResult();
         }
         return aMatchResult(buildMessage(winner.get()));
-    }
+    } 
 
     protected Optional<HighHand> getHigherHand() {
         for (int index = 4; index >= 0; index--) {

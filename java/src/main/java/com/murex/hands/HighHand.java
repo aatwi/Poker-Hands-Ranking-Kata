@@ -21,25 +21,5 @@ public final class HighHand {
     public Card getHighCard() {
         return highCard;
     }
-
-    @Override
-    public String toString() {
-        return "HighHand{" +
-                "hand=" + hand +
-                ", highCard=" + highCard +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        HighHand highHand = (HighHand) o;
-        return Objects.equals(hand, highHand.hand) && Objects.equals(highCard, highHand.highCard);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(hand, highCard);
-    }
+    
 }
