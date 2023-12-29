@@ -20,9 +20,8 @@ public class FourOfAKindRanking extends HandRanking {
     public Result getMatchingResult() {
         if(blackFourOfAKindHand.hasFourOfAKind() && whiteFourOfAKindHand.hasFourOfAKind())  {
             int comparison = blackFourOfAKindHand.getFourOfKindCard().compareTo(whiteFourOfAKindHand.getFourOfKindCard());
-
-            return comparison > 0 ? buildMatchingResultWithHigherHand(blackFourOfAKindHand.getHand()) :
-                    Result.aMatchResult("White wins. - with four of a kind with higher hand");
+            Hand winningHand = comparison > 0 ? blackFourOfAKindHand.getHand() : whiteFourOfAKindHand.getHand();
+            return buildMatchingResultWithHigherHand(winningHand);
         }
         if (blackFourOfAKindHand.hasFourOfAKind()) {
             return buildMatchingResult(blackFourOfAKindHand.getHand());
