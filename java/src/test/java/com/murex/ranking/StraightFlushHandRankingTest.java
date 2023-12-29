@@ -19,6 +19,7 @@ class StraightFlushHandRankingTest {
         StraightFlushHandRanking handRanking = buildStraightFlushHandRanking(blackCards, whiteCards);
         assertEquals(aMatchResult(message), handRanking.getMatchingResult());
     }
+
     private static StraightFlushHandRanking buildStraightFlushHandRanking(String blackCards, String whiteCards) {
         Hand blackHand = Hand.buildFrom("Black", blackCards);
         Hand whiteHand = Hand.buildFrom("White", whiteCards);
@@ -29,6 +30,11 @@ class StraightFlushHandRankingTest {
     @Test
     public void it_should_return_a_no_matching_result_when_non_of_the_players_have_straight_flush_cards() {
         assertNonMatchingResult("7H 8C TD KH AS", "2D 3H 5C 9S KH");
+    }
+
+    @Test
+    public void it_should_return_a_no_matching_result_when_both_players_have_same_straight_flush_cards() {
+        assertNonMatchingResult("7H 8H 9H TH JH", "7S 8S 9S TS JS");
     }
 
     @Test
@@ -54,5 +60,14 @@ class StraightFlushHandRankingTest {
                 "7H 8H 9H TH JH",
                 "2D 3D 4D 5D 6D",
                 "Black wins. - with straight flush and higher hand");
+    }
+
+    @Disabled
+    @Test
+    public void it_should_return_a_matching_result_with_white_as_winner_with_higher_hand() {
+        assertMatchingResult(
+                "7H 8H 9H TH JH",
+                "8D 9D TD JD QD",
+                "White wins. - with straight flush and higher hand");
     }
 }

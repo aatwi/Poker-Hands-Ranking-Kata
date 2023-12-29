@@ -1,5 +1,6 @@
 package com.murex.ranking;
 
+import com.murex.Card;
 import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.FlushHand;
@@ -20,6 +21,12 @@ public class StraightFlushHandRanking extends HandRanking{
     @Override
     public Result getMatchingResult() {
         if(whiteStraightFlushHand.isStraightFlush() && blackStraightFlushHand.isStraightFlush()) {
+            Card blackCard = blackStraightFlushHand.getHand().getCardAt(4);
+            Card whiteCard = whiteStraightFlushHand.getHand().getCardAt(4);
+            int comparison = blackCard.compareTo(whiteCard);
+            if (comparison == 0) {
+                return Result.aNoMatchResult();
+            }
             return Result.aMatchResult("Black wins. - with straight flush and higher hand");
         }
         if(whiteStraightFlushHand.isStraightFlush()) {
