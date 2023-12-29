@@ -77,7 +77,7 @@ public class PokerGameTest {
         }
 
         @Test
-        void white_wins_with_high_card() {
+        void black_wins_with_high_card() {
             assertWinner("7H 8C KD KC AS", "2D 3H 5C KS KH", "Black wins. - with high card: Ace");
         }
     }
