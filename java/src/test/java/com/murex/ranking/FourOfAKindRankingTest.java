@@ -47,4 +47,14 @@ class FourOfAKindRankingTest {
                 "2H 4S 4C 4D 4H",
                 "White wins. - with four of a kind");
     }
+
+    @Test
+    public void it_should_return_a_result_with_black_as_a_winner_with_higher_hand() {
+        assertMatchingResult(
+                "7D 7S 7H 7C AC",
+                "2H 4S 4C 4D 4H",
+                "Black wins. - with four of a kind with higher hand");
+    }
+
+
 }

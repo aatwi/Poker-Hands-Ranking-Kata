@@ -18,6 +18,9 @@ public class FourOfAKindRanking extends HandRanking {
 
     @Override
     public Result getMatchingResult() {
+        if(blackFourOfAKindHand.hasFourOfAKind() && whiteFourOfAKindHand.hasFourOfAKind())  {
+            return Result.aMatchResult("Black wins. - with four of a kind with higher hand");
+        }
         if (blackFourOfAKindHand.hasFourOfAKind()) {
             return Result.aMatchResult("Black wins. - with four of a kind");
         }
