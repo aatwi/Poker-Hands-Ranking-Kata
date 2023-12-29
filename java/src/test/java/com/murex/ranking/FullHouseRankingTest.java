@@ -24,8 +24,7 @@ class FullHouseRankingTest {
 
     @Test
     public void it_should_return_a_no_matching_result_when_neither_hands_have_full_house() {
-        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("3H 3S 4C AH AD", "4D 5S 7D JS AC");
-        assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
+        assertNoMatchingResults("3H 3S 4C AH AD", "4D 5S 7D JS AC");
     }
 
     @Test
