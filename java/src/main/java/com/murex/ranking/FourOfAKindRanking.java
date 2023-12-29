@@ -24,12 +24,16 @@ public class FourOfAKindRanking extends HandRanking {
                     Result.aMatchResult("White wins. - with four of a kind with higher hand");
         }
         if (blackFourOfAKindHand.hasFourOfAKind()) {
-            return Result.aMatchResult("Black wins. - with four of a kind");
+            return buildMatchingResult(blackFourOfAKindHand.getHand());
         }
         if (whiteFourOfAKindHand.hasFourOfAKind()) {
-            return Result.aMatchResult("White wins. - with four of a kind");
+            return buildMatchingResult(whiteFourOfAKindHand.getHand());
         }
         return super.getMatchingResult();
+    }
+
+    private static Result buildMatchingResult(Hand hand) {
+        return Result.aMatchResult(hand.getName() + " wins. - with four of a kind");
     }
 
 }
