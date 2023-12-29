@@ -10,17 +10,19 @@ public class FullHouseRanking extends HandRanking{
 
     @Override
     public Result getMatchingResult() {
-        if((blackHand.getCardAt(0).getCharValue() == blackHand.getCardAt(1).getCharValue()
-                && blackHand.getCardAt(1).getCharValue() == blackHand.getCardAt(2).getCharValue())
-        && blackHand.getCardAt(3).getCharValue() ==  blackHand.getCardAt(4).getCharValue()) {
+        if(hasFullHouse(blackHand)) {
             return Result.aMatchResult("Black wins. - with full house");
         }
 
-        if((whiteHand.getCardAt(0).getCharValue() == whiteHand.getCardAt(1).getCharValue()
-                && whiteHand.getCardAt(1).getCharValue() == whiteHand.getCardAt(2).getCharValue())
-                && whiteHand.getCardAt(3).getCharValue() ==  whiteHand.getCardAt(4).getCharValue()) {
+        if(hasFullHouse(whiteHand)) {
             return Result.aMatchResult("White wins. - with full house");
         }
         return super.getMatchingResult();
+    }
+
+    private boolean hasFullHouse(Hand blackHand) {
+        return (blackHand.getCardAt(0).getCharValue() == blackHand.getCardAt(1).getCharValue()
+                && blackHand.getCardAt(1).getCharValue() == blackHand.getCardAt(2).getCharValue())
+                && blackHand.getCardAt(3).getCharValue() == blackHand.getCardAt(4).getCharValue();
     }
 }
