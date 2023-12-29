@@ -26,7 +26,6 @@ public class FullHouseHand {
     }
 
     public boolean hasFullHouse() {
-
         return pairCards.isPresent() && trioCards.isPresent();
     }
 

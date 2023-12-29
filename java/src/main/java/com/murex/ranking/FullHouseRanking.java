@@ -3,9 +3,6 @@ package com.murex.ranking;
 import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.FullHouseHand;
-
-import static java.util.stream.Collectors.groupingBy;
-
 public class FullHouseRanking extends HandRanking{
 
     private final FullHouseHand blackFullHouseHand;
