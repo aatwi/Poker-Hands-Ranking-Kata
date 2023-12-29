@@ -3,9 +3,7 @@ package com.murex.ranking;
 import com.murex.Card;
 import com.murex.Hand;
 import com.murex.Result;
-import com.murex.hands.FlushHand;
 import com.murex.hands.StraightFlushHand;
-import com.murex.hands.StraightHand;
 
 public class StraightFlushHandRanking extends HandRanking{
 
@@ -28,8 +26,9 @@ public class StraightFlushHandRanking extends HandRanking{
                 return Result.aNoMatchResult();
             }
 
-            return comparison > 0 ? Result.aMatchResult("Black wins. - with straight flush and higher hand") :
-                    Result.aMatchResult("White wins. - with straight flush and higher hand");
+            Hand winningHand = comparison > 0 ? blackHand : whiteHand;
+            return buildResultWithHighHand(winningHand) ;
+
         }
         if(whiteStraightFlushHand.isStraightFlush()) {
             return Result.aMatchResult("White wins. - with straight flush");
@@ -38,6 +37,10 @@ public class StraightFlushHandRanking extends HandRanking{
             return Result.aMatchResult("Black wins. - with straight flush");
         }
         return super.getMatchingResult();
+    }
+
+    private static Result buildResultWithHighHand(Hand hand) {
+        return Result.aMatchResult(hand.getName() +  " wins. - with straight flush and higher hand");
     }
 
 }
