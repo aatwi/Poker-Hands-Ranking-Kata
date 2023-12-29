@@ -39,4 +39,12 @@ class FourOfAKindRankingTest {
                 "4D 5S 7D JS AC",
                 "Black wins. - with four of a kind");
     }
+
+    @Test
+    public void it_should_return_a_result_with_white_as_a_winner() {
+        assertMatchingResult(
+                "4D 5S 7D JS AC",
+                "2H 4S 4C 4D 4H",
+                "White wins. - with four of a kind");
+    }
 }
