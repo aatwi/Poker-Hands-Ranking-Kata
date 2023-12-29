@@ -164,8 +164,7 @@ public class PokerGameTest {
     FLUSH_white_wins_with_a_full_house_and_higher_cards() {
         assertWinner("2C 2S 2H AH AD", "3D 3S 3C TD TS", "White wins. - with full house and higher hand");
     }
-
-    @Disabled
+    
     @Test
     public void
     FOUR_OF_A_KINDS_white_wins() {
