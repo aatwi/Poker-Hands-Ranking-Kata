@@ -156,7 +156,7 @@ public class PokerGameTest {
     @Test
     public void
     FLUSH_black_wins_with_a_full_house_cards() {
-        assertWinner("2H 2S 2D JH JH", "6C 7S 8H 9D TC", "Black wins. - with full house");
+        assertWinner("2H 2S 2D JH JS", "6C 7S 8H 9D TC", "Black wins. - with full house");
     }
 
     @Test
