@@ -57,7 +57,6 @@ class FourOfAKindRankingTest {
                 "Black wins. - with four of a kind with higher hand");
     }
 
-    @Disabled
     @Test
     public void it_should_return_a_result_with_white_as_a_winner_with_higher_hand() {
         assertMatchingResult(
