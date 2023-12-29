@@ -67,13 +67,18 @@ public class PokerGameTest {
         }
 
         @Test
-        public void black_wins_with_high_cards() {
+        public void black_wins_with_higher_pair() {
             assertWinner("7H JC KD AH AS", "2D 3H 5C KS KH", "Black wins. - with Pair cards: Ace");
         }
 
         @Test
-        public void white_wins_with_high_cards() {
+        public void white_wins_with_higher_pair() {
             assertWinner("7H 8C TD QH QS", "2D 3H 5C KS KH", "White wins. - with Pair cards: King");
+        }
+
+        @Test
+        public void white_wins_with_high_card() {
+            assertWinner("7H 8C KD KC AS", "2D 3H 5C KS KH", "Black wins. - with high card: Ace");
         }
     }
 

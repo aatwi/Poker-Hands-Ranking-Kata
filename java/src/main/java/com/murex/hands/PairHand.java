@@ -27,7 +27,7 @@ public final class PairHand {
     public boolean hasPair() {
         return cardOfPairs.isPresent();
     }
- 
+
     public Card getPairCard() {
         return cardOfPairs.orElse(null);
     }
