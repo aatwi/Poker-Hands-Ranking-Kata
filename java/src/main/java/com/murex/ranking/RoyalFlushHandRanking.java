@@ -37,3 +37,4 @@ public class RoyalFlushHandRanking extends HandRanking{
         return false;
     }
 }
+ 
