@@ -208,25 +208,25 @@ public class PokerGameTest {
     }
 
     @Nested
-    @DisplayName("Four of a Kind")
+    @DisplayName("FOUR OF A KIND")
     class FourOfAKind {
         @Test
-        public void FOUR_OF_A_KINDS_white_wins() {
+        void white_wins() {
             assertWinner("2C 3S 8H TH AD", "9D 9S 9C 9H TS", "White wins. - with four of a kind");
         }
 
         @Test
-        public void FOUR_OF_A_KINDS_black_wins() {
+        void black_wins() {
             assertWinner("8D TS TC TH TD", "2C 3S 8H TH AD", "Black wins. - with four of a kind");
         }
 
         @Test
-        public void FOUR_OF_A_KINDS_black_wins_with_higher_cards() {
+        void black_wins_with_higher_card_values() {
             assertWinner("8D TS TC TH TD", "2C 4S 4H 4C 4D", "Black wins. - with four of a kind and higher hand");
         }
 
         @Test
-        public void FOUR_OF_A_KINDS_white_wins_with_higher_cards() {
+        void white_wins_with_higher_card_values() {
             assertWinner("8D TS TC TH TD", "JC JS JH JD AD", "White wins. - with four of a kind and higher hand");
         }
     }
