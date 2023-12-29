@@ -34,4 +34,9 @@ class RoyalFlushHandRankingTest {
     public void it_should_return_a_no_matching_result_when_both_players_have_same_straight_flush_cards() {
         assertNonMatchingResult("7H 8H 9H TH JH", "7S 8S 9S TS JS");
     }
+
+    @Test
+    public void it_should_return_a_matching_result_with_white_as_winner() {
+        assertNonMatchingResult("7H 8H 9H TH JH", "TS JS QS KS AS");
+    }
 }
