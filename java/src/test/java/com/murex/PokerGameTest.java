@@ -189,9 +189,8 @@ public class PokerGameTest {
         assertWinner("2H 3H 4H 5H 6H","TD JD QD KD AD",  "White wins. - with royal flush");
     }
 
-    @Disabled
     @Test
     public void ROYAL_FLUSH_black_wins() {
-        assertWinner("TH JH QH KH AH", "2H 3H 4H 5H 6H",  "White wins. - with royal flush");
+        assertWinner("TH JH QH KH AH", "2H 3H 4H 5H 6H",  "Black wins. - with royal flush");
     }
 }
