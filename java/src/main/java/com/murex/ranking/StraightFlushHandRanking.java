@@ -19,6 +19,9 @@ public class StraightFlushHandRanking extends HandRanking{
 
     @Override
     public Result getMatchingResult() {
+        if(whiteStraightFlushHand.isStraightFlush() && blackStraightFlushHand.isStraightFlush()) {
+            return Result.aMatchResult("Black wins. - with straight flush and higher hand");
+        }
         if(whiteStraightFlushHand.isStraightFlush()) {
             return Result.aMatchResult("White wins. - with straight flush");
         }
