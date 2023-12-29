@@ -22,9 +22,9 @@
     - [X] The one with the highest value wins
   - [X] Connect the code to the full execution
   - [X] Refactor the tests
-- [ ] "Four of a Kind" ranking
-- [ ] "Straight Flush" ranking
-- [ ] "Royal Flush" ranking
+- [X] "Four of a Kind" ranking
+- [X] "Straight Flush" ranking
+- [X] "Royal Flush" ranking
 - [ ] Parking 
   - [ ] Make the message consistent across all the different types of rankings 
   - [ ] Make the Hand as an interface or remove the Hand fields from the HighHand objects

@@ -32,7 +32,7 @@ public class PairCardRanking extends HandRanking {
     }
 
     private Result getHigherPair() {
-        int comparison = blackPairHand.getPairValue().compareTo(whitePairHand.getPairValue());
+        int comparison = blackPairHand.getPairCard().compareTo(whitePairHand.getPairCard());
         if (comparison == 0) {
             return aNoMatchResult();
         }
