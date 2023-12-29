@@ -166,6 +166,6 @@ public class PokerGameTest {
     @Test
     public void
     FLUSH_white_wins_with_a_flush_and_higher_cards() {
-        assertWinner("2C 2S 2H AH AD", "3D 3S 3C TD TS", "White wins. - with flush and higher hand");
+        assertWinner("2C 2S 2H AH AD", "3D 3S 3C TD TS", "White wins. - with full house and higher hand");
     }
 }
