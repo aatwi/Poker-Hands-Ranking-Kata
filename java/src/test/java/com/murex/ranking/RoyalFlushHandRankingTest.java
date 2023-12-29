@@ -41,9 +41,9 @@ class RoyalFlushHandRankingTest {
     public void it_should_return_a_matching_result_with_white_as_winner() {
         assertMatchingResult("7H 8H 9H TH JH", "TS JS QS KS AS", "White wins. - with royal flush");
     }
-    
+
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner() {
-        assertMatchingResult("7H 8H 9H TH JH", "TS JS QS KS AS", "White wins. - with royal flush");
+        assertMatchingResult("TH JH QH KH AH", "7H 8H 9H TH JH",  "Black wins. - with royal flush");
     }
 }
