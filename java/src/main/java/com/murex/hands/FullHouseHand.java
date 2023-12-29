@@ -13,9 +13,12 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class FullHouseHand {
     private final Hand hand;
+    private Optional<Card> pairCards;
+    private Optional<Card> trioCards;
 
     public FullHouseHand(Hand hand) {
         this.hand = hand;
+        this.extractPairsAndTrioCards();
     }
 
     public Hand getHand() {
@@ -23,10 +26,13 @@ public class FullHouseHand {
     }
 
     public boolean hasFullHouse() {
-        Map<Card, Long> cardGroupsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Function.identity(), counting()));
-        Optional<Card> pairCards = cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 2).findAny();
-        Optional<Card> trioCards = cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 3).findAny();
 
         return pairCards.isPresent() && trioCards.isPresent();
+    }
+
+    private void extractPairsAndTrioCards() {
+        Map<Card, Long> cardGroupsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Function.identity(), counting()));
+        pairCards = cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 2).findAny();
+        trioCards = cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 3).findAny();
     }
 }
