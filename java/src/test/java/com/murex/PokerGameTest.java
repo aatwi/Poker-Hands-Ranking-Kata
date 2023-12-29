@@ -125,8 +125,13 @@ public class PokerGameTest {
         }
 
         @Test
-        public void THREE_OF_A_KIND_black_wins_having_three_cards_of_one_kind_and_higher_card() {
+        public void white_wins_with_higher_card_values() {
             assertWinner("2H 5D 5S 5C KS", "2C 3S JH JD JC", "White wins. - with three of a kind: Jack");
+        }
+
+        @Test
+        public void black_wins_with_higher_card_values() {
+            assertWinner("2H KD KS KH AS", "2C 3S JH JD KC", "Black wins. - with three of a kind: King");
         }
     }
 
