@@ -46,7 +46,7 @@ class PokerGame {
         ranks.add(new FourOfAKindRanking(blackHand, whiteHand));
         ranks.add(new FullHouseRanking(blackHand, whiteHand));
         ranks.add(new FlushHandRanking(blackHand, whiteHand));
-        ranks.add(new StraightCardRanking(blackHand, whiteHand));
+        ranks.add(new StraightHandRanking(blackHand, whiteHand));
         ranks.add(new ThreeOfAKindRanking(blackHand, whiteHand));
         ranks.add(new TwoPairCardRanking(blackHand, whiteHand));
         ranks.add(new PairCardRanking(blackHand, whiteHand));

@@ -7,23 +7,23 @@ import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class StraightCardRankingTest {
+class StraightHandRankingTest {
 
     private static void assertNonMatchingResult(String blackCards, String whiteCards) {
-        StraightCardRanking straightCardRanking = buildStraightCardRanking(blackCards, whiteCards);
-        assertEquals(aNoMatchResult(), straightCardRanking.getMatchingResult());
+        StraightHandRanking straightHandRanking = buildStraightCardRanking(blackCards, whiteCards);
+        assertEquals(aNoMatchResult(), straightHandRanking.getMatchingResult());
     }
 
     private static void assertMatchingResult(String blackCards, String whiteCards, String message) {
-        StraightCardRanking straightCardRanking = buildStraightCardRanking(blackCards, whiteCards);
-        assertEquals(aMatchResult(message), straightCardRanking.getMatchingResult());
+        StraightHandRanking straightHandRanking = buildStraightCardRanking(blackCards, whiteCards);
+        assertEquals(aMatchResult(message), straightHandRanking.getMatchingResult());
     }
 
-    private static StraightCardRanking buildStraightCardRanking(String blackCards, String whiteCards) {
+    private static StraightHandRanking buildStraightCardRanking(String blackCards, String whiteCards) {
         Hand blackHand = Hand.buildFrom("Black", blackCards);
         Hand whiteHand = Hand.buildFrom("White", whiteCards);
 
-        return new StraightCardRanking(blackHand, whiteHand);
+        return new StraightHandRanking(blackHand, whiteHand);
     }
 
     @Test

@@ -7,12 +7,12 @@ import com.murex.hands.StraightHand;
 import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
 
-public class StraightCardRanking extends HandRanking{
+public class StraightHandRanking extends HandRanking{
 
     private final StraightHand whiteStraight;
     private final StraightHand blackStraight;
 
-    public StraightCardRanking(Hand blackHand, Hand whiteHand) {
+    public StraightHandRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
         whiteStraight = new StraightHand(whiteHand);
         blackStraight = new StraightHand(blackHand);
