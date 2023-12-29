@@ -1,6 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Result.aMatchResult;
@@ -31,10 +32,19 @@ class StraightFlushHandRankingTest {
     }
 
     @Test
-    public void it_should_return_a_matching_result_with_white_as_winner_having_straight_cards_2_to_6() {
+    public void it_should_return_a_matching_result_with_white_as_winner() {
         assertMatchingResult(
                 "7H 8C TD KH AS",
                 "2D 3D 4D 5D 6D",
                 "White wins. - with straight flush");
+    }
+
+    @Disabled
+    @Test
+    public void it_should_return_a_matching_result_with_black_as_winner() {
+        assertMatchingResult(
+                "2D 3D 4D 5D 6D",
+                "7H 8C TD KH AS",
+                "Black wins. - with straight flush");
     }
 }
