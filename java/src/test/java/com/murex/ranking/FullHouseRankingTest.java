@@ -42,8 +42,14 @@ class FullHouseRankingTest {
     }
 
     @Test
-    public void it_should_return_a_a_no_matching_result_result_when_white_has_only_3_cards_of_same_value() {
+    public void it_should_return_a_no_matching_result_result_when_white_has_only_3_cards_of_same_value() {
         FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("4D 5S 7D JS AC", "4H 4S 4C KH AD");
         assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
+    }
+
+    @Test
+    public void it_should_return_a_matching_result_result_when_white_and_black_have_full_house_and_higher_cards_for_white() {
+        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("4D 4S 4D JS JC", "5H 5S 5C TH TD");
+        assertEquals(aMatchResult("White wins. - with full house and higher hand"), fullHouseCardRanking.getMatchingResult());
     }
 }

@@ -16,6 +16,10 @@ public class FullHouseRanking extends HandRanking{
 
     @Override
     public Result getMatchingResult() {
+        if(blackFullHouseHand.hasFullHouse() && whiteFullHouseHand.hasFullHouse()) {
+            return Result.aMatchResult("White wins. - with full house and higher hand");
+        }
+
         if(blackFullHouseHand.hasFullHouse()) {
             return Result.aMatchResult("Black wins. - with full house");
         }
