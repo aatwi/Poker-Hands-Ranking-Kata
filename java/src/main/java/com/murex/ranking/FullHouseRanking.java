@@ -34,14 +34,7 @@ public class FullHouseRanking extends HandRanking {
             return buildMatchingResultWithHigherHand(getHigherHand());
         }
 
-        if (blackFullHouseHand.hasFullHouse()) {
-            return buildMatchingResult(blackFullHouseHand);
-        }
-
-        if (whiteFullHouseHand.hasFullHouse()) {
-            return buildMatchingResult(whiteFullHouseHand);
-        }
-        return super.getMatchingResult();
+        return blackFullHouseHand.hasFullHouse() ? buildMatchingResult(blackFullHouseHand) : buildMatchingResult(whiteFullHouseHand);
     }
 
     private boolean bothHaveFullHouse() {
