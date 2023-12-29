@@ -1,12 +1,12 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import org.junit.jupiter.api.Disabled;
+import com.murex.Result;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FullHouseRankingTest {
 
@@ -15,6 +15,11 @@ class FullHouseRankingTest {
         Hand whiteHand = Hand.buildFrom("White", whiteCards);
 
         return new FullHouseRanking(blackHand, whiteHand);
+    }
+
+    private static void assertNoMatchingResults(String blackCards, String whiteCards) {
+        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking(blackCards, whiteCards);
+        assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
     }
 
     @Test
@@ -31,20 +36,18 @@ class FullHouseRankingTest {
 
     @Test
     public void it_should_return_a_a_no_matching_result_result_when_black_has_only_3_cards_of_same_value() {
-        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("3H 3S 3C KH AD", "4D 5S 7D JS AC");
-        assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
+        assertNoMatchingResults("3H 3S 3C KH AD", "4D 5S 7D JS AC");
     }
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_having_flush_with_hearts() {
-        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("4D 5S 7D JS AC","5H 5S 5C KH KD");
+        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("4D 5S 7D JS AC", "5H 5S 5C KH KD");
         assertEquals(aMatchResult("White wins. - with full house"), fullHouseCardRanking.getMatchingResult());
     }
 
     @Test
     public void it_should_return_a_no_matching_result_result_when_white_has_only_3_cards_of_same_value() {
-        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("4D 5S 7D JS AC", "4H 4S 4C KH AD");
-        assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
+        assertNoMatchingResults("4D 5S 7D JS AC", "4H 4S 4C KH AD");
     }
 
     @Test
@@ -55,7 +58,7 @@ class FullHouseRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_result_when_white_and_black_have_full_house_and_higher_cards_for_black() {
-        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking( "5H 5S 5C TH TD", "4D 4S 4D JS JC");
+        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("5H 5S 5C TH TD", "4D 4S 4D JS JC");
         assertEquals(aMatchResult("Black wins. - with full house and higher hand"), fullHouseCardRanking.getMatchingResult());
     }
 }
