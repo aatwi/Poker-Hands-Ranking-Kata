@@ -17,6 +17,9 @@ public class RoyalFlushHandRanking extends HandRanking{
 
     @Override
     public Result getMatchingResult() {
+        if(whiteRoyalFlushHand.isRoyalFlush() && blackRoyalFlushHand.isRoyalFlush()) {
+            return Result.aNoMatchResult();
+        }
         if (whiteRoyalFlushHand.isRoyalFlush()) {
             return Result.aMatchResult("White wins. - with royal flush");
         }

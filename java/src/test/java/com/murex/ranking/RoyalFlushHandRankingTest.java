@@ -31,7 +31,6 @@ class RoyalFlushHandRankingTest {
         assertNonMatchingResult("7H 8C TD KH AS", "2D 3H 5C 9S KH");
     }
 
-    @Disabled
     @Test
     public void it_should_return_a_no_matching_result_when_both_players_have_same_royal_flush_cards() {
         assertNonMatchingResult("TH JH QH KH AH", "TS JS QS KS AS");
