@@ -115,22 +115,22 @@ public class PokerGameTest {
     @DisplayName("THREE OF A KIND")
     class ThreeOfAKind {
         @Test
-        public void black_wins() {
+        void black_wins() {
             assertWinner("2H 2D 2S 5C KS", "2C 3S 6H 8H JC", "Black wins. - with three of a kind: 2");
         }
 
         @Test
-        public void white_wins() {
+        void white_wins() {
             assertWinner("2H 2S 4D 5C KS", "2C 3S 6H 6D 6C", "White wins. - with three of a kind: 6");
         }
 
         @Test
-        public void white_wins_with_higher_card_values() {
+        void white_wins_with_higher_card_values() {
             assertWinner("2H 5D 5S 5C KS", "2C 3S JH JD JC", "White wins. - with three of a kind: Jack");
         }
 
         @Test
-        public void black_wins_with_higher_card_values() {
+        void black_wins_with_higher_card_values() {
             assertWinner("2H KD KS KH AS", "2C 3S JH JD KC", "Black wins. - with three of a kind: King");
         }
     }
@@ -139,22 +139,22 @@ public class PokerGameTest {
     @DisplayName("STRAIGHT")
     class Straight {
         @Test
-        public void black_wins() {
+        void black_wins() {
             assertWinner("2H 3D 4S 5C 6S", "2C 3S 6H 8H JC", "Black wins. - with straight cards");
         }
 
         @Test
-        public void white_wins() {
+        void white_wins() {
             assertWinner("2H 2S 4D 5C KS", "7C 8S 9H TD JC", "White wins. - with straight cards");
         }
 
         @Test
-        public void white_wins_with_a_card_values() {
+        void white_wins_with_a_card_values() {
             assertWinner("2H 3D 4S 5C 6S", "6C 7S 8H 9D TC", "White wins. - with straight cards and higher cards");
         }
 
         @Test
-        public void black_wins_with_a_card_values() {
+        void black_wins_with_a_card_values() {
             assertWinner("6C 7S 8H 9D TC", "2H 3D 4S 5C 6S", "Black wins. - with straight cards and higher cards");
         }
     }
@@ -163,42 +163,47 @@ public class PokerGameTest {
     @DisplayName("FLUSH")
     class Flush {
         @Test
-        public void black_wins() {
+        void black_wins() {
             assertWinner("2H 5H 8H JH KH", "2C 3S 6H 8S JC", "Black wins. - with flush");
         }
 
         @Test
-        public void white_wins() {
+        void white_wins() {
             assertWinner("2C 3S 6H 8S JC", "2D 5D 8D JD KD", "White wins. - with flush");
         }
 
         @Test
-        public void white_wins_with_higher_cards() {
+        void white_wins_with_higher_card_values() {
             assertWinner("2C 3C 6C 8C JC", "2D 5D 8D JD KD", "White wins. - with flush and higher hand");
         }
 
         @Test
-        public void black_wins_with_higher_cards() {
+        void black_wins_with_higher_card_values() {
             assertWinner("2C 3C 6C 8C AC", "2D 5D 8D JD KD", "Black wins. - with flush and higher hand");
         }
     }
 
     @Nested
-    @DisplayName("Full House")
+    @DisplayName("FULL HOUSE")
     class FullHouse {
         @Test
-        public void white_wins() {
+        void white_wins() {
             assertWinner("6C 7S 8H 9D TC", "3H 3S AC AD AH", "White wins. - with full house");
         }
 
         @Test
-        public void black_wins() {
+        void black_wins() {
             assertWinner("2H 2S 2D JH JS", "6C 7S 8H 9D TC", "Black wins. - with full house");
         }
 
         @Test
-        public void white_wins_with_a_full_house_and_higher_cards() {
+        void white_wins_with_higher_card_values() {
             assertWinner("2C 2S 2H AH AD", "3D 3S 3C TD TS", "White wins. - with full house and higher hand");
+        }
+
+        @Test
+        public void black_wins_with_higher_card_values() {
+            assertWinner("5C 5S 5H AH AD", "3D 3S 3C TD TS", "Black wins. - with full house and higher hand");
         }
     }
 
