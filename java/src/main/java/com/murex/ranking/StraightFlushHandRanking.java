@@ -13,6 +13,7 @@ public class StraightFlushHandRanking extends HandRanking{
     private final StraightHand blackStraightHand;
     private final FlushHand blackFlushHand;
     private final StraightFlushHand whiteStraightFlushHand;
+    private final StraightFlushHand blackStraightFlushHand;
 
     public StraightFlushHandRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
@@ -21,20 +22,21 @@ public class StraightFlushHandRanking extends HandRanking{
         whiteStraightFlushHand = new StraightFlushHand(whiteHand);
         blackStraightHand = new StraightHand(blackHand);
         blackFlushHand = new FlushHand(blackHand);
+        blackStraightFlushHand = new StraightFlushHand(blackHand);
     }
 
     @Override
     public Result getMatchingResult() {
-        if(isStraightFlush(whiteStraightHand, whiteFlushHand)) {
+        if(isStraightFlush(whiteStraightFlushHand)) {
             return Result.aMatchResult("White wins. - with straight flush");
         }
-        if(isStraightFlush(blackStraightHand, blackFlushHand)) {
+        if(isStraightFlush(blackStraightFlushHand)) {
             return Result.aMatchResult("Black wins. - with straight flush");
         }
         return super.getMatchingResult();
     }
 
-    private boolean isStraightFlush(StraightHand whiteStraightHand, FlushHand whiteFlushHand) {
-        return whiteStraightHand.isStraight() && whiteFlushHand.isFlush();
+    private boolean isStraightFlush(StraightFlushHand straightFlushHand) {
+        return straightFlushHand.isStraightFlush();
     }
 }
