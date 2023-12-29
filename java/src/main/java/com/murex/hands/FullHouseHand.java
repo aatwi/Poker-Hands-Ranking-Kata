@@ -23,7 +23,6 @@ public class FullHouseHand {
     }
 
     public boolean hasFullHouse() {
-        Hand hand = getHand();
         Map<Card, Long> cardGroupsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Function.identity(), counting()));
         Optional<Card> pairCards = cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 2).findAny();
         Optional<Card> trioCards = cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 3).findAny();
