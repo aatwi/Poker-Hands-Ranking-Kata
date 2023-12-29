@@ -54,7 +54,7 @@ class FourOfAKindRankingTest {
         assertMatchingResult(
                 "7D 7S 7H 7C AC",
                 "2H 4S 4C 4D 4H",
-                "Black wins. - with four of a kind with higher hand");
+                "Black wins. - with four of a kind and higher hand");
     }
 
     @Test
@@ -62,7 +62,7 @@ class FourOfAKindRankingTest {
         assertMatchingResult(
                 "7D 7S 7H 7C AC",
                 "2H TS TC TD TH",
-                "White wins. - with four of a kind with higher hand");
+                "White wins. - with four of a kind and higher hand");
     }
 
 }
