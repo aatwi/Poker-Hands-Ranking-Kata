@@ -193,4 +193,9 @@ public class PokerGameTest {
     public void ROYAL_FLUSH_black_wins() {
         assertWinner("TH JH QH KH AH", "2H 3H 4H 5H 6H",  "Black wins. - with royal flush");
     }
+
+    @Test
+    public void ROYAL_FLUSH_its_a_tie_when_both_have_royal_flush() {
+        assertWinner("TH JH QH KH AH", "TD JD QD KD AD",  "Tie.");
+    }
 }
