@@ -153,17 +153,15 @@ public class PokerGameTest {
         assertWinner( "6C 7S 8H 9D TC","3H 3S AC AD AH", "White wins. - with full house");
     }
 
-    @Disabled
     @Test
     public void
-    FLUSH_black_wins_with_a_flush_cards() {
-        assertWinner("2H 5H 6H JH KH", "6C 7S 8H 9D TC", "Black wins. - full house");
+    FLUSH_black_wins_with_a_full_house_cards() {
+        assertWinner("2H 2S 2D JH JH", "6C 7S 8H 9D TC", "Black wins. - with full house");
     }
 
-    @Disabled
     @Test
     public void
-    FLUSH_white_wins_with_a_flush_and_higher_cards() {
+    FLUSH_white_wins_with_a_full_house_and_higher_cards() {
         assertWinner("2C 2S 2H AH AD", "3D 3S 3C TD TS", "White wins. - with full house and higher hand");
     }
 }
