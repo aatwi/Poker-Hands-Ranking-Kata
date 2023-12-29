@@ -30,7 +30,6 @@ public class FourOfAKindHand {
 
     private Optional<Card> extractFourOfAKindCard() {
         Map<Card, Long> cardGroupsMap = Arrays.stream(getHand().getCards()).collect(groupingBy(Function.identity(), counting()));
-        Optional<Card> fourCards = cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 4).findAny();
-        return fourCards;
+        return cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 4).findAny();
     }
 }

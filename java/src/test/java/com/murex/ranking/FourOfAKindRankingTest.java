@@ -2,6 +2,7 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.Result.aMatchResult;
@@ -56,5 +57,13 @@ class FourOfAKindRankingTest {
                 "Black wins. - with four of a kind with higher hand");
     }
 
+    @Disabled
+    @Test
+    public void it_should_return_a_result_with_white_as_a_winner_with_higher_hand() {
+        assertMatchingResult(
+                "7D 7S 7H 7C AC",
+                "2H TS TC TD TH",
+                "White wins. - with four of a kind with higher hand");
+    }
 
 }
