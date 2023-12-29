@@ -115,12 +115,12 @@ public class PokerGameTest {
     @DisplayName("Three Of A Kind")
     class ThreeOfAKind {
         @Test
-        public void THREE_OF_A_KIND_black_wins_having_three_cards_of_one_kind() {
+        public void black_wins() {
             assertWinner("2H 2D 2S 5C KS", "2C 3S 6H 8H JC", "Black wins. - with three of a kind: 2");
         }
 
         @Test
-        public void THREE_OF_A_KIND_white_wins_having_three_cards_of_one_kind() {
+        public void white_wins() {
             assertWinner("2H 2S 4D 5C KS", "2C 3S 6H 6D 6C", "White wins. - with three of a kind: 6");
         }
 
