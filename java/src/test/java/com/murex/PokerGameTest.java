@@ -96,13 +96,18 @@ public class PokerGameTest {
         }
 
         @Test
-        public void white_wins_with_higher_cards() {
+        public void white_wins_with_higher_two_pairs() {
             assertWinner("6C 6D 5S 5C KS", "6S 6H 7H 7D AC", "White wins. - with two pairs: 6 and 7");
         }
 
         @Test
-        public void black_wins_with_higher_cards() {
+        public void black_wins_with_higher_two_pairs() {
             assertWinner("6S 6H QH QD AC", "6C 6D 5S 5C KS", "Black wins. - with two pairs: 6 and Queen");
+        }
+
+        @Test
+        public void black_wins_with_high_card() {
+            assertWinner("6S 6H QH QD AC", "6C 6D QS QC KS", "Black wins. - with high card: Ace");
         }
     }
 
