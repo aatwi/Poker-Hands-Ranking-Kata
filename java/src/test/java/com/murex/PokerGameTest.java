@@ -202,7 +202,7 @@ public class PokerGameTest {
         }
 
         @Test
-        public void black_wins_with_higher_card_values() {
+        void black_wins_with_higher_card_values() {
             assertWinner("5C 5S 5H AH AD", "3D 3S 3C TD TS", "Black wins. - with full house and higher hand");
         }
     }
