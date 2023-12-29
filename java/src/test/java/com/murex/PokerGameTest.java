@@ -172,7 +172,6 @@ public class PokerGameTest {
         assertWinner("2C 3S 8H TH AD", "9D 9S 9C 9H TS", "White wins. - with four of a kind");
     }
 
-    @Disabled
     @Test
     public void
     FOUR_OF_A_KINDS_black_wins() {

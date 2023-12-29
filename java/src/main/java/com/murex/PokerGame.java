@@ -43,6 +43,7 @@ class PokerGame {
     }
 
     private void addPossibleRanks() {
+        ranks.add(new FourOfAKindRanking(blackHand, whiteHand));
         ranks.add(new FullHouseRanking(blackHand, whiteHand));
         ranks.add(new FlushCardRanking(blackHand, whiteHand));
         ranks.add(new StraightCardRanking(blackHand, whiteHand));
