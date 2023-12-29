@@ -23,7 +23,6 @@ class FullHouseRankingTest {
         assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
     }
 
-    @Disabled
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_flush_with_hearts() {
         FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("3H 3S 3C AH AD", "4D 5S 7D JS AC");
