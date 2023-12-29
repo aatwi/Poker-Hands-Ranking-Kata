@@ -22,10 +22,7 @@ public class FullHouseRanking extends HandRanking{
             Card whiteCard = whiteFullHouseHand.getTrioCards().get();
 
             int comparison = blackCard.compareTo(whiteCard);
-            if(comparison > 0) {
-                return Result.aMatchResult("Black wins. - with full house and higher hand");
-            }
-            return Result.aMatchResult("White wins. - with full house and higher hand");
+            return comparison > 0 ? buildMatchingResult(blackHand) : buildMatchingResult(whiteHand);
         }
 
         if(blackFullHouseHand.hasFullHouse()) {
@@ -36,5 +33,9 @@ public class FullHouseRanking extends HandRanking{
             return Result.aMatchResult("White wins. - with full house");
         }
         return super.getMatchingResult();
+    }
+
+    private static Result buildMatchingResult(Hand blackHand) {
+        return Result.aMatchResult(blackHand.getName() +" wins. - with full house and higher hand");
     }
 }
