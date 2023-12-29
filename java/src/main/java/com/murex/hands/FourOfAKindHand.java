@@ -13,11 +13,11 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class FourOfAKindHand {
     private final Hand hand;
-    private Optional<Card> fourCards;
+    private Optional<Card> fourOfKindCard;
 
     public FourOfAKindHand(Hand hand) {
         this.hand = hand;
-        this.fourCards = extractFourOfAKindCard();
+        this.fourOfKindCard = extractFourOfAKindCard();
     }
 
     public Hand getHand() {
@@ -25,7 +25,11 @@ public class FourOfAKindHand {
     }
 
     public boolean hasFourOfAKind() {
-        return fourCards.isPresent();
+        return fourOfKindCard.isPresent();
+    }
+
+    public Card getFourOfKindCard() {
+        return fourOfKindCard.get();
     }
 
     private Optional<Card> extractFourOfAKindCard() {
