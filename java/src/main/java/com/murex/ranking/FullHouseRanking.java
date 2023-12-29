@@ -4,7 +4,8 @@ import com.murex.Card;
 import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.FullHouseHand;
-public class FullHouseRanking extends HandRanking{
+
+public class FullHouseRanking extends HandRanking {
 
     private final FullHouseHand blackFullHouseHand;
     private final FullHouseHand whiteFullHouseHand;
@@ -15,27 +16,28 @@ public class FullHouseRanking extends HandRanking{
         whiteFullHouseHand = new FullHouseHand(whiteHand);
     }
 
+    private static Result buildMatchingResult(Hand blackHand) {
+        return Result.aMatchResult(blackHand.getName() + " wins. - with full house and higher hand");
+    }
+
     @Override
     public Result getMatchingResult() {
-        if(blackFullHouseHand.hasFullHouse() && whiteFullHouseHand.hasFullHouse()) {
+        if (blackFullHouseHand.hasFullHouse() && whiteFullHouseHand.hasFullHouse()) {
             Card blackCard = blackFullHouseHand.getTrioCards().get();
             Card whiteCard = whiteFullHouseHand.getTrioCards().get();
 
             int comparison = blackCard.compareTo(whiteCard);
-            return comparison > 0 ? buildMatchingResult(blackHand) : buildMatchingResult(whiteHand);
+            Hand higherHand = comparison > 0 ? blackHand : whiteHand;
+            return buildMatchingResult(higherHand);
         }
 
-        if(blackFullHouseHand.hasFullHouse()) {
+        if (blackFullHouseHand.hasFullHouse()) {
             return Result.aMatchResult("Black wins. - with full house");
         }
 
-        if(whiteFullHouseHand.hasFullHouse()) {
+        if (whiteFullHouseHand.hasFullHouse()) {
             return Result.aMatchResult("White wins. - with full house");
         }
         return super.getMatchingResult();
-    }
-
-    private static Result buildMatchingResult(Hand blackHand) {
-        return Result.aMatchResult(blackHand.getName() +" wins. - with full house and higher hand");
     }
 }
