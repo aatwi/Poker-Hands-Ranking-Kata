@@ -233,49 +233,49 @@ public class PokerGameTest {
 
 
     @Nested
-    @DisplayName("Straight Flush")
+    @DisplayName("STRAIGHT FLUSH")
     class StraightFlush {
         @Test
-        public void STRAIGHT_FLUSH_black_wins() {
+        void black_wins() {
             assertWinner("8S 9S TS JS QS", "JC JS JH JD AD", "Black wins. - with straight flush");
         }
 
         @Test
-        public void STRAIGHT_FLUSH_white_wins() {
+        void white_wins() {
             assertWinner("JC JS JH JD AD", "2H 3H 4H 5H 6H", "White wins. - with straight flush");
         }
 
         @Test
-        public void STRAIGHT_FLUSH_black_wins_and_higher_hand() {
+        void black_wins_and_higher_card_values() {
             assertWinner("8D 9D TD JD QD", "2H 3H 4H 5H 6H", "Black wins. - with straight flush and higher hand");
         }
 
         @Test
-        public void STRAIGHT_FLUSH_white_wins_and_higher_hand() {
+        void white_wins_and_higher_card_values() {
             assertWinner("2H 3H 4H 5H 6H", "8D 9D TD JD QD", "White wins. - with straight flush and higher hand");
         }
 
         @Test
-        public void STRAIGHT_FLUSH_tie() {
+        void tie() {
             assertWinner("2H 3H 4H 5H 6H", "2D 3D 4D 5D 6D", "Tie.");
         }
     }
 
     @Nested
-    @DisplayName("Royal Flush")
+    @DisplayName("ROYAL FLUSH")
     class RoyalFlush {
         @Test
-        public void ROYAL_FLUSH_white_wins() {
+        void white_wins() {
             assertWinner("2H 3H 4H 5H 6H", "TD JD QD KD AD", "White wins. - with royal flush");
         }
 
         @Test
-        public void ROYAL_FLUSH_black_wins() {
+        void black_wins() {
             assertWinner("TH JH QH KH AH", "2H 3H 4H 5H 6H", "Black wins. - with royal flush");
         }
 
         @Test
-        public void ROYAL_FLUSH_its_a_tie_when_both_have_royal_flush() {
+        void tie() {
             assertWinner("TH JH QH KH AH", "TD JD QD KD AD", "Tie.");
         }
     }
