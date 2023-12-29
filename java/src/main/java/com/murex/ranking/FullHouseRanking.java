@@ -23,12 +23,7 @@ public class FullHouseRanking extends HandRanking {
     @Override
     public Result getMatchingResult() {
         if (blackFullHouseHand.hasFullHouse() && whiteFullHouseHand.hasFullHouse()) {
-            Card blackCard = blackFullHouseHand.getTrioCards().get();
-            Card whiteCard = whiteFullHouseHand.getTrioCards().get();
-
-            int comparison = blackCard.compareTo(whiteCard);
-            Hand higherHand = comparison > 0 ? blackHand : whiteHand;
-            return buildMatchingResult(higherHand);
+            return buildMatchingResult(getHigherHand());
         }
 
         if (blackFullHouseHand.hasFullHouse()) {
@@ -39,5 +34,13 @@ public class FullHouseRanking extends HandRanking {
             return Result.aMatchResult("White wins. - with full house");
         }
         return super.getMatchingResult();
+    }
+
+    private Hand getHigherHand() {
+        Card blackCard = blackFullHouseHand.getTrioCards().get();
+        Card whiteCard = whiteFullHouseHand.getTrioCards().get();
+
+        int comparison = blackCard.compareTo(whiteCard);
+        return comparison > 0 ? blackHand : whiteHand;
     }
 }
