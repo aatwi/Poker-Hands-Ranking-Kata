@@ -22,6 +22,11 @@ class FullHouseRankingTest {
         assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
     }
 
+    private static void assertMatchingResult(String blackCards, String whiteCards, Result expected) {
+        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking(blackCards, whiteCards);
+        assertEquals(expected, fullHouseCardRanking.getMatchingResult());
+    }
+
     @Test
     public void it_should_return_a_no_matching_result_when_neither_hands_have_full_house() {
         assertNoMatchingResults("3H 3S 4C AH AD", "4D 5S 7D JS AC");
@@ -33,11 +38,6 @@ class FullHouseRankingTest {
                 "3H 3S 3C AH AD",
                 "4D 5S 7D JS AC",
                 aMatchResult("Black wins. - with full house"));
-    }
-
-    private static void assertMatchingResult(String blackCards, String whiteCards, Result expected) {
-        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking(blackCards, whiteCards);
-        assertEquals(expected, fullHouseCardRanking.getMatchingResult());
     }
 
     @Test
