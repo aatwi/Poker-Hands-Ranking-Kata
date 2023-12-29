@@ -16,12 +16,12 @@
     - [X] The one with the highest value wins
   - [X] Connect the code to the full execution
   - [X] Refactor the tests
-- [ ] "Full House" ranking
-  - [ ] Only one player has a Full House
-  - [ ] Two player have Full House hands
-    - [ ] The one with the highest value wins
-  - [ ] Connect the code to the full execution
-  - [ ] Refactor the tests
+- [X] "Full House" ranking
+  - [X] Only one player has a Full House
+  - [X] Two player have Full House hands
+    - [X] The one with the highest value wins
+  - [X] Connect the code to the full execution
+  - [X] Refactor the tests
 - [ ] "Four of a Kind" ranking
 - [ ] "Straight Flush" ranking
 - [ ] "Royal Flush" ranking

@@ -164,4 +164,18 @@ public class PokerGameTest {
     FLUSH_white_wins_with_a_full_house_and_higher_cards() {
         assertWinner("2C 2S 2H AH AD", "3D 3S 3C TD TS", "White wins. - with full house and higher hand");
     }
+
+    @Disabled
+    @Test
+    public void
+    FOUR_OF_A_KINDS_white_wins() {
+        assertWinner("2C 3S 8H TH AD", "9D 9S 9C 9H TS", "White wins. - with four of a kind");
+    }
+
+    @Disabled
+    @Test
+    public void
+    FOUR_OF_A_KINDS_black_wins() {
+        assertWinner( "8D TS TC TH TD","2C 3S 8H TH AD", "Black wins. - with four of a kind");
+    }
 }
