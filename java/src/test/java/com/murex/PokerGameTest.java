@@ -160,10 +160,9 @@ public class PokerGameTest {
         assertWinner("2H 5H 6H JH KH", "6C 7S 8H 9D TC", "Black wins. - with flush");
     }
 
-    @Disabled
     @Test
     public void
     FLUSH_black_wins_with_a_flush_and_higher_cards() {
-        assertWinner("2H 5H 6H JH KH", "3D 4D 8D QD AD", "Black wins. - with flush and higher cards");
+        assertWinner("2H 5H 6H JH KH", "3D 4D 8D QD AD", "White wins. - with flush and higher hand");
     }
 }
