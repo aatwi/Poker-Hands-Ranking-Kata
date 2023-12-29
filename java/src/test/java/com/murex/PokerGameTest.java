@@ -207,7 +207,6 @@ public class PokerGameTest {
         }
     }
 
-
     @Nested
     @DisplayName("Four of a Kind")
     class FourOfAKind {
