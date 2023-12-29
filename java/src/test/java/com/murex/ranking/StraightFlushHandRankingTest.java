@@ -46,4 +46,13 @@ class StraightFlushHandRankingTest {
                 "7H 8C TD KH AS",
                 "Black wins. - with straight flush");
     }
+
+    @Disabled
+    @Test
+    public void it_should_return_a_matching_result_with_black_as_winner_with_higher_hand() {
+        assertMatchingResult(
+                "7H 8H 9H TH JH",
+                "2D 3D 4D 5D 6D",
+                "Black wins. - with straight flush and higher hand");
+    }
 }

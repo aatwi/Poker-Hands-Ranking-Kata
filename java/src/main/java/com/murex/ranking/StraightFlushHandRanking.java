@@ -22,12 +22,16 @@ public class StraightFlushHandRanking extends HandRanking{
 
     @Override
     public Result getMatchingResult() {
-        if(whiteStraightHand.isStraight() && whiteFlushHand.isFlush()) {
+        if(isStraightFlush(whiteStraightHand, whiteFlushHand)) {
             return Result.aMatchResult("White wins. - with straight flush");
         }
-        if(blackStraightHand.isStraight() && blackFlushHand.isFlush()) {
+        if(isStraightFlush(blackStraightHand, blackFlushHand)) {
             return Result.aMatchResult("Black wins. - with straight flush");
         }
         return super.getMatchingResult();
+    }
+
+    private boolean isStraightFlush(StraightHand whiteStraightHand, FlushHand whiteFlushHand) {
+        return whiteStraightHand.isStraight() && whiteFlushHand.isFlush();
     }
 }
