@@ -2,7 +2,6 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +21,7 @@ class FlushCardRankingTest {
     @Test
     void it_should_return_a_non_matching_result_when_both_hands_have_no_flush() {
         FlushCardRanking flushCardRanking = buildFlushCardRanking("2D 4H 6S KC AH", "4D 5S 7D JS AC");
-
+        
         assertEquals(Result.aNoMatchResult(), flushCardRanking.getMatchingResult());
     }
 
