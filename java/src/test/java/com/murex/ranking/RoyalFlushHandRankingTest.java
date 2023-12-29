@@ -37,6 +37,6 @@ class RoyalFlushHandRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner() {
-        assertNonMatchingResult("7H 8H 9H TH JH", "TS JS QS KS AS");
+        assertMatchingResult("7H 8H 9H TH JH", "TS JS QS KS AS", "White wins. - with royal flush");
     }
 }
