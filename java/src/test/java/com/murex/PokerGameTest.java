@@ -40,7 +40,7 @@ public class PokerGameTest {
     }
 
     @Nested
-    @DisplayName("High Card")
+    @DisplayName("HIGH CARD")
     class HighCard {
         @Test
         void white_wins() {
@@ -54,7 +54,7 @@ public class PokerGameTest {
     }
 
     @Nested
-    @DisplayName("Pair")
+    @DisplayName("PAIR")
     class Pair {
         @Test
         void black_wins() {
@@ -83,7 +83,7 @@ public class PokerGameTest {
     }
 
     @Nested
-    @DisplayName("Two Pairs")
+    @DisplayName("TWO PAIRS")
     class TwoPairs {
         @Test
         void black_wins() {
@@ -112,7 +112,7 @@ public class PokerGameTest {
     }
 
     @Nested
-    @DisplayName("Three Of A Kind")
+    @DisplayName("THREE OF A KIND")
     class ThreeOfAKind {
         @Test
         public void black_wins() {
@@ -139,23 +139,28 @@ public class PokerGameTest {
     @DisplayName("STRAIGHT")
     class Straight {
         @Test
-        public void STRAIGHT_black_wins_with_a_straight_hand() {
+        public void black_wins() {
             assertWinner("2H 3D 4S 5C 6S", "2C 3S 6H 8H JC", "Black wins. - with straight cards");
         }
 
         @Test
-        public void STRAIGHT_white_wins_with_a_straight_hand() {
+        public void white_wins() {
             assertWinner("2H 2S 4D 5C KS", "7C 8S 9H TD JC", "White wins. - with straight cards");
         }
 
         @Test
-        public void STRAIGHT_white_wins_with_a_straight_and_higher_cards() {
+        public void white_wins_with_a_card_values() {
             assertWinner("2H 3D 4S 5C 6S", "6C 7S 8H 9D TC", "White wins. - with straight cards and higher cards");
+        }
+
+        @Test
+        public void black_wins_with_a_card_values() {
+            assertWinner("6C 7S 8H 9D TC", "2H 3D 4S 5C 6S", "Black wins. - with straight cards and higher cards");
         }
     }
 
     @Nested
-    @DisplayName("Flush")
+    @DisplayName("FLUSH")
     class Flush {
         @Test
         public void black_wins() {
