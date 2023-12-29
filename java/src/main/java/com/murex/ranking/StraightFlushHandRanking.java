@@ -16,8 +16,8 @@ public class StraightFlushHandRanking extends HandRanking{
         super(blackHand, whiteHand);
         whiteStraightHand = new StraightHand(whiteHand);
         whiteFlushHand = new FlushHand(whiteHand);
-        blackStraightHand = new StraightHand(whiteHand);
-        blackFlushHand = new FlushHand(whiteHand);
+        blackStraightHand = new StraightHand(blackHand);
+        blackFlushHand = new FlushHand(blackHand);
     }
 
     @Override
