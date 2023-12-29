@@ -29,8 +29,15 @@ class FullHouseRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_flush_with_hearts() {
-        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("3H 3S 3C AH AD", "4D 5S 7D JS AC");
-        assertEquals(aMatchResult("Black wins. - with full house"), fullHouseCardRanking.getMatchingResult());
+        assertMatchingResult(
+                "3H 3S 3C AH AD",
+                "4D 5S 7D JS AC",
+                aMatchResult("Black wins. - with full house"));
+    }
+
+    private static void assertMatchingResult(String blackCards, String whiteCards, Result expected) {
+        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking(blackCards, whiteCards);
+        assertEquals(expected, fullHouseCardRanking.getMatchingResult());
     }
 
     @Test
@@ -40,8 +47,10 @@ class FullHouseRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_having_flush_with_hearts() {
-        FullHouseRanking fullHouseCardRanking = buildFullHouseCardRanking("4D 5S 7D JS AC", "5H 5S 5C KH KD");
-        assertEquals(aMatchResult("White wins. - with full house"), fullHouseCardRanking.getMatchingResult());
+        assertMatchingResult(
+                "4D 5S 7D JS AC",
+                "5H 5S 5C KH KD",
+                aMatchResult("White wins. - with full house"));
     }
 
     @Test
