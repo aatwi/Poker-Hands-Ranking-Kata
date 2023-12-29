@@ -178,4 +178,11 @@ public class PokerGameTest {
     FOUR_OF_A_KINDS_black_wins() {
         assertWinner( "8D TS TC TH TD","2C 3S 8H TH AD", "Black wins. - with four of a kind");
     }
+
+    @Disabled
+    @Test
+    public void
+    FOUR_OF_A_KINDS_black_wins_with_higher_cards() {
+        assertWinner( "8D TS TC TH TD","2C 4S 4H 4C AD", "Black wins. - with four of a kind");
+    }
 }
