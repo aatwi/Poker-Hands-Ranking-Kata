@@ -22,6 +22,10 @@ public enum CardNumber {
         return intValue;
     }
 
+    public char getCharValue() {
+        return charValue;
+    }
+
     CardNumber(int intValue, char charValue) {
         this.charValue = charValue;
         this.intValue = intValue;

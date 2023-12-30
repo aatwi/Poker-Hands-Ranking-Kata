@@ -20,7 +20,7 @@ public class Card implements Comparable<Card> {
     }
 
     public char getCharValue() {
-        return value;
+        return cardNumber.getCharValue();
     }
 
     public int getIntValue() {
