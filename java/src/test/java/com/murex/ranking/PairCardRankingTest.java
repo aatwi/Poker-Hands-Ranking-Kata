@@ -61,7 +61,7 @@ class PairCardRankingTest {
         assertMatchingResult(
                 "7H JC KD AH AS",
                 "2D 3H 5C 9S KH",
-                "Black wins. - with Pair cards: Ace");
+                "Black wins. - with Pair cards: ACE");
     }
 
     @Test
@@ -70,7 +70,7 @@ class PairCardRankingTest {
         assertMatchingResult(
                 "7H JH JC KD AS",
                 "2D 3H 5C 9S KH",
-                "Black wins. - with Pair cards: Jack");
+                "Black wins. - with Pair cards: JACK");
     }
 
     @Test
@@ -79,7 +79,7 @@ class PairCardRankingTest {
         assertMatchingResult(
                 "5D 6C 7H JH AS",
                 "2D 4H 4C 9S KH",
-                "White wins. - with Pair cards: 4");
+                "White wins. - with Pair cards: FOUR");
     }
 
     @Test
@@ -88,6 +88,6 @@ class PairCardRankingTest {
         assertMatchingResult(
                 "2H 2D 5S 6C AS",
                 "4D 9S KH AH AC",
-                "White wins. - with Pair cards: Ace");
+                "White wins. - with Pair cards: ACE");
     }
 }

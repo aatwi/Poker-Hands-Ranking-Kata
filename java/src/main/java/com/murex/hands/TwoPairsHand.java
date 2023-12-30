@@ -37,15 +37,7 @@ public final class TwoPairsHand {
         return pairOfCards.size() == 2;
     }
 
-    public String getFirstPair() {
-        return getFirstPairCard().getValue();
-    }
-
-    public String getSecondPair() {
-        return getSecondPairCard().getValue();
-    }
-
-    private Card getFirstPairCard() {
+    public Card getFirstPairCard() {
         return pairOfCards.get(0);
     }
 

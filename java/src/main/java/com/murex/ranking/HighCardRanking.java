@@ -35,6 +35,6 @@ public class HighCardRanking extends HandRanking {
     }
 
     private String buildMessage(HighHand hand) {
-        return hand.getHand().getName() + " wins. - with high card: " + hand.getHighCard().getValue();
+        return hand.getHand().getName() + " wins. - with high card: " + hand.getHighCard().getName();
     }
 }

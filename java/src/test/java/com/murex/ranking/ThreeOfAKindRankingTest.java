@@ -33,7 +33,7 @@ class ThreeOfAKindRankingTest {
         assertMatchingResult(
                 "7H 7C TD KH AS",
                 "2D 9H 9C 9S KH",
-                "White wins. - with three of a kind: 9");
+                "White wins. - with three of a kind: NINE");
     }
 
     @Test
@@ -41,7 +41,7 @@ class ThreeOfAKindRankingTest {
         assertMatchingResult(
                 "7H 7C TD KH AS",
                 "2D 9H TC TS TH",
-                "White wins. - with three of a kind: Ten");
+                "White wins. - with three of a kind: TEN");
     }
 
     @Test
@@ -49,7 +49,7 @@ class ThreeOfAKindRankingTest {
         assertMatchingResult(
                 "7H 7C 7D KH AS",
                 "2D 9H 8C TS KH",
-                "Black wins. - with three of a kind: 7");
+                "Black wins. - with three of a kind: SEVEN");
     }
 
     @Test
@@ -57,7 +57,7 @@ class ThreeOfAKindRankingTest {
         assertMatchingResult(
                 "2H 3C AD AH AS",
                 "2D 9H 9C 9S KH",
-                "Black wins. - with three of a kind: Ace");
+                "Black wins. - with three of a kind: ACE");
     }
 
     @Test
@@ -65,7 +65,7 @@ class ThreeOfAKindRankingTest {
         assertMatchingResult(
                 "2H 3C 8D 8H 8S",
                 "2D JH JC JS KH",
-                "White wins. - with three of a kind: Jack");
+                "White wins. - with three of a kind: JACK");
     }
 
 }

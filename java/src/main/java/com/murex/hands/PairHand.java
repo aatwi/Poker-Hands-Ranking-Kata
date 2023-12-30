@@ -34,7 +34,7 @@ public final class PairHand {
 
     public String getPairValue() {
         Optional<Card> cardFound = cardOfPairs;
-        return cardFound.isPresent() ? cardFound.get().getValue() : "";
+        return cardFound.isPresent() ? cardFound.get().getName() : "";
     }
 
     private Optional<Card> extractCardOfPairs() {

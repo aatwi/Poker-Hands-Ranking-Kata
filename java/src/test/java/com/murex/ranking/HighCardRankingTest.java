@@ -30,31 +30,31 @@ class HighCardRankingTest {
     @Test
     public void
     HIGH_CARD_white_wins_with_Ace() {
-        assertMatchingResult("2H 3D 5S 9C KD", "2C 3H 4S 8C AH", "White wins. - with high card: Ace");
+        assertMatchingResult("2H 3D 5S 9C KD", "2C 3H 4S 8C AH", "White wins. - with high card: ACE");
     }
 
     @Test
     public void
     HIGH_CARD_black_wins_with_Queen() {
-        assertMatchingResult("2H 3D 5S 9C QD", "2C 3H 4S 8C JH", "Black wins. - with high card: Queen");
+        assertMatchingResult("2H 3D 5S 9C QD", "2C 3H 4S 8C JH", "Black wins. - with high card: QUEEN");
     }
 
     @Test
     public void
     HIGH_CARD_white_wins_Jack() {
-        assertMatchingResult("2H 3D 5S 7C 9D", "2C 3H 4S 8C JH", "White wins. - with high card: Jack");
+        assertMatchingResult("2H 3D 5S 7C 9D", "2C 3H 4S 8C JH", "White wins. - with high card: JACK");
     }
 
     @Test
     public void
     HIGH_CARD_black_wins_with_9() {
-        assertMatchingResult("2H 3D 5S 8C 9D", "2C 3H 4S 7C 8H", "Black wins. - with high card: 9");
+        assertMatchingResult("2H 3D 5S 8C 9D", "2C 3H 4S 7C 8H", "Black wins. - with high card: NINE");
     }
 
     @Test
     public void
     white_wins_with_9() {
-        assertMatchingResult("2H 3D 5S 8C AD", "2S 3C 5D 9S AD", "White wins. - with high card: 9");
+        assertMatchingResult("2H 3D 5S 8C AD", "2S 3C 5D 9S AD", "White wins. - with high card: NINE");
     }
 
     @Test

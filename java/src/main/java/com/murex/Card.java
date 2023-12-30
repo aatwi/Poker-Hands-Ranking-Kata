@@ -15,8 +15,8 @@ public class Card implements Comparable<Card> {
         this.suite = Suite.valueOf(String.valueOf(suite));
     }
 
-    public String getValue() {
-        return CardValueConverter.getCardName(value);
+    public String getName() {
+        return cardNumber.toString();
     }
 
     public char getCharValue() {
@@ -32,7 +32,7 @@ public class Card implements Comparable<Card> {
     }
 
     @Override
-    public int compareTo(Card otherCard) {
+    public int compareTo(Card otherCard) { 
         return Integer.compare(cardNumber.getIntValue(), otherCard.getIntValue());
     }
 
