@@ -12,7 +12,7 @@ import java.util.function.Function;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
-public class FourOfAKindHand {
+public final class FourOfAKindHand {
     private final Hand hand;
     private Optional<CardNumber> fourOfKindCard;
 

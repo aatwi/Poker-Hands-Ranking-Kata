@@ -1,8 +1,9 @@
 package com.murex.hands;
 
+import com.murex.CardNumber;
 import com.murex.Hand;
 
-public class RoyalFlushHand {
+public final class RoyalFlushHand {
     private final Hand hand;
     private final StraightFlushHand straightFlushHand;
 
@@ -16,8 +17,8 @@ public class RoyalFlushHand {
     }
 
     public boolean isRoyalFlush() {
-        if(this.straightFlushHand.isStraightFlush()){
-            return hand.getCardAt(4).getCharValue() == 'A';
+        if (this.straightFlushHand.isStraightFlush()) {
+            return hand.getCardAt(4).getCardNumber().equals(CardNumber.ACE);
         }
         return false;
     }
