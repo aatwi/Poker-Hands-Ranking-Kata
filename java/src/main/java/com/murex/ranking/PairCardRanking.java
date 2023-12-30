@@ -1,6 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Card;
+import com.murex.CardNumber;
 import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.PairHand;
@@ -45,8 +46,8 @@ public class PairCardRanking extends HandRanking {
         return !blackPairHand.hasPair() && !whitePairHand.hasPair();
     }
 
-    private String buildPairCardsMessage(Hand hand, Card pairCard) {
-        return hand.getName() + " wins. - with Pair cards: " + pairCard.getName();
+    private String buildPairCardsMessage(Hand hand, CardNumber pairCard) {
+        return hand.getName() + " wins. - with Pair cards: " + pairCard.toString();
     }
 
     private boolean bothHandsHavePairs() {

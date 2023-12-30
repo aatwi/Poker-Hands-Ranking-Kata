@@ -25,7 +25,7 @@ class TwoPairCardRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_when_the_black_player_has_two_pairs() {
-        assertMatchingResult("7H 7C TD TH AS", "1H 4C 5H 7D AD", "Black wins. - with two pairs: SEVEN and TEN");
+        assertMatchingResult("7H 7C TD TH AS", "2H 4C 5H 7D AD", "Black wins. - with two pairs: SEVEN and TEN");
     }
 
     @Test

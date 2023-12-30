@@ -1,6 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Card;
+import com.murex.CardNumber;
 import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.FullHouseHand;
@@ -42,8 +43,8 @@ public class FullHouseRanking extends HandRanking {
     }
 
     private Hand getHigherHand() {
-        Card blackCard = blackFullHouseHand.getTrioCards().get();
-        Card whiteCard = whiteFullHouseHand.getTrioCards().get();
+        CardNumber blackCard = blackFullHouseHand.getTrioCards().get();
+        CardNumber whiteCard = whiteFullHouseHand.getTrioCards().get();
 
         int comparison = blackCard.compareTo(whiteCard);
         return comparison > 0 ? blackHand : whiteHand;

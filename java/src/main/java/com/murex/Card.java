@@ -4,12 +4,10 @@ import java.util.Objects;
 
 public class Card implements Comparable<Card> {
 
-    private final char value;
     private final CardNumber cardNumber;
     private final Suite suite;
 
     public Card(char value, char suite) {
-        this.value = value;
         this.cardNumber = CardNumber.from(value);
         this.suite = Suite.valueOf(String.valueOf(suite));
     }
@@ -30,9 +28,21 @@ public class Card implements Comparable<Card> {
         return suite;
     }
 
+    public CardNumber getCardNumber() {
+        return cardNumber;
+    }
+
     @Override
     public int compareTo(Card otherCard) {
         return Integer.compare(cardNumber.getIntValue(), otherCard.getIntValue());
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "cardNumber=" + cardNumber +
+                ", suite=" + suite +
+                '}';
     }
 
     @Override
@@ -40,18 +50,11 @@ public class Card implements Comparable<Card> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
-        return value == card.value;
+        return cardNumber == card.cardNumber && suite == card.suite;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
-    }
-
-    @Override
-    public String toString() {
-        return "Card{" +
-               "value=" + value +
-               '}';
+        return Objects.hash(cardNumber, suite);
     }
 }

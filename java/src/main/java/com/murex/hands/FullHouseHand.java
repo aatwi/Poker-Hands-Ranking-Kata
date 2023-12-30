@@ -1,6 +1,7 @@
 package com.murex.hands;
 
 import com.murex.Card;
+import com.murex.CardNumber;
 import com.murex.Hand;
 
 import java.util.Arrays;
@@ -13,8 +14,8 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class FullHouseHand {
     private final Hand hand;
-    private Optional<Card> pairCards;
-    private Optional<Card> trioCards;
+    private Optional<CardNumber> pairCards;
+    private Optional<CardNumber> trioCards;
 
     public FullHouseHand(Hand hand) {
         this.hand = hand;
@@ -25,7 +26,7 @@ public class FullHouseHand {
         return hand;
     }
 
-    public Optional<Card> getTrioCards() {
+    public Optional<CardNumber> getTrioCards() {
         return trioCards;
     }
 
@@ -34,7 +35,7 @@ public class FullHouseHand {
     }
 
     private void extractPairsAndTrioCards() {
-        Map<Card, Long> cardGroupsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Function.identity(), counting()));
+        Map<CardNumber, Long> cardGroupsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Card::getCardNumber, counting()));
         pairCards = cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 2).findAny();
         trioCards = cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 3).findAny();
     }

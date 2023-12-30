@@ -1,6 +1,7 @@
 package com.murex.hands;
 
 import com.murex.Card;
+import com.murex.CardNumber;
 import com.murex.Hand;
 
 import java.util.Arrays;
@@ -13,7 +14,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class FourOfAKindHand {
     private final Hand hand;
-    private Optional<Card> fourOfKindCard;
+    private Optional<CardNumber> fourOfKindCard;
 
     public FourOfAKindHand(Hand hand) {
         this.hand = hand;
@@ -28,12 +29,12 @@ public class FourOfAKindHand {
         return fourOfKindCard.isPresent();
     }
 
-    public Card getFourOfKindCard() {
+    public CardNumber getFourOfKindCard() {
         return fourOfKindCard.get();
     }
 
-    private Optional<Card> extractFourOfAKindCard() {
-        Map<Card, Long> cardGroupsMap = Arrays.stream(getHand().getCards()).collect(groupingBy(Function.identity(), counting()));
+    private Optional<CardNumber> extractFourOfAKindCard() {
+        Map<CardNumber, Long> cardGroupsMap = Arrays.stream(getHand().getCards()).collect(groupingBy(Card::getCardNumber, counting()));
         return cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 4).findAny();
     }
 }

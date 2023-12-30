@@ -56,7 +56,7 @@ public class TwoPairCardRanking extends HandRanking {
     }
 
     private static String buildWinningMessage(TwoPairsHand winningPair) {
-        return winningPair.getHandName() + " wins. - with two pairs: " + winningPair.getFirstPairCard().getName() + " and " + winningPair.getSecondPairCard().getName();
+        return winningPair.getHandName() + " wins. - with two pairs: " + winningPair.getFirstPairCard().toString() + " and " + winningPair.getSecondPairCard().toString();
     }
 
 }

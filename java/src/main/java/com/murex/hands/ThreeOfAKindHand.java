@@ -1,6 +1,7 @@
 package com.murex.hands;
 
 import com.murex.Card;
+import com.murex.CardNumber;
 import com.murex.Hand;
 
 import java.util.Arrays;
@@ -13,7 +14,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 public final class ThreeOfAKindHand {
     private final Hand hand;
-    private final List<Card> cards;
+    private final List<CardNumber> cards;
 
     public ThreeOfAKindHand(Hand hand) {
         this.hand = hand;
@@ -24,8 +25,8 @@ public final class ThreeOfAKindHand {
         return hand;
     }
 
-    private List<Card> extractThreeOfAKind() {
-        Map<Card, Long> twoPairsMap = Arrays.stream(this.hand.getCards()).collect(groupingBy(Function.identity(), counting()));
+    private List<CardNumber> extractThreeOfAKind() {
+        Map<CardNumber, Long> twoPairsMap = Arrays.stream(this.hand.getCards()).collect(groupingBy(Card::getCardNumber, counting()));
         return twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).sorted().toList();
     }
 
@@ -33,7 +34,7 @@ public final class ThreeOfAKindHand {
         return this.cards.size() == 1;
     }
 
-    public Card getCard() {
+    public CardNumber getCard() {
         return this.cards.get(0);
     }
 }
