@@ -6,7 +6,6 @@ public class Card implements Comparable<Card> {
 
     private final char value;
     private final CardNumber cardNumber;
-
     private final Suite suite;
 
     public Card(char value, char suite) {
