@@ -1,39 +1,31 @@
 package com.murex;
 
 public enum Suite {
-    CLUBS {
+    C {
         @Override
-        char getValue() {
-            return 'C';
+        String getName() {
+            return "Clubs";
         }
     },
-    SPADES {
+    S {
         @Override
-        char getValue() {
-            return 'S';
+        String getName() {
+            return "Spades";
         }
     },
-    HEARTS {
+    H {
         @Override
-        char getValue() {
-            return 'H';
+        String getName() {
+            return "Hearts";
         }
     },
-    DIAMONDS {
+    D {
         @Override
-        char getValue() {
-            return 'D';
+        String getName() {
+            return "Diamonds";
         }
     };
 
-    abstract char getValue();
+    abstract String getName();
 
-    public static Suite from(char shortName) {
-        for (Suite suite : Suite.values()) {
-            if(suite.getValue() == shortName) {
-                return suite;
-            }
-        }
-        return null;
-    }
 }

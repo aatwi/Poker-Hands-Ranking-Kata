@@ -15,7 +15,7 @@ public final class FlushHand {
 
     public boolean isFlush() {
         for (int index = 1; index < 5; index++) {
-            if (getHand().getCardAt(index - 1).getSuite() != getHand().getCardAt(index).getSuite()) {
+            if (!getHand().getCardAt(index - 1).getSuite().equals(getHand().getCardAt(index).getSuite())) {
                 return false;
             }
         }

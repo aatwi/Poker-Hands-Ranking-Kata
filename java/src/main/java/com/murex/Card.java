@@ -5,14 +5,14 @@ import java.util.Objects;
 public class Card implements Comparable<Card> {
 
     private final char value;
-    private final char suite;
+    private final CardNumber cardNumber;
 
-    private final Suite suiteEnum;
+    private final Suite suite;
 
     public Card(char value, char suite) {
         this.value = value;
-        this.suite = suite;
-        this.suiteEnum = Suite.from(suite);
+        this.cardNumber = CardNumber.from(value);
+        this.suite = Suite.valueOf(String.valueOf(suite));
     }
 
     public String getValue() {
@@ -27,8 +27,8 @@ public class Card implements Comparable<Card> {
         return CardValueConverter.getIntegerValueOf(value);
     }
 
-    public char getSuite() {
-        return suiteEnum.getValue();
+    public Suite getSuite() {
+        return suite;
     }
 
     @Override
