@@ -12,7 +12,7 @@ public class Card implements Comparable<Card> {
     public Card(char value, char suite) {
         this.value = value;
         this.suite = suite;
-        suiteEnum = Suite.from(suite);
+        this.suiteEnum = Suite.from(suite);
     }
 
     public String getValue() {
@@ -28,7 +28,7 @@ public class Card implements Comparable<Card> {
     }
 
     public char getSuite() {
-        return suite;
+        return suiteEnum.getValue();
     }
 
     @Override
