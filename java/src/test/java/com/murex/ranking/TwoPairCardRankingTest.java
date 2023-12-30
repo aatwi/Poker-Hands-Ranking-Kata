@@ -30,7 +30,7 @@ class TwoPairCardRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_when_the_white_player_has_two_pairs() {
-        assertMatchingResult("2H 7C 8D TH AS", "1H 1C 6H 7D 7S", "White wins. - with two pairs: 1 and 7");
+        assertMatchingResult("2H 7C 8D TH AS", "3H 3C 6H 7D 7S", "White wins. - with two pairs: 3 and 7");
     }
 
     @Test
@@ -45,27 +45,27 @@ class TwoPairCardRankingTest {
 
     @Test
     public void when_both_hands_has_two_pairs_the_higher_hand_wins_black_wins_higher_cards_are_equal() {
-        assertMatchingResult("1H 1C 4D 4H AS", "2D 2S 4C 4S AH", "White wins. - with two pairs: 2 and 4");
+        assertMatchingResult("2H 2C 4D 4H AS", "3D 3S 4C 4S AH", "White wins. - with two pairs: 3 and 4");
     }
 
     @Test
     public void when_both_hands_has_two_pairs_the_higher_hand_wins_black_wins_higher_cards_are_equal_option2() {
-        assertMatchingResult("2H 2C 4D 4H AS", "1D 1S 4C 4S AH", "Black wins. - with two pairs: 2 and 4");
+        assertMatchingResult("3H 3C 4D 4H AS", "2D 2S 4C 4S AH", "Black wins. - with two pairs: 3 and 4");
     }
 
     @Test
     public void it_should_return_a_no_matching_result_when_only_one_pair_exists() {
-        assertNoMatchingResult("2H 7C 8D TH AS", "1H 1C 6H 7D 9S");
+        assertNoMatchingResult("2H 7C 8D TH AS", "3H 3C 6H 7D 9S");
     }
 
     @Test
     public void it_should_return_a_no_matching_result_when_none_have_two_pairs() {
-        assertNoMatchingResult("1H 7C 8D TH AS", "2H 3C 6H 7D 8S");
+        assertNoMatchingResult("2D 7C 8D TH AS", "2H 3C 6H 7D 8S");
     }
 
 
     @Test
     public void it_should_return_a_no_matching_result_when_two_hands_have_same_card_values() {
-        assertNoMatchingResult("1H 1C 4D 4H AS", "1D 1S 4C 4S AH");
+        assertNoMatchingResult("2H 2C 4D 4H AS", "2D 2S 4C 4S AH");
     }
 }

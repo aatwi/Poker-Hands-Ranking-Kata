@@ -27,8 +27,8 @@ public enum CardNumber {
     }
 
     CardNumber(int intValue, char charValue) {
-        this.charValue = charValue;
         this.intValue = intValue;
+        this.charValue = charValue;
     }
 
     public static CardNumber from(char value) {

@@ -33,8 +33,8 @@ public class Card implements Comparable<Card> {
 
     @Override
     public int compareTo(Card otherCard) {
-        int otherValue = CardValueConverter.getIntegerValueOf(otherCard.value);
-        int currentValue = CardValueConverter.getIntegerValueOf(this.value);
+        int otherValue = otherCard.cardNumber.getIntValue();
+        int currentValue = cardNumber.getIntValue();
 
         return Integer.compare(currentValue, otherValue);
     }
