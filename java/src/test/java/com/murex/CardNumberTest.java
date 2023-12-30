@@ -9,6 +9,8 @@ class CardNumberTest {
 
     @Test
     public void converts_chars_to_CardNumber() {
-        Assertions.assertEquals(CardNumber.TEN, CardNumber.from('T'));
+        CardNumber t = CardNumber.from('T');
+        assertEquals(CardNumber.TEN, t);
+        assertEquals(10, t.getIntValue());
     }
 }

@@ -26,7 +26,7 @@ public enum CardNumber {
         this.charValue = charValue;
         this.intValue = intValue;
     }
- 
+
     public static CardNumber from(char value) {
         for (CardNumber cardNumber : CardNumber.values()) {
             if(cardNumber.charValue == value) {
