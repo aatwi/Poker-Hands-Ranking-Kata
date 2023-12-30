@@ -12,5 +12,6 @@ class CardNumberTest {
         CardNumber t = CardNumber.from('T');
         assertEquals(CardNumber.TEN, t);
         assertEquals(10, t.getIntValue());
+        assertEquals("TEN", t.toString());
     }
 }
