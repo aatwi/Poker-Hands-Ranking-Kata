@@ -27,4 +27,13 @@ public enum Suite {
     };
 
     abstract char getValue();
+
+    public static Suite from(char shortName) {
+        for (Suite suite : Suite.values()) {
+            if(suite.getValue() == shortName) {
+                return suite;
+            }
+        }
+        return null;
+    }
 }

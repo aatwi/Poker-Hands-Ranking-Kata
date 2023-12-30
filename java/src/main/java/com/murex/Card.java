@@ -7,9 +7,12 @@ public class Card implements Comparable<Card> {
     private final char value;
     private final char suite;
 
+    private final Suite suiteEnum;
+
     public Card(char value, char suite) {
         this.value = value;
         this.suite = suite;
+        suiteEnum = Suite.from(suite);
     }
 
     public String getValue() {
