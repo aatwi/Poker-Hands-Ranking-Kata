@@ -33,7 +33,7 @@ public class Card implements Comparable<Card> {
 
     @Override
     public int compareTo(Card otherCard) {
-        int otherValue = otherCard.cardNumber.getIntValue();
+        int otherValue = otherCard.getIntValue();
         int currentValue = cardNumber.getIntValue();
 
         return Integer.compare(currentValue, otherValue);
