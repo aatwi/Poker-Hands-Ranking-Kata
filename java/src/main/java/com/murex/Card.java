@@ -24,7 +24,7 @@ public class Card implements Comparable<Card> {
     }
 
     public int getIntValue() {
-        return cardNumber.getIntValue(); 
+        return cardNumber.getIntValue();
     }
 
     public Suite getSuite() {
