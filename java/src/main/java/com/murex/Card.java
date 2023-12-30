@@ -32,7 +32,7 @@ public class Card implements Comparable<Card> {
     }
 
     @Override
-    public int compareTo(Card otherCard) { 
+    public int compareTo(Card otherCard) {
         return Integer.compare(cardNumber.getIntValue(), otherCard.getIntValue());
     }
 
