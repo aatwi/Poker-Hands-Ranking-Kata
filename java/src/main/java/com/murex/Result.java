@@ -42,40 +42,41 @@ public class Result {
     }
 
     public static Result aThreeOfAKindWinningResult(Hand hand, CardNumber card) {
-        return new Result(true, hand.getName() + " wins. - with three of a kind: " + card.toString());
+        String message = hand.getName() + " wins. - with three of a kind: " + card.toString();
+        return new WinningResult(message);
     }
 
     public static Result aStraightWinningResult(Hand hand, boolean withHighHand) {
         String message = hand.getName() + " wins. - with straight cards";
-        return withHighHand ? aMatchResult(message + " and higher cards"): aMatchResult(message);
+        return withHighHand ? new WinningResult(message + " and higher cards"): new WinningResult(message);
     }
 
     public static Result aFlushWinningResult(Hand hand, boolean withHighHand) {
         String message = hand.getName() + " wins. - with flush";
-        return withHighHand ? aMatchResult(message + " and higher hand"): aMatchResult(message);
+        return withHighHand ? new WinningResult(message + " and higher hand"): new WinningResult(message);
     }
 
     public static Result aFullHouseWinningResult(Hand hand, boolean withHighHand) {
         String message = hand.getName() + " wins. - with full house";
-        return withHighHand ? aMatchResult(message + " and higher hand") : aMatchResult(message);
+        return withHighHand ? new WinningResult(message + " and higher hand") : new WinningResult(message);
     }
 
     public static Result aFourOfAKindWinningResult(Hand hand, boolean withHighHand) {
         String message = hand.getName() + " wins. - with four of a kind";
-        return withHighHand ? aMatchResult(message + " and higher hand") : Result.aMatchResult(message);
+        return withHighHand ? new WinningResult(message + " and higher hand") : new WinningResult(message);
     }
 
     public static Result aStraightFlushWinningResult(Hand hand, boolean withHighHand) {
         String message = hand.getName() + " wins. - with straight flush";
-        return withHighHand ? aMatchResult(message + " and higher hand") : Result.aMatchResult(message);
+        return withHighHand ? new WinningResult(message + " and higher hand") : new WinningResult(message);
     }
 
     public static Result aRoyalFlushWinningResult(Hand hand) {
-        return Result.aMatchResult(hand.getName() + " wins. - with royal flush");
+        return new WinningResult(hand.getName() + " wins. - with royal flush");
     }
 
     public static Result aTieResult() {
-        return Result.aMatchResult("Tie.");
+        return new TieResult();
     }
 
     @Override
@@ -110,7 +111,6 @@ class WinningResult extends Result {
         this.message = message;
     }
 
-
     @Override
     public String toString() {
         return "WinningResult{" +
@@ -131,5 +131,36 @@ class WinningResult extends Result {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), isMatch, message);
+    }
+}
+
+class TieResult extends Result {
+    private final String message = "Tie.";
+    private final boolean isMatch = true;
+
+    public TieResult() {
+        super(true, "Tie.");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        TieResult tieResult = (TieResult) o;
+        return isMatch == tieResult.isMatch && Objects.equals(message, tieResult.message);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), message, isMatch);
+    }
+
+    @Override
+    public String toString() {
+        return "TieResult{" +
+                "message='" + message + '\'' +
+                ", isMatch=" + isMatch +
+                '}';
     }
 }
