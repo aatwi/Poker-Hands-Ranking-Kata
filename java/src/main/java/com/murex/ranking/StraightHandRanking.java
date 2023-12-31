@@ -2,9 +2,8 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 import com.murex.hands.StraightHand;
-
-import static com.murex.Result.*;
 
 public class StraightHandRanking extends HandRanking{
 
@@ -24,7 +23,7 @@ public class StraightHandRanking extends HandRanking{
         }
 
         if(!whiteStraight.isStraight() && !blackStraight.isStraight()) {
-            return aNoMatchResult();
+            return ResultHelper.aNoMatchResult();
         }
 
         return blackStraight.isStraight() ? buildMatchingResult(blackStraight) : buildMatchingResult(whiteStraight);
@@ -37,16 +36,16 @@ public class StraightHandRanking extends HandRanking{
     private Result getHigherHand() {
         int comparison = blackStraight.getHand().getCardAt(0).compareTo(whiteStraight.getHand().getCardAt(0));
         if(comparison == 0) {
-            return aNoMatchResult();
+            return ResultHelper.aNoMatchResult();
         }
         return comparison > 0 ? buildMessageWithHigherCards(blackStraight) : buildMessageWithHigherCards(whiteStraight);
     }
 
     private static Result buildMessageWithHigherCards(StraightHand straightHand) {
-        return aStraightWinningResult(straightHand.getHand(), true);
+        return ResultHelper.aStraightWinningResult(straightHand.getHand(), true);
     }
 
     private static Result buildMatchingResult(StraightHand straightHand) {
-        return aStraightWinningResult(straightHand.getHand(), false);
+        return ResultHelper.aStraightWinningResult(straightHand.getHand(), false);
     }
 }

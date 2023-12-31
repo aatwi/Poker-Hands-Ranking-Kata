@@ -2,6 +2,7 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 
 public abstract class HandRanking {
     protected final Hand blackHand;
@@ -13,6 +14,6 @@ public abstract class HandRanking {
     }
 
     public Result getMatchingResult() {
-        return Result.aNoMatchResult();
+        return ResultHelper.aNoMatchResult();
     }
 }

@@ -1,10 +1,10 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import com.murex.Result;
+import com.murex.ResultHelper;
 import org.junit.jupiter.api.Test;
 
-import static com.murex.Result.aNoMatchResult;
+import static com.murex.ResultHelper.aNoMatchResult;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RoyalFlushHandRankingTest {
@@ -33,7 +33,7 @@ class RoyalFlushHandRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "TS JS QS KS AS");
 
         RoyalFlushHandRanking handRanking = new RoyalFlushHandRanking(blackHand, whiteHand);
-        assertEquals(Result.aRoyalFlushWinningResult(whiteHand), handRanking.getMatchingResult());
+        assertEquals(ResultHelper.aRoyalFlushWinningResult(whiteHand), handRanking.getMatchingResult());
     }
 
     @Test
@@ -42,6 +42,6 @@ class RoyalFlushHandRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "7H 8H 9H TH JH");
 
         RoyalFlushHandRanking handRanking = new RoyalFlushHandRanking(blackHand, whiteHand);
-        assertEquals(Result.aRoyalFlushWinningResult(blackHand), handRanking.getMatchingResult());
+        assertEquals(ResultHelper.aRoyalFlushWinningResult(blackHand), handRanking.getMatchingResult());
     }
 }

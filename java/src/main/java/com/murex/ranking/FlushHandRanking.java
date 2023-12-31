@@ -2,10 +2,9 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 import com.murex.hands.FlushHand;
 import com.murex.hands.HighHand;
-
-import static com.murex.Result.*;
 
 public class FlushHandRanking extends HandRanking {
 
@@ -23,18 +22,18 @@ public class FlushHandRanking extends HandRanking {
         if(blackFlushHand.isFlush() && whiteFlushHand.isFlush()) {
             HighCardRanking highCardRanking = new HighCardRanking(blackHand, whiteHand);
             if (highCardRanking.getHigherHand().isEmpty()) {
-                return aNoMatchResult();
+                return ResultHelper.aNoMatchResult();
             }
             HighHand highHand = highCardRanking.getHigherHand().get();
-            return Result.aFlushWinningResult(highHand.getHand(), true);
+            return ResultHelper.aFlushWinningResult(highHand.getHand(), true);
         }
 
         if(blackFlushHand.isFlush()) {
-            return Result.aFlushWinningResult(blackFlushHand.getHand(), false);
+            return ResultHelper.aFlushWinningResult(blackFlushHand.getHand(), false);
         }
 
         if(whiteFlushHand.isFlush()) {
-            return Result.aFlushWinningResult(whiteFlushHand.getHand(), false);
+            return ResultHelper.aFlushWinningResult(whiteFlushHand.getHand(), false);
         }
 
         return super.getMatchingResult();

@@ -6,8 +6,8 @@ import com.murex.Result;
 
 import java.util.Optional;
 
-import static com.murex.Result.aNoMatchResult;
-import static com.murex.Result.aHighCardWinningResult;
+import static com.murex.ResultHelper.aNoMatchResult;
+import static com.murex.ResultHelper.aHighCardWinningResult;
 
 public class HighCardRanking extends HandRanking {
 

@@ -2,9 +2,8 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 import com.murex.hands.TwoPairsHand;
-
-import static com.murex.Result.*;
 
 public class TwoPairCardRanking extends HandRanking {
 
@@ -20,7 +19,7 @@ public class TwoPairCardRanking extends HandRanking {
     @Override
     public Result getMatchingResult() {
         if (noHandHasTwoPairs()) {
-            return aNoMatchResult();
+            return ResultHelper.aNoMatchResult();
         }
 
         if (bothHandsHaveTwoPairs()) {
@@ -28,7 +27,7 @@ public class TwoPairCardRanking extends HandRanking {
         }
 
         TwoPairsHand winningPair = blackTwoPairsHand.hasTwoPairs() ? blackTwoPairsHand : whiteTwoPairsHand;
-        return aTwoPairWinningResult(winningPair.getHand(), winningPair.getFirstPairCard(), winningPair.getSecondPairCard());
+        return ResultHelper.aTwoPairWinningResult(winningPair.getHand(), winningPair.getFirstPairCard(), winningPair.getSecondPairCard(), false);
     }
 
     private boolean bothHandsHaveTwoPairs() {
@@ -42,11 +41,11 @@ public class TwoPairCardRanking extends HandRanking {
     private Result getHigherHand() {
         int comparison = compareForHigherHands();
         if(comparison == 0){
-            return aNoMatchResult();
+            return ResultHelper.aNoMatchResult();
         }
 
         TwoPairsHand winningPair = comparison > 0 ? this.blackTwoPairsHand : this.whiteTwoPairsHand;
-        return aTwoPairWinningResult(winningPair.getHand(), winningPair.getFirstPairCard(), winningPair.getSecondPairCard());
+        return ResultHelper.aTwoPairWinningResult(winningPair.getHand(), winningPair.getFirstPairCard(), winningPair.getSecondPairCard(), true);
     }
 
     private int compareForHigherHands() {

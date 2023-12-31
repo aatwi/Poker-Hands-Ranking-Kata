@@ -3,9 +3,8 @@ package com.murex.ranking;
 import com.murex.CardNumber;
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 import com.murex.hands.FullHouseHand;
-
-import static com.murex.Result.aMatchResult;
 
 public class FullHouseRanking extends HandRanking {
 
@@ -19,11 +18,11 @@ public class FullHouseRanking extends HandRanking {
     }
 
     private static Result buildMatchingResultWithHigherHand(Hand hand) {
-        return Result.aFullHouseWinningResult(hand, true);
+        return ResultHelper.aFullHouseWinningResult(hand, true);
     }
 
     private static Result buildMatchingResult(FullHouseHand fullHouseHand) {
-        return Result.aFullHouseWinningResult(fullHouseHand.getHand(), false);
+        return ResultHelper.aFullHouseWinningResult(fullHouseHand.getHand(), false);
     }
 
     @Override

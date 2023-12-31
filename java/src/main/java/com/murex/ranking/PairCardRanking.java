@@ -1,11 +1,9 @@
 package com.murex.ranking;
 
-import com.murex.CardNumber;
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 import com.murex.hands.PairHand;
-
-import static com.murex.Result.*;
 
 public class PairCardRanking extends HandRanking {
 
@@ -24,20 +22,20 @@ public class PairCardRanking extends HandRanking {
             return getHigherPair();
         }
         if (bothHandsHaveNoPairs()) {
-            return aNoMatchResult();
+            return ResultHelper.aNoMatchResult();
         }
         PairHand winningPairHand = blackPairHand.hasPair() ? blackPairHand : whitePairHand;
-        return aPairWinningResult(winningPairHand.getHand(), winningPairHand.getPairCard());
+        return ResultHelper.aPairWinningResult(winningPairHand.getHand(), winningPairHand.getPairCard(), false);
     }
 
     private Result getHigherPair() {
         int comparison = blackPairHand.getPairCard().compareTo(whitePairHand.getPairCard());
         if (comparison == 0) {
-            return aNoMatchResult();
+            return ResultHelper.aNoMatchResult();
         }
 
         PairHand winningHand = comparison > 0 ? blackPairHand : whitePairHand;
-        return aPairWinningResult(winningHand.getHand(), winningHand.getPairCard());
+        return ResultHelper.aPairWinningResult(winningHand.getHand(), winningHand.getPairCard(), true);
     }
 
     private boolean bothHandsHaveNoPairs() {

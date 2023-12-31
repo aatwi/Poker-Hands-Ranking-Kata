@@ -2,6 +2,7 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 import com.murex.hands.RoyalFlushHand;
 
 public class RoyalFlushHandRanking extends HandRanking{
@@ -18,13 +19,13 @@ public class RoyalFlushHandRanking extends HandRanking{
     @Override
     public Result getMatchingResult() {
         if(whiteRoyalFlushHand.isRoyalFlush() && blackRoyalFlushHand.isRoyalFlush()) {
-            return Result.aNoMatchResult();
+            return ResultHelper.aNoMatchResult();
         }
         if (whiteRoyalFlushHand.isRoyalFlush()) {
-            return Result.aRoyalFlushWinningResult(whiteRoyalFlushHand.getHand());
+            return ResultHelper.aRoyalFlushWinningResult(whiteRoyalFlushHand.getHand());
         }
         if (blackRoyalFlushHand.isRoyalFlush()) {
-            return Result.aRoyalFlushWinningResult(blackRoyalFlushHand.getHand());
+            return ResultHelper.aRoyalFlushWinningResult(blackRoyalFlushHand.getHand());
         }
         return super.getMatchingResult();
     }

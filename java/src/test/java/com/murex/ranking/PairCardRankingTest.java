@@ -3,9 +3,9 @@ package com.murex.ranking;
 import com.murex.CardNumber;
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 import org.junit.jupiter.api.Test;
 
-import static com.murex.Result.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PairCardRankingTest {
@@ -21,7 +21,7 @@ class PairCardRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "7H 8C TD KH AS");
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
 
-        assertEquals(aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
+        assertEquals(ResultHelper.aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
     }
 
     @Test
@@ -30,7 +30,7 @@ class PairCardRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "7H 7C TD KH AS");
         Hand whiteHand = Hand.buildFrom("White", "7D 7S TC KS AH");
 
-        assertEquals(aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
+        assertEquals(ResultHelper.aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
     }
 
     @Test
@@ -39,7 +39,7 @@ class PairCardRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "2H 2D 5S 6C JS");
         Hand whiteHand = Hand.buildFrom("White", "2C 2S 6H 8H AC");
 
-        assertEquals(aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
+        assertEquals(ResultHelper.aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
     }
 
     @Test
@@ -48,7 +48,7 @@ class PairCardRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "2H 4D 8S AC AS");
         Hand whiteHand = Hand.buildFrom("White", "2C 3S 7H AH AD");
 
-        assertEquals(aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
+        assertEquals(ResultHelper.aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
     }
 
     @Test
@@ -58,7 +58,7 @@ class PairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
 
         assertEquals(
-                aPairWinningResult(blackHand, CardNumber.ACE),
+                ResultHelper.aPairWinningResult(blackHand, CardNumber.ACE, false),
                 buildPairCardResult(blackHand, whiteHand));
     }
 
@@ -69,7 +69,7 @@ class PairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
 
         assertEquals(
-                aPairWinningResult(blackHand, CardNumber.JACK),
+                ResultHelper.aPairWinningResult(blackHand, CardNumber.JACK, false),
                 buildPairCardResult(blackHand, whiteHand));
     }
 
@@ -80,7 +80,7 @@ class PairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 4H 4C 9S KH");
 
         assertEquals(
-                aPairWinningResult(whiteHand, CardNumber.FOUR),
+                ResultHelper.aPairWinningResult(whiteHand, CardNumber.FOUR, false),
                 buildPairCardResult(blackHand, whiteHand));
     }
 
@@ -91,7 +91,7 @@ class PairCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4D 9S KH AH AC");
 
         assertEquals(
-                aPairWinningResult(whiteHand, CardNumber.ACE),
+                ResultHelper.aPairWinningResult(whiteHand, CardNumber.ACE, true),
                 buildPairCardResult(blackHand, whiteHand));
     }
 }

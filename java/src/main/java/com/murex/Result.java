@@ -2,118 +2,73 @@ package com.murex;
 
 import java.util.Objects;
 
-public class Result {
+public interface Result {
+    boolean isMatch();
 
-    private final boolean isMatch;
-    private final String message;
+    String getMessage();
+}
 
-    public Result(boolean isMatch, String message) {
-        this.isMatch = isMatch;
-        this.message = message;
+class NoWinner implements Result {
+    private final boolean isMatch = false;
+    private final String message  = "";
+    public NoWinner() {
     }
 
-    public static Result aPairWinningResult(Hand hand, CardNumber pairCard) {
-        return aMatchResult(hand.getName() + " wins. - with Pair cards: " + pairCard.toString());
-    }
-
+    @Override
     public boolean isMatch() {
-        return isMatch;
+        return false;
     }
 
+    @Override
     public String getMessage() {
         return message;
     }
 
-    public static Result aMatchResult(String message) {
-        return new Result(true, message);
-    }
-    public static Result aNoMatchResult() {
-        return new Result(false, "");
-    }
-
-    public static Result aHighCardWinningResult(Hand hand, CardNumber cardNumber) {
-        String message = hand.getName() + " wins. - with high card: " + cardNumber;
-        return new WinningResult(message);
-    }
-
-    public static Result aTwoPairWinningResult(Hand hand, CardNumber firstPairCard, CardNumber secondPairCard) {
-        String message = hand.getName() + " wins. - with two pairs: " + firstPairCard.toString() + " and " + secondPairCard.toString();
-        return new WinningResult(message);
-    }
-
-    public static Result aThreeOfAKindWinningResult(Hand hand, CardNumber card) {
-        String message = hand.getName() + " wins. - with three of a kind: " + card.toString();
-        return new WinningResult(message);
-    }
-
-    public static Result aStraightWinningResult(Hand hand, boolean withHighHand) {
-        String message = hand.getName() + " wins. - with straight cards";
-        return withHighHand ? new WinningResult(message + " and higher cards"): new WinningResult(message);
-    }
-
-    public static Result aFlushWinningResult(Hand hand, boolean withHighHand) {
-        String message = hand.getName() + " wins. - with flush";
-        return withHighHand ? new WinningResult(message + " and higher hand"): new WinningResult(message);
-    }
-
-    public static Result aFullHouseWinningResult(Hand hand, boolean withHighHand) {
-        String message = hand.getName() + " wins. - with full house";
-        return withHighHand ? new WinningResult(message + " and higher hand") : new WinningResult(message);
-    }
-
-    public static Result aFourOfAKindWinningResult(Hand hand, boolean withHighHand) {
-        String message = hand.getName() + " wins. - with four of a kind";
-        return withHighHand ? new WinningResult(message + " and higher hand") : new WinningResult(message);
-    }
-
-    public static Result aStraightFlushWinningResult(Hand hand, boolean withHighHand) {
-        String message = hand.getName() + " wins. - with straight flush";
-        return withHighHand ? new WinningResult(message + " and higher hand") : new WinningResult(message);
-    }
-
-    public static Result aRoyalFlushWinningResult(Hand hand) {
-        return new WinningResult(hand.getName() + " wins. - with royal flush");
-    }
-
-    public static Result aTieResult() {
-        return new TieResult();
+    @Override
+    public String toString() {
+        return "NoWinner{" +
+                "isMatch=" + isMatch +
+                ", message='" + message + '\'' +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Result result = (Result) o;
-        return isMatch == result.isMatch && Objects.equals(message, result.message);
+        NoWinner noWinner = (NoWinner) o;
+        return isMatch == noWinner.isMatch && Objects.equals(message, noWinner.message);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(isMatch, message);
     }
-
-    @Override
-    public String toString() {
-        return "Result{" +
-                "isMatch=" + isMatch +
-                ", message='" + message + '\'' +
-                '}';
-    }
 }
-class WinningResult extends Result {
 
-    private final  boolean isMatch;
+class Winner implements Result {
+
+    private final boolean isMatch;
     private final String message;
 
-    WinningResult(String message) {
-        super(true, message);
+    Winner(String message) {
         this.isMatch = true;
         this.message = message;
     }
 
     @Override
+    public boolean isMatch() {
+        return isMatch;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    @Override
     public String toString() {
-        return "WinningResult{" +
+        return "Winner{" +
                 "isMatch=" + isMatch +
                 ", message='" + message + '\'' +
                 '}';
@@ -123,44 +78,51 @@ class WinningResult extends Result {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        WinningResult that = (WinningResult) o;
-        return isMatch == that.isMatch && Objects.equals(message, that.message);
+        Winner winner = (Winner) o;
+        return isMatch == winner.isMatch && Objects.equals(message, winner.message);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), isMatch, message);
+        return Objects.hash(isMatch, message);
     }
 }
 
-class TieResult extends Result {
+class Tie implements Result {
     private final String message = "Tie.";
     private final boolean isMatch = true;
 
-    public TieResult() {
-        super(true, "Tie.");
+    public Tie() {
+    }
+
+    @Override
+    public boolean isMatch() {
+        return isMatch;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    @Override
+    public String toString() {
+        return "Tie{" +
+                "message='" + message + '\'' +
+                ", isMatch=" + isMatch +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        TieResult tieResult = (TieResult) o;
-        return isMatch == tieResult.isMatch && Objects.equals(message, tieResult.message);
+        Tie tie = (Tie) o;
+        return isMatch == tie.isMatch && Objects.equals(message, tie.message);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), message, isMatch);
-    }
-
-    @Override
-    public String toString() {
-        return "TieResult{" +
-                "message='" + message + '\'' +
-                ", isMatch=" + isMatch +
-                '}';
+        return Objects.hash(message, isMatch);
     }
 }

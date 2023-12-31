@@ -2,7 +2,10 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 import com.murex.hands.ThreeOfAKindHand;
+
+import static com.murex.ResultHelper.aThreeOfAKindWinningResult;
 
 public class ThreeOfAKindRanking extends HandRanking {
     private final ThreeOfAKindHand threeOfAKindBlackHand;
@@ -21,22 +24,22 @@ public class ThreeOfAKindRanking extends HandRanking {
         }
 
         if (bothHaveNoThreeOfAKindCards()) {
-            return Result.aNoMatchResult();
+            return ResultHelper.aNoMatchResult();
         }
 
         ThreeOfAKindHand winningHand = threeOfAKindBlackHand.hasThreeOfAKind() ? threeOfAKindBlackHand : threeOfAKindWhiteHand;
-        return Result.aThreeOfAKindWinningResult(winningHand.getHand(), winningHand.getCard());
+        return aThreeOfAKindWinningResult(winningHand.getHand(), winningHand.getCard(), false);
 
     }
 
     private Result getHigherHand() {
         int comparison = threeOfAKindBlackHand.getCard().compareTo(threeOfAKindWhiteHand.getCard());
         if (comparison == 0) {
-            return Result.aNoMatchResult();
+            return ResultHelper.aNoMatchResult();
         }
 
         ThreeOfAKindHand winningHand = comparison > 0 ? threeOfAKindBlackHand : threeOfAKindWhiteHand;
-        return Result.aThreeOfAKindWinningResult(winningHand.getHand(), winningHand.getCard());
+        return aThreeOfAKindWinningResult(winningHand.getHand(), winningHand.getCard(), true);
     }
 
     private boolean bothHaveNoThreeOfAKindCards() {

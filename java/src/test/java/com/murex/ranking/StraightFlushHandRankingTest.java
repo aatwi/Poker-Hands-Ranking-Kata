@@ -1,10 +1,10 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import com.murex.Result;
+import com.murex.ResultHelper;
 import org.junit.jupiter.api.Test;
 
-import static com.murex.Result.aNoMatchResult;
+import static com.murex.ResultHelper.aNoMatchResult;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StraightFlushHandRankingTest {
@@ -33,7 +33,7 @@ class StraightFlushHandRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 3D 4D 5D 6D");
 
         StraightFlushHandRanking handRanking = new StraightFlushHandRanking(blackHand, whiteHand);
-        assertEquals(Result.aStraightFlushWinningResult(whiteHand, false), handRanking.getMatchingResult());
+        assertEquals(ResultHelper.aStraightFlushWinningResult(whiteHand, false), handRanking.getMatchingResult());
     }
 
     @Test
@@ -42,7 +42,7 @@ class StraightFlushHandRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "7H 8C TD KH AS");
 
         StraightFlushHandRanking handRanking = new StraightFlushHandRanking(blackHand, whiteHand);
-        assertEquals(Result.aStraightFlushWinningResult(blackHand, false), handRanking.getMatchingResult());
+        assertEquals(ResultHelper.aStraightFlushWinningResult(blackHand, false), handRanking.getMatchingResult());
     }
 
 
@@ -52,7 +52,7 @@ class StraightFlushHandRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 3D 4D 5D 6D");
 
         StraightFlushHandRanking handRanking = new StraightFlushHandRanking(blackHand, whiteHand);
-        assertEquals(Result.aStraightFlushWinningResult(blackHand, true), handRanking.getMatchingResult());
+        assertEquals(ResultHelper.aStraightFlushWinningResult(blackHand, true), handRanking.getMatchingResult());
     }
 
     @Test
@@ -61,6 +61,6 @@ class StraightFlushHandRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "8D 9D TD JD QD");
 
         StraightFlushHandRanking handRanking = new StraightFlushHandRanking(blackHand, whiteHand);
-        assertEquals(Result.aStraightFlushWinningResult(whiteHand, true), handRanking.getMatchingResult());
+        assertEquals(ResultHelper.aStraightFlushWinningResult(whiteHand, true), handRanking.getMatchingResult());
     }
 }

@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import static com.murex.CardNumber.*;
 import static com.murex.Hand.buildFrom;
-import static com.murex.Result.aHighCardWinningResult;
-import static com.murex.Result.aNoMatchResult;
+import static com.murex.ResultHelper.aHighCardWinningResult;
+import static com.murex.ResultHelper.aNoMatchResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HighCardRankingTest {

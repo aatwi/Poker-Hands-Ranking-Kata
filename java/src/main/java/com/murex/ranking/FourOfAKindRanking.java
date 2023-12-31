@@ -2,6 +2,7 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 import com.murex.hands.FourOfAKindHand;
 
 
@@ -33,11 +34,11 @@ public class FourOfAKindRanking extends HandRanking {
     }
 
     private static Result buildMatchingResultWithHigherHand(Hand hand) {
-        return Result.aFourOfAKindWinningResult(hand, true);
+        return ResultHelper.aFourOfAKindWinningResult(hand, true);
     }
 
     private static Result buildMatchingResult(Hand hand) {
-        return Result.aFourOfAKindWinningResult(hand, false);
+        return ResultHelper.aFourOfAKindWinningResult(hand, false);
     }
 
 }

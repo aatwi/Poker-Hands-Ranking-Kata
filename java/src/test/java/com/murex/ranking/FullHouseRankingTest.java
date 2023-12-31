@@ -1,11 +1,10 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import com.murex.Result;
 import org.junit.jupiter.api.Test;
 
-import static com.murex.Result.aFullHouseWinningResult;
-import static com.murex.Result.aNoMatchResult;
+import static com.murex.ResultHelper.aFullHouseWinningResult;
+import static com.murex.ResultHelper.aNoMatchResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FullHouseRankingTest {

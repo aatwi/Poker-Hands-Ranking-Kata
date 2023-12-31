@@ -2,6 +2,7 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 
 public class TieRanking extends HandRanking {
     public TieRanking(Hand blackHand, Hand whiteHand) {
@@ -12,9 +13,9 @@ public class TieRanking extends HandRanking {
     public Result getMatchingResult() {
         for (int index = 0; index < 5; index++) {
             if (blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index)) != 0) {
-                return Result.aNoMatchResult();
+                return ResultHelper.aNoMatchResult();
             }
         }
-        return Result.aTieResult();
+        return ResultHelper.aTieResult();
     }
 }

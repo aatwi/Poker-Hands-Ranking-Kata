@@ -3,6 +3,7 @@ package com.murex.ranking;
 import com.murex.Card;
 import com.murex.Hand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 import com.murex.hands.StraightFlushHand;
 
 public class StraightFlushHandRanking extends HandRanking{
@@ -23,16 +24,16 @@ public class StraightFlushHandRanking extends HandRanking{
             Card whiteCard = whiteStraightFlushHand.getHand().getCardAt(4);
             int comparison = blackCard.compareTo(whiteCard);
             if (comparison == 0) {
-                return Result.aNoMatchResult();
+                return ResultHelper.aNoMatchResult();
             }
             Hand winningHand = comparison > 0 ? blackHand : whiteHand;
-            return Result.aStraightFlushWinningResult(winningHand, true);
+            return ResultHelper.aStraightFlushWinningResult(winningHand, true);
         }
         if(whiteStraightFlushHand.isStraightFlush()) {
-            return Result.aStraightFlushWinningResult(whiteStraightFlushHand.getHand(), false);
+            return ResultHelper.aStraightFlushWinningResult(whiteStraightFlushHand.getHand(), false);
         }
         if(blackStraightFlushHand.isStraightFlush()) {
-            return Result.aStraightFlushWinningResult(blackStraightFlushHand.getHand(), false);
+            return ResultHelper.aStraightFlushWinningResult(blackStraightFlushHand.getHand(), false);
         }
         return super.getMatchingResult();
     }
