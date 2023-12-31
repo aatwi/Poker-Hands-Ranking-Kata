@@ -10,66 +10,85 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FlushCardRankingTest {
 
-    private static FlushHandRanking buildFlushCardRanking(String blackCards, String whiteCards) {
-        Hand blackHand = Hand.buildFrom("Black", blackCards);
-        Hand whiteHand = Hand.buildFrom("White", whiteCards);
-
-        return new FlushHandRanking(blackHand, whiteHand);
-    }
-
     @Test
     void it_should_return_a_non_matching_result_when_both_hands_have_no_flush() {
-        FlushHandRanking flushHandRanking = buildFlushCardRanking("2D 4H 6S KC AH", "4D 5S 7D JS AC");
+        Hand blackHand = Hand.buildFrom("Black", "2D 4H 6S KC AH");
+        Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
+
+        FlushHandRanking flushHandRanking = new FlushHandRanking(blackHand, whiteHand);
         
         assertEquals(Result.aNoMatchResult(), flushHandRanking.getMatchingResult());
     }
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_flush_with_hearts() {
-        FlushHandRanking flushHandRanking = buildFlushCardRanking("3H 4H 6H KH AH", "4D 5S 7D JS AC");
-        assertEquals(Result.aMatchResult("Black wins. - with flush"), flushHandRanking.getMatchingResult());
+        Hand blackHand = Hand.buildFrom("Black", "3H 4H 6H KH AH");
+        Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
+
+        FlushHandRanking flushHandRanking = new FlushHandRanking(blackHand, whiteHand);
+        assertEquals(Result.aFlushWinningResult(blackHand, false), flushHandRanking.getMatchingResult());
     }
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_flush_with_diamonds() {
-        FlushHandRanking flushHandRanking = buildFlushCardRanking("3D 4D 6D KD AD", "2D 5S 7D JS AC");
-        assertEquals(Result.aMatchResult("Black wins. - with flush"), flushHandRanking.getMatchingResult());
+        Hand blackHand = Hand.buildFrom("Black", "3D 4D 6D KD AD");
+        Hand whiteHand = Hand.buildFrom("White", "2D 5S 7D JS AC");
+
+        FlushHandRanking flushHandRanking = new FlushHandRanking(blackHand, whiteHand);
+        assertEquals(Result.aFlushWinningResult(blackHand, false), flushHandRanking.getMatchingResult());
     }
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_flush_with_clubs() {
-        FlushHandRanking flushHandRanking = buildFlushCardRanking("3C 4C 6C KC AC", "2D 5S 7D JS AD");
-        assertEquals(Result.aMatchResult("Black wins. - with flush"), flushHandRanking.getMatchingResult());
+        Hand blackHand = Hand.buildFrom("Black", "3C 4C 6C KC AC");
+        Hand whiteHand = Hand.buildFrom("White", "2D 5S 7D JS AD");
+
+        FlushHandRanking flushHandRanking = new FlushHandRanking(blackHand, whiteHand);
+        assertEquals(Result.aFlushWinningResult(blackHand, false), flushHandRanking.getMatchingResult());
     }
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_flush_with_spades() {
-        FlushHandRanking flushHandRanking = buildFlushCardRanking("3S 4S 6S KS AS", "2D 5S 7D JS AD");
-        assertEquals(Result.aMatchResult("Black wins. - with flush"), flushHandRanking.getMatchingResult());
+        Hand blackHand = Hand.buildFrom("Black", "3S 4S 6S KS AS");
+        Hand whiteHand = Hand.buildFrom("White", "2D 5S 7D JS AD");
+
+        FlushHandRanking flushHandRanking = new FlushHandRanking(blackHand, whiteHand);
+        assertEquals(Result.aFlushWinningResult(blackHand, false), flushHandRanking.getMatchingResult());
     }
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_having_flush_with_spades() {
-        FlushHandRanking flushHandRanking = buildFlushCardRanking("2D 5S 7D JS AD", "3S 4S 6S KS AS");
-        assertEquals(Result.aMatchResult("White wins. - with flush"), flushHandRanking.getMatchingResult());
+        Hand blackHand = Hand.buildFrom("Black", "2D 5S 7D JS AD");
+        Hand whiteHand = Hand.buildFrom("White", "3S 4S 6S KS AS");
+
+        FlushHandRanking flushHandRanking = new FlushHandRanking(blackHand, whiteHand);
+        assertEquals(Result.aFlushWinningResult(whiteHand, false), flushHandRanking.getMatchingResult());
     }
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_having_flush_with_spades_and_higher_hands() {
-        FlushHandRanking flushHandRanking = buildFlushCardRanking("2D 5D 7D JD AD", "3S 4S 6S KS AS");
-        assertEquals(Result.aMatchResult("White wins. - with flush and higher hand"), flushHandRanking.getMatchingResult());
+        Hand blackHand = Hand.buildFrom("Black", "2D 5D 7D JD AD");
+        Hand whiteHand = Hand.buildFrom("White", "3S 4S 6S KS AS");
+
+        FlushHandRanking flushHandRanking = new FlushHandRanking(blackHand, whiteHand);
+        assertEquals(Result.aFlushWinningResult(whiteHand, true), flushHandRanking.getMatchingResult());
     }
 
-    @Disabled
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_having_flush_with_spades_and_higher_hands() {
-        FlushHandRanking flushHandRanking = buildFlushCardRanking("2D 5D 7D JD AD", "3S 4S 6S JS QS");
-        assertEquals(Result.aMatchResult("Black wins. - with flush and higher hand"), flushHandRanking.getMatchingResult());
+        Hand blackHand = Hand.buildFrom("Black", "2D 5D 7D JD AD");
+        Hand whiteHand = Hand.buildFrom("White", "3S 4S 6S JS QS");
+
+        FlushHandRanking flushHandRanking = new FlushHandRanking(blackHand, whiteHand);
+        assertEquals(Result.aFlushWinningResult(blackHand, true), flushHandRanking.getMatchingResult());
     }
 
     @Test
     public void it_should_return_a_no_matching_result_when_the_two_hands_have_flush_and_equal_card_values() {
-        FlushHandRanking flushHandRanking = buildFlushCardRanking("3D 4D 6D JD QD", "3S 4S 6S JS QS");
+        Hand blackHand = Hand.buildFrom("Black", "3D 4D 6D JD QD");
+        Hand whiteHand = Hand.buildFrom("White", "3S 4S 6S JS QS");
+
+        FlushHandRanking flushHandRanking = new FlushHandRanking(blackHand, whiteHand);
         assertEquals(aNoMatchResult(), flushHandRanking.getMatchingResult());
     }
 }

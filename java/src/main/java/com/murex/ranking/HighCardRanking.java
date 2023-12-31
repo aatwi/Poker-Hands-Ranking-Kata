@@ -18,7 +18,7 @@ public class HighCardRanking extends HandRanking {
     @Override
     public Result getMatchingResult() {
         Optional<HighHand> winner = getHigherHand();
-        return winner.isEmpty()? aNoMatchResult() : aHighCardWinningResult(winner.get().getHand(), winner.get().getHighCard());
+        return winner.isEmpty()? aNoMatchResult() : aHighCardWinningResult(winner.get().getHand(), winner.get().getHighCard().getCardNumber());
     }
 
     protected Optional<HighHand> getHigherHand() {

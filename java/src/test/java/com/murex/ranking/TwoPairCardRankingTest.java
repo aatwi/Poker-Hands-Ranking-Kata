@@ -1,69 +1,116 @@
 package com.murex.ranking;
 
+import com.murex.CardNumber;
+import com.murex.Hand;
 import com.murex.Result;
 import org.junit.jupiter.api.Test;
 
+import static com.murex.CardNumber.*;
+import static com.murex.CardNumber.NINE;
 import static com.murex.Hand.buildFrom;
 import static com.murex.Result.aNoMatchResult;
+import static com.murex.Result.aTwoPairWinningResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TwoPairCardRankingTest {
 
-    private static void assertMatchingResult(String blackHand, String whiteHand, String message) {
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(buildFrom("Black", blackHand), buildFrom("White", whiteHand));
-
-        assertEquals(Result.aMatchResult(message), twoPairCardRanking.getMatchingResult());
-    }
-
-    private static void assertNoMatchingResult(String blackHand, String whiteHand) {
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(buildFrom("Black", blackHand), buildFrom("White", whiteHand));
-
-        assertEquals(aNoMatchResult(), twoPairCardRanking.getMatchingResult());
-    }
-
     @Test
     public void it_should_return_a_matching_result_when_the_black_player_has_two_pairs() {
-        assertMatchingResult("7H 7C TD TH AS", "2H 4C 5H 7D AD", "Black wins. - with two pairs: SEVEN and TEN");
+        Hand blackHand = buildFrom("Black", "7H 7C TD TH AS");
+        Hand whiteHand = buildFrom("White", "2H 4C 5H 7D AD");
+
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        Result matchingResult = twoPairCardRanking.getMatchingResult();
+
+        assertEquals(aTwoPairWinningResult(blackHand, SEVEN, TEN), matchingResult);
     }
 
     @Test
     public void it_should_return_a_matching_result_when_the_white_player_has_two_pairs() {
-        assertMatchingResult("2H 7C 8D TH AS", "3H 3C 6H 7D 7S", "White wins. - with two pairs: THREE and SEVEN");
+        Hand blackHand = buildFrom("Black", "2H 7C 8D TH AS");
+        Hand whiteHand = buildFrom("White", "3H 3C 6H 7D 7S");
+
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        Result matchingResult = twoPairCardRanking.getMatchingResult();
+
+        assertEquals(aTwoPairWinningResult(whiteHand, THREE, SEVEN), matchingResult);
     }
 
     @Test
     public void when_both_hands_has_two_pairs_the_higher_hand_wins_white_wins() {
-        assertMatchingResult("2H 2C 8D 8H AS", "3H 3C 9H 9D TS", "White wins. - with two pairs: THREE and NINE");
+        Hand blackHand = buildFrom("Black", "2H 2C 8D 8H AS");
+        Hand whiteHand = buildFrom("White", "3H 3C 9H 9D TS");
+
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        Result matchingResult = twoPairCardRanking.getMatchingResult();
+
+        assertEquals(aTwoPairWinningResult(whiteHand, THREE, NINE), matchingResult);
     }
 
     @Test
     public void when_both_hands_has_two_pairs_the_higher_hand_wins_black_wins() {
-        assertMatchingResult("2H 2C TD TH AS", "3H 3C 9H 9D TS", "Black wins. - with two pairs: TWO and TEN");
+        Hand blackHand = buildFrom("Black", "2H 2C TD TH AS");
+        Hand whiteHand = buildFrom("White", "3H 3C 9H 9D TS");
+
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        Result matchingResult = twoPairCardRanking.getMatchingResult();
+
+        assertEquals(aTwoPairWinningResult(blackHand, TWO, TEN), matchingResult);
     }
 
     @Test
     public void when_both_hands_has_two_pairs_the_higher_hand_wins_black_wins_higher_cards_are_equal() {
-        assertMatchingResult("2H 2C 4D 4H AS", "3D 3S 4C 4S AH", "White wins. - with two pairs: THREE and FOUR");
+        Hand blackHand = buildFrom("Black", "2H 2C 4D 4H AS");
+        Hand whiteHand = buildFrom("White", "3D 3S 4C 4S AH");
+
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        Result matchingResult = twoPairCardRanking.getMatchingResult();
+
+        assertEquals(aTwoPairWinningResult(whiteHand, THREE, FOUR), matchingResult);
     }
 
     @Test
     public void when_both_hands_has_two_pairs_the_higher_hand_wins_black_wins_higher_cards_are_equal_option2() {
-        assertMatchingResult("3H 3C 4D 4H AS", "2D 2S 4C 4S AH", "Black wins. - with two pairs: THREE and FOUR");
+        Hand blackHand = buildFrom("Black", "3H 3C 4D 4H AS");
+        Hand whiteHand = buildFrom("White", "2D 2S 4C 4S AH");
+
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        Result matchingResult = twoPairCardRanking.getMatchingResult();
+
+        assertEquals(aTwoPairWinningResult(blackHand, THREE, FOUR), matchingResult);
     }
 
     @Test
     public void it_should_return_a_no_matching_result_when_only_one_pair_exists() {
-        assertNoMatchingResult("2H 7C 8D TH AS", "3H 3C 6H 7D 9S");
+        Hand blackHand = buildFrom("Black", "2H 7C 8D TH AS");
+        Hand whiteHand = buildFrom("White", "3H 3C 6H 7D 9S");
+
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        Result matchingResult = twoPairCardRanking.getMatchingResult();
+
+        assertEquals(aNoMatchResult(), matchingResult);
     }
 
     @Test
     public void it_should_return_a_no_matching_result_when_none_have_two_pairs() {
-        assertNoMatchingResult("2D 7C 8D TH AS", "2H 3C 6H 7D 8S");
+        Hand blackHand = buildFrom("Black", "2D 7C 8D TH AS");
+        Hand whiteHand = buildFrom("White", "2H 3C 6H 7D 8S");
+
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        Result matchingResult = twoPairCardRanking.getMatchingResult();
+
+        assertEquals(aNoMatchResult(), matchingResult);
     }
 
 
     @Test
     public void it_should_return_a_no_matching_result_when_two_hands_have_same_card_values() {
-        assertNoMatchingResult("2H 2C 4D 4H AS", "2D 2S 4C 4S AH");
+        Hand blackHand = buildFrom("Black", "2H 2C 4D 4H AS");
+        Hand whiteHand = buildFrom("White", "2D 2S 4C 4S AH");
+
+        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
+        Result matchingResult = twoPairCardRanking.getMatchingResult();
+
+        assertEquals(aNoMatchResult(), matchingResult);
     }
 }

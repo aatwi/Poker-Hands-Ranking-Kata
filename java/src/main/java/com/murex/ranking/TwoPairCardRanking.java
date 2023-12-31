@@ -47,16 +47,10 @@ public class TwoPairCardRanking extends HandRanking {
 
         TwoPairsHand winningPair = comparison > 0 ? this.blackTwoPairsHand : this.whiteTwoPairsHand;
         return aTwoPairWinningResult(winningPair.getHand(), winningPair.getFirstPairCard(), winningPair.getSecondPairCard());
-//        return aMatchResult(buildWinningMessage(winningPair));
     }
 
     private int compareForHigherHands() {
         int comparison = this.blackTwoPairsHand.getSecondPairCard().compareTo(this.whiteTwoPairsHand.getSecondPairCard());
         return comparison != 0 ? comparison : this.blackTwoPairsHand.getFirstPairCard().compareTo(this.whiteTwoPairsHand.getFirstPairCard());
     }
-
-    private static String buildWinningMessage(TwoPairsHand winningPair) {
-        return winningPair.getHandName() + " wins. - with two pairs: " + winningPair.getFirstPairCard().toString() + " and " + winningPair.getSecondPairCard().toString();
-    }
-
 }

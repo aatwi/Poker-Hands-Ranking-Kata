@@ -5,8 +5,7 @@ import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.PairHand;
 
-import static com.murex.Result.aMatchResult;
-import static com.murex.Result.aNoMatchResult;
+import static com.murex.Result.*;
 
 public class PairCardRanking extends HandRanking {
 
@@ -28,7 +27,7 @@ public class PairCardRanking extends HandRanking {
             return aNoMatchResult();
         }
         PairHand winningPairHand = blackPairHand.hasPair() ? blackPairHand : whitePairHand;
-        return aMatchResult(buildPairCardsMessage(winningPairHand.getHand(), winningPairHand.getPairCard()));
+        return aPairWinningResult(winningPairHand.getHand(), winningPairHand.getPairCard());
     }
 
     private Result getHigherPair() {
@@ -38,15 +37,11 @@ public class PairCardRanking extends HandRanking {
         }
 
         PairHand winningHand = comparison > 0 ? blackPairHand : whitePairHand;
-        return aMatchResult(buildPairCardsMessage(winningHand.getHand(), winningHand.getPairCard()));
+        return aPairWinningResult(winningHand.getHand(), winningHand.getPairCard());
     }
 
     private boolean bothHandsHaveNoPairs() {
         return !blackPairHand.hasPair() && !whitePairHand.hasPair();
-    }
-
-    private String buildPairCardsMessage(Hand hand, CardNumber pairCard) {
-        return hand.getName() + " wins. - with Pair cards: " + pairCard.toString();
     }
 
     private boolean bothHandsHavePairs() {
