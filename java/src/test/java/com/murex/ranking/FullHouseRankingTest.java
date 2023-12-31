@@ -4,7 +4,6 @@ import com.murex.Hand;
 import com.murex.Result;
 import org.junit.jupiter.api.Test;
 
-import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -37,7 +36,7 @@ class FullHouseRankingTest {
         assertMatchingResult(
                 "3H 3S 3C AH AD",
                 "4D 5S 7D JS AC",
-                aMatchResult("Black wins. - with full house"));
+                Result.aMatchResult("Black wins. - with full house"));
     }
 
     @Test
@@ -50,7 +49,7 @@ class FullHouseRankingTest {
         assertMatchingResult(
                 "4D 5S 7D JS AC",
                 "5H 5S 5C KH KD",
-                aMatchResult("White wins. - with full house"));
+                Result.aMatchResult("White wins. - with full house"));
     }
 
     @Test
@@ -63,7 +62,7 @@ class FullHouseRankingTest {
         assertMatchingResult(
                 "4D 4S 4D JS JC",
                 "5H 5S 5C TH TD",
-                aMatchResult("White wins. - with full house and higher hand"));
+                Result.aMatchResult("White wins. - with full house and higher hand"));
     }
 
     @Test
@@ -71,6 +70,6 @@ class FullHouseRankingTest {
         assertMatchingResult(
                 "5H 5S 5C TH TD",
                 "4D 4S 4D JS JC",
-                aMatchResult("Black wins. - with full house and higher hand"));
+                Result.aMatchResult("Black wins. - with full house and higher hand"));
     }
 }

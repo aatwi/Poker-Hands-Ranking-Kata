@@ -6,8 +6,8 @@ import com.murex.Result;
 
 import java.util.Optional;
 
-import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
+import static com.murex.Result.aHighCardWinningResult;
 
 public class HighCardRanking extends HandRanking {
 
@@ -18,10 +18,7 @@ public class HighCardRanking extends HandRanking {
     @Override
     public Result getMatchingResult() {
         Optional<HighHand> winner = getHigherHand();
-        if (winner.isEmpty()) {
-            return aNoMatchResult();
-        }
-        return aMatchResult(buildMessage(winner.get()));
+        return winner.isEmpty()? aNoMatchResult() : aHighCardWinningResult(winner.get().getHand(), winner.get().getHighCard());
     }
 
     protected Optional<HighHand> getHigherHand() {
@@ -32,9 +29,5 @@ public class HighCardRanking extends HandRanking {
             }
         }
         return Optional.empty();
-    }
-
-    private String buildMessage(HighHand hand) {
-        return hand.getHand().getName() + " wins. - with high card: " + hand.getHighCard().getName();
     }
 }

@@ -4,8 +4,7 @@ import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.StraightHand;
 
-import static com.murex.Result.aMatchResult;
-import static com.murex.Result.aNoMatchResult;
+import static com.murex.Result.*;
 
 public class StraightHandRanking extends HandRanking{
 
@@ -44,10 +43,10 @@ public class StraightHandRanking extends HandRanking{
     }
 
     private static Result buildMessageWithHigherCards(StraightHand straightHand) {
-        return aMatchResult(straightHand.getHand().getName() + " wins. - with straight cards and higher cards");
+        return aStraightWinningResult(straightHand.getHand(), true);
     }
 
-    private static Result buildMatchingResult(StraightHand whiteStraight) {
-        return aMatchResult(whiteStraight.getHand().getName() + " wins. - with straight cards");
+    private static Result buildMatchingResult(StraightHand straightHand) {
+        return aStraightWinningResult(straightHand.getHand(), false);
     }
 }

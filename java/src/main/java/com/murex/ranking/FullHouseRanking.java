@@ -1,10 +1,11 @@
 package com.murex.ranking;
 
-import com.murex.Card;
 import com.murex.CardNumber;
 import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.FullHouseHand;
+
+import static com.murex.Result.aMatchResult;
 
 public class FullHouseRanking extends HandRanking {
 
@@ -17,12 +18,12 @@ public class FullHouseRanking extends HandRanking {
         whiteFullHouseHand = new FullHouseHand(whiteHand);
     }
 
-    private static Result buildMatchingResultWithHigherHand(Hand blackHand) {
-        return Result.aMatchResult(blackHand.getName() + " wins. - with full house and higher hand");
+    private static Result buildMatchingResultWithHigherHand(Hand hand) {
+        return Result.aFullHouseWinningResult(hand, true);
     }
 
     private static Result buildMatchingResult(FullHouseHand fullHouseHand) {
-        return Result.aMatchResult(fullHouseHand.getHand().getName() + " wins. - with full house");
+        return Result.aFullHouseWinningResult(fullHouseHand.getHand(), false);
     }
 
     @Override

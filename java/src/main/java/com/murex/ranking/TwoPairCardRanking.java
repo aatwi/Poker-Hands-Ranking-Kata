@@ -4,8 +4,7 @@ import com.murex.Hand;
 import com.murex.Result;
 import com.murex.hands.TwoPairsHand;
 
-import static com.murex.Result.aMatchResult;
-import static com.murex.Result.aNoMatchResult;
+import static com.murex.Result.*;
 
 public class TwoPairCardRanking extends HandRanking {
 
@@ -29,7 +28,7 @@ public class TwoPairCardRanking extends HandRanking {
         }
 
         TwoPairsHand winningPair = blackTwoPairsHand.hasTwoPairs() ? blackTwoPairsHand : whiteTwoPairsHand;
-        return aMatchResult(buildWinningMessage(winningPair));
+        return aTwoPairWinningResult(winningPair.getHand(), winningPair.getFirstPairCard(), winningPair.getSecondPairCard());
     }
 
     private boolean bothHandsHaveTwoPairs() {
@@ -47,7 +46,8 @@ public class TwoPairCardRanking extends HandRanking {
         }
 
         TwoPairsHand winningPair = comparison > 0 ? this.blackTwoPairsHand : this.whiteTwoPairsHand;
-        return aMatchResult(buildWinningMessage(winningPair));
+        return aTwoPairWinningResult(winningPair.getHand(), winningPair.getFirstPairCard(), winningPair.getSecondPairCard());
+//        return aMatchResult(buildWinningMessage(winningPair));
     }
 
     private int compareForHigherHands() {

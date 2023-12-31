@@ -21,10 +21,10 @@ public class RoyalFlushHandRanking extends HandRanking{
             return Result.aNoMatchResult();
         }
         if (whiteRoyalFlushHand.isRoyalFlush()) {
-            return Result.aMatchResult("White wins. - with royal flush");
+            return Result.aRoyalFlushWinningResult(whiteRoyalFlushHand.getHand());
         }
         if (blackRoyalFlushHand.isRoyalFlush()) {
-            return Result.aMatchResult("Black wins. - with royal flush");
+            return Result.aRoyalFlushWinningResult(blackRoyalFlushHand.getHand());
         }
         return super.getMatchingResult();
     }

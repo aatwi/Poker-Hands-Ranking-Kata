@@ -26,19 +26,14 @@ public class StraightFlushHandRanking extends HandRanking{
                 return Result.aNoMatchResult();
             }
             Hand winningHand = comparison > 0 ? blackHand : whiteHand;
-            return buildResultWithHighHand(winningHand);
+            return Result.aStraightFlushWinningResult(winningHand, true);
         }
         if(whiteStraightFlushHand.isStraightFlush()) {
-            return Result.aMatchResult("White wins. - with straight flush");
+            return Result.aStraightFlushWinningResult(whiteStraightFlushHand.getHand(), false);
         }
         if(blackStraightFlushHand.isStraightFlush()) {
-            return Result.aMatchResult("Black wins. - with straight flush");
+            return Result.aStraightFlushWinningResult(blackStraightFlushHand.getHand(), false);
         }
         return super.getMatchingResult();
     }
-
-    private static Result buildResultWithHighHand(Hand hand) {
-        return Result.aMatchResult(hand.getName() +  " wins. - with straight flush and higher hand");
-    }
-
 }

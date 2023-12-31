@@ -2,10 +2,8 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,7 +23,7 @@ class FourOfAKindRankingTest {
 
     private static void assertMatchingResult(String blackCards, String whiteCards, String expectedMessage) {
         FourOfAKindRanking fourOfAKindRanking = buildFourOfAKindCardRanking(blackCards, whiteCards);
-        assertEquals(aMatchResult(expectedMessage), fourOfAKindRanking.getMatchingResult());
+        assertEquals(Result.aMatchResult(expectedMessage), fourOfAKindRanking.getMatchingResult());
     }
 
     @Test

@@ -33,11 +33,11 @@ public class FourOfAKindRanking extends HandRanking {
     }
 
     private static Result buildMatchingResultWithHigherHand(Hand hand) {
-        return Result.aMatchResult(hand.getName() + " wins. - with four of a kind and higher hand");
+        return Result.aFourOfAKindWinningResult(hand, true);
     }
 
     private static Result buildMatchingResult(Hand hand) {
-        return Result.aMatchResult(hand.getName() + " wins. - with four of a kind");
+        return Result.aFourOfAKindWinningResult(hand, false);
     }
 
 }

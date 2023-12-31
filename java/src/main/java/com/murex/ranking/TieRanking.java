@@ -15,6 +15,6 @@ public class TieRanking extends HandRanking {
                 return Result.aNoMatchResult();
             }
         }
-        return Result.aMatchResult("Tie.");
+        return Result.aTieResult();
     }
 }

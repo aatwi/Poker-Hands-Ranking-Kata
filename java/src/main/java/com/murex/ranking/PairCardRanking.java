@@ -1,6 +1,5 @@
 package com.murex.ranking;
 
-import com.murex.Card;
 import com.murex.CardNumber;
 import com.murex.Hand;
 import com.murex.Result;

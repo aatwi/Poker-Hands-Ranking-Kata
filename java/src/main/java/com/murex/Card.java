@@ -16,10 +16,6 @@ public class Card implements Comparable<Card> {
         return cardNumber.toString();
     }
 
-    public char getCharValue() {
-        return cardNumber.getCharValue();
-    }
-
     public int getIntValue() {
         return cardNumber.getIntValue();
     }

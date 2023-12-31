@@ -1,9 +1,9 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
+import com.murex.Result;
 import org.junit.jupiter.api.Test;
 
-import static com.murex.Result.aMatchResult;
 import static com.murex.Result.aNoMatchResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,7 +18,7 @@ class PairCardRankingTest {
     private static void assertMatchingResult(String blackCards, String whiteCards, String message) {
         PairCardRanking pairCardRanking = buildPairCardRanking(blackCards, whiteCards);
 
-        assertEquals(aMatchResult(message), pairCardRanking.getMatchingResult());
+        assertEquals(Result.aMatchResult(message), pairCardRanking.getMatchingResult());
     }
 
     private static PairCardRanking buildPairCardRanking(String blackCards, String whiteCards) {
