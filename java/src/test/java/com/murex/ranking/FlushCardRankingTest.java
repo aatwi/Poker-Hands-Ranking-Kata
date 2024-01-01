@@ -16,7 +16,7 @@ class FlushCardRankingTest {
 
         FlushOrderRanking flushHandRanking = new FlushOrderRanking(blackHand, whiteHand);
         
-        assertEquals(ResultHelper.aNoWinner(), flushHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aNoWinner(), flushHandRanking.evaluate());
     }
 
     @Test
@@ -25,7 +25,7 @@ class FlushCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
 
         FlushOrderRanking flushHandRanking = new FlushOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
     }
 
     @Test
@@ -34,7 +34,7 @@ class FlushCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 5S 7D JS AC");
 
         FlushOrderRanking flushHandRanking = new FlushOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
     }
 
     @Test
@@ -43,7 +43,7 @@ class FlushCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 5S 7D JS AD");
 
         FlushOrderRanking flushHandRanking = new FlushOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
     }
 
     @Test
@@ -52,7 +52,7 @@ class FlushCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 5S 7D JS AD");
 
         FlushOrderRanking flushHandRanking = new FlushOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
     }
 
     @Test
@@ -61,7 +61,7 @@ class FlushCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "3S 4S 6S KS AS");
 
         FlushOrderRanking flushHandRanking = new FlushOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(whiteHand, false), flushHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aFlushWinningResult(whiteHand, false), flushHandRanking.evaluate());
     }
 
     @Test
@@ -70,7 +70,7 @@ class FlushCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "3S 4S 6S KS AS");
 
         FlushOrderRanking flushHandRanking = new FlushOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(whiteHand, true), flushHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aFlushWinningResult(whiteHand, true), flushHandRanking.evaluate());
     }
 
     @Test
@@ -79,7 +79,7 @@ class FlushCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "3S 4S 6S JS QS");
 
         FlushOrderRanking flushHandRanking = new FlushOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(blackHand, true), flushHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aFlushWinningResult(blackHand, true), flushHandRanking.evaluate());
     }
 
     @Test
@@ -88,6 +88,6 @@ class FlushCardRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "3S 4S 6S JS QS");
 
         FlushOrderRanking flushHandRanking = new FlushOrderRanking(blackHand, whiteHand);
-        assertEquals(aNoWinner(), flushHandRanking.getMatchingResult());
+        assertEquals(aNoWinner(), flushHandRanking.evaluate());
     }
 }

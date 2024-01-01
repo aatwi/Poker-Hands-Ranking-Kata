@@ -13,7 +13,7 @@ public class StraightOrderRanking extends OrderRanking {
     }
 
     @Override
-    public Result getMatchingResult() {
+    public Result evaluate() {
         if (bothHandsHaveStraight()) {
             return getHigherHand();
         }

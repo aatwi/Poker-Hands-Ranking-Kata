@@ -10,7 +10,7 @@ public class TieRanking extends OrderRanking {
     }
 
     @Override
-    public Result getMatchingResult() {
+    public Result evaluate() {
         for (int index = 0; index < 5; index++) {
             if (blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index)) != 0) {
                 return ResultHelper.aNoWinner();

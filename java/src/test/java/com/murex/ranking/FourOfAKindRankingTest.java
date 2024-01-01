@@ -15,7 +15,7 @@ class FourOfAKindRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
 
         FourOfAKindRanking fourOfAKindRanking = new FourOfAKindRanking(blackHand, whiteHand);
-        assertEquals(aNoWinner(), fourOfAKindRanking.getMatchingResult());
+        assertEquals(aNoWinner(), fourOfAKindRanking.evaluate());
     }
 
     @Test
@@ -24,7 +24,7 @@ class FourOfAKindRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
 
         FourOfAKindRanking fourOfAKindRanking = new FourOfAKindRanking(blackHand, whiteHand);
-        assertEquals(aFourOfAKindWinningResult(blackHand, false), fourOfAKindRanking.getMatchingResult());
+        assertEquals(aFourOfAKindWinningResult(blackHand, false), fourOfAKindRanking.evaluate());
     }
 
     @Test
@@ -33,7 +33,7 @@ class FourOfAKindRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2H 4S 4C 4D 4H");
 
         FourOfAKindRanking fourOfAKindRanking = new FourOfAKindRanking(blackHand, whiteHand);
-        assertEquals(aFourOfAKindWinningResult(whiteHand, false), fourOfAKindRanking.getMatchingResult());
+        assertEquals(aFourOfAKindWinningResult(whiteHand, false), fourOfAKindRanking.evaluate());
     }
 
     @Test
@@ -42,7 +42,7 @@ class FourOfAKindRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2H 4S 4C 4D 4H");
 
         FourOfAKindRanking fourOfAKindRanking = new FourOfAKindRanking(blackHand, whiteHand);
-        assertEquals(aFourOfAKindWinningResult(blackHand, true), fourOfAKindRanking.getMatchingResult());
+        assertEquals(aFourOfAKindWinningResult(blackHand, true), fourOfAKindRanking.evaluate());
     }
 
     @Test
@@ -51,7 +51,7 @@ class FourOfAKindRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2H TS TC TD TH");
 
         FourOfAKindRanking fourOfAKindRanking = new FourOfAKindRanking(blackHand, whiteHand);
-        assertEquals(aFourOfAKindWinningResult(whiteHand, true), fourOfAKindRanking.getMatchingResult());
+        assertEquals(aFourOfAKindWinningResult(whiteHand, true), fourOfAKindRanking.evaluate());
     }
 
 }

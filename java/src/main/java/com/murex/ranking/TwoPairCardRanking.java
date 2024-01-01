@@ -23,7 +23,7 @@ public class TwoPairCardRanking extends OrderRanking {
     }
 
     @Override
-    public Result getMatchingResult() {
+    public Result evaluate() {
         if (bothHandsHaveTwoPairs()) {
             return getHigherHand();
         }

@@ -21,7 +21,7 @@ public class ThreeOfAKindRanking extends OrderRanking {
     }
 
     @Override
-    public Result getMatchingResult() {
+    public Result evaluate() {
         if (bothHaveThreeOfAKindCards()) {
             return getHigherHand();
         }

@@ -15,7 +15,7 @@ class StraightOrderRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
 
         StraightOrderRanking straightHandRanking = new StraightOrderRanking(blackHand, whiteHand);
-        assertEquals(aNoWinner(), straightHandRanking.getMatchingResult());
+        assertEquals(aNoWinner(), straightHandRanking.evaluate());
     }
 
     @Test
@@ -24,7 +24,7 @@ class StraightOrderRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 4C 5S 6H");
 
         StraightOrderRanking straightHandRanking = new StraightOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aStraightWinningResult(whiteHand, false), straightHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aStraightWinningResult(whiteHand, false), straightHandRanking.evaluate());
     }
 
     @Test
@@ -33,7 +33,7 @@ class StraightOrderRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "8D 9H TC JS QH");
 
         StraightOrderRanking straightHandRanking = new StraightOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aStraightWinningResult(whiteHand, false), straightHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aStraightWinningResult(whiteHand, false), straightHandRanking.evaluate());
     }
 
     @Test
@@ -42,7 +42,7 @@ class StraightOrderRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 7C JH AD");
 
         StraightOrderRanking straightHandRanking = new StraightOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aStraightWinningResult(blackHand, false), straightHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aStraightWinningResult(blackHand, false), straightHandRanking.evaluate());
     }
 
     @Test
@@ -51,7 +51,7 @@ class StraightOrderRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 7C JH AD");
 
         StraightOrderRanking straightHandRanking = new StraightOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aStraightWinningResult(blackHand, false), straightHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aStraightWinningResult(blackHand, false), straightHandRanking.evaluate());
     }
 
     @Test
@@ -60,7 +60,7 @@ class StraightOrderRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 4C 5S 6H");
 
         StraightOrderRanking straightHandRanking = new StraightOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aStraightWinningResult(blackHand, true), straightHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aStraightWinningResult(blackHand, true), straightHandRanking.evaluate());
     }
 
     @Test
@@ -69,7 +69,7 @@ class StraightOrderRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "6D 7H 8C 9S TH");
 
         StraightOrderRanking straightHandRanking = new StraightOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aStraightWinningResult(whiteHand, true), straightHandRanking.getMatchingResult());
+        assertEquals(ResultHelper.aStraightWinningResult(whiteHand, true), straightHandRanking.evaluate());
     }
 
 

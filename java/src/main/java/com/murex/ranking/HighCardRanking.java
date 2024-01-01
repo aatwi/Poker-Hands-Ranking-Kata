@@ -13,7 +13,7 @@ public class HighCardRanking extends OrderRanking {
     }
 
     @Override
-    public Result getMatchingResult() {
+    public Result evaluate() {
         for (int index = 4; index >= 0; index--) {
             int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));
             if (cardComparison != 0) {

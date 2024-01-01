@@ -22,9 +22,9 @@ public class FullHouseRanking extends OrderRanking {
     }
 
     @Override
-    public Result getMatchingResult() {
+    public Result evaluate() {
         if(noHandHasFullHouse()) {
-            return super.getMatchingResult();
+            return super.evaluate();
         }
 
         if (bothHaveFullHouse()) {

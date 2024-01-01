@@ -15,7 +15,7 @@ class ThreeOfAKindRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "7H 8C TD KH AS");
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
 
-        assertEquals(aNoWinner(), new ThreeOfAKindRanking(blackHand, whiteHand).getMatchingResult());
+        assertEquals(aNoWinner(), new ThreeOfAKindRanking(blackHand, whiteHand).evaluate());
     }
 
     @Test
@@ -23,7 +23,7 @@ class ThreeOfAKindRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "7H 7C TD KH AS");
         Hand whiteHand = Hand.buildFrom("White", "2D 9H 9C 9S KH");
 
-        assertEquals(aThreeOfAKindWinningResult(whiteHand, NINE, false), new ThreeOfAKindRanking(blackHand, whiteHand).getMatchingResult());
+        assertEquals(aThreeOfAKindWinningResult(whiteHand, NINE, false), new ThreeOfAKindRanking(blackHand, whiteHand).evaluate());
     }
 
     @Test
@@ -31,7 +31,7 @@ class ThreeOfAKindRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "7H 7C TD KH AS");
         Hand whiteHand = Hand.buildFrom("White", "2D 9H TC TS TH");
 
-        assertEquals(aThreeOfAKindWinningResult(whiteHand, TEN, false), new ThreeOfAKindRanking(blackHand, whiteHand).getMatchingResult());
+        assertEquals(aThreeOfAKindWinningResult(whiteHand, TEN, false), new ThreeOfAKindRanking(blackHand, whiteHand).evaluate());
     }
 
     @Test
@@ -39,7 +39,7 @@ class ThreeOfAKindRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "7H 7C 7D KH AS");
         Hand whiteHand = Hand.buildFrom("White", "2D 9H 8C TS KH");
 
-        assertEquals(aThreeOfAKindWinningResult(blackHand, SEVEN, false), new ThreeOfAKindRanking(blackHand, whiteHand).getMatchingResult());
+        assertEquals(aThreeOfAKindWinningResult(blackHand, SEVEN, false), new ThreeOfAKindRanking(blackHand, whiteHand).evaluate());
     }
 
     @Test
@@ -47,7 +47,7 @@ class ThreeOfAKindRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "2H 3C AD AH AS");
         Hand whiteHand = Hand.buildFrom("White", "2D 9H 9C 9S KH");
 
-        assertEquals(aThreeOfAKindWinningResult(blackHand, ACE, true), new ThreeOfAKindRanking(blackHand, whiteHand).getMatchingResult());
+        assertEquals(aThreeOfAKindWinningResult(blackHand, ACE, true), new ThreeOfAKindRanking(blackHand, whiteHand).evaluate());
     }
 
     @Test
@@ -55,7 +55,7 @@ class ThreeOfAKindRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "2H 3C 8D 8H 8S");
         Hand whiteHand = Hand.buildFrom("White", "2D JH JC JS KH");
 
-        assertEquals(aThreeOfAKindWinningResult(whiteHand, JACK, true), new ThreeOfAKindRanking(blackHand, whiteHand).getMatchingResult());
+        assertEquals(aThreeOfAKindWinningResult(whiteHand, JACK, true), new ThreeOfAKindRanking(blackHand, whiteHand).evaluate());
     }
 
 }

@@ -12,7 +12,7 @@ class PairCardRankingTest {
 
     private static Result buildPairCardResult(Hand blackHand, Hand whiteHand) {
         PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
-        return pairCardRanking.getMatchingResult();
+        return pairCardRanking.evaluate();
     }
 
     @Test

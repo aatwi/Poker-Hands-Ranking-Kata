@@ -30,9 +30,9 @@ public class FourOfAKindRanking extends OrderRanking {
     }
 
     @Override
-    public Result getMatchingResult() {
+    public Result evaluate() {
         if (noHandHasFourOfAKind()) {
-            return super.getMatchingResult();
+            return super.evaluate();
         }
 
         if (bothHaveFourOfAKind()) {

@@ -14,7 +14,7 @@ class HighCardRankingTest {
 
     private static Result buildHighCardResult(Hand black, Hand white) {
         HighCardRanking highCardRanking = new HighCardRanking(black, white);
-        return highCardRanking.getMatchingResult();
+        return highCardRanking.evaluate();
     }
 
     @Test
@@ -23,7 +23,7 @@ class HighCardRankingTest {
         Hand white = buildFrom("White", "2D 3S 5C 9D KC");
         HighCardRanking highCardRanking = new HighCardRanking(black, white);
 
-        assertEquals(aNoWinner(), highCardRanking.getMatchingResult());
+        assertEquals(aNoWinner(), highCardRanking.evaluate());
     }
 
     @Test

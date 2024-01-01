@@ -15,7 +15,7 @@ class FullHouseRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
 
         FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
-        assertEquals(aNoWinner(), fullHouseCardRanking.getMatchingResult());
+        assertEquals(aNoWinner(), fullHouseCardRanking.evaluate());
     }
 
     @Test
@@ -24,7 +24,7 @@ class FullHouseRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
 
         FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
-        assertEquals(aFullHouseWinningResult(blackHand, false), fullHouseCardRanking.getMatchingResult());
+        assertEquals(aFullHouseWinningResult(blackHand, false), fullHouseCardRanking.evaluate());
     }
 
     @Test
@@ -33,7 +33,7 @@ class FullHouseRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
 
         FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
-        assertEquals(aNoWinner(), fullHouseCardRanking.getMatchingResult());
+        assertEquals(aNoWinner(), fullHouseCardRanking.evaluate());
     }
 
     @Test
@@ -42,7 +42,7 @@ class FullHouseRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "5H 5S 5C KH KD");
 
         FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
-        assertEquals(aFullHouseWinningResult(whiteHand, false), fullHouseCardRanking.getMatchingResult());
+        assertEquals(aFullHouseWinningResult(whiteHand, false), fullHouseCardRanking.evaluate());
     }
 
     @Test
@@ -51,7 +51,7 @@ class FullHouseRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4H 4S 4C KH AD");
 
         FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
-        assertEquals(aNoWinner(), fullHouseCardRanking.getMatchingResult());
+        assertEquals(aNoWinner(), fullHouseCardRanking.evaluate());
     }
 
     @Test
@@ -60,7 +60,7 @@ class FullHouseRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "5H 5S 5C TH TD");
 
         FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
-        assertEquals(aFullHouseWinningResult(whiteHand, true), fullHouseCardRanking.getMatchingResult());
+        assertEquals(aFullHouseWinningResult(whiteHand, true), fullHouseCardRanking.evaluate());
     }
 
     @Test
@@ -69,6 +69,6 @@ class FullHouseRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4D 4S 4D JS JC");
 
         FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
-        assertEquals(aFullHouseWinningResult(blackHand, true), fullHouseCardRanking.getMatchingResult());
+        assertEquals(aFullHouseWinningResult(blackHand, true), fullHouseCardRanking.evaluate());
     }
 }

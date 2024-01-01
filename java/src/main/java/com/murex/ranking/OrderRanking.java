@@ -13,7 +13,7 @@ public abstract class OrderRanking {
         this.whiteHand = whiteHand;
     }
 
-    public Result getMatchingResult() {
+    public Result evaluate() {
         return ResultHelper.aNoWinner();
     }
 }

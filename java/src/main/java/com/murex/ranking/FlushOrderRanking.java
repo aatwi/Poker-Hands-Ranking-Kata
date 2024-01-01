@@ -13,13 +13,13 @@ public class FlushOrderRanking extends OrderRanking {
     }
 
     @Override
-    public Result getMatchingResult() {
+    public Result evaluate() {
         if (bothHandsHaveFlush()) {
             return getHigherHand();
         }
 
         if (noHandHasAFlush()) {
-            return super.getMatchingResult();
+            return super.evaluate();
         }
 
         return isFlush(blackHand) ?

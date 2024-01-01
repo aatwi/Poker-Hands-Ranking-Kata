@@ -15,7 +15,7 @@ class RoyalFlushOrderRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
 
         RoyalFlushOrderRanking handRanking = new RoyalFlushOrderRanking(blackHand, whiteHand);
-        assertEquals(aNoWinner(), handRanking.getMatchingResult());
+        assertEquals(aNoWinner(), handRanking.evaluate());
     }
 
     @Test
@@ -24,7 +24,7 @@ class RoyalFlushOrderRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "TS JS QS KS AS");
 
         RoyalFlushOrderRanking handRanking = new RoyalFlushOrderRanking(blackHand, whiteHand);
-        assertEquals(aNoWinner(), handRanking.getMatchingResult());
+        assertEquals(aNoWinner(), handRanking.evaluate());
     }
 
     @Test
@@ -33,7 +33,7 @@ class RoyalFlushOrderRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "TS JS QS KS AS");
 
         RoyalFlushOrderRanking handRanking = new RoyalFlushOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aRoyalFlushWinningResult(whiteHand), handRanking.getMatchingResult());
+        assertEquals(ResultHelper.aRoyalFlushWinningResult(whiteHand), handRanking.evaluate());
     }
 
     @Test
@@ -42,6 +42,6 @@ class RoyalFlushOrderRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "7H 8H 9H TH JH");
 
         RoyalFlushOrderRanking handRanking = new RoyalFlushOrderRanking(blackHand, whiteHand);
-        assertEquals(ResultHelper.aRoyalFlushWinningResult(blackHand), handRanking.getMatchingResult());
+        assertEquals(ResultHelper.aRoyalFlushWinningResult(blackHand), handRanking.evaluate());
     }
 }

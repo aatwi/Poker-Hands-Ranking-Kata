@@ -1,6 +1,5 @@
 package com.murex.ranking;
 
-import com.murex.Card;
 import com.murex.Hand;
 import com.murex.Result;
 import com.murex.ResultHelper;
@@ -12,9 +11,9 @@ public class StraightFlushOrderRanking extends OrderRanking {
     }
 
     @Override
-    public Result getMatchingResult() {
+    public Result evaluate() {
         if (!isStraightFlush(blackHand) && !isStraightFlush(whiteHand)) {
-            return super.getMatchingResult();
+            return super.evaluate();
         }
 
         if (isStraightFlush(blackHand) && isStraightFlush(whiteHand)) {
