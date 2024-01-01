@@ -5,6 +5,7 @@ import com.murex.ResultHelper;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.ResultHelper.aNoWinner;
+import static com.murex.ResultHelper.aTieResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FlushCardRankingTest {
@@ -83,11 +84,11 @@ class FlushCardRankingTest {
     }
 
     @Test
-    public void it_should_return_a_no_matching_result_when_the_two_hands_have_flush_and_equal_card_values() {
+    public void it_should_return_a_tie_when_the_two_hands_have_flush_and_equal_card_values() {
         Hand blackHand = Hand.buildFrom("Black", "3D 4D 6D JD QD");
         Hand whiteHand = Hand.buildFrom("White", "3S 4S 6S JS QS");
 
         FlushOrderRanking flushHandRanking = new FlushOrderRanking(blackHand, whiteHand);
-        assertEquals(aNoWinner(), flushHandRanking.evaluate());
+        assertEquals(aTieResult(), flushHandRanking.evaluate());
     }
 }

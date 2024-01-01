@@ -6,8 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static com.murex.ResultHelper.aNoWinner;
-import static com.murex.ResultHelper.aTwoPairWinningResult;
+import static com.murex.ResultHelper.*;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 

@@ -3,8 +3,7 @@ package com.murex.ranking;
 import com.murex.Hand;
 import com.murex.Result;
 
-import static com.murex.ResultHelper.aNoWinner;
-import static com.murex.ResultHelper.aStraightWinningResult;
+import static com.murex.ResultHelper.*;
 
 public class StraightOrderRanking extends OrderRanking {
 
@@ -38,7 +37,7 @@ public class StraightOrderRanking extends OrderRanking {
     private Result getHigherHand() {
         int comparison = blackHand.getCardAt(0).compareTo(whiteHand.getCardAt(0));
         if (comparison == 0) {
-            return aNoWinner();
+            return aTieResult();
         }
         return comparison > 0 ?
                 aStraightWinningResult(blackHand, true) :

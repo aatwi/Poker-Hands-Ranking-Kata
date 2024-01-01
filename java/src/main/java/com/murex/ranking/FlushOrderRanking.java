@@ -5,6 +5,7 @@ import com.murex.Result;
 import com.murex.ResultHelper;
 
 import static com.murex.ResultHelper.aFlushWinningResult;
+import static com.murex.ResultHelper.aTieResult;
 
 public class FlushOrderRanking extends OrderRanking {
 
@@ -40,7 +41,7 @@ public class FlushOrderRanking extends OrderRanking {
                         aFlushWinningResult(whiteHand, true);
             }
         }
-        return ResultHelper.aNoWinner();
+        return aTieResult();
     }
 
     private boolean bothHandsHaveFlush() {

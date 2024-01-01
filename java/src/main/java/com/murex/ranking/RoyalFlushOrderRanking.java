@@ -5,6 +5,9 @@ import com.murex.Hand;
 import com.murex.Result;
 import com.murex.ResultHelper;
 
+import static com.murex.ResultHelper.*;
+import static com.murex.ResultHelper.aTieResult;
+
 public class RoyalFlushOrderRanking extends OrderRanking {
 
     public RoyalFlushOrderRanking(Hand blackHand, Hand whiteHand) {
@@ -14,16 +17,16 @@ public class RoyalFlushOrderRanking extends OrderRanking {
     @Override
     public Result evaluate() {
         if (!isRoyalFlush(blackHand) && !isRoyalFlush(whiteHand)) {
-            return ResultHelper.aNoWinner();
+            return aNoWinner();
         }
 
         if (isRoyalFlush(blackHand) && isRoyalFlush(whiteHand)) {
-            return ResultHelper.aNoWinner();
+            return aTieResult();
         }
 
         return isRoyalFlush(blackHand) ?
-                ResultHelper.aRoyalFlushWinningResult(blackHand) :
-                ResultHelper.aRoyalFlushWinningResult(whiteHand);
+                aRoyalFlushWinningResult(blackHand) :
+                aRoyalFlushWinningResult(whiteHand);
     }
 
     public boolean isRoyalFlush(Hand hand) {

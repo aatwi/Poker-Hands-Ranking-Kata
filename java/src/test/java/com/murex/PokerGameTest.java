@@ -157,6 +157,11 @@ public class PokerGameTest {
         void black_wins_with_a_card_values() {
             assertWinner("6C 7S 8H 9D TC", "2H 3D 4S 5C 6S", "Player \"Black\" wins with a STRAIGHT hand and higher cards");
         }
+
+        @Test
+        void tie() {
+            assertWinner("6C 7S 8H 9D TC", "6D 7C 8C 9H TS", "Tie.");
+        }
     }
 
     @Nested
@@ -180,6 +185,11 @@ public class PokerGameTest {
         @Test
         void black_wins_with_higher_card_values() {
             assertWinner("2C 3C 6C 8C AC", "2D 5D 8D JD KD", "Player \"Black\" wins with a FLUSH hand and higher cards");
+        }
+
+        @Test
+        void tie() {
+            assertWinner("2C 3C 6C 8C AC", "2D 3D 6D 8D AD", "Tie.");
         }
     }
 
