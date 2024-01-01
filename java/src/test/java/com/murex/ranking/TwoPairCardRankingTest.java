@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static com.murex.CardNumber.*;
 import static com.murex.CardNumber.NINE;
 import static com.murex.Hand.buildFrom;
-import static com.murex.ResultHelper.aNoMatchResult;
+import static com.murex.ResultHelper.aNoWinner;
 import static com.murex.ResultHelper.aTwoPairWinningResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -87,7 +87,7 @@ class TwoPairCardRankingTest {
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
         Result matchingResult = twoPairCardRanking.getMatchingResult();
 
-        assertEquals(aNoMatchResult(), matchingResult);
+        assertEquals(aNoWinner(), matchingResult);
     }
 
     @Test
@@ -98,7 +98,7 @@ class TwoPairCardRankingTest {
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
         Result matchingResult = twoPairCardRanking.getMatchingResult();
 
-        assertEquals(aNoMatchResult(), matchingResult);
+        assertEquals(aNoWinner(), matchingResult);
     }
 
 
@@ -110,6 +110,6 @@ class TwoPairCardRankingTest {
         TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
         Result matchingResult = twoPairCardRanking.getMatchingResult();
 
-        assertEquals(aNoMatchResult(), matchingResult);
+        assertEquals(aNoWinner(), matchingResult);
     }
 }

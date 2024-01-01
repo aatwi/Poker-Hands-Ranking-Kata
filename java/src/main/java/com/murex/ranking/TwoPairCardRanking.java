@@ -1,55 +1,68 @@
 package com.murex.ranking;
 
-import com.murex.Hand;
-import com.murex.Result;
-import com.murex.ResultHelper;
-import com.murex.hands.TwoPairsHand;
+import com.murex.*;
 
-public class TwoPairCardRanking extends HandRanking {
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
-    private final TwoPairsHand blackTwoPairsHand;
-    private final TwoPairsHand whiteTwoPairsHand;
+import static com.murex.ResultHelper.aNoWinner;
+import static com.murex.ResultHelper.aTwoPairWinningResult;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
+public class TwoPairCardRanking extends OrderRanking {
+
+    private final List<CardNumber> blackPairOfCards;
+    private final List<CardNumber> whitePairOfCards;
 
     public TwoPairCardRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
-        whiteTwoPairsHand = new TwoPairsHand(whiteHand);
-        blackTwoPairsHand = new TwoPairsHand(blackHand);
+        blackPairOfCards = extractPairs(blackHand);
+        whitePairOfCards = extractPairs(whiteHand);
     }
 
     @Override
     public Result getMatchingResult() {
-        if (noHandHasTwoPairs()) {
-            return ResultHelper.aNoMatchResult();
-        }
-
         if (bothHandsHaveTwoPairs()) {
             return getHigherHand();
         }
 
-        TwoPairsHand winningPair = blackTwoPairsHand.hasTwoPairs() ? blackTwoPairsHand : whiteTwoPairsHand;
-        return ResultHelper.aTwoPairWinningResult(winningPair.getHand(), winningPair.getFirstPairCard(), winningPair.getSecondPairCard(), false);
-    }
+        if (noHandHasTwoPairs()) {
+            return aNoWinner();
+        }
 
-    private boolean bothHandsHaveTwoPairs() {
-        return this.blackTwoPairsHand.hasTwoPairs() && this.whiteTwoPairsHand.hasTwoPairs();
-    }
-
-    private boolean noHandHasTwoPairs() {
-        return !this.blackTwoPairsHand.hasTwoPairs() && !this.whiteTwoPairsHand.hasTwoPairs();
+        return blackPairOfCards.size() == 2 ?
+                aTwoPairWinningResult(blackHand, blackPairOfCards.get(0), blackPairOfCards.get(1), false) :
+                aTwoPairWinningResult(whiteHand, whitePairOfCards.get(0), whitePairOfCards.get(1), false);
     }
 
     private Result getHigherHand() {
         int comparison = compareForHigherHands();
         if(comparison == 0){
-            return ResultHelper.aNoMatchResult();
+            return aNoWinner();
         }
 
-        TwoPairsHand winningPair = comparison > 0 ? this.blackTwoPairsHand : this.whiteTwoPairsHand;
-        return ResultHelper.aTwoPairWinningResult(winningPair.getHand(), winningPair.getFirstPairCard(), winningPair.getSecondPairCard(), true);
+        return comparison > 0 ?
+                aTwoPairWinningResult(blackHand, blackPairOfCards.get(0), blackPairOfCards.get(1), true):
+                aTwoPairWinningResult(whiteHand, whitePairOfCards.get(0), whitePairOfCards.get(1), true);
+    }
+
+    private boolean bothHandsHaveTwoPairs() {
+        return  blackPairOfCards.size() == 2 && whitePairOfCards.size() == 2;
+    }
+
+    private boolean noHandHasTwoPairs() {
+        return blackPairOfCards.size() != 2 && whitePairOfCards.size() != 2;
     }
 
     private int compareForHigherHands() {
-        int comparison = this.blackTwoPairsHand.getSecondPairCard().compareTo(this.whiteTwoPairsHand.getSecondPairCard());
-        return comparison != 0 ? comparison : this.blackTwoPairsHand.getFirstPairCard().compareTo(this.whiteTwoPairsHand.getFirstPairCard());
+        int comparison = blackPairOfCards.get(1).compareTo(whitePairOfCards.get(1));
+        return comparison != 0 ? comparison : blackPairOfCards.get(0).compareTo(whitePairOfCards.get(0));
+    }
+
+    private List<CardNumber> extractPairs(Hand hand) {
+        Map<CardNumber, Long> twoPairsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Card::getCardNumber, counting()));
+        return twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 2).sorted().toList();
     }
 }

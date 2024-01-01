@@ -4,16 +4,16 @@ import com.murex.Hand;
 import com.murex.Result;
 import com.murex.ResultHelper;
 
-public abstract class HandRanking {
+public abstract class OrderRanking {
     protected final Hand blackHand;
     protected final Hand whiteHand;
 
-    public HandRanking(Hand blackHand, Hand whiteHand) {
+    public OrderRanking(Hand blackHand, Hand whiteHand) {
         this.blackHand = blackHand;
         this.whiteHand = whiteHand;
     }
 
     public Result getMatchingResult() {
-        return ResultHelper.aNoMatchResult();
+        return ResultHelper.aNoWinner();
     }
 }

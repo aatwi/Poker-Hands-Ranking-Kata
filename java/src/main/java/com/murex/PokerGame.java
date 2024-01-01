@@ -30,7 +30,7 @@ import java.util.List;
 class PokerGame {
     private final Hand blackHand;
     private final Hand whiteHand;
-    private final List<HandRanking> ranks = new ArrayList<>();
+    private final List<OrderRanking> ranks = new ArrayList<>();
 
     public PokerGame(String blackCards, String whiteCards) {
         this.blackHand = Hand.buildFrom("Black", blackCards);
@@ -39,16 +39,16 @@ class PokerGame {
     }
 
     public String getWinner() {
-        return ranks.stream().map(HandRanking::getMatchingResult).filter(Result::isMatch).findFirst().map(Result::getMessage).orElse(null);
+        return ranks.stream().map(OrderRanking::getMatchingResult).filter(Result::isMatch).findFirst().map(Result::getMessage).orElse(null);
     }
 
     private void addPossibleRanks() {
-        ranks.add(new RoyalFlushHandRanking(blackHand, whiteHand));
-        ranks.add(new StraightFlushHandRanking(blackHand, whiteHand));
+        ranks.add(new RoyalFlushOrderRanking(blackHand, whiteHand));
+        ranks.add(new StraightFlushOrderRanking(blackHand, whiteHand));
         ranks.add(new FourOfAKindRanking(blackHand, whiteHand));
         ranks.add(new FullHouseRanking(blackHand, whiteHand));
-        ranks.add(new FlushHandRanking(blackHand, whiteHand));
-        ranks.add(new StraightHandRanking(blackHand, whiteHand));
+        ranks.add(new FlushOrderRanking(blackHand, whiteHand));
+        ranks.add(new StraightOrderRanking(blackHand, whiteHand));
         ranks.add(new ThreeOfAKindRanking(blackHand, whiteHand));
         ranks.add(new TwoPairCardRanking(blackHand, whiteHand));
         ranks.add(new PairCardRanking(blackHand, whiteHand));

@@ -23,7 +23,7 @@ public class ResultHelper {
                 .build();
     }
 
-    public static Result aNoMatchResult() {
+    public static Result aNoWinner() {
         return new NoWinner();
     }
 

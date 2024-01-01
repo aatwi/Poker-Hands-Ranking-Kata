@@ -1,36 +1,24 @@
 package com.murex.ranking;
 
-import com.murex.Hand;
-import com.murex.Result;
-import com.murex.ResultHelper;
-import com.murex.hands.FourOfAKindHand;
+import com.murex.*;
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
+
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
 
 
-public class FourOfAKindRanking extends HandRanking {
+public class FourOfAKindRanking extends OrderRanking {
 
-    private final FourOfAKindHand whiteFourOfAKindHand;
-    private final FourOfAKindHand blackFourOfAKindHand;
+    private Optional<CardNumber> blackFourOfKindCard;
+    private Optional<CardNumber> whiteFourOfKindCard;
 
     public FourOfAKindRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
-        blackFourOfAKindHand = new FourOfAKindHand(blackHand);
-        whiteFourOfAKindHand = new FourOfAKindHand(whiteHand);
-    }
-
-    @Override
-    public Result getMatchingResult() {
-        if(blackFourOfAKindHand.hasFourOfAKind() && whiteFourOfAKindHand.hasFourOfAKind())  {
-            int comparison = blackFourOfAKindHand.getFourOfKindCard().compareTo(whiteFourOfAKindHand.getFourOfKindCard());
-            Hand winningHand = comparison > 0 ? blackFourOfAKindHand.getHand() : whiteFourOfAKindHand.getHand();
-            return buildMatchingResultWithHigherHand(winningHand);
-        }
-        if (blackFourOfAKindHand.hasFourOfAKind()) {
-            return buildMatchingResult(blackFourOfAKindHand.getHand());
-        }
-        if (whiteFourOfAKindHand.hasFourOfAKind()) {
-            return buildMatchingResult(whiteFourOfAKindHand.getHand());
-        }
-        return super.getMatchingResult();
+        this.blackFourOfKindCard = extractFourOfAKindCard(blackHand);
+        this.whiteFourOfKindCard = extractFourOfAKindCard(whiteHand);
     }
 
     private static Result buildMatchingResultWithHigherHand(Hand hand) {
@@ -41,4 +29,33 @@ public class FourOfAKindRanking extends HandRanking {
         return ResultHelper.aFourOfAKindWinningResult(hand, false);
     }
 
+    @Override
+    public Result getMatchingResult() {
+        if (noHandHasFourOfAKind()) {
+            return super.getMatchingResult();
+        }
+
+        if (bothHaveFourOfAKind()) {
+            int comparison = blackFourOfKindCard.get().compareTo(whiteFourOfKindCard.get());
+            Hand winningHand = comparison > 0 ? blackHand : whiteHand;
+            return buildMatchingResultWithHigherHand(winningHand);
+        }
+
+        return blackFourOfKindCard.isPresent() ?
+                buildMatchingResult(blackHand) :
+                buildMatchingResult(whiteHand);
+    }
+
+    private boolean bothHaveFourOfAKind() {
+        return blackFourOfKindCard.isPresent() && whiteFourOfKindCard.isPresent();
+    }
+
+    private boolean noHandHasFourOfAKind() {
+        return blackFourOfKindCard.isEmpty() && whiteFourOfKindCard.isEmpty();
+    }
+
+    private Optional<CardNumber> extractFourOfAKindCard(Hand hand) {
+        Map<CardNumber, Long> cardGroupsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Card::getCardNumber, counting()));
+        return cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 4).findAny();
+    }
 }

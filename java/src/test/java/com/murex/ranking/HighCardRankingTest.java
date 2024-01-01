@@ -2,13 +2,12 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
-import com.murex.hands.HighHand;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.CardNumber.*;
 import static com.murex.Hand.buildFrom;
 import static com.murex.ResultHelper.aHighCardWinningResult;
-import static com.murex.ResultHelper.aNoMatchResult;
+import static com.murex.ResultHelper.aNoWinner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HighCardRankingTest {
@@ -24,7 +23,7 @@ class HighCardRankingTest {
         Hand white = buildFrom("White", "2D 3S 5C 9D KC");
         HighCardRanking highCardRanking = new HighCardRanking(black, white);
 
-        assertEquals(aNoMatchResult(), highCardRanking.getMatchingResult());
+        assertEquals(aNoWinner(), highCardRanking.getMatchingResult());
     }
 
     @Test
@@ -66,15 +65,4 @@ class HighCardRankingTest {
 
         assertEquals(aHighCardWinningResult(white, NINE), buildHighCardResult(black, white));
     }
-
-    @Test
-    public void get_the_higher_hand() {
-        Hand blackHand = buildFrom("Black", "2H 3D 5S 8C AD");
-        Hand whiteHand = buildFrom("White", "2S 3C 5D 9S AD");
-
-        HighCardRanking highCardRanking1 = new HighCardRanking(blackHand, whiteHand);
-        HighHand higherHand = highCardRanking1.getHigherHand().get();
-        assertEquals(whiteHand, higherHand.getHand());
-    }
-
 }

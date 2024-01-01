@@ -4,7 +4,7 @@ import com.murex.Hand;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.CardNumber.*;
-import static com.murex.ResultHelper.aNoMatchResult;
+import static com.murex.ResultHelper.aNoWinner;
 import static com.murex.ResultHelper.aThreeOfAKindWinningResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,7 +15,7 @@ class ThreeOfAKindRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "7H 8C TD KH AS");
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
 
-        assertEquals(aNoMatchResult(), new ThreeOfAKindRanking(blackHand, whiteHand).getMatchingResult());
+        assertEquals(aNoWinner(), new ThreeOfAKindRanking(blackHand, whiteHand).getMatchingResult());
     }
 
     @Test

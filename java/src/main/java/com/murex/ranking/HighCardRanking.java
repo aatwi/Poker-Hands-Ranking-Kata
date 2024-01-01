@@ -1,15 +1,12 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
-import com.murex.hands.HighHand;
 import com.murex.Result;
+import com.murex.ResultHelper;
 
-import java.util.Optional;
-
-import static com.murex.ResultHelper.aNoMatchResult;
 import static com.murex.ResultHelper.aHighCardWinningResult;
 
-public class HighCardRanking extends HandRanking {
+public class HighCardRanking extends OrderRanking {
 
     public HighCardRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
@@ -17,17 +14,14 @@ public class HighCardRanking extends HandRanking {
 
     @Override
     public Result getMatchingResult() {
-        Optional<HighHand> winner = getHigherHand();
-        return winner.isEmpty()? aNoMatchResult() : aHighCardWinningResult(winner.get().getHand(), winner.get().getHighCard().getCardNumber());
-    }
-
-    protected Optional<HighHand> getHigherHand() {
         for (int index = 4; index >= 0; index--) {
             int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));
             if (cardComparison != 0) {
-                return Optional.of(cardComparison > 0 ? new HighHand(blackHand, index) : new HighHand(whiteHand, index));
+                return cardComparison > 0 ?
+                        aHighCardWinningResult(blackHand, blackHand.getCardAt(index).getCardNumber()) :
+                        aHighCardWinningResult(whiteHand, whiteHand.getCardAt(index).getCardNumber());
             }
         }
-        return Optional.empty();
+        return ResultHelper.aNoWinner();
     }
 }

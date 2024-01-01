@@ -21,7 +21,7 @@ class PairCardRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "7H 8C TD KH AS");
         Hand whiteHand = Hand.buildFrom("White", "2D 3H 5C 9S KH");
 
-        assertEquals(ResultHelper.aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
+        assertEquals(ResultHelper.aNoWinner(), buildPairCardResult(blackHand, whiteHand));
     }
 
     @Test
@@ -30,7 +30,7 @@ class PairCardRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "7H 7C TD KH AS");
         Hand whiteHand = Hand.buildFrom("White", "7D 7S TC KS AH");
 
-        assertEquals(ResultHelper.aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
+        assertEquals(ResultHelper.aNoWinner(), buildPairCardResult(blackHand, whiteHand));
     }
 
     @Test
@@ -39,7 +39,7 @@ class PairCardRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "2H 2D 5S 6C JS");
         Hand whiteHand = Hand.buildFrom("White", "2C 2S 6H 8H AC");
 
-        assertEquals(ResultHelper.aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
+        assertEquals(ResultHelper.aNoWinner(), buildPairCardResult(blackHand, whiteHand));
     }
 
     @Test
@@ -48,7 +48,7 @@ class PairCardRankingTest {
         Hand blackHand = Hand.buildFrom("Black", "2H 4D 8S AC AS");
         Hand whiteHand = Hand.buildFrom("White", "2C 3S 7H AH AD");
 
-        assertEquals(ResultHelper.aNoMatchResult(), buildPairCardResult(blackHand, whiteHand));
+        assertEquals(ResultHelper.aNoWinner(), buildPairCardResult(blackHand, whiteHand));
     }
 
     @Test

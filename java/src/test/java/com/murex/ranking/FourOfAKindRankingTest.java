@@ -4,7 +4,7 @@ import com.murex.Hand;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.ResultHelper.aFourOfAKindWinningResult;
-import static com.murex.ResultHelper.aNoMatchResult;
+import static com.murex.ResultHelper.aNoWinner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FourOfAKindRankingTest {
@@ -15,7 +15,7 @@ class FourOfAKindRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
 
         FourOfAKindRanking fourOfAKindRanking = new FourOfAKindRanking(blackHand, whiteHand);
-        assertEquals(aNoMatchResult(), fourOfAKindRanking.getMatchingResult());
+        assertEquals(aNoWinner(), fourOfAKindRanking.getMatchingResult());
     }
 
     @Test

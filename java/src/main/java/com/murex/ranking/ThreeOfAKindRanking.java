@@ -1,20 +1,23 @@
 package com.murex.ranking;
 
-import com.murex.Hand;
-import com.murex.Result;
-import com.murex.ResultHelper;
-import com.murex.hands.ThreeOfAKindHand;
+import com.murex.*;
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
 
 import static com.murex.ResultHelper.aThreeOfAKindWinningResult;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
 
-public class ThreeOfAKindRanking extends HandRanking {
-    private final ThreeOfAKindHand threeOfAKindBlackHand;
-    private final ThreeOfAKindHand threeOfAKindWhiteHand;
+public class ThreeOfAKindRanking extends OrderRanking {
+    private final Optional<CardNumber> blackThreeOfAKindCards;
+    private final Optional<CardNumber> whiteThreeOfAKindCards;
 
     public ThreeOfAKindRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
-        this.threeOfAKindBlackHand = new ThreeOfAKindHand(blackHand);
-        this.threeOfAKindWhiteHand = new ThreeOfAKindHand(whiteHand);
+        this.blackThreeOfAKindCards = extractThreeOfAKind(blackHand);
+        this.whiteThreeOfAKindCards = extractThreeOfAKind(whiteHand);
     }
 
     @Override
@@ -23,30 +26,36 @@ public class ThreeOfAKindRanking extends HandRanking {
             return getHigherHand();
         }
 
-        if (bothHaveNoThreeOfAKindCards()) {
-            return ResultHelper.aNoMatchResult();
+        if (noHandHasThreeOfAKindCards()) {
+            return ResultHelper.aNoWinner();
         }
 
-        ThreeOfAKindHand winningHand = threeOfAKindBlackHand.hasThreeOfAKind() ? threeOfAKindBlackHand : threeOfAKindWhiteHand;
-        return aThreeOfAKindWinningResult(winningHand.getHand(), winningHand.getCard(), false);
-
+        return blackThreeOfAKindCards.isPresent() ?
+                aThreeOfAKindWinningResult(blackHand, blackThreeOfAKindCards.get(), false) :
+                aThreeOfAKindWinningResult(whiteHand, whiteThreeOfAKindCards.get(), false);
     }
 
     private Result getHigherHand() {
-        int comparison = threeOfAKindBlackHand.getCard().compareTo(threeOfAKindWhiteHand.getCard());
+        int comparison = blackThreeOfAKindCards.get().compareTo(whiteThreeOfAKindCards.get());
         if (comparison == 0) {
-            return ResultHelper.aNoMatchResult();
+            return ResultHelper.aNoWinner();
         }
 
-        ThreeOfAKindHand winningHand = comparison > 0 ? threeOfAKindBlackHand : threeOfAKindWhiteHand;
-        return aThreeOfAKindWinningResult(winningHand.getHand(), winningHand.getCard(), true);
+        return comparison > 0 ?
+                aThreeOfAKindWinningResult(blackHand, blackThreeOfAKindCards.get(), true) :
+                aThreeOfAKindWinningResult(whiteHand, whiteThreeOfAKindCards.get(), true);
     }
 
-    private boolean bothHaveNoThreeOfAKindCards() {
-        return !threeOfAKindWhiteHand.hasThreeOfAKind() && !threeOfAKindBlackHand.hasThreeOfAKind();
+    private boolean noHandHasThreeOfAKindCards() {
+        return blackThreeOfAKindCards.isEmpty() &&  whiteThreeOfAKindCards.isEmpty();
     }
 
     private boolean bothHaveThreeOfAKindCards() {
-        return threeOfAKindWhiteHand.hasThreeOfAKind() && threeOfAKindBlackHand.hasThreeOfAKind();
+        return blackThreeOfAKindCards.isPresent() && whiteThreeOfAKindCards.isPresent();
+    }
+
+    private Optional<CardNumber> extractThreeOfAKind(Hand hand) {
+        Map<CardNumber, Long> twoPairsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Card::getCardNumber, counting()));
+        return twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).findFirst();
     }
 }

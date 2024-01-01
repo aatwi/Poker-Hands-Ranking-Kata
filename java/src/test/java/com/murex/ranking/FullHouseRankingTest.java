@@ -4,7 +4,7 @@ import com.murex.Hand;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.ResultHelper.aFullHouseWinningResult;
-import static com.murex.ResultHelper.aNoMatchResult;
+import static com.murex.ResultHelper.aNoWinner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FullHouseRankingTest {
@@ -15,7 +15,7 @@ class FullHouseRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
 
         FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
-        assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
+        assertEquals(aNoWinner(), fullHouseCardRanking.getMatchingResult());
     }
 
     @Test
@@ -33,7 +33,7 @@ class FullHouseRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
 
         FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
-        assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
+        assertEquals(aNoWinner(), fullHouseCardRanking.getMatchingResult());
     }
 
     @Test
@@ -51,7 +51,7 @@ class FullHouseRankingTest {
         Hand whiteHand = Hand.buildFrom("White", "4H 4S 4C KH AD");
 
         FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
-        assertEquals(aNoMatchResult(), fullHouseCardRanking.getMatchingResult());
+        assertEquals(aNoWinner(), fullHouseCardRanking.getMatchingResult());
     }
 
     @Test

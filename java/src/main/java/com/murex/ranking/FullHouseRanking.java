@@ -1,52 +1,64 @@
 package com.murex.ranking;
 
-import com.murex.CardNumber;
-import com.murex.Hand;
-import com.murex.Result;
-import com.murex.ResultHelper;
-import com.murex.hands.FullHouseHand;
+import com.murex.*;
 
-public class FullHouseRanking extends HandRanking {
+import java.util.Arrays;
+import java.util.Map;
 
-    private final FullHouseHand blackFullHouseHand;
-    private final FullHouseHand whiteFullHouseHand;
+import static com.murex.ResultHelper.aFullHouseWinningResult;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
+public class FullHouseRanking extends OrderRanking {
+
+    Map<CardNumber, Long> blackCardsCountMap;
+    Map<CardNumber, Long> whiteCardsCountMap;
+
 
     public FullHouseRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
-        blackFullHouseHand = new FullHouseHand(blackHand);
-        whiteFullHouseHand = new FullHouseHand(whiteHand);
-    }
-
-    private static Result buildMatchingResultWithHigherHand(Hand hand) {
-        return ResultHelper.aFullHouseWinningResult(hand, true);
-    }
-
-    private static Result buildMatchingResult(FullHouseHand fullHouseHand) {
-        return ResultHelper.aFullHouseWinningResult(fullHouseHand.getHand(), false);
+        this.blackCardsCountMap = extractPairsAndTrioCards(blackHand);
+        this.whiteCardsCountMap = extractPairsAndTrioCards(whiteHand);
     }
 
     @Override
     public Result getMatchingResult() {
-        if (!blackFullHouseHand.hasFullHouse() && !whiteFullHouseHand.hasFullHouse()) {
+        if(noHandHasFullHouse()) {
             return super.getMatchingResult();
         }
 
         if (bothHaveFullHouse()) {
-            return buildMatchingResultWithHigherHand(getHigherHand());
+            return  aFullHouseWinningResult(getHigherHand(), true);
         }
 
-        return blackFullHouseHand.hasFullHouse() ? buildMatchingResult(blackFullHouseHand) : buildMatchingResult(whiteFullHouseHand);
+        return hasFullHouse(blackCardsCountMap) ?
+                aFullHouseWinningResult(blackHand, false) :
+                aFullHouseWinningResult(whiteHand, false);
+    }
+
+    private boolean noHandHasFullHouse() {
+        return !hasFullHouse(blackCardsCountMap) && !hasFullHouse(whiteCardsCountMap);
+    }
+
+    private boolean hasFullHouse(Map<CardNumber, Long> cardsCountMap) {
+        return cardsCountMap.keySet().stream().anyMatch(card -> cardsCountMap.get(card) == 2) &&
+                cardsCountMap.keySet().stream().anyMatch(card -> cardsCountMap.get(card) == 3);
     }
 
     private boolean bothHaveFullHouse() {
-        return blackFullHouseHand.hasFullHouse() && whiteFullHouseHand.hasFullHouse();
+        return hasFullHouse(blackCardsCountMap) && hasFullHouse(whiteCardsCountMap);
     }
 
     private Hand getHigherHand() {
-        CardNumber blackCard = blackFullHouseHand.getTrioCards().get();
-        CardNumber whiteCard = whiteFullHouseHand.getTrioCards().get();
+        CardNumber blackCard = blackCardsCountMap.keySet().stream().filter(card -> blackCardsCountMap.get(card) == 3).findAny().get();
+        CardNumber whiteCard = whiteCardsCountMap.keySet().stream().filter(card -> whiteCardsCountMap.get(card) == 3).findAny().get();
 
         int comparison = blackCard.compareTo(whiteCard);
         return comparison > 0 ? blackHand : whiteHand;
     }
+
+    private Map<CardNumber, Long> extractPairsAndTrioCards(Hand hand) {
+        return Arrays.stream(hand.getCards()).collect(groupingBy(Card::getCardNumber, counting()));
+    }
+
 }
