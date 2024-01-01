@@ -27,7 +27,7 @@ public class ThreeOfAKindRanking extends OrderRanking {
         }
 
         if (noHandHasThreeOfAKindCards()) {
-            return ResultHelper.aNoWinner();
+            return super.evaluate();
         }
 
         return blackThreeOfAKindCards.isPresent() ?
@@ -38,7 +38,7 @@ public class ThreeOfAKindRanking extends OrderRanking {
     private Result getHigherHand() {
         int comparison = blackThreeOfAKindCards.get().compareTo(whiteThreeOfAKindCards.get());
         if (comparison == 0) {
-            return ResultHelper.aNoWinner();
+            return super.evaluate();
         }
 
         return comparison > 0 ?

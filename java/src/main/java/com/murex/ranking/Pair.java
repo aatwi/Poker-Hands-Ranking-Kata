@@ -1,6 +1,9 @@
 package com.murex.ranking;
 
-import com.murex.*;
+import com.murex.Card;
+import com.murex.CardNumber;
+import com.murex.Hand;
+import com.murex.Result;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -28,7 +31,7 @@ public class PairCardRanking extends OrderRanking {
         }
 
         if (noHandHasPair()) {
-            return aNoWinner();
+            return super.evaluate();
         }
 
         return blackPairCards.isPresent() ?

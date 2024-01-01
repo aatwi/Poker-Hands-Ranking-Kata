@@ -27,14 +27,16 @@ import com.murex.ranking.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.murex.HandBuilder.aHand;
+
 class PokerGame {
     private final Hand blackHand;
     private final Hand whiteHand;
     private final List<OrderRanking> ranks = new ArrayList<>();
 
     public PokerGame(String blackCards, String whiteCards) {
-        this.blackHand = Hand.aHand("Black", blackCards);
-        this.whiteHand = Hand.aHand("White", whiteCards);
+        this.blackHand = aHand().withPlayer("Black").withCards(blackCards).build();
+        this.whiteHand = aHand().withPlayer("White").withCards(whiteCards).build();
         addPossibleRanks();
     }
 

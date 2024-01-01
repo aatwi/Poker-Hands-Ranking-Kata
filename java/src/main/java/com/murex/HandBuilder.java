@@ -1,16 +1,23 @@
 package com.murex;
 
-import javax.net.ssl.SNIHostName;
-
 public class HandBuilder {
     private String playerName;
     private Card[] cards;
-    public HandBuilder() {
 
+    private HandBuilder() {
     }
 
-    public static HandBuilder aHandBuilder() {
+    public static HandBuilder aHand() {
         return new HandBuilder();
+    }
+
+    private static Card[] convertToCards(String cards) {
+        String[] cardsValues = cards.split(" ");
+        Card[] handCards = new Card[5];
+        for (int index = 0; index < 5; index++) {
+            handCards[index] = new Card(cardsValues[index].charAt(0), cardsValues[index].charAt(1));
+        }
+        return handCards;
     }
 
     public HandBuilder withPlayer(String playerName) {
@@ -23,16 +30,7 @@ public class HandBuilder {
         return this;
     }
 
-    private static Card[] convertToCards(String cards) {
-        String[] cardsValues = cards.split(" ");
-        Card[] handCards = new Card[5];
-        for (int index = 0; index < 5; index++) {
-            handCards[index] = new Card(cardsValues[index].charAt(0), cardsValues[index].charAt(1));
-        }
-        return handCards;
-    }
-
-    public Hand build(){
+    public Hand build() {
         return new Hand(playerName, cards);
     }
 }

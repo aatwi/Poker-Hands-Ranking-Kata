@@ -18,7 +18,7 @@ public class StraightOrderRanking extends OrderRanking {
         }
 
         if (noHandHasStraight()) {
-            return aNoWinner();
+            return super.evaluate();
         }
 
         return isStraight(blackHand) ?

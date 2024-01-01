@@ -13,7 +13,7 @@ public class TieRanking extends OrderRanking {
     public Result evaluate() {
         for (int index = 0; index < 5; index++) {
             if (blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index)) != 0) {
-                return ResultHelper.aNoWinner();
+                return super.evaluate();
             }
         }
         return ResultHelper.aTieResult();

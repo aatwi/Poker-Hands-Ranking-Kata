@@ -22,6 +22,6 @@ public class HighCardRanking extends OrderRanking {
                         aHighCardWinningResult(whiteHand, whiteHand.getCardAt(index).getCardNumber());
             }
         }
-        return ResultHelper.aNoWinner();
+        return super.evaluate();
     }
 }

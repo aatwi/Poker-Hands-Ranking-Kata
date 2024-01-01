@@ -12,10 +12,6 @@ public class Hand {
         this.cards = cards;
     }
 
-    public static Hand aHand(String blackHand, String cards) {
-        return HandBuilder.aHandBuilder().withPlayer(blackHand).withCards(cards).build();
-    }
-
     public String getName() {
         return name;
     }

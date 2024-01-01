@@ -42,7 +42,8 @@ public class ResultBuilder {
 
     public Result build() {
         String winningCardsStr = !winningCards.isEmpty() ?
-                " (" + winningCards.stream().map(String::valueOf).collect(Collectors.joining(", ")) + ")" : "";
+                " (" + winningCards.stream().map(String::valueOf).collect(Collectors.joining(", ")) + ")" :
+                "";
         String higherCardsStr = higherCards ?  " and higher cards": "";
         String finalMessage = String.format("Player \"%s\" wins with a %s hand%s%s", winner.getName(), rankOrder, winningCardsStr, higherCardsStr);
 

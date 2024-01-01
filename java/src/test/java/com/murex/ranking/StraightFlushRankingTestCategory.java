@@ -1,6 +1,7 @@
 package com.murex.ranking;
 
 import com.murex.Hand;
+import com.murex.HandBuilder;
 import org.junit.jupiter.api.Test;
 
 import static com.murex.ResultHelper.*;
@@ -10,8 +11,8 @@ class StraightFlushOrderRankingTest {
 
     @Test
     public void it_should_return_a_no_matching_result_when_non_of_the_players_have_straight_flush_cards() {
-        Hand blackHand = Hand.aHand("Black", "7H 8C TD KH AS");
-        Hand whiteHand = Hand.aHand("White", "2D 3H 5C 9S KH");
+        Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("7H 8C TD KH AS").build();
+        Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2D 3H 5C 9S KH").build();
 
         StraightFlushOrderRanking handRanking = new StraightFlushOrderRanking(blackHand, whiteHand);
         assertEquals(aNoWinner(), handRanking.evaluate());
@@ -19,8 +20,8 @@ class StraightFlushOrderRankingTest {
 
     @Test
     public void it_should_return_a_tie_result_when_both_players_have_same_straight_flush_cards() {
-        Hand blackHand = Hand.aHand("Black", "7H 8H 9H TH JH");
-        Hand whiteHand = Hand.aHand("White", "7S 8S 9S TS JS");
+        Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("7H 8H 9H TH JH").build();
+        Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("7S 8S 9S TS JS").build();
 
         StraightFlushOrderRanking handRanking = new StraightFlushOrderRanking(blackHand, whiteHand);
         assertEquals(aTieResult(), handRanking.evaluate());
@@ -28,8 +29,8 @@ class StraightFlushOrderRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner() {
-        Hand blackHand = Hand.aHand("Black", "7H 8C TD KH AS");
-        Hand whiteHand = Hand.aHand("White", "2D 3D 4D 5D 6D");
+        Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("7H 8C TD KH AS").build();
+        Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2D 3D 4D 5D 6D").build();
 
         StraightFlushOrderRanking handRanking = new StraightFlushOrderRanking(blackHand, whiteHand);
         assertEquals(aStraightFlushWinningResult(whiteHand, false), handRanking.evaluate());
@@ -37,8 +38,8 @@ class StraightFlushOrderRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner() {
-        Hand blackHand = Hand.aHand("Black", "2D 3D 4D 5D 6D");
-        Hand whiteHand = Hand.aHand("White", "7H 8C TD KH AS");
+        Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("2D 3D 4D 5D 6D").build();
+        Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("7H 8C TD KH AS").build();
 
         StraightFlushOrderRanking handRanking = new StraightFlushOrderRanking(blackHand, whiteHand);
         assertEquals(aStraightFlushWinningResult(blackHand, false), handRanking.evaluate());
@@ -47,8 +48,8 @@ class StraightFlushOrderRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_with_black_as_winner_with_higher_hand() {
-        Hand blackHand = Hand.aHand("Black", "7H 8H 9H TH JH");
-        Hand whiteHand = Hand.aHand("White", "2D 3D 4D 5D 6D");
+        Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("7H 8H 9H TH JH").build();
+        Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2D 3D 4D 5D 6D").build();
 
         StraightFlushOrderRanking handRanking = new StraightFlushOrderRanking(blackHand, whiteHand);
         assertEquals(aStraightFlushWinningResult(blackHand, true), handRanking.evaluate());
@@ -56,8 +57,8 @@ class StraightFlushOrderRankingTest {
 
     @Test
     public void it_should_return_a_matching_result_with_white_as_winner_with_higher_hand() {
-        Hand blackHand = Hand.aHand("Black", "7H 8H 9H TH JH");
-        Hand whiteHand = Hand.aHand("White", "8D 9D TD JD QD");
+        Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("7H 8H 9H TH JH").build();
+        Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("8D 9D TD JD QD").build();
 
         StraightFlushOrderRanking handRanking = new StraightFlushOrderRanking(blackHand, whiteHand);
         assertEquals(aStraightFlushWinningResult(whiteHand, true), handRanking.evaluate());

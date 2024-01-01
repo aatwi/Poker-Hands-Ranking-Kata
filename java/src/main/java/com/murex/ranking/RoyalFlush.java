@@ -17,7 +17,7 @@ public class RoyalFlushOrderRanking extends OrderRanking {
     @Override
     public Result evaluate() {
         if (!isRoyalFlush(blackHand) && !isRoyalFlush(whiteHand)) {
-            return aNoWinner();
+            return super.evaluate();
         }
 
         if (isRoyalFlush(blackHand) && isRoyalFlush(whiteHand)) {

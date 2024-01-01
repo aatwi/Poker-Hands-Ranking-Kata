@@ -28,7 +28,7 @@ public class TwoPairCardRanking extends OrderRanking {
         }
 
         if (noHandHasTwoPairs()) {
-            return aNoWinner();
+            return super.evaluate();
         }
 
         return blackPairOfCards.size() == 2 ?
@@ -39,7 +39,7 @@ public class TwoPairCardRanking extends OrderRanking {
     private Result getHigherHand() {
         int comparison = compareForHigherHands();
         if(comparison == 0){
-            return aNoWinner();
+            return super.evaluate();
         }
 
         return comparison > 0 ?

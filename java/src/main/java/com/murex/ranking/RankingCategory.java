@@ -4,6 +4,8 @@ import com.murex.Hand;
 import com.murex.Result;
 import com.murex.ResultHelper;
 
+import static com.murex.ResultHelper.aNoWinner;
+
 public abstract class OrderRanking {
     protected final Hand blackHand;
     protected final Hand whiteHand;
@@ -14,6 +16,6 @@ public abstract class OrderRanking {
     }
 
     public Result evaluate() {
-        return ResultHelper.aNoWinner();
+        return aNoWinner();
     }
 }
