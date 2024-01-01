@@ -1,6 +1,6 @@
 package com.murex;
 
-public class HandBuilder {
+public final class HandBuilder {
     private String playerName;
     private Card[] cards;
 

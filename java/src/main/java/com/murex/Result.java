@@ -2,127 +2,78 @@ package com.murex;
 
 import java.util.Objects;
 
-public interface Result {
-    boolean isMatch();
+public abstract class Result {
 
-    String getMessage();
+    private final boolean isMatch;
+    private final String message;
+
+    Result(boolean isMatch, String message) {
+        this.isMatch = isMatch;
+        this.message = message;
+    }
+
+    boolean isMatch() {
+        return isMatch;
+    }
+
+    String getMessage() {
+        return message;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Result result = (Result) o;
+        return isMatch == result.isMatch && Objects.equals(message, result.message);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(isMatch, message);
+    }
 }
 
-class NoWinner implements Result {
-    private final boolean isMatch = false;
-    private final String message  = "";
+class NoWinner extends Result {
     public NoWinner() {
-    }
-
-    @Override
-    public boolean isMatch() {
-        return false;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+        super(false, "");
     }
 
     @Override
     public String toString() {
         return "NoWinner{" +
-                "isMatch=" + isMatch +
-                ", message='" + message + '\'' +
+                "isMatch=" + isMatch() +
+                ", message='" + getMessage() + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        NoWinner noWinner = (NoWinner) o;
-        return isMatch == noWinner.isMatch && Objects.equals(message, noWinner.message);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(isMatch, message);
     }
 }
 
-class Winner implements Result {
-
-    private final boolean isMatch;
-    private final String message;
+class Winner extends Result {
 
     Winner(String message) {
-        this.isMatch = true;
-        this.message = message;
-    }
-
-    @Override
-    public boolean isMatch() {
-        return isMatch;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+        super(true, message);
     }
 
     @Override
     public String toString() {
         return "Winner{" +
-                "isMatch=" + isMatch +
-                ", message='" + message + '\'' +
+                "isMatch=" + isMatch() +
+                ", message='" + getMessage() + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Winner winner = (Winner) o;
-        return isMatch == winner.isMatch && Objects.equals(message, winner.message);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(isMatch, message);
     }
 }
 
-class Tie implements Result {
-    private final String message = "Tie.";
-    private final boolean isMatch = true;
+class Tie extends Result {
 
     public Tie() {
-    }
-
-    @Override
-    public boolean isMatch() {
-        return isMatch;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+        super(true, "Tie.");
     }
 
     @Override
     public String toString() {
         return "Tie{" +
-                "message='" + message + '\'' +
-                ", isMatch=" + isMatch +
+                "isMatch=" + isMatch() +
+                ", message='" +  getMessage()  +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Tie tie = (Tie) o;
-        return isMatch == tie.isMatch && Objects.equals(message, tie.message);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(message, isMatch);
     }
 }

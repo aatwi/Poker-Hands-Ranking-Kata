@@ -9,26 +9,26 @@ public record Hand(String name, Card[] cards) {
         return cards[index];
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Hand hand = (Hand) o;
-//        return Objects.equals(name, hand.name) && Arrays.equals(cards, hand.cards);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = Objects.hash(name);
-//        result = 31 * result + Arrays.hashCode(cards);
-//        return result;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Hand{" +
-//                "name='" + name + '\'' +
-//                ", cards=" + Arrays.toString(cards) +
-//                '}';
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hand hand = (Hand) o;
+        return Objects.equals(name, hand.name) && Arrays.equals(cards, hand.cards);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name);
+        result = 31 * result + Arrays.hashCode(cards);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Hand{" +
+                "name='" + name + '\'' +
+                ", cards=" + Arrays.toString(cards) +
+                '}';
+    }
 }

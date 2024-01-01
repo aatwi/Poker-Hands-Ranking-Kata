@@ -38,14 +38,14 @@ class PokerGame {
     public PokerGame(String blackCards, String whiteCards) {
         this.blackHand = aHand().withPlayer("Black").withCards(blackCards).build();
         this.whiteHand = aHand().withPlayer("White").withCards(whiteCards).build();
-        addPossibleRanks();
+        addRankingCategories();
     }
 
     public String getWinner() {
         return ranks.stream().map(RankingCategory::evaluate).filter(Result::isMatch).findFirst().map(Result::getMessage).orElse(null);
     }
 
-    private void addPossibleRanks() {
+    private void addRankingCategories() {
         ranks.add(new RoyalFlush(blackHand, whiteHand));
         ranks.add(new StraightFlush(blackHand, whiteHand));
         ranks.add(new FourOfAKind(blackHand, whiteHand));
