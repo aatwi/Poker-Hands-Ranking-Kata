@@ -33,8 +33,8 @@ class PokerGame {
     private final List<OrderRanking> ranks = new ArrayList<>();
 
     public PokerGame(String blackCards, String whiteCards) {
-        this.blackHand = Hand.buildFrom("Black", blackCards);
-        this.whiteHand = Hand.buildFrom("White", whiteCards);
+        this.blackHand = Hand.aHand("Black", blackCards);
+        this.whiteHand = Hand.aHand("White", whiteCards);
         addPossibleRanks();
     }
 

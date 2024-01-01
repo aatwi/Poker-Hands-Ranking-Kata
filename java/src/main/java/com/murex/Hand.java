@@ -12,17 +12,8 @@ public class Hand {
         this.cards = cards;
     }
 
-    public static Hand buildFrom(String blackHand, String cards) {
-        return new Hand(blackHand, convertToCards(cards));
-    }
-
-    private static Card[] convertToCards(String cards) {
-        String[] cardsValues = cards.split(" ");
-        Card[] handCards = new Card[5];
-        for (int index = 0; index < 5; index++) {
-            handCards[index] = new Card(cardsValues[index].charAt(0), cardsValues[index].charAt(1));
-        }
-        return handCards;
+    public static Hand aHand(String blackHand, String cards) {
+        return HandBuilder.aHandBuilder().withPlayer(blackHand).withCards(cards).build();
     }
 
     public String getName() {

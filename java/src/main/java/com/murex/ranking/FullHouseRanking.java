@@ -11,8 +11,8 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class FullHouseRanking extends OrderRanking {
 
-    Map<CardNumber, Long> blackCardsCountMap;
-    Map<CardNumber, Long> whiteCardsCountMap;
+    private final Map<CardNumber, Long> blackCardsCountMap;
+    private final Map<CardNumber, Long> whiteCardsCountMap;
 
 
     public FullHouseRanking(Hand blackHand, Hand whiteHand) {

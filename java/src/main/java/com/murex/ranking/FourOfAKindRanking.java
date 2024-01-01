@@ -12,8 +12,8 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class FourOfAKindRanking extends OrderRanking {
 
-    private Optional<CardNumber> blackFourOfKindCard;
-    private Optional<CardNumber> whiteFourOfKindCard;
+    private final Optional<CardNumber> blackFourOfKindCard;
+    private final Optional<CardNumber> whiteFourOfKindCard;
 
     public FourOfAKindRanking(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);

@@ -11,8 +11,8 @@ class FourOfAKindRankingTest {
 
     @Test
     public void it_should_return_a_no_matching_result_when_neither_hands_have_full_house() {
-        Hand blackHand = Hand.buildFrom("Black", "3H 3S 4C AH AD");
-        Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
+        Hand blackHand = Hand.aHand("Black", "3H 3S 4C AH AD");
+        Hand whiteHand = Hand.aHand("White", "4D 5S 7D JS AC");
 
         FourOfAKindRanking fourOfAKindRanking = new FourOfAKindRanking(blackHand, whiteHand);
         assertEquals(aNoWinner(), fourOfAKindRanking.evaluate());
@@ -20,8 +20,8 @@ class FourOfAKindRankingTest {
 
     @Test
     public void it_should_return_a_result_with_black_as_a_winner() {
-        Hand blackHand = Hand.buildFrom("Black", "3H 3S 3C 3D AD");
-        Hand whiteHand = Hand.buildFrom("White", "4D 5S 7D JS AC");
+        Hand blackHand = Hand.aHand("Black", "3H 3S 3C 3D AD");
+        Hand whiteHand = Hand.aHand("White", "4D 5S 7D JS AC");
 
         FourOfAKindRanking fourOfAKindRanking = new FourOfAKindRanking(blackHand, whiteHand);
         assertEquals(aFourOfAKindWinningResult(blackHand, false), fourOfAKindRanking.evaluate());
@@ -29,8 +29,8 @@ class FourOfAKindRankingTest {
 
     @Test
     public void it_should_return_a_result_with_white_as_a_winner() {
-        Hand blackHand = Hand.buildFrom("Black", "4D 5S 7D JS AC");
-        Hand whiteHand = Hand.buildFrom("White", "2H 4S 4C 4D 4H");
+        Hand blackHand = Hand.aHand("Black", "4D 5S 7D JS AC");
+        Hand whiteHand = Hand.aHand("White", "2H 4S 4C 4D 4H");
 
         FourOfAKindRanking fourOfAKindRanking = new FourOfAKindRanking(blackHand, whiteHand);
         assertEquals(aFourOfAKindWinningResult(whiteHand, false), fourOfAKindRanking.evaluate());
@@ -38,8 +38,8 @@ class FourOfAKindRankingTest {
 
     @Test
     public void it_should_return_a_result_with_black_as_a_winner_with_higher_hand() {
-        Hand blackHand = Hand.buildFrom("Black", "7D 7S 7H 7C AC");
-        Hand whiteHand = Hand.buildFrom("White", "2H 4S 4C 4D 4H");
+        Hand blackHand = Hand.aHand("Black", "7D 7S 7H 7C AC");
+        Hand whiteHand = Hand.aHand("White", "2H 4S 4C 4D 4H");
 
         FourOfAKindRanking fourOfAKindRanking = new FourOfAKindRanking(blackHand, whiteHand);
         assertEquals(aFourOfAKindWinningResult(blackHand, true), fourOfAKindRanking.evaluate());
@@ -47,8 +47,8 @@ class FourOfAKindRankingTest {
 
     @Test
     public void it_should_return_a_result_with_white_as_a_winner_with_higher_hand() {
-        Hand blackHand = Hand.buildFrom("Black", "7D 7S 7H 7C AC");
-        Hand whiteHand = Hand.buildFrom("White", "2H TS TC TD TH");
+        Hand blackHand = Hand.aHand("Black", "7D 7S 7H 7C AC");
+        Hand whiteHand = Hand.aHand("White", "2H TS TC TD TH");
 
         FourOfAKindRanking fourOfAKindRanking = new FourOfAKindRanking(blackHand, whiteHand);
         assertEquals(aFourOfAKindWinningResult(whiteHand, true), fourOfAKindRanking.evaluate());
