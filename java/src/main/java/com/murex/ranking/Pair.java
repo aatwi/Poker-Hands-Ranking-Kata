@@ -14,11 +14,11 @@ import static com.murex.ResultHelper.aPairWinningResult;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
-public class PairCardRanking extends OrderRanking {
+public class Pair extends RankingCategory {
     private final Optional<CardNumber> blackPairCards;
     private final Optional<CardNumber> whitePairCards;
 
-    public PairCardRanking(Hand blackHand, Hand whiteHand) {
+    public Pair(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
         this.blackPairCards = extractCardOfPairs(blackHand);
         this.whitePairCards = extractCardOfPairs(whiteHand);
@@ -59,7 +59,7 @@ public class PairCardRanking extends OrderRanking {
     }
 
     private Optional<CardNumber> extractCardOfPairs(Hand hand) {
-        Map<CardNumber, Long> cardsPairMap = Arrays.stream(hand.getCards()).collect(groupingBy(Card::getCardNumber, counting()));
+        Map<CardNumber, Long> cardsPairMap = Arrays.stream(hand.cards()).collect(groupingBy(Card::getCardNumber, counting()));
         return cardsPairMap.keySet().stream().filter(card -> cardsPairMap.get(card) == 2).findAny();
     }
 }

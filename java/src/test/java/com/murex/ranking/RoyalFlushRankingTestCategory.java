@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 import static com.murex.ResultHelper.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class RoyalFlushOrderRankingTest {
+class RoyalFlushRankingTestCategory {
 
     @Test
     public void it_should_return_a_no_matching_result_when_non_of_the_players_have_royal_flush_cards() {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("7H 8C TD KH AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2D 3H 5C 9S KH").build();
 
-        RoyalFlushOrderRanking handRanking = new RoyalFlushOrderRanking(blackHand, whiteHand);
+        RoyalFlush handRanking = new RoyalFlush(blackHand, whiteHand);
         assertEquals(aNoWinner(), handRanking.evaluate());
     }
 
@@ -23,7 +23,7 @@ class RoyalFlushOrderRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("TH JH QH KH AH").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("TS JS QS KS AS").build();
 
-        RoyalFlushOrderRanking handRanking = new RoyalFlushOrderRanking(blackHand, whiteHand);
+        RoyalFlush handRanking = new RoyalFlush(blackHand, whiteHand);
         assertEquals(aTieResult(), handRanking.evaluate());
     }
 
@@ -32,7 +32,7 @@ class RoyalFlushOrderRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("7H 8H 9H TH JH").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("TS JS QS KS AS").build();
 
-        RoyalFlushOrderRanking handRanking = new RoyalFlushOrderRanking(blackHand, whiteHand);
+        RoyalFlush handRanking = new RoyalFlush(blackHand, whiteHand);
         assertEquals(aRoyalFlushWinningResult(whiteHand), handRanking.evaluate());
     }
 
@@ -41,7 +41,7 @@ class RoyalFlushOrderRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("TH JH QH KH AH").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("7H 8H 9H TH JH").build();
 
-        RoyalFlushOrderRanking handRanking = new RoyalFlushOrderRanking(blackHand, whiteHand);
+        RoyalFlush handRanking = new RoyalFlush(blackHand, whiteHand);
         assertEquals(aRoyalFlushWinningResult(blackHand), handRanking.evaluate());
     }
 }

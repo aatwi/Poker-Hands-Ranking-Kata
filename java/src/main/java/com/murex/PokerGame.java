@@ -23,6 +23,7 @@ SOFTWARE.
 package com.murex;
 
 import com.murex.ranking.*;
+import com.murex.ranking.Tie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ import static com.murex.HandBuilder.aHand;
 class PokerGame {
     private final Hand blackHand;
     private final Hand whiteHand;
-    private final List<OrderRanking> ranks = new ArrayList<>();
+    private final List<RankingCategory> ranks = new ArrayList<>();
 
     public PokerGame(String blackCards, String whiteCards) {
         this.blackHand = aHand().withPlayer("Black").withCards(blackCards).build();
@@ -41,21 +42,21 @@ class PokerGame {
     }
 
     public String getWinner() {
-        return ranks.stream().map(OrderRanking::evaluate).filter(Result::isMatch).findFirst().map(Result::getMessage).orElse(null);
+        return ranks.stream().map(RankingCategory::evaluate).filter(Result::isMatch).findFirst().map(Result::getMessage).orElse(null);
     }
 
     private void addPossibleRanks() {
-        ranks.add(new RoyalFlushOrderRanking(blackHand, whiteHand));
-        ranks.add(new StraightFlushOrderRanking(blackHand, whiteHand));
-        ranks.add(new FourOfAKindRanking(blackHand, whiteHand));
-        ranks.add(new FullHouseRanking(blackHand, whiteHand));
-        ranks.add(new FlushOrderRanking(blackHand, whiteHand));
-        ranks.add(new StraightOrderRanking(blackHand, whiteHand));
-        ranks.add(new ThreeOfAKindRanking(blackHand, whiteHand));
-        ranks.add(new TwoPairCardRanking(blackHand, whiteHand));
-        ranks.add(new PairCardRanking(blackHand, whiteHand));
-        ranks.add(new HighCardRanking(blackHand, whiteHand));
-        ranks.add(new TieRanking(blackHand, whiteHand));
+        ranks.add(new RoyalFlush(blackHand, whiteHand));
+        ranks.add(new StraightFlush(blackHand, whiteHand));
+        ranks.add(new FourOfAKind(blackHand, whiteHand));
+        ranks.add(new FullHouse(blackHand, whiteHand));
+        ranks.add(new Flush(blackHand, whiteHand));
+        ranks.add(new Straight(blackHand, whiteHand));
+        ranks.add(new ThreeOfAKind(blackHand, whiteHand));
+        ranks.add(new TwoPairs(blackHand, whiteHand));
+        ranks.add(new Pair(blackHand, whiteHand));
+        ranks.add(new HighCard(blackHand, whiteHand));
+        ranks.add(new Tie(blackHand, whiteHand));
     }
 
 }

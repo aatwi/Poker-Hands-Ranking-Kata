@@ -13,17 +13,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class HighCardRankingTest {
 
     private static Result buildHighCardResult(Hand black, Hand white) {
-        HighCardRanking highCardRanking = new HighCardRanking(black, white);
-        return highCardRanking.evaluate();
+        HighCard highCard = new HighCard(black, white);
+        return highCard.evaluate();
     }
 
     @Test
     public void it_should_return_a_no_matching_result_when_there_is_no_high_hand() {
         Hand black = HandBuilder.aHand().withPlayer("Black").withCards("2H 3D 5S 9C KD").build();
         Hand white = HandBuilder.aHand().withPlayer("White").withCards("2D 3S 5C 9D KC").build();
-        HighCardRanking highCardRanking = new HighCardRanking(black, white);
+        HighCard highCard = new HighCard(black, white);
 
-        assertEquals(aNoWinner(), highCardRanking.evaluate());
+        assertEquals(aNoWinner(), highCard.evaluate());
     }
 
     @Test

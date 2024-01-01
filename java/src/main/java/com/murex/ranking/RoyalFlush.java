@@ -3,14 +3,13 @@ package com.murex.ranking;
 import com.murex.CardNumber;
 import com.murex.Hand;
 import com.murex.Result;
-import com.murex.ResultHelper;
 
 import static com.murex.ResultHelper.*;
 import static com.murex.ResultHelper.aTieResult;
 
-public class RoyalFlushOrderRanking extends OrderRanking {
+public class RoyalFlush extends RankingCategory {
 
-    public RoyalFlushOrderRanking(Hand blackHand, Hand whiteHand) {
+    public RoyalFlush(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 
@@ -30,7 +29,7 @@ public class RoyalFlushOrderRanking extends OrderRanking {
     }
 
     public boolean isRoyalFlush(Hand hand) {
-        if (StraightFlushOrderRanking.isStraightFlush(hand)) {
+        if (StraightFlush.isStraightFlush(hand)) {
             return hand.getCardAt(4).getCardNumber().equals(CardNumber.ACE);
         }
         return false;

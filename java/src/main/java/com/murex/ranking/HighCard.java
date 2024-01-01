@@ -2,13 +2,12 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
-import com.murex.ResultHelper;
 
 import static com.murex.ResultHelper.aHighCardWinningResult;
 
-public class HighCardRanking extends OrderRanking {
+public class HighCard extends RankingCategory {
 
-    public HighCardRanking(Hand blackHand, Hand whiteHand) {
+    public HighCard(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 

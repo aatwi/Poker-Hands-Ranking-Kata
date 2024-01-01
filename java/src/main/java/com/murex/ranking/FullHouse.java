@@ -9,13 +9,13 @@ import static com.murex.ResultHelper.aFullHouseWinningResult;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
-public class FullHouseRanking extends OrderRanking {
+public class FullHouse extends RankingCategory {
 
     private final Map<CardNumber, Long> blackCardsCountMap;
     private final Map<CardNumber, Long> whiteCardsCountMap;
 
 
-    public FullHouseRanking(Hand blackHand, Hand whiteHand) {
+    public FullHouse(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
         this.blackCardsCountMap = extractPairsAndTrioCards(blackHand);
         this.whiteCardsCountMap = extractPairsAndTrioCards(whiteHand);
@@ -58,7 +58,7 @@ public class FullHouseRanking extends OrderRanking {
     }
 
     private Map<CardNumber, Long> extractPairsAndTrioCards(Hand hand) {
-        return Arrays.stream(hand.getCards()).collect(groupingBy(Card::getCardNumber, counting()));
+        return Arrays.stream(hand.cards()).collect(groupingBy(Card::getCardNumber, counting()));
     }
 
 }

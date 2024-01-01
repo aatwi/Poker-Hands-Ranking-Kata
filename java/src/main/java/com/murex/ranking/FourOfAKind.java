@@ -10,12 +10,12 @@ import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 
-public class FourOfAKindRanking extends OrderRanking {
+public class FourOfAKind extends RankingCategory {
 
     private final Optional<CardNumber> blackFourOfKindCard;
     private final Optional<CardNumber> whiteFourOfKindCard;
 
-    public FourOfAKindRanking(Hand blackHand, Hand whiteHand) {
+    public FourOfAKind(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
         this.blackFourOfKindCard = extractFourOfAKindCard(blackHand);
         this.whiteFourOfKindCard = extractFourOfAKindCard(whiteHand);
@@ -55,7 +55,7 @@ public class FourOfAKindRanking extends OrderRanking {
     }
 
     private Optional<CardNumber> extractFourOfAKindCard(Hand hand) {
-        Map<CardNumber, Long> cardGroupsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Card::getCardNumber, counting()));
+        Map<CardNumber, Long> cardGroupsMap = Arrays.stream(hand.cards()).collect(groupingBy(Card::getCardNumber, counting()));
         return cardGroupsMap.keySet().stream().filter(card -> cardGroupsMap.get(card) == 4).findAny();
     }
 }

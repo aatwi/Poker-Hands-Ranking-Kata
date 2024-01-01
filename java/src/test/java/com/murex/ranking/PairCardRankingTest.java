@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class PairCardRankingTest {
 
     private static Result buildPairCardResult(Hand blackHand, Hand whiteHand) {
-        PairCardRanking pairCardRanking = new PairCardRanking(blackHand, whiteHand);
-        return pairCardRanking.evaluate();
+        Pair pair = new Pair(blackHand, whiteHand);
+        return pair.evaluate();
     }
 
     @Test

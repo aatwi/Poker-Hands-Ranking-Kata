@@ -5,9 +5,9 @@ import com.murex.Result;
 
 import static com.murex.ResultHelper.*;
 
-public class StraightOrderRanking extends OrderRanking {
+public class Straight extends RankingCategory {
 
-    public StraightOrderRanking(Hand blackHand, Hand whiteHand) {
+    public Straight(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 
@@ -45,7 +45,7 @@ public class StraightOrderRanking extends OrderRanking {
     }
 
     protected static boolean isStraight(Hand hand) {
-        for (int i = 1; i < hand.getCards().length; i++) {
+        for (int i = 1; i < hand.cards().length; i++) {
             int previousCard = hand.getCardAt(i - 1).getIntValue();
             int currentCard = hand.getCardAt(i).getIntValue();
             if (currentCard != previousCard + 1) {

@@ -10,11 +10,11 @@ import static com.murex.ResultHelper.aThreeOfAKindWinningResult;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
-public class ThreeOfAKindRanking extends OrderRanking {
+public class ThreeOfAKind extends RankingCategory {
     private final Optional<CardNumber> blackThreeOfAKindCards;
     private final Optional<CardNumber> whiteThreeOfAKindCards;
 
-    public ThreeOfAKindRanking(Hand blackHand, Hand whiteHand) {
+    public ThreeOfAKind(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
         this.blackThreeOfAKindCards = extractThreeOfAKind(blackHand);
         this.whiteThreeOfAKindCards = extractThreeOfAKind(whiteHand);
@@ -55,7 +55,7 @@ public class ThreeOfAKindRanking extends OrderRanking {
     }
 
     private Optional<CardNumber> extractThreeOfAKind(Hand hand) {
-        Map<CardNumber, Long> twoPairsMap = Arrays.stream(hand.getCards()).collect(groupingBy(Card::getCardNumber, counting()));
+        Map<CardNumber, Long> twoPairsMap = Arrays.stream(hand.cards()).collect(groupingBy(Card::getCardNumber, counting()));
         return twoPairsMap.keySet().stream().filter(x -> twoPairsMap.get(x) == 3).findFirst();
     }
 }

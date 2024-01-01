@@ -45,7 +45,7 @@ public class ResultBuilder {
                 " (" + winningCards.stream().map(String::valueOf).collect(Collectors.joining(", ")) + ")" :
                 "";
         String higherCardsStr = higherCards ?  " and higher cards": "";
-        String finalMessage = String.format("Player \"%s\" wins with a %s hand%s%s", winner.getName(), rankOrder, winningCardsStr, higherCardsStr);
+        String finalMessage = String.format("Player \"%s\" wins with a %s hand%s%s", winner.name(), rankOrder, winningCardsStr, higherCardsStr);
 
         return new Winner(finalMessage);
     }

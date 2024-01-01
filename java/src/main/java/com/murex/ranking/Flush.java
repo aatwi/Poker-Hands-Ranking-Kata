@@ -2,14 +2,13 @@ package com.murex.ranking;
 
 import com.murex.Hand;
 import com.murex.Result;
-import com.murex.ResultHelper;
 
 import static com.murex.ResultHelper.aFlushWinningResult;
 import static com.murex.ResultHelper.aTieResult;
 
-public class FlushOrderRanking extends OrderRanking {
+public class Flush extends RankingCategory {
 
-    public FlushOrderRanking(Hand blackHand, Hand whiteHand) {
+    public Flush(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 

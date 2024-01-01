@@ -8,14 +8,14 @@ import static com.murex.ResultHelper.aFullHouseWinningResult;
 import static com.murex.ResultHelper.aNoWinner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FullHouseRankingTest {
+class FullHouseTest {
 
     @Test
     public void it_should_return_a_no_matching_result_when_neither_hands_have_full_house() {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("3H 3S 4C AH AD").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("4D 5S 7D JS AC").build();
 
-        FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
+        FullHouse fullHouseCardRanking = new FullHouse(blackHand, whiteHand);
         assertEquals(aNoWinner(), fullHouseCardRanking.evaluate());
     }
 
@@ -24,7 +24,7 @@ class FullHouseRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("3H 3S 3C AH AD").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("4D 5S 7D JS AC").build();
 
-        FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
+        FullHouse fullHouseCardRanking = new FullHouse(blackHand, whiteHand);
         assertEquals(aFullHouseWinningResult(blackHand, false), fullHouseCardRanking.evaluate());
     }
 
@@ -33,7 +33,7 @@ class FullHouseRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("3H 3S 3C KH AD").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("4D 5S 7D JS AC").build();
 
-        FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
+        FullHouse fullHouseCardRanking = new FullHouse(blackHand, whiteHand);
         assertEquals(aNoWinner(), fullHouseCardRanking.evaluate());
     }
 
@@ -42,7 +42,7 @@ class FullHouseRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("4D 5S 7D JS AC").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("5H 5S 5C KH KD").build();
 
-        FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
+        FullHouse fullHouseCardRanking = new FullHouse(blackHand, whiteHand);
         assertEquals(aFullHouseWinningResult(whiteHand, false), fullHouseCardRanking.evaluate());
     }
 
@@ -51,7 +51,7 @@ class FullHouseRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("4D 5S 7D JS AC").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("4H 4S 4C KH AD").build();
 
-        FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
+        FullHouse fullHouseCardRanking = new FullHouse(blackHand, whiteHand);
         assertEquals(aNoWinner(), fullHouseCardRanking.evaluate());
     }
 
@@ -60,7 +60,7 @@ class FullHouseRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("4D 4S 4D JS JC").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("5H 5S 5C TH TD").build();
 
-        FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
+        FullHouse fullHouseCardRanking = new FullHouse(blackHand, whiteHand);
         assertEquals(aFullHouseWinningResult(whiteHand, true), fullHouseCardRanking.evaluate());
     }
 
@@ -69,7 +69,7 @@ class FullHouseRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("5H 5S 5C TH TD").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("4D 4S 4D JS JC").build();
 
-        FullHouseRanking fullHouseCardRanking = new FullHouseRanking(blackHand, whiteHand);
+        FullHouse fullHouseCardRanking = new FullHouse(blackHand, whiteHand);
         assertEquals(aFullHouseWinningResult(blackHand, true), fullHouseCardRanking.evaluate());
     }
 }

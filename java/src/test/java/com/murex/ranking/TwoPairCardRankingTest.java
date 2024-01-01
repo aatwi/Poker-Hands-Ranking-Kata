@@ -18,8 +18,8 @@ class TwoPairCardRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("7H 7C TD TH AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2H 4C 5H 7D AD").build();
 
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        Result matchingResult = twoPairCardRanking.evaluate();
+        TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
+        Result matchingResult = twoPairs.evaluate();
 
         assertEquals(aTwoPairWinningResult(blackHand, SEVEN, TEN, false), matchingResult);
     }
@@ -29,8 +29,8 @@ class TwoPairCardRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("2H 7C 8D TH AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("3H 3C 6H 7D 7S").build();
 
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        Result matchingResult = twoPairCardRanking.evaluate();
+        TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
+        Result matchingResult = twoPairs.evaluate();
 
         assertEquals(aTwoPairWinningResult(whiteHand, THREE, SEVEN, false), matchingResult);
     }
@@ -40,8 +40,8 @@ class TwoPairCardRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("2H 2C 8D 8H AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("3H 3C 9H 9D TS").build();
 
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        Result matchingResult = twoPairCardRanking.evaluate();
+        TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
+        Result matchingResult = twoPairs.evaluate();
 
         assertEquals(aTwoPairWinningResult(whiteHand, THREE, NINE, true), matchingResult);
     }
@@ -51,8 +51,8 @@ class TwoPairCardRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("2H 2C TD TH AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("3H 3C 9H 9D TS").build();
 
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        Result matchingResult = twoPairCardRanking.evaluate();
+        TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
+        Result matchingResult = twoPairs.evaluate();
 
         assertEquals(aTwoPairWinningResult(blackHand, TWO, TEN, true), matchingResult);
     }
@@ -62,8 +62,8 @@ class TwoPairCardRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("2H 2C 4D 4H AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("3D 3S 4C 4S AH").build();
 
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        Result matchingResult = twoPairCardRanking.evaluate();
+        TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
+        Result matchingResult = twoPairs.evaluate();
 
         assertEquals(aTwoPairWinningResult(whiteHand, THREE, FOUR, true), matchingResult);
     }
@@ -73,8 +73,8 @@ class TwoPairCardRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("3H 3C 4D 4H AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2D 2S 4C 4S AH").build();
 
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        Result matchingResult = twoPairCardRanking.evaluate();
+        TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
+        Result matchingResult = twoPairs.evaluate();
 
         assertEquals(aTwoPairWinningResult(blackHand, THREE, FOUR, true), matchingResult);
     }
@@ -84,8 +84,8 @@ class TwoPairCardRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("2H 7C 8D TH AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("3H 3C 6H 7D 9S").build();
 
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        Result matchingResult = twoPairCardRanking.evaluate();
+        TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
+        Result matchingResult = twoPairs.evaluate();
 
         assertEquals(aNoWinner(), matchingResult);
     }
@@ -95,8 +95,8 @@ class TwoPairCardRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("2D 7C 8D TH AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2H 3C 6H 7D 8S").build();
 
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        Result matchingResult = twoPairCardRanking.evaluate();
+        TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
+        Result matchingResult = twoPairs.evaluate();
 
         assertEquals(aNoWinner(), matchingResult);
     }
@@ -107,8 +107,8 @@ class TwoPairCardRankingTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("2H 2C 4D 4H AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2D 2S 4C 4S AH").build();
 
-        TwoPairCardRanking twoPairCardRanking = new TwoPairCardRanking(blackHand, whiteHand);
-        Result matchingResult = twoPairCardRanking.evaluate();
+        TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
+        Result matchingResult = twoPairs.evaluate();
 
         assertEquals(aNoWinner(), matchingResult);
     }
