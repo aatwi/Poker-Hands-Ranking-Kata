@@ -6,6 +6,10 @@ import static java.util.Arrays.asList;
 
 public class GameSimulation {
     public static void main(String[] args) {
+        runGame();
+    }
+
+    public static void runGame() {
         String playerA = "Corbin";
         String playerB = "Larissa";
 
@@ -62,7 +66,7 @@ public class GameSimulation {
         System.out.println("----------------------------------------------------------------------");
 
         System.out.println();
-        
+
         for (int game = 0; game < runs.size(); game++) {
             String firstPlayerCards = runs.get(game).get(0);
             String secondPlayerCards = runs.get(game).get(1);

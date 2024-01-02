@@ -47,14 +47,12 @@
         -->
 
         <!-- ApprovalTests (for Golden Master tests) -->
-        <!-- Uncomment if the kata is using it. Remove otherwise
         <dependency>
             <groupId>com.approvaltests</groupId>
             <artifactId>approvaltests</artifactId>
             <version>22.2.0</version>
             <scope>test</scope>
         </dependency>
-        -->
 
         <!-- Gson parser -->
         <!-- Uncomment if the kata is using it. Remove otherwise

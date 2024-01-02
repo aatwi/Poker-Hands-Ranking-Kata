@@ -23,9 +23,7 @@ dependencies {
     // Uncomment if the kata is using it. Remove otherwise
     //testImplementation group: 'org.mockito', name: 'mockito-core', version: '4.3.1'
 
-    // ApprovalTests (for Golden Master tests)
-    // Uncomment if the kata is using it. Remove otherwise
-    // testImplementation group: 'com.approvaltests', name: 'approvaltests', version: '22.2.0'
+    testImplementation group: 'com.approvaltests', name: 'approvaltests', version: '22.2.0'
 
     // Gson parser
     // Uncomment if the kata is using it. Remove otherwise
