@@ -73,7 +73,7 @@ class Tie extends Result {
     public String toString() {
         return "Tie{" +
                 "isMatch=" + isMatch() +
-                ", message='" +  getMessage()  +
+                ", message='" + getMessage() +
                 '}';
     }
 }

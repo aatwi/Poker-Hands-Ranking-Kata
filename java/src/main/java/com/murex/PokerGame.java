@@ -36,8 +36,12 @@ class PokerGame {
     private final List<RankingCategory> ranks = new ArrayList<>();
 
     public PokerGame(String blackCards, String whiteCards) {
-        this.blackHand = aHand().withPlayer("Black").withCards(blackCards).build();
-        this.whiteHand = aHand().withPlayer("White").withCards(whiteCards).build();
+        this("Black", blackCards, "White", whiteCards);
+    }
+
+    public PokerGame(String firstPlayerName, String firstPlayerCards, String secondPlayerName, String secondPlayerCards) {
+        this.blackHand = aHand().withPlayer(firstPlayerName).withCards(firstPlayerCards).build();
+        this.whiteHand = aHand().withPlayer(secondPlayerName).withCards(secondPlayerCards).build();
         addRankingCategories();
     }
 
