@@ -62,8 +62,7 @@ public class GameSimulation {
         System.out.println("----------------------------------------------------------------------");
 
         System.out.println();
-
-
+        
         for (int game = 0; game < runs.size(); game++) {
             String firstPlayerCards = runs.get(game).get(0);
             String secondPlayerCards = runs.get(game).get(1);
