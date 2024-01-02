@@ -1,5 +1,6 @@
-package com.murex;
+package com.murex.approvals;
 
+import com.murex.GameSimulation;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
 
