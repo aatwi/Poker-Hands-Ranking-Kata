@@ -23,12 +23,12 @@ SOFTWARE.
 package com.murex;
 
 import com.murex.ranking.*;
-import com.murex.ranking.Tie;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static com.murex.HandBuilder.aHand;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
 
 class PokerGame {
     private final Hand firstPlayerHand;
@@ -40,12 +40,7 @@ class PokerGame {
         this.secondPlayerHand = aHand().withPlayer(secondPlayerName).withCards(secondPlayerCards).build();
         addRankingCategories();
     }
-
-    public String getWinner() {
-        return ranks.stream().map(RankingCategory::evaluate).filter(Result::isMatch).findFirst().map(Result::getMessage).orElse(null);
-    }
-
-    private void addRankingCategories() {
+    private void addRankingCategories () {
         ranks.add(new RoyalFlush(firstPlayerHand, secondPlayerHand));
         ranks.add(new StraightFlush(firstPlayerHand, secondPlayerHand));
         ranks.add(new FourOfAKind(firstPlayerHand, secondPlayerHand));
@@ -53,10 +48,90 @@ class PokerGame {
         ranks.add(new Flush(firstPlayerHand, secondPlayerHand));
         ranks.add(new Straight(firstPlayerHand, secondPlayerHand));
         ranks.add(new ThreeOfAKind(firstPlayerHand, secondPlayerHand));
-        ranks.add(new TwoPairs(firstPlayerHand, secondPlayerHand));
-        ranks.add(new Pair(firstPlayerHand, secondPlayerHand));
-        ranks.add(new HighCard(firstPlayerHand, secondPlayerHand));
-        ranks.add(new Tie(firstPlayerHand, secondPlayerHand));
     }
 
+    public String getWinner() {
+        String result = ranks.stream().map(RankingCategory::evaluate).filter(Result::isMatch).findFirst().map(Result::getMessage).orElse(null);
+
+        if (result == null) {
+            Map<CardNumber, Long> firstPlayerTwoPairsMap = Arrays.stream(firstPlayerHand.cards()).collect(groupingBy(Card::getCardNumber, counting()));
+            List<CardNumber> firstPlayerPairOfCards = firstPlayerTwoPairsMap.keySet().stream().filter(x -> firstPlayerTwoPairsMap.get(x) == 2).sorted().toList();
+
+            Map<CardNumber, Long> secondPlayerTwoPairsMap = Arrays.stream(secondPlayerHand.cards()).collect(groupingBy(Card::getCardNumber, counting()));
+            List<CardNumber> secondPlayerPairOfCards = secondPlayerTwoPairsMap.keySet().stream().filter(x -> secondPlayerTwoPairsMap.get(x) == 2).sorted().toList();
+
+            if (firstPlayerPairOfCards.size() != 2 && secondPlayerPairOfCards.size() != 2) {
+                result = null;
+            } else if (firstPlayerPairOfCards.size() == 2 && secondPlayerPairOfCards.size() == 2) {
+                if(firstPlayerPairOfCards.get(1).getIntValue() < secondPlayerPairOfCards.get(1).getIntValue()) {
+                    result = String.format("Player \"%s\" wins with a %s hand%s%s", secondPlayerHand.playerName(), "TWO PAIRS", " (" + secondPlayerPairOfCards.get(0) + ", " + secondPlayerPairOfCards.get(1) + ")", " and higher cards");
+                }else if (firstPlayerPairOfCards.get(1).getIntValue() > secondPlayerPairOfCards.get(1).getIntValue()){
+                    result = String.format("Player \"%s\" wins with a %s hand%s%s", firstPlayerHand.playerName(), "TWO PAIRS", " (" + firstPlayerPairOfCards.get(0) + ", " + firstPlayerPairOfCards.get(1) + ")", " and higher cards");
+                }else if(firstPlayerPairOfCards.get(0).getIntValue() < secondPlayerPairOfCards.get(0).getIntValue()){
+                    result = String.format("Player \"%s\" wins with a %s hand%s%s", secondPlayerHand.playerName(), "TWO PAIRS", " (" + secondPlayerPairOfCards.get(0) + ", " + secondPlayerPairOfCards.get(1) + ")", " and higher cards");
+                }else if(firstPlayerPairOfCards.get(0).getIntValue() > secondPlayerPairOfCards.get(0).getIntValue()){
+                    result = String.format("Player \"%s\" wins with a %s hand%s%s", firstPlayerHand.playerName(), "TWO PAIRS", " (" + firstPlayerPairOfCards.get(0) + ", " + firstPlayerPairOfCards.get(1) + ")", " and higher cards");
+                }else {
+                    result = null;
+                }
+            } else {
+                if (firstPlayerPairOfCards.size() == 2) {
+                    result = String.format("Player \"%s\" wins with a %s hand%s", firstPlayerHand.playerName(), "TWO PAIRS", " (" + firstPlayerPairOfCards.get(0) + ", " + firstPlayerPairOfCards.get(1) + ")");
+                } else if (secondPlayerPairOfCards.size() == 2) {
+                    result = String.format("Player \"%s\" wins with a %s hand%s", secondPlayerHand.playerName(), "TWO PAIRS", " (" + secondPlayerPairOfCards.get(0) + ", " + secondPlayerPairOfCards.get(1) + ")");
+                } else {
+                    result = null;
+                }
+            }
+
+            if (result == null) {
+                Map<CardNumber, Long> firstPlayerCardsPairMap = Arrays.stream(firstPlayerHand.cards()).collect(groupingBy(Card::getCardNumber, counting()));
+                Optional<CardNumber> firstPlayerPairCards = firstPlayerCardsPairMap.keySet().stream().filter(card -> firstPlayerCardsPairMap.get(card) == 2).findAny();
+
+                Map<CardNumber, Long> secondPlayerCardsPairMap = Arrays.stream(secondPlayerHand.cards()).collect(groupingBy(Card::getCardNumber, counting()));
+                Optional<CardNumber> secondPlayerPairCards = secondPlayerCardsPairMap.keySet().stream().filter(card -> secondPlayerCardsPairMap.get(card) == 2).findAny();
+
+                if (firstPlayerPairCards.isEmpty() && secondPlayerPairCards.isEmpty()) {
+                    result = null;
+                } else if (firstPlayerPairCards.isPresent() && secondPlayerPairCards.isPresent()) {
+                    int comparison = firstPlayerPairCards.get().compareTo(secondPlayerPairCards.get());
+                    if (comparison == 0) {
+                        result = null;
+                    } else {
+                        result = comparison > 0 ?
+                                String.format("Player \"%s\" wins with a %s hand%s%s", firstPlayerHand.playerName(), "PAIR", " (" + firstPlayerPairCards.get() + ")", " and higher cards") :
+                                String.format("Player \"%s\" wins with a %s hand%s%s", secondPlayerHand.playerName(), "PAIR", " (" + secondPlayerPairCards.get() + ")", " and higher cards");
+                    }
+                } else {
+                    result = firstPlayerPairCards.isPresent() ?
+                            String.format("Player \"%s\" wins with a %s hand%s", firstPlayerHand.playerName(), "PAIR", " (" + firstPlayerPairCards.get() + ")") :
+                            String.format("Player \"%s\" wins with a %s hand%s", secondPlayerHand.playerName(), "PAIR", " (" + secondPlayerPairCards.get() + ")");
+                }
+            }
+
+            if (result == null) {
+                for (int index = 4; index >= 0; index--) {
+                    int cardComparison = firstPlayerHand.getCardAt(index).compareTo(secondPlayerHand.getCardAt(index));
+                    if (cardComparison != 0) {
+                        result = cardComparison > 0 ?
+                                String.format("Player \"%s\" wins with a %s hand%s", firstPlayerHand.playerName(), "HIGH CARD", " (" + firstPlayerHand.getCardAt(index).getCardNumber() + ")") :
+                                String.format("Player \"%s\" wins with a %s hand%s", secondPlayerHand.playerName(), "HIGH CARD", " (" + secondPlayerHand.getCardAt(index).getCardNumber() + ")");
+                        break;
+                    }
+                }
+            }
+
+            if (result == null) {
+                for (int index = 0; index < 5; index++) {
+                    if (firstPlayerHand.getCardAt(index).compareTo(secondPlayerHand.getCardAt(index)) != 0) {
+                        return null;
+                    }
+                }
+                result = "Tie.";
+            }
+            return result;
+        }
+        return result;
+    }
 }
+
