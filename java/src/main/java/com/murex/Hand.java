@@ -3,7 +3,7 @@ package com.murex;
 import java.util.Arrays;
 import java.util.Objects;
 
-public record Hand(String name, Card[] cards) {
+public record Hand(String playerName, Card[] cards) {
 
     public Card getCardAt(int index) {
         return cards[index];
@@ -14,12 +14,12 @@ public record Hand(String name, Card[] cards) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Hand hand = (Hand) o;
-        return Objects.equals(name, hand.name) && Arrays.equals(cards, hand.cards);
+        return Objects.equals(playerName, hand.playerName) && Arrays.equals(cards, hand.cards);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(name);
+        int result = Objects.hash(playerName);
         result = 31 * result + Arrays.hashCode(cards);
         return result;
     }
@@ -27,7 +27,7 @@ public record Hand(String name, Card[] cards) {
     @Override
     public String toString() {
         return "Hand{" +
-                "name='" + name + '\'' +
+                "playerName='" + playerName + '\'' +
                 ", cards=" + Arrays.toString(cards) +
                 '}';
     }

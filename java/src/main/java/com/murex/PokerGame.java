@@ -31,17 +31,13 @@ import java.util.List;
 import static com.murex.HandBuilder.aHand;
 
 class PokerGame {
-    private final Hand blackHand;
-    private final Hand whiteHand;
+    private final Hand firstPlayerHand;
+    private final Hand secondPlayerHand;
     private final List<RankingCategory> ranks = new ArrayList<>();
 
-    public PokerGame(String blackCards, String whiteCards) {
-        this("Black", blackCards, "White", whiteCards);
-    }
-
     public PokerGame(String firstPlayerName, String firstPlayerCards, String secondPlayerName, String secondPlayerCards) {
-        this.blackHand = aHand().withPlayer(firstPlayerName).withCards(firstPlayerCards).build();
-        this.whiteHand = aHand().withPlayer(secondPlayerName).withCards(secondPlayerCards).build();
+        this.firstPlayerHand = aHand().withPlayer(firstPlayerName).withCards(firstPlayerCards).build();
+        this.secondPlayerHand = aHand().withPlayer(secondPlayerName).withCards(secondPlayerCards).build();
         addRankingCategories();
     }
 
@@ -50,17 +46,17 @@ class PokerGame {
     }
 
     private void addRankingCategories() {
-        ranks.add(new RoyalFlush(blackHand, whiteHand));
-        ranks.add(new StraightFlush(blackHand, whiteHand));
-        ranks.add(new FourOfAKind(blackHand, whiteHand));
-        ranks.add(new FullHouse(blackHand, whiteHand));
-        ranks.add(new Flush(blackHand, whiteHand));
-        ranks.add(new Straight(blackHand, whiteHand));
-        ranks.add(new ThreeOfAKind(blackHand, whiteHand));
-        ranks.add(new TwoPairs(blackHand, whiteHand));
-        ranks.add(new Pair(blackHand, whiteHand));
-        ranks.add(new HighCard(blackHand, whiteHand));
-        ranks.add(new Tie(blackHand, whiteHand));
+        ranks.add(new RoyalFlush(firstPlayerHand, secondPlayerHand));
+        ranks.add(new StraightFlush(firstPlayerHand, secondPlayerHand));
+        ranks.add(new FourOfAKind(firstPlayerHand, secondPlayerHand));
+        ranks.add(new FullHouse(firstPlayerHand, secondPlayerHand));
+        ranks.add(new Flush(firstPlayerHand, secondPlayerHand));
+        ranks.add(new Straight(firstPlayerHand, secondPlayerHand));
+        ranks.add(new ThreeOfAKind(firstPlayerHand, secondPlayerHand));
+        ranks.add(new TwoPairs(firstPlayerHand, secondPlayerHand));
+        ranks.add(new Pair(firstPlayerHand, secondPlayerHand));
+        ranks.add(new HighCard(firstPlayerHand, secondPlayerHand));
+        ranks.add(new Tie(firstPlayerHand, secondPlayerHand));
     }
 
 }

@@ -9,8 +9,8 @@ public class HandTest {
     public void
     it_builds_a_poker_hand_from_string_cards() {
         String input = "2H 3D 5S 9C KD";
-        Hand pokerHand = HandBuilder.aHand().withPlayer("blackHand").withCards(input).build();
-        Hand expected = new Hand("blackHand",
+        Hand pokerHand = HandBuilder.aHand().withPlayer("player").withCards(input).build();
+        Hand expected = new Hand("player",
                 new Card[]{
                         new Card('2', 'H'),
                         new Card('3', 'D'),
