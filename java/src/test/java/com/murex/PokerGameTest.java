@@ -34,7 +34,7 @@ public class PokerGameTest {
     private static final String SECOND_PLAYER = "PLAYER B";
 
     private static void assertWinner(String player1Cards, String player2Cards, String expected) {
-        assertEquals(expected, new PokerGame(FIRST_PLAYER, player1Cards, SECOND_PLAYER, player2Cards).getWinner());
+        assertEquals(expected, new PokerGame(FIRST_PLAYER, player1Cards, SECOND_PLAYER, player2Cards).getResult());
     }
 
     @Test

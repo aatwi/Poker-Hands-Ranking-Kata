@@ -27,6 +27,7 @@ import com.murex.ranking.*;
 import java.util.*;
 
 import static com.murex.HandBuilder.aHand;
+import static com.murex.ResultHelper.aFlushWinningResult;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
@@ -46,12 +47,55 @@ class PokerGame {
         ranks.add(new StraightFlush(firstPlayerHand, secondPlayerHand));
         ranks.add(new FourOfAKind(firstPlayerHand, secondPlayerHand));
         ranks.add(new FullHouse(firstPlayerHand, secondPlayerHand));
-        ranks.add(new Flush(firstPlayerHand, secondPlayerHand));
-//        ranks.add(new Straight(firstPlayerHand, secondPlayerHand));
+//        ranks.add(new Flush(firstPlayerHand, secondPlayerHand));
     }
 
-    public String getWinner() {
+    public String getResult() {
         String result = ranks.stream().map(RankingCategory::evaluate).filter(Result::isMatch).findFirst().map(Result::getMessage).orElse(null);
+
+        if(result == null) {
+            boolean firstPlayerHasFlush = true;
+            for (int index = 1; index < 5; index++) {
+                if (!firstPlayerHand.getCardAt(index - 1).getSuite().equals(firstPlayerHand.getCardAt(index).getSuite())) {
+                    firstPlayerHasFlush = false;
+                    break;
+                }
+            }
+
+            boolean secondPlayerHasFlush = true;
+            for (int index = 1; index < 5; index++) {
+                if (!secondPlayerHand.getCardAt(index - 1).getSuite().equals(secondPlayerHand.getCardAt(index).getSuite())) {
+                    secondPlayerHasFlush = false;
+                    break;
+                }
+            }
+
+            if(!firstPlayerHasFlush && !secondPlayerHasFlush) {
+                result = null;
+            }
+            else if(firstPlayerHasFlush && secondPlayerHasFlush) {
+                for (int index = 4; index >= 0; index--) {
+                    if(firstPlayerHand.getCardAt(index).getIntValue() > secondPlayerHand.getCardAt(index).getIntValue()) {
+                        result = String.format("Player \"%s\" wins with a %s hand%s", firstPlayerHand.playerName(), "FLUSH", " and higher cards");
+                        break;
+                    }else if(firstPlayerHand.getCardAt(index).getIntValue() < secondPlayerHand.getCardAt(index).getIntValue()) {
+                        result = String.format("Player \"%s\" wins with a %s hand%s", secondPlayerHand.playerName(), "FLUSH", " and higher cards");
+                        break;
+                    }else {
+                        continue;
+                    }
+                }
+                if(result == null) {
+                    result = "Tie.";
+                }
+            }else if(firstPlayerHasFlush) {
+                result = String.format("Player \"%s\" wins with a %s hand", firstPlayerHand.playerName(), "FLUSH");
+            }else if(secondPlayerHasFlush) {
+                result = String.format("Player \"%s\" wins with a %s hand", secondPlayerHand.playerName(), "FLUSH");
+            }else {
+                result = null;
+            }
+        }
 
         if (result == null) {
             boolean firstPlayerHasStraight = true;
