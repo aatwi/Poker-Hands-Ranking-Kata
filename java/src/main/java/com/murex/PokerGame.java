@@ -40,18 +40,83 @@ class PokerGame {
         this.secondPlayerHand = aHand().withPlayer(secondPlayerName).withCards(secondPlayerCards).build();
         addRankingCategories();
     }
-    private void addRankingCategories () {
+
+    private void addRankingCategories() {
         ranks.add(new RoyalFlush(firstPlayerHand, secondPlayerHand));
         ranks.add(new StraightFlush(firstPlayerHand, secondPlayerHand));
         ranks.add(new FourOfAKind(firstPlayerHand, secondPlayerHand));
         ranks.add(new FullHouse(firstPlayerHand, secondPlayerHand));
         ranks.add(new Flush(firstPlayerHand, secondPlayerHand));
-        ranks.add(new Straight(firstPlayerHand, secondPlayerHand));
-        ranks.add(new ThreeOfAKind(firstPlayerHand, secondPlayerHand));
+//        ranks.add(new Straight(firstPlayerHand, secondPlayerHand));
     }
 
     public String getWinner() {
         String result = ranks.stream().map(RankingCategory::evaluate).filter(Result::isMatch).findFirst().map(Result::getMessage).orElse(null);
+
+        if (result == null) {
+            boolean firstPlayerHasStraight = true;
+            for (int i = 1; i < firstPlayerHand.cards().length; i++) {
+                int previousCard = firstPlayerHand.getCardAt(i - 1).getIntValue();
+                int currentCard = firstPlayerHand.getCardAt(i).getIntValue();
+                if (currentCard != previousCard + 1) {
+                    firstPlayerHasStraight = false;
+                    break;
+                }
+            }
+
+            boolean secondPlayerHasStraight = true;
+            for (int i = 1; i < secondPlayerHand.cards().length; i++) {
+                int previousCard = secondPlayerHand.getCardAt(i - 1).getIntValue();
+                int currentCard = secondPlayerHand.getCardAt(i).getIntValue();
+                if (currentCard != previousCard + 1) {
+                    secondPlayerHasStraight = false;
+                    break;
+                }
+            }
+
+            if (!firstPlayerHasStraight && !secondPlayerHasStraight) {
+                result = null;
+            } else if (firstPlayerHasStraight && secondPlayerHasStraight) {
+                if (firstPlayerHand.getCardAt(0).getIntValue() > secondPlayerHand.getCardAt(0).getIntValue()) {
+                    result = String.format("Player \"%s\" wins with a %s hand%s", firstPlayerHand.playerName(), "STRAIGHT", " and higher cards");
+                } else if (secondPlayerHand.getCardAt(0).getIntValue() > firstPlayerHand.getCardAt(0).getIntValue()) {
+                    result = String.format("Player \"%s\" wins with a %s hand%s", secondPlayerHand.playerName(), "STRAIGHT", " and higher cards");
+                }
+            } else if (firstPlayerHasStraight) {
+                result = String.format("Player \"%s\" wins with a %s hand", firstPlayerHand.playerName(), "STRAIGHT");
+            } else if (secondPlayerHasStraight) {
+                result = String.format("Player \"%s\" wins with a %s hand", secondPlayerHand.playerName(), "STRAIGHT");
+            } else {
+                result = null;
+            }
+        }
+
+        if (result == null) {
+            Map<CardNumber, Long> firstPlayerThreeCardsMap = Arrays.stream(firstPlayerHand.cards()).collect(groupingBy(Card::getCardNumber, counting()));
+            Optional<CardNumber> firstPlayerThreeOfAKindCards = firstPlayerThreeCardsMap.keySet().stream().filter(x -> firstPlayerThreeCardsMap.get(x) == 3).findFirst();
+
+            Map<CardNumber, Long> secondPlayerThreeCardsMap = Arrays.stream(secondPlayerHand.cards()).collect(groupingBy(Card::getCardNumber, counting()));
+            Optional<CardNumber> secondPlayerThreeOfAKindCards = secondPlayerThreeCardsMap.keySet().stream().filter(x -> secondPlayerThreeCardsMap.get(x) == 3).findFirst();
+
+            if (firstPlayerThreeOfAKindCards.isEmpty() && secondPlayerThreeOfAKindCards.isEmpty()) {
+                result = null;
+            } else if (firstPlayerThreeOfAKindCards.isPresent() && secondPlayerThreeOfAKindCards.isPresent()) {
+                CardNumber firstPlayerCard = firstPlayerThreeOfAKindCards.get();
+                CardNumber secondPlayerCard = secondPlayerThreeOfAKindCards.get();
+
+                if (firstPlayerCard.getIntValue() > secondPlayerCard.getIntValue()) {
+                    result = String.format("Player \"%s\" wins with a %s hand%s%s", firstPlayerHand.playerName(), "THREE OF A KIND", " (" + firstPlayerCard + ")", " and higher cards");
+                } else if (secondPlayerCard.getIntValue() > firstPlayerCard.getIntValue()) {
+                    result = String.format("Player \"%s\" wins with a %s hand%s%s", secondPlayerHand.playerName(), "THREE OF A KIND", " (" + secondPlayerCard + ")", " and higher cards");
+                }
+            } else if (firstPlayerThreeOfAKindCards.isPresent()) {
+                result = String.format("Player \"%s\" wins with a %s hand%s", firstPlayerHand.playerName(), "THREE OF A KIND", " (" + firstPlayerThreeOfAKindCards.get() + ")");
+            } else if (secondPlayerThreeOfAKindCards.isPresent()) {
+                result = String.format("Player \"%s\" wins with a %s hand%s", secondPlayerHand.playerName(), "THREE OF A KIND", " (" + secondPlayerThreeOfAKindCards.get() + ")");
+            } else {
+                result = null;
+            }
+        }
 
         if (result == null) {
             Map<CardNumber, Long> firstPlayerTwoPairsMap = Arrays.stream(firstPlayerHand.cards()).collect(groupingBy(Card::getCardNumber, counting()));
@@ -63,15 +128,15 @@ class PokerGame {
             if (firstPlayerPairOfCards.size() != 2 && secondPlayerPairOfCards.size() != 2) {
                 result = null;
             } else if (firstPlayerPairOfCards.size() == 2 && secondPlayerPairOfCards.size() == 2) {
-                if(firstPlayerPairOfCards.get(1).getIntValue() < secondPlayerPairOfCards.get(1).getIntValue()) {
+                if (firstPlayerPairOfCards.get(1).getIntValue() < secondPlayerPairOfCards.get(1).getIntValue()) {
                     result = String.format("Player \"%s\" wins with a %s hand%s%s", secondPlayerHand.playerName(), "TWO PAIRS", " (" + secondPlayerPairOfCards.get(0) + ", " + secondPlayerPairOfCards.get(1) + ")", " and higher cards");
-                }else if (firstPlayerPairOfCards.get(1).getIntValue() > secondPlayerPairOfCards.get(1).getIntValue()){
+                } else if (firstPlayerPairOfCards.get(1).getIntValue() > secondPlayerPairOfCards.get(1).getIntValue()) {
                     result = String.format("Player \"%s\" wins with a %s hand%s%s", firstPlayerHand.playerName(), "TWO PAIRS", " (" + firstPlayerPairOfCards.get(0) + ", " + firstPlayerPairOfCards.get(1) + ")", " and higher cards");
-                }else if(firstPlayerPairOfCards.get(0).getIntValue() < secondPlayerPairOfCards.get(0).getIntValue()){
+                } else if (firstPlayerPairOfCards.get(0).getIntValue() < secondPlayerPairOfCards.get(0).getIntValue()) {
                     result = String.format("Player \"%s\" wins with a %s hand%s%s", secondPlayerHand.playerName(), "TWO PAIRS", " (" + secondPlayerPairOfCards.get(0) + ", " + secondPlayerPairOfCards.get(1) + ")", " and higher cards");
-                }else if(firstPlayerPairOfCards.get(0).getIntValue() > secondPlayerPairOfCards.get(0).getIntValue()){
+                } else if (firstPlayerPairOfCards.get(0).getIntValue() > secondPlayerPairOfCards.get(0).getIntValue()) {
                     result = String.format("Player \"%s\" wins with a %s hand%s%s", firstPlayerHand.playerName(), "TWO PAIRS", " (" + firstPlayerPairOfCards.get(0) + ", " + firstPlayerPairOfCards.get(1) + ")", " and higher cards");
-                }else {
+                } else {
                     result = null;
                 }
             } else {
