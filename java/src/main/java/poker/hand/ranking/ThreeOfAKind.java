@@ -1,12 +1,15 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.*;
+import poker.hand.Card;
+import poker.hand.CardNumber;
+import poker.hand.Hand;
+import poker.hand.Result;
 
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.murex.ResultHelper.aThreeOfAKindWinningResult;
+import static poker.hand.ResultHelper.aThreeOfAKindWinningResult;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 

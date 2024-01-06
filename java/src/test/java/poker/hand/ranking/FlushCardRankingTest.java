@@ -1,11 +1,11 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.Hand;
-import com.murex.ResultHelper;
+import poker.hand.Hand;
+import poker.hand.ResultHelper;
 import org.junit.jupiter.api.Test;
 
-import static com.murex.HandBuilder.*;
-import static com.murex.ResultHelper.aTieResult;
+import static poker.hand.HandBuilder.*;
+import static poker.hand.ResultHelper.aTieResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FlushCardRankingTest {

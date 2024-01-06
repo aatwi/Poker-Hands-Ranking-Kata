@@ -1,6 +1,4 @@
-package com.murex;
-
-import static com.murex.ResultBuilder.aResultBuilder;
+package poker.hand;
 
 public class ResultHelper {
     public static final String HIGH_CARD = "HIGH CARD";
@@ -15,7 +13,7 @@ public class ResultHelper {
     public static final String ROYAL_FLUSH = "ROYAL FLUSH";
 
     public static Result aPairWinningResult(Hand hand, CardNumber pairCard, boolean withHighHand) {
-        return aResultBuilder()
+        return ResultBuilder.aResultBuilder()
                 .withWinner(hand)
                 .withCard(pairCard)
                 .withRankOrder(PAIR)
@@ -28,7 +26,7 @@ public class ResultHelper {
     }
 
     public static Result aHighCardWinningResult(Hand hand, CardNumber cardNumber) {
-        return aResultBuilder()
+        return ResultBuilder.aResultBuilder()
                 .withWinner(hand)
                 .withCard(cardNumber)
                 .withRankOrder(HIGH_CARD)
@@ -36,7 +34,7 @@ public class ResultHelper {
     }
 
     public static Result aTwoPairWinningResult(Hand hand, CardNumber firstPairCard, CardNumber secondPairCard, boolean withHighHand) {
-        return aResultBuilder()
+        return ResultBuilder.aResultBuilder()
                 .withWinner(hand)
                 .withPairs(firstPairCard, secondPairCard)
                 .withRankOrder(TWO_PAIRS)
@@ -45,7 +43,7 @@ public class ResultHelper {
     }
 
     public static Result aThreeOfAKindWinningResult(Hand hand, CardNumber card, boolean withHighHand) {
-        return aResultBuilder()
+        return ResultBuilder.aResultBuilder()
                 .withWinner(hand)
                 .withCard(card)
                 .withRankOrder(THREE_OF_A_KIND)
@@ -54,7 +52,7 @@ public class ResultHelper {
     }
 
     public static Result aStraightWinningResult(Hand hand, boolean withHighHand) {
-        return aResultBuilder()
+        return ResultBuilder.aResultBuilder()
                 .withWinner(hand)
                 .withRankOrder(STRAIGHT)
                 .withHigherCards(withHighHand)
@@ -62,7 +60,7 @@ public class ResultHelper {
     }
 
     public static Result aFlushWinningResult(Hand hand, boolean withHighHand) {
-        return aResultBuilder()
+        return ResultBuilder.aResultBuilder()
                 .withWinner(hand)
                 .withRankOrder(FLUSH)
                 .withHigherCards(withHighHand)
@@ -70,7 +68,7 @@ public class ResultHelper {
     }
 
     public static Result aFullHouseWinningResult(Hand hand, boolean withHighHand) {
-        return aResultBuilder()
+        return ResultBuilder.aResultBuilder()
                 .withWinner(hand)
                 .withRankOrder(FULL_HOUSE)
                 .withHigherCards(withHighHand)
@@ -78,7 +76,7 @@ public class ResultHelper {
     }
 
     public static Result aFourOfAKindWinningResult(Hand hand, boolean withHighHand) {
-        return aResultBuilder()
+        return ResultBuilder.aResultBuilder()
                 .withWinner(hand)
                 .withRankOrder(FOUR_OF_A_KIND)
                 .withHigherCards(withHighHand)
@@ -86,7 +84,7 @@ public class ResultHelper {
     }
 
     public static Result aStraightFlushWinningResult(Hand hand, boolean withHighHand) {
-        return aResultBuilder()
+        return ResultBuilder.aResultBuilder()
                 .withWinner(hand)
                 .withRankOrder(STRAIGHT_FLUSH)
                 .withHigherCards(withHighHand)
@@ -94,7 +92,7 @@ public class ResultHelper {
     }
 
     public static Result aRoyalFlushWinningResult(Hand hand) {
-        return aResultBuilder()
+        return ResultBuilder.aResultBuilder()
                 .withWinner(hand)
                 .withRankOrder(ROYAL_FLUSH)
                 .build();

@@ -1,13 +1,13 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.Hand;
-import com.murex.HandBuilder;
-import com.murex.Result;
+import poker.hand.Hand;
+import poker.hand.HandBuilder;
+import poker.hand.Result;
 import org.junit.jupiter.api.Test;
+import poker.hand.CardNumber;
 
-import static com.murex.CardNumber.*;
-import static com.murex.ResultHelper.aHighCardWinningResult;
-import static com.murex.ResultHelper.aNoWinner;
+import static poker.hand.ResultHelper.aHighCardWinningResult;
+import static poker.hand.ResultHelper.aNoWinner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HighCardRankingTest {
@@ -31,7 +31,7 @@ class HighCardRankingTest {
         Hand black = HandBuilder.aHand().withPlayer("Black").withCards("2H 3D 5S 9C KD").build();
         Hand white = HandBuilder.aHand().withPlayer("White").withCards("2C 3H 4S 8C AH").build();
 
-        assertEquals(aHighCardWinningResult(white, ACE), buildHighCardResult(black, white));
+        assertEquals(aHighCardWinningResult(white, CardNumber.ACE), buildHighCardResult(black, white));
     }
 
     @Test
@@ -39,7 +39,7 @@ class HighCardRankingTest {
         Hand black = HandBuilder.aHand().withPlayer("Black").withCards("2H 3D 5S 9C QD").build();
         Hand white = HandBuilder.aHand().withPlayer("White").withCards("2C 3H 4S 8C JH").build();
 
-        assertEquals(aHighCardWinningResult(black, QUEEN), buildHighCardResult(black, white));
+        assertEquals(aHighCardWinningResult(black, CardNumber.QUEEN), buildHighCardResult(black, white));
     }
 
     @Test
@@ -47,7 +47,7 @@ class HighCardRankingTest {
         Hand black = HandBuilder.aHand().withPlayer("Black").withCards("2H 3D 5S 7C 9D").build();
         Hand white = HandBuilder.aHand().withPlayer("White").withCards("2C 3H 4S 8C JH").build();
 
-        assertEquals(aHighCardWinningResult(white, JACK), buildHighCardResult(black, white));
+        assertEquals(aHighCardWinningResult(white, CardNumber.JACK), buildHighCardResult(black, white));
     }
 
     @Test
@@ -55,7 +55,7 @@ class HighCardRankingTest {
         Hand black = HandBuilder.aHand().withPlayer("Black").withCards("2H 3D 5S 8C 9D").build();
         Hand white = HandBuilder.aHand().withPlayer("White").withCards("2C 3H 4S 7C 8H").build();
 
-        assertEquals(aHighCardWinningResult(black, NINE), buildHighCardResult(black, white));
+        assertEquals(aHighCardWinningResult(black, CardNumber.NINE), buildHighCardResult(black, white));
     }
 
     @Test
@@ -63,6 +63,6 @@ class HighCardRankingTest {
         Hand black = HandBuilder.aHand().withPlayer("Black").withCards("2H 3D 5S 8C AD").build();
         Hand white = HandBuilder.aHand().withPlayer("White").withCards("2S 3C 5D 9S AD").build();
 
-        assertEquals(aHighCardWinningResult(white, NINE), buildHighCardResult(black, white));
+        assertEquals(aHighCardWinningResult(white, CardNumber.NINE), buildHighCardResult(black, white));
     }
 }

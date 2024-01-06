@@ -1,10 +1,10 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.Hand;
-import com.murex.Result;
+import poker.hand.Hand;
+import poker.hand.Result;
 
-import static com.murex.ResultHelper.aStraightFlushWinningResult;
-import static com.murex.ResultHelper.aTieResult;
+import static poker.hand.ResultHelper.aStraightFlushWinningResult;
+import static poker.hand.ResultHelper.aTieResult;
 
 public class StraightFlush extends RankingCategory {
 

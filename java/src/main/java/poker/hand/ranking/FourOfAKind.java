@@ -1,6 +1,6 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.*;
+import poker.hand.*;
 
 import java.util.Arrays;
 import java.util.Map;

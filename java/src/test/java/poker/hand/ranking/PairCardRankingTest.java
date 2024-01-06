@@ -1,7 +1,7 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.*;
 import org.junit.jupiter.api.Test;
+import poker.hand.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

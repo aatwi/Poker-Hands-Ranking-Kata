@@ -1,14 +1,13 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.Hand;
-import com.murex.HandBuilder;
-import com.murex.Result;
+import poker.hand.Hand;
+import poker.hand.HandBuilder;
+import poker.hand.Result;
 import org.junit.jupiter.api.Test;
+import poker.hand.CardNumber;
 
-import static com.murex.CardNumber.*;
-import static com.murex.CardNumber.NINE;
-import static com.murex.ResultHelper.aNoWinner;
-import static com.murex.ResultHelper.aTwoPairWinningResult;
+import static poker.hand.ResultHelper.aNoWinner;
+import static poker.hand.ResultHelper.aTwoPairWinningResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TwoPairCardRankingTest {
@@ -21,7 +20,7 @@ class TwoPairCardRankingTest {
         TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
         Result matchingResult = twoPairs.evaluate();
 
-        assertEquals(aTwoPairWinningResult(blackHand, SEVEN, TEN, false), matchingResult);
+        assertEquals(aTwoPairWinningResult(blackHand, CardNumber.SEVEN, CardNumber.TEN, false), matchingResult);
     }
 
     @Test
@@ -32,7 +31,7 @@ class TwoPairCardRankingTest {
         TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
         Result matchingResult = twoPairs.evaluate();
 
-        assertEquals(aTwoPairWinningResult(whiteHand, THREE, SEVEN, false), matchingResult);
+        assertEquals(aTwoPairWinningResult(whiteHand, CardNumber.THREE, CardNumber.SEVEN, false), matchingResult);
     }
 
     @Test
@@ -43,7 +42,7 @@ class TwoPairCardRankingTest {
         TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
         Result matchingResult = twoPairs.evaluate();
 
-        assertEquals(aTwoPairWinningResult(whiteHand, THREE, NINE, true), matchingResult);
+        assertEquals(aTwoPairWinningResult(whiteHand, CardNumber.THREE, CardNumber.NINE, true), matchingResult);
     }
 
     @Test
@@ -54,7 +53,7 @@ class TwoPairCardRankingTest {
         TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
         Result matchingResult = twoPairs.evaluate();
 
-        assertEquals(aTwoPairWinningResult(blackHand, TWO, TEN, true), matchingResult);
+        assertEquals(aTwoPairWinningResult(blackHand, CardNumber.TWO, CardNumber.TEN, true), matchingResult);
     }
 
     @Test
@@ -65,7 +64,7 @@ class TwoPairCardRankingTest {
         TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
         Result matchingResult = twoPairs.evaluate();
 
-        assertEquals(aTwoPairWinningResult(whiteHand, THREE, FOUR, true), matchingResult);
+        assertEquals(aTwoPairWinningResult(whiteHand, CardNumber.THREE, CardNumber.FOUR, true), matchingResult);
     }
 
     @Test
@@ -76,7 +75,7 @@ class TwoPairCardRankingTest {
         TwoPairs twoPairs = new TwoPairs(blackHand, whiteHand);
         Result matchingResult = twoPairs.evaluate();
 
-        assertEquals(aTwoPairWinningResult(blackHand, THREE, FOUR, true), matchingResult);
+        assertEquals(aTwoPairWinningResult(blackHand, CardNumber.THREE, CardNumber.FOUR, true), matchingResult);
     }
 
     @Test

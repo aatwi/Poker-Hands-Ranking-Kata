@@ -1,11 +1,11 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.Hand;
-import com.murex.HandBuilder;
+import poker.hand.Hand;
+import poker.hand.HandBuilder;
 import org.junit.jupiter.api.Test;
 
-import static com.murex.ResultHelper.aFourOfAKindWinningResult;
-import static com.murex.ResultHelper.aNoWinner;
+import static poker.hand.ResultHelper.aFourOfAKindWinningResult;
+import static poker.hand.ResultHelper.aNoWinner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FourOfAKindTest {

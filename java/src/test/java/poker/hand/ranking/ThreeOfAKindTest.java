@@ -1,12 +1,12 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.Hand;
-import com.murex.HandBuilder;
+import poker.hand.Hand;
+import poker.hand.HandBuilder;
 import org.junit.jupiter.api.Test;
+import poker.hand.CardNumber;
 
-import static com.murex.CardNumber.*;
-import static com.murex.ResultHelper.aNoWinner;
-import static com.murex.ResultHelper.aThreeOfAKindWinningResult;
+import static poker.hand.ResultHelper.aNoWinner;
+import static poker.hand.ResultHelper.aThreeOfAKindWinningResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ThreeOfAKindTest {
@@ -24,7 +24,7 @@ class ThreeOfAKindTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("7H 7C TD KH AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2D 9H 9C 9S KH").build();
 
-        assertEquals(aThreeOfAKindWinningResult(whiteHand, NINE, false), new ThreeOfAKind(blackHand, whiteHand).evaluate());
+        assertEquals(aThreeOfAKindWinningResult(whiteHand, CardNumber.NINE, false), new ThreeOfAKind(blackHand, whiteHand).evaluate());
     }
 
     @Test
@@ -32,7 +32,7 @@ class ThreeOfAKindTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("7H 7C TD KH AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2D 9H TC TS TH").build();
 
-        assertEquals(aThreeOfAKindWinningResult(whiteHand, TEN, false), new ThreeOfAKind(blackHand, whiteHand).evaluate());
+        assertEquals(aThreeOfAKindWinningResult(whiteHand, CardNumber.TEN, false), new ThreeOfAKind(blackHand, whiteHand).evaluate());
     }
 
     @Test
@@ -40,7 +40,7 @@ class ThreeOfAKindTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("7H 7C 7D KH AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2D 9H 8C TS KH").build();
 
-        assertEquals(aThreeOfAKindWinningResult(blackHand, SEVEN, false), new ThreeOfAKind(blackHand, whiteHand).evaluate());
+        assertEquals(aThreeOfAKindWinningResult(blackHand, CardNumber.SEVEN, false), new ThreeOfAKind(blackHand, whiteHand).evaluate());
     }
 
     @Test
@@ -48,7 +48,7 @@ class ThreeOfAKindTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("2H 3C AD AH AS").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2D 9H 9C 9S KH").build();
 
-        assertEquals(aThreeOfAKindWinningResult(blackHand, ACE, true), new ThreeOfAKind(blackHand, whiteHand).evaluate());
+        assertEquals(aThreeOfAKindWinningResult(blackHand, CardNumber.ACE, true), new ThreeOfAKind(blackHand, whiteHand).evaluate());
     }
 
     @Test
@@ -56,7 +56,7 @@ class ThreeOfAKindTest {
         Hand blackHand = HandBuilder.aHand().withPlayer("Black").withCards("2H 3C 8D 8H 8S").build();
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("2D JH JC JS KH").build();
 
-        assertEquals(aThreeOfAKindWinningResult(whiteHand, JACK, true), new ThreeOfAKind(blackHand, whiteHand).evaluate());
+        assertEquals(aThreeOfAKindWinningResult(whiteHand, CardNumber.JACK, true), new ThreeOfAKind(blackHand, whiteHand).evaluate());
     }
 
 }

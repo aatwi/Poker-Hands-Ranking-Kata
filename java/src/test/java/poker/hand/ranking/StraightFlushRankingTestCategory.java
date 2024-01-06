@@ -1,10 +1,10 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.Hand;
-import com.murex.HandBuilder;
+import poker.hand.Hand;
+import poker.hand.HandBuilder;
 import org.junit.jupiter.api.Test;
 
-import static com.murex.ResultHelper.*;
+import static poker.hand.ResultHelper.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StraightFlushRankingTestCategory {

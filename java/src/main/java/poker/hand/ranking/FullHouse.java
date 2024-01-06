@@ -1,11 +1,14 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.*;
+import poker.hand.Card;
+import poker.hand.CardNumber;
+import poker.hand.Hand;
+import poker.hand.Result;
 
 import java.util.Arrays;
 import java.util.Map;
 
-import static com.murex.ResultHelper.aFullHouseWinningResult;
+import static poker.hand.ResultHelper.aFullHouseWinningResult;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 

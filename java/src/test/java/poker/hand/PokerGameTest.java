@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.murex;
+package poker.hand;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -34,7 +34,7 @@ public class PokerGameTest {
     private static final String SECOND_PLAYER = "PLAYER B";
 
     private static void assertWinner(String player1Cards, String player2Cards, String expected) {
-        assertEquals(expected, new PokerGame(FIRST_PLAYER, player1Cards, SECOND_PLAYER, player2Cards).getWinner());
+        assertEquals(expected, new PokerGame(FIRST_PLAYER, player1Cards, SECOND_PLAYER, player2Cards).play());
     }
 
     @Test

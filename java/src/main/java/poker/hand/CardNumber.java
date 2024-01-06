@@ -1,4 +1,4 @@
-package com.murex;
+package poker.hand;
 
 public enum CardNumber {
     TWO(2, '2'),

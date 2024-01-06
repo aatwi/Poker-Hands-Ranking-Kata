@@ -1,9 +1,9 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.Hand;
-import com.murex.Result;
+import poker.hand.Hand;
+import poker.hand.Result;
 
-import static com.murex.ResultHelper.aNoWinner;
+import static poker.hand.ResultHelper.aNoWinner;
 
 public abstract class RankingCategory {
     protected final Hand blackHand;

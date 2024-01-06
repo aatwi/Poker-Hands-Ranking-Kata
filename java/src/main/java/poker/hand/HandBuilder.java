@@ -1,4 +1,4 @@
-package com.murex;
+package poker.hand;
 
 public final class HandBuilder {
     private String playerName;

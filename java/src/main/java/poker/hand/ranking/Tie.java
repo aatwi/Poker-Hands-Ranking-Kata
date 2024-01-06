@@ -1,8 +1,8 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.Hand;
-import com.murex.Result;
-import com.murex.ResultHelper;
+import poker.hand.Hand;
+import poker.hand.Result;
+import poker.hand.ResultHelper;
 
 public class Tie extends RankingCategory {
     public Tie(Hand blackHand, Hand whiteHand) {

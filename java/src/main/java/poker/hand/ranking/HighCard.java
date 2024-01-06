@@ -1,9 +1,9 @@
-package com.murex.ranking;
+package poker.hand.ranking;
 
-import com.murex.Hand;
-import com.murex.Result;
+import poker.hand.Hand;
+import poker.hand.Result;
 
-import static com.murex.ResultHelper.aHighCardWinningResult;
+import static poker.hand.ResultHelper.aHighCardWinningResult;
 
 public class HighCard extends RankingCategory {
 

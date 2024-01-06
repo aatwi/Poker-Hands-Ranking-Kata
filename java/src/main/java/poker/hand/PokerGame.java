@@ -20,16 +20,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.murex;
+package poker.hand;
 
-import com.murex.ranking.*;
-import com.murex.ranking.Tie;
+import poker.hand.ranking.Tie;
+import poker.hand.ranking.*;
 
-import java.util.*;
-
-import static com.murex.HandBuilder.aHand;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
+import java.util.ArrayList;
+import java.util.List;
 
 class PokerGame {
     private final Hand firstPlayerHand;
@@ -37,11 +34,12 @@ class PokerGame {
     private final List<RankingCategory> ranks = new ArrayList<>();
 
     public PokerGame(String firstPlayerName, String firstPlayerCards, String secondPlayerName, String secondPlayerCards) {
-        this.firstPlayerHand = aHand().withPlayer(firstPlayerName).withCards(firstPlayerCards).build();
-        this.secondPlayerHand = aHand().withPlayer(secondPlayerName).withCards(secondPlayerCards).build();
+        this.firstPlayerHand = HandBuilder.aHand().withPlayer(firstPlayerName).withCards(firstPlayerCards).build();
+        this.secondPlayerHand = HandBuilder.aHand().withPlayer(secondPlayerName).withCards(secondPlayerCards).build();
         addRankingCategories();
     }
-    private void addRankingCategories () {
+
+    private void addRankingCategories() {
         ranks.add(new RoyalFlush(firstPlayerHand, secondPlayerHand));
         ranks.add(new StraightFlush(firstPlayerHand, secondPlayerHand));
         ranks.add(new FourOfAKind(firstPlayerHand, secondPlayerHand));
@@ -55,7 +53,7 @@ class PokerGame {
         ranks.add(new Tie(firstPlayerHand, secondPlayerHand));
     }
 
-    public String getWinner() {
+    public String play() {
         return ranks.stream().map(RankingCategory::evaluate).filter(Result::isMatch).findFirst().map(Result::getMessage).orElse(null);
     }
 }

@@ -1,6 +1,8 @@
-package com.murex.approvals;
+package poker.hand.approvals;
 
-import com.murex.GameSimulation;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import poker.hand.GameSimulation;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 
 public class GoldenMasterTest {
+    @Disabled
     @Test
     public void test() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

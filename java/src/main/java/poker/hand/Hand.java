@@ -1,4 +1,4 @@
-package com.murex;
+package poker.hand;
 
 import java.util.Arrays;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package com.murex;
+package poker.hand;
 
 import java.util.ArrayList;
 import java.util.List;

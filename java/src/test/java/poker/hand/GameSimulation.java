@@ -1,4 +1,4 @@
-package com.murex;
+package poker.hand;
 
 import java.util.List;
 
@@ -75,7 +75,7 @@ public class GameSimulation {
             System.out.printf("-------Game %s%s\n", game + 1, "-------");
             System.out.printf("%s has: %s\n", playerA, firstPlayerCards);
             System.out.printf("%s has: %s\n", playerB, secondPlayerCards);
-            System.out.printf("Result: %s\n", pokerGame.getWinner());
+            System.out.printf("Result: %s\n", pokerGame.play());
             System.out.println("---------------------");
             System.out.println();
         }
