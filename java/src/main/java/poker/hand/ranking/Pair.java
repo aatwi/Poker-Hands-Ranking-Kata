@@ -1,22 +1,19 @@
 package poker.hand.ranking;
 
-import poker.hand.Card;
-import poker.hand.CardNumber;
-import poker.hand.Hand;
-import poker.hand.Result;
+import poker.hand.*;
 
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 
-import static poker.hand.ResultHelper.aNoWinner;
-import static poker.hand.ResultHelper.aPairWinningResult;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
+import static poker.hand.ResultHelper.aPairWinningResult;
 
 public class Pair extends RankingCategory {
     private final Optional<CardNumber> blackPairCards;
     private final Optional<CardNumber> whitePairCards;
+    private Result result = ResultHelper.aNoWinner();
 
     public Pair(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
@@ -25,29 +22,42 @@ public class Pair extends RankingCategory {
     }
 
     @Override
-    public Result evaluate() {
+    public String getResult() {
+        return result.getMessage();
+    }
+
+    @Override
+    public boolean isMatch() {
         if (bothHandsHavePair()) {
             return getHigherPair();
         }
 
         if (noHandHasPair()) {
-            return super.evaluate();
+            return false;
         }
 
-        return blackPairCards.isPresent() ?
+        result = blackPairCards.isPresent() ?
                 aPairWinningResult(blackHand, blackPairCards.get(), false) :
                 aPairWinningResult(whiteHand, whitePairCards.get(), false);
+        return true;
     }
 
-    private Result getHigherPair() {
+    @Override
+    public Result evaluate() {
+        isMatch();
+        return result;
+    }
+
+    private boolean getHigherPair() {
         int comparison = blackPairCards.get().compareTo(whitePairCards.get());
         if (comparison == 0) {
-            return aNoWinner();
+            return false;
         }
 
-        return comparison > 0 ?
+        result = comparison > 0 ?
                 aPairWinningResult(blackHand, blackPairCards.get(), true) :
                 aPairWinningResult(whiteHand, whitePairCards.get(), true);
+        return true;
     }
 
     private boolean noHandHasPair() {

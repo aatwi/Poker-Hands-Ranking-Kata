@@ -2,49 +2,17 @@ package poker.hand.ranking;
 
 import poker.hand.Hand;
 import poker.hand.Result;
+import poker.hand.ResultHelper;
 
 import static poker.hand.ResultHelper.aFlushWinningResult;
-import static poker.hand.ResultHelper.aTieResult;
+import static poker.hand.ResultHelper.aNoWinner;
 
 public class Flush extends RankingCategory {
 
+    private Result result = aNoWinner();
+
     public Flush(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
-    }
-
-    @Override
-    public Result evaluate() {
-        if (bothHandsHaveFlush()) {
-            return getHigherHand();
-        }
-
-        if (noHandHasAFlush()) {
-            return super.evaluate();
-        }
-
-        return isFlush(blackHand) ?
-                aFlushWinningResult(blackHand, false) :
-                aFlushWinningResult(whiteHand, false);
-    }
-
-    private boolean noHandHasAFlush() {
-        return !isFlush(blackHand) && !isFlush(whiteHand);
-    }
-
-    private Result getHigherHand() {
-        for (int index = 4; index >= 0; index--) {
-            int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));
-            if (cardComparison != 0) {
-                return cardComparison > 0 ?
-                        aFlushWinningResult(blackHand, true) :
-                        aFlushWinningResult(whiteHand, true);
-            }
-        }
-        return aTieResult();
-    }
-
-    private boolean bothHandsHaveFlush() {
-        return isFlush(blackHand) && isFlush(whiteHand);
     }
 
     protected static boolean isFlush(Hand hand) {
@@ -54,5 +22,54 @@ public class Flush extends RankingCategory {
             }
         }
         return true;
+    }
+
+    @Override
+    public String getResult() {
+        return result.getMessage();
+    }
+
+    @Override
+    public boolean isMatch() {
+        if (bothHandsHaveFlush()) {
+            return getHigherHand();
+        }
+
+        if (noHandHasAFlush()) {
+            return false;
+        }
+
+        result = isFlush(blackHand) ?
+                aFlushWinningResult(blackHand, false) :
+                aFlushWinningResult(whiteHand, false);
+        return true;
+    }
+
+    @Override
+    public Result evaluate() {
+        isMatch();
+        return result;
+    }
+
+    private boolean noHandHasAFlush() {
+        return !isFlush(blackHand) && !isFlush(whiteHand);
+    }
+
+    private boolean getHigherHand() {
+        for (int index = 4; index >= 0; index--) {
+            int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));
+            if (cardComparison != 0) {
+                result = cardComparison > 0 ?
+                        aFlushWinningResult(blackHand, true) :
+                        aFlushWinningResult(whiteHand, true);
+                return true;
+            }
+        }
+        result = ResultHelper.aTieResult();
+        return true;
+    }
+
+    private boolean bothHandsHaveFlush() {
+        return isFlush(blackHand) && isFlush(whiteHand);
     }
 }

@@ -12,11 +12,11 @@ public abstract class Result {
         this.message = message;
     }
 
-    boolean isMatch() {
+    public boolean isMatch() {
         return isMatch;
     }
 
-    String getMessage() {
+    public String getMessage() {
         return message;
     }
 

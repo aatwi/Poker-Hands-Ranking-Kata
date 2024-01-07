@@ -14,6 +14,14 @@ public abstract class RankingCategory {
         this.whiteHand = whiteHand;
     }
 
+    public String getResult() {
+        return "";
+    }
+
+    public boolean isMatch() {
+        return false;
+    }
+
     public Result evaluate() {
         return aNoWinner();
     }

@@ -3,29 +3,45 @@ package poker.hand.ranking;
 import poker.hand.CardNumber;
 import poker.hand.Hand;
 import poker.hand.Result;
+import poker.hand.ResultHelper;
 
-import static poker.hand.ResultHelper.*;
+import static poker.hand.ResultHelper.aRoyalFlushWinningResult;
 import static poker.hand.ResultHelper.aTieResult;
 
 public class RoyalFlush extends RankingCategory {
+
+    private Result result = ResultHelper.aNoWinner();
 
     public RoyalFlush(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 
     @Override
-    public Result evaluate() {
+    public String getResult() {
+        return result.getMessage();
+    }
+
+    @Override
+    public boolean isMatch() {
         if (!isRoyalFlush(blackHand) && !isRoyalFlush(whiteHand)) {
-            return super.evaluate();
+            return false;
         }
 
         if (isRoyalFlush(blackHand) && isRoyalFlush(whiteHand)) {
-            return aTieResult();
+            result = aTieResult();
+            return true;
         }
 
-        return isRoyalFlush(blackHand) ?
+        result= isRoyalFlush(blackHand) ?
                 aRoyalFlushWinningResult(blackHand) :
                 aRoyalFlushWinningResult(whiteHand);
+        return true;
+    }
+
+    @Override
+    public Result evaluate() {
+        isMatch();
+        return result;
     }
 
     public boolean isRoyalFlush(Hand hand) {

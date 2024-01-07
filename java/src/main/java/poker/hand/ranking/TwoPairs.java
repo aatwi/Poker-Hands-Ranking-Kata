@@ -9,14 +9,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static poker.hand.ResultHelper.*;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
+import static poker.hand.ResultHelper.aNoWinner;
+import static poker.hand.ResultHelper.aTwoPairWinningResult;
 
 public class TwoPairs extends RankingCategory {
 
     private final List<CardNumber> blackPairOfCards;
     private final List<CardNumber> whitePairOfCards;
+    private Result result = aNoWinner();
 
     public TwoPairs(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
@@ -25,33 +27,46 @@ public class TwoPairs extends RankingCategory {
     }
 
     @Override
-    public Result evaluate() {
+    public String getResult() {
+        return result.getMessage();
+    }
+
+    @Override
+    public boolean isMatch() {
         if (bothHandsHaveTwoPairs()) {
             return getHigherHand();
         }
 
         if (noHandHasTwoPairs()) {
-            return super.evaluate();
+            return false;
         }
 
-        return blackPairOfCards.size() == 2 ?
+        result = blackPairOfCards.size() == 2 ?
                 aTwoPairWinningResult(blackHand, blackPairOfCards.get(0), blackPairOfCards.get(1), false) :
                 aTwoPairWinningResult(whiteHand, whitePairOfCards.get(0), whitePairOfCards.get(1), false);
+        return true;
     }
 
-    private Result getHigherHand() {
+    @Override
+    public Result evaluate() {
+        isMatch();
+        return result;
+    }
+
+    private boolean getHigherHand() {
         int comparison = compareForHigherHands();
-        if(comparison == 0){
-            return super.evaluate();
+        if (comparison == 0) {
+            return false;
         }
 
-        return comparison > 0 ?
-                aTwoPairWinningResult(blackHand, blackPairOfCards.get(0), blackPairOfCards.get(1), true):
+        result = comparison > 0 ?
+                aTwoPairWinningResult(blackHand, blackPairOfCards.get(0), blackPairOfCards.get(1), true) :
                 aTwoPairWinningResult(whiteHand, whitePairOfCards.get(0), whitePairOfCards.get(1), true);
+        return true;
     }
 
     private boolean bothHandsHaveTwoPairs() {
-        return  blackPairOfCards.size() == 2 && whitePairOfCards.size() == 2;
+        return blackPairOfCards.size() == 2 && whitePairOfCards.size() == 2;
     }
 
     private boolean noHandHasTwoPairs() {

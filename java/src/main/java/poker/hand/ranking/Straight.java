@@ -2,28 +2,44 @@ package poker.hand.ranking;
 
 import poker.hand.Hand;
 import poker.hand.Result;
+import poker.hand.ResultHelper;
 
 import static poker.hand.ResultHelper.*;
 
 public class Straight extends RankingCategory {
 
+    private Result result= ResultHelper.aNoWinner();
     public Straight(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 
     @Override
+    public String getResult() {
+        return result.getMessage();
+    }
+
+    @Override
     public Result evaluate() {
-        if (bothHandsHaveStraight()) {
-            return getHigherHand();
-        }
+        isMatch();
+        return result;
+    }
 
+    @Override
+    public boolean isMatch() {
         if (noHandHasStraight()) {
-            return super.evaluate();
+            return false;
         }
 
-        return isStraight(blackHand) ?
+        if (bothHandsHaveStraight()) {
+            result = getHigherHand();
+            return true;
+        }
+
+        result = isStraight(blackHand) ?
                 aStraightWinningResult(blackHand, false) :
                 aStraightWinningResult(whiteHand, false);
+
+        return true;
     }
 
     private boolean noHandHasStraight() {

@@ -9,13 +9,15 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 
-import static poker.hand.ResultHelper.aThreeOfAKindWinningResult;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
+import static poker.hand.ResultHelper.aNoWinner;
+import static poker.hand.ResultHelper.aThreeOfAKindWinningResult;
 
 public class ThreeOfAKind extends RankingCategory {
     private final Optional<CardNumber> blackThreeOfAKindCards;
     private final Optional<CardNumber> whiteThreeOfAKindCards;
+    private Result result = aNoWinner();
 
     public ThreeOfAKind(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
@@ -24,18 +26,30 @@ public class ThreeOfAKind extends RankingCategory {
     }
 
     @Override
+    public String getResult() {
+        return result.getMessage();
+    }
+
+    @Override
     public Result evaluate() {
-        if (bothHaveThreeOfAKindCards()) {
-            return getHigherHand();
-        }
+        isMatch();
+        return result;
+    }
 
+    @Override
+    public boolean isMatch() {
         if (noHandHasThreeOfAKindCards()) {
-            return super.evaluate();
+            return false;
         }
-
-        return blackThreeOfAKindCards.isPresent() ?
+        if (bothHaveThreeOfAKindCards()) {
+            result = getHigherHand();
+            return true;
+        }
+        
+        result = blackThreeOfAKindCards.isPresent() ?
                 aThreeOfAKindWinningResult(blackHand, blackThreeOfAKindCards.get(), false) :
                 aThreeOfAKindWinningResult(whiteHand, whiteThreeOfAKindCards.get(), false);
+        return true;
     }
 
     private Result getHigherHand() {
@@ -50,7 +64,7 @@ public class ThreeOfAKind extends RankingCategory {
     }
 
     private boolean noHandHasThreeOfAKindCards() {
-        return blackThreeOfAKindCards.isEmpty() &&  whiteThreeOfAKindCards.isEmpty();
+        return blackThreeOfAKindCards.isEmpty() && whiteThreeOfAKindCards.isEmpty();
     }
 
     private boolean bothHaveThreeOfAKindCards() {
