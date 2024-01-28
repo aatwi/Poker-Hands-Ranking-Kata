@@ -3,7 +3,7 @@ package poker.hand.ranking;
 import poker.hand.Card;
 import poker.hand.CardNumber;
 import poker.hand.Hand;
-import poker.hand.Result;
+import poker.hand.result.Result;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -11,8 +11,8 @@ import java.util.Optional;
 
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
-import static poker.hand.ResultHelper.aNoWinner;
-import static poker.hand.ResultHelper.aThreeOfAKindWinningResult;
+import static poker.hand.result.ResultHelper.aNoWinner;
+import static poker.hand.result.ResultHelper.aThreeOfAKindWinningResult;
 
 public class ThreeOfAKind extends RankingCategory {
     private final Optional<CardNumber> blackThreeOfAKindCards;

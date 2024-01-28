@@ -1,11 +1,11 @@
 package poker.hand.ranking;
 
 import poker.hand.Hand;
-import poker.hand.Result;
-import poker.hand.ResultHelper;
+import poker.hand.result.Result;
+import poker.hand.result.ResultHelper;
 
-import static poker.hand.ResultHelper.aStraightFlushWinningResult;
-import static poker.hand.ResultHelper.aTieResult;
+import static poker.hand.result.ResultHelper.aStraightFlushWinningResult;
+import static poker.hand.result.ResultHelper.aTieResult;
 
 public class StraightFlush extends RankingCategory {
 

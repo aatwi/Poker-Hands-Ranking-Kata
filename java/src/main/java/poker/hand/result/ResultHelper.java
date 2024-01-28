@@ -1,4 +1,7 @@
-package poker.hand;
+package poker.hand.result;
+
+import poker.hand.CardNumber;
+import poker.hand.Hand;
 
 public class ResultHelper {
     public static final String HIGH_CARD = "HIGH CARD";

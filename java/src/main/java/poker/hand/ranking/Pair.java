@@ -1,6 +1,8 @@
 package poker.hand.ranking;
 
 import poker.hand.*;
+import poker.hand.result.Result;
+import poker.hand.result.ResultHelper;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -8,7 +10,7 @@ import java.util.Optional;
 
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
-import static poker.hand.ResultHelper.aPairWinningResult;
+import static poker.hand.result.ResultHelper.aPairWinningResult;
 
 public class Pair extends RankingCategory {
     private final Optional<CardNumber> blackPairCards;

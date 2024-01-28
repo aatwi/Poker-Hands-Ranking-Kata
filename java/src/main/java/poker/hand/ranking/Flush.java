@@ -1,11 +1,11 @@
 package poker.hand.ranking;
 
 import poker.hand.Hand;
-import poker.hand.Result;
-import poker.hand.ResultHelper;
+import poker.hand.result.Result;
+import poker.hand.result.ResultHelper;
 
-import static poker.hand.ResultHelper.aFlushWinningResult;
-import static poker.hand.ResultHelper.aNoWinner;
+import static poker.hand.result.ResultHelper.aFlushWinningResult;
+import static poker.hand.result.ResultHelper.aNoWinner;
 
 public class Flush extends RankingCategory {
 

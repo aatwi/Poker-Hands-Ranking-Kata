@@ -2,12 +2,12 @@ package poker.hand.ranking;
 
 import poker.hand.Hand;
 import poker.hand.HandBuilder;
-import poker.hand.Result;
+import poker.hand.result.Result;
 import org.junit.jupiter.api.Test;
 import poker.hand.CardNumber;
 
-import static poker.hand.ResultHelper.aHighCardWinningResult;
-import static poker.hand.ResultHelper.aNoWinner;
+import static poker.hand.result.ResultHelper.aHighCardWinningResult;
+import static poker.hand.result.ResultHelper.aNoWinner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HighCardRankingTest {

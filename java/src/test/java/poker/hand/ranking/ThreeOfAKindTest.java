@@ -5,8 +5,8 @@ import poker.hand.HandBuilder;
 import org.junit.jupiter.api.Test;
 import poker.hand.CardNumber;
 
-import static poker.hand.ResultHelper.aNoWinner;
-import static poker.hand.ResultHelper.aThreeOfAKindWinningResult;
+import static poker.hand.result.ResultHelper.aNoWinner;
+import static poker.hand.result.ResultHelper.aThreeOfAKindWinningResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ThreeOfAKindTest {

@@ -1,4 +1,7 @@
-package poker.hand;
+package poker.hand.result;
+
+import poker.hand.CardNumber;
+import poker.hand.Hand;
 
 import java.util.ArrayList;
 import java.util.List;

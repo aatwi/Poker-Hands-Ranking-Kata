@@ -4,8 +4,8 @@ import poker.hand.Hand;
 import poker.hand.HandBuilder;
 import org.junit.jupiter.api.Test;
 
-import static poker.hand.ResultHelper.aFullHouseWinningResult;
-import static poker.hand.ResultHelper.aNoWinner;
+import static poker.hand.result.ResultHelper.aFullHouseWinningResult;
+import static poker.hand.result.ResultHelper.aNoWinner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FullHouseTest {

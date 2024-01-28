@@ -1,8 +1,8 @@
 package poker.hand.ranking;
 
 import poker.hand.Hand;
-import poker.hand.Result;
-import poker.hand.ResultHelper;
+import poker.hand.result.Result;
+import poker.hand.result.ResultHelper;
 
 public class Tie extends RankingCategory {
     private String message = "";

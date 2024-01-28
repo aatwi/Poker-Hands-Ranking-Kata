@@ -1,11 +1,11 @@
 package poker.hand.ranking;
 
 import poker.hand.Hand;
-import poker.hand.ResultHelper;
+import poker.hand.result.ResultHelper;
 import org.junit.jupiter.api.Test;
 
 import static poker.hand.HandBuilder.*;
-import static poker.hand.ResultHelper.aTieResult;
+import static poker.hand.result.ResultHelper.aTieResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FlushCardRankingTest {

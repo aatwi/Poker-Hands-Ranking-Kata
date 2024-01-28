@@ -2,11 +2,11 @@ package poker.hand.ranking;
 
 import poker.hand.CardNumber;
 import poker.hand.Hand;
-import poker.hand.Result;
-import poker.hand.ResultHelper;
+import poker.hand.result.Result;
+import poker.hand.result.ResultHelper;
 
-import static poker.hand.ResultHelper.aRoyalFlushWinningResult;
-import static poker.hand.ResultHelper.aTieResult;
+import static poker.hand.result.ResultHelper.aRoyalFlushWinningResult;
+import static poker.hand.result.ResultHelper.aTieResult;
 
 public class RoyalFlush extends RankingCategory {
 

@@ -24,6 +24,7 @@ package poker.hand;
 
 import poker.hand.ranking.Tie;
 import poker.hand.ranking.*;
+import poker.hand.result.Result;
 
 import java.util.ArrayList;
 import java.util.List;

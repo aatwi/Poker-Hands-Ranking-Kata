@@ -2,6 +2,8 @@ package poker.hand.ranking;
 
 import org.junit.jupiter.api.Test;
 import poker.hand.*;
+import poker.hand.result.Result;
+import poker.hand.result.ResultHelper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

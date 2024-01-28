@@ -4,7 +4,7 @@ import poker.hand.Hand;
 import poker.hand.HandBuilder;
 import org.junit.jupiter.api.Test;
 
-import static poker.hand.ResultHelper.*;
+import static poker.hand.result.ResultHelper.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RoyalFlushRankingTestCategory {

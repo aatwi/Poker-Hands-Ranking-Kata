@@ -1,4 +1,4 @@
-package poker.hand;
+package poker.hand.result;
 
 import java.util.Objects;
 

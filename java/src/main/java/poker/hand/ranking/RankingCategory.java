@@ -1,9 +1,9 @@
 package poker.hand.ranking;
 
 import poker.hand.Hand;
-import poker.hand.Result;
+import poker.hand.result.Result;
 
-import static poker.hand.ResultHelper.aNoWinner;
+import static poker.hand.result.ResultHelper.aNoWinner;
 
 public abstract class RankingCategory {
     protected final Hand blackHand;
