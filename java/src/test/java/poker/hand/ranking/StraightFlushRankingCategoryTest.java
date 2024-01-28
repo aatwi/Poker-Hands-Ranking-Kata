@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static poker.hand.result.ResultHelper.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class StraightFlushRankingTestCategory {
+class StraightFlushRankingCategoryTest {
 
     @Test
     public void it_should_return_a_no_matching_result_when_non_of_the_players_have_straight_flush_cards() {
@@ -24,7 +24,7 @@ class StraightFlushRankingTestCategory {
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("7S 8S 9S TS JS").build();
 
         StraightFlush handRanking = new StraightFlush(blackHand, whiteHand);
-        assertEquals(aTieResult(), handRanking.evaluate());
+        assertEquals(aTie(), handRanking.evaluate());
     }
 
     @Test

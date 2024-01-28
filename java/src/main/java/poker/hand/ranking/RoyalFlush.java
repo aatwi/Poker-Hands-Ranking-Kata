@@ -6,7 +6,7 @@ import poker.hand.result.Result;
 import poker.hand.result.ResultHelper;
 
 import static poker.hand.result.ResultHelper.aRoyalFlushWinningResult;
-import static poker.hand.result.ResultHelper.aTieResult;
+import static poker.hand.result.ResultHelper.aTie;
 
 public class RoyalFlush extends RankingCategory {
 
@@ -28,7 +28,7 @@ public class RoyalFlush extends RankingCategory {
         }
 
         if (isRoyalFlush(blackHand) && isRoyalFlush(whiteHand)) {
-            result = aTieResult();
+            result = aTie();
             return true;
         }
 

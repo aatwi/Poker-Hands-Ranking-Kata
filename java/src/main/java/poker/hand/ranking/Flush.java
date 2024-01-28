@@ -32,7 +32,8 @@ public class Flush extends RankingCategory {
     @Override
     public boolean isMatch() {
         if (bothHandsHaveFlush()) {
-            return getHigherHand();
+            computeHigherHand();
+            return true;
         }
 
         if (noHandHasAFlush()) {
@@ -55,18 +56,17 @@ public class Flush extends RankingCategory {
         return !isFlush(blackHand) && !isFlush(whiteHand);
     }
 
-    private boolean getHigherHand() {
+    private void computeHigherHand() {
         for (int index = 4; index >= 0; index--) {
             int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));
             if (cardComparison != 0) {
                 result = cardComparison > 0 ?
                         aFlushWinningResult(blackHand, true) :
                         aFlushWinningResult(whiteHand, true);
-                return true;
+                return;
             }
         }
-        result = ResultHelper.aTieResult();
-        return true;
+        result = ResultHelper.aTie();
     }
 
     private boolean bothHandsHaveFlush() {

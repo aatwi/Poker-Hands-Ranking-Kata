@@ -5,7 +5,7 @@ import poker.hand.result.ResultHelper;
 import org.junit.jupiter.api.Test;
 
 import static poker.hand.HandBuilder.*;
-import static poker.hand.result.ResultHelper.aTieResult;
+import static poker.hand.result.ResultHelper.aTie;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FlushCardRankingTest {
@@ -89,6 +89,6 @@ class FlushCardRankingTest {
         Hand whiteHand = aHand().withPlayer("White").withCards("3S 4S 6S JS QS").build();
 
         Flush flushHandRanking = new Flush(blackHand, whiteHand);
-        assertEquals(aTieResult(), flushHandRanking.evaluate());
+        assertEquals(aTie(), flushHandRanking.evaluate());
     }
 }

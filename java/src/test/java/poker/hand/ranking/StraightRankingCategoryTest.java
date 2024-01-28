@@ -24,7 +24,7 @@ class StraightRankingCategoryTest {
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("7D 8H 9C TS JH").build();
 
         Straight straightHandRanking = new Straight(blackHand, whiteHand);
-        assertEquals(aTieResult(), straightHandRanking.evaluate());
+        assertEquals(aTie(), straightHandRanking.evaluate());
     }
 
     @Test

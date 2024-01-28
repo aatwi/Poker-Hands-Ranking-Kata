@@ -5,7 +5,7 @@ import poker.hand.result.Result;
 import poker.hand.result.ResultHelper;
 
 import static poker.hand.result.ResultHelper.aStraightFlushWinningResult;
-import static poker.hand.result.ResultHelper.aTieResult;
+import static poker.hand.result.ResultHelper.aTie;
 
 public class StraightFlush extends RankingCategory {
 
@@ -51,7 +51,7 @@ public class StraightFlush extends RankingCategory {
     private Result getHigherHand() {
         int comparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
         if (comparison == 0) {
-            return aTieResult();
+            return aTie();
         }
         Hand winningHand = comparison > 0 ? blackHand : whiteHand;
         return aStraightFlushWinningResult(winningHand, true);

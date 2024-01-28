@@ -15,6 +15,14 @@ public class ResultHelper {
     public static final String STRAIGHT_FLUSH = "STRAIGHT FLUSH";
     public static final String ROYAL_FLUSH = "ROYAL FLUSH";
 
+    public static Result aNoWinner() {
+        return new NoWinner();
+    }
+
+    public static Result aTie() {
+        return new Tie();
+    }
+
     public static Result aPairWinningResult(Hand hand, CardNumber pairCard, boolean withHighHand) {
         return ResultBuilder.aResultBuilder()
                 .withWinner(hand)
@@ -22,10 +30,6 @@ public class ResultHelper {
                 .withRankOrder(PAIR)
                 .withHigherCards(withHighHand)
                 .build();
-    }
-
-    public static Result aNoWinner() {
-        return new NoWinner();
     }
 
     public static Result aHighCardWinningResult(Hand hand, CardNumber cardNumber) {
@@ -99,9 +103,5 @@ public class ResultHelper {
                 .withWinner(hand)
                 .withRankOrder(ROYAL_FLUSH)
                 .build();
-    }
-
-    public static Result aTieResult() {
-        return new Tie();
     }
 }

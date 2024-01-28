@@ -53,7 +53,7 @@ public class Straight extends RankingCategory {
     private Result getHigherHand() {
         int comparison = blackHand.getCardAt(0).compareTo(whiteHand.getCardAt(0));
         if (comparison == 0) {
-            return aTieResult();
+            return aTie();
         }
         return comparison > 0 ?
                 aStraightWinningResult(blackHand, true) :

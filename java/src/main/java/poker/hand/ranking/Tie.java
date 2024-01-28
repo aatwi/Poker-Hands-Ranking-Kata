@@ -23,14 +23,14 @@ public class Tie extends RankingCategory {
                 return false;
             }
         }
-        this.message = ResultHelper.aTieResult().getMessage();
+        this.message = ResultHelper.aTie().getMessage();
         return true;
     }
 
     @Override
     public Result evaluate() {
         if (isMatch()) {
-            return ResultHelper.aTieResult();
+            return ResultHelper.aTie();
         }
         return ResultHelper.aNoWinner();
     }

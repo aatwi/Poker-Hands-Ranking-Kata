@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static poker.hand.result.ResultHelper.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class RoyalFlushRankingTestCategory {
+class RoyalFlushRankingCategoryTest {
 
     @Test
     public void it_should_return_a_no_matching_result_when_non_of_the_players_have_royal_flush_cards() {
@@ -24,7 +24,7 @@ class RoyalFlushRankingTestCategory {
         Hand whiteHand = HandBuilder.aHand().withPlayer("White").withCards("TS JS QS KS AS").build();
 
         RoyalFlush handRanking = new RoyalFlush(blackHand, whiteHand);
-        assertEquals(aTieResult(), handRanking.evaluate());
+        assertEquals(aTie(), handRanking.evaluate());
     }
 
     @Test
