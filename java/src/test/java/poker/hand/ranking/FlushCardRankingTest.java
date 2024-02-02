@@ -5,6 +5,7 @@ import poker.hand.result.ResultHelper;
 import org.junit.jupiter.api.Test;
 
 import static poker.hand.HandBuilder.*;
+import static poker.hand.result.ResultHelper.aFlushWinningResult;
 import static poker.hand.result.ResultHelper.aTie;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,7 +27,7 @@ class FlushCardRankingTest {
         Hand whiteHand = aHand().withPlayer("White").withCards("4D 5S 7D JS AC").build();
 
         Flush flushHandRanking = new Flush(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
+        assertEquals(aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
     }
 
     @Test
@@ -35,7 +36,7 @@ class FlushCardRankingTest {
         Hand whiteHand = aHand().withPlayer("White").withCards("2D 5S 7D JS AC").build();
 
         Flush flushHandRanking = new Flush(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
+        assertEquals(aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
     }
 
     @Test
@@ -44,7 +45,7 @@ class FlushCardRankingTest {
         Hand whiteHand = aHand().withPlayer("White").withCards("2D 5S 7D JS AD").build();
 
         Flush flushHandRanking = new Flush(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
+        assertEquals(aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
     }
 
     @Test
@@ -53,7 +54,7 @@ class FlushCardRankingTest {
         Hand whiteHand = aHand().withPlayer("White").withCards("2D 5S 7D JS AD").build();
 
         Flush flushHandRanking = new Flush(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
+        assertEquals(aFlushWinningResult(blackHand, false), flushHandRanking.evaluate());
     }
 
     @Test
@@ -62,7 +63,7 @@ class FlushCardRankingTest {
         Hand whiteHand = aHand().withPlayer("White").withCards("3S 4S 6S KS AS").build();
 
         Flush flushHandRanking = new Flush(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(whiteHand, false), flushHandRanking.evaluate());
+        assertEquals(aFlushWinningResult(whiteHand, false), flushHandRanking.evaluate());
     }
 
     @Test
@@ -71,7 +72,7 @@ class FlushCardRankingTest {
         Hand whiteHand = aHand().withPlayer("White").withCards("3S 4S 6S KS AS").build();
 
         Flush flushHandRanking = new Flush(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(whiteHand, true), flushHandRanking.evaluate());
+        assertEquals(aFlushWinningResult(whiteHand, true), flushHandRanking.evaluate());
     }
 
     @Test
@@ -80,7 +81,7 @@ class FlushCardRankingTest {
         Hand whiteHand = aHand().withPlayer("White").withCards("3S 4S 6S JS QS").build();
 
         Flush flushHandRanking = new Flush(blackHand, whiteHand);
-        assertEquals(ResultHelper.aFlushWinningResult(blackHand, true), flushHandRanking.evaluate());
+        assertEquals(aFlushWinningResult(blackHand, true), flushHandRanking.evaluate());
     }
 
     @Test

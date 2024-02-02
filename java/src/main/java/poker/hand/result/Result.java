@@ -2,10 +2,15 @@ package poker.hand.result;
 
 import java.util.Objects;
 
-public abstract class Result {
+public class Result {
 
     private final boolean isMatch;
     private final String message;
+
+    Result() {
+        this.isMatch = false;
+        this.message = "";
+    }
 
     Result(boolean isMatch, String message) {
         this.isMatch = isMatch;

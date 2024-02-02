@@ -29,18 +29,20 @@ import poker.hand.result.Result;
 import java.util.ArrayList;
 import java.util.List;
 
+import static poker.hand.HandBuilder.aHand;
+
 class PokerGame {
     private final Hand firstPlayerHand;
     private final Hand secondPlayerHand;
     private final List<RankingCategory> ranks = new ArrayList<>();
 
     public PokerGame(String firstPlayerName, String firstPlayerCards, String secondPlayerName, String secondPlayerCards) {
-        this.firstPlayerHand = HandBuilder.aHand().withPlayer(firstPlayerName).withCards(firstPlayerCards).build();
-        this.secondPlayerHand = HandBuilder.aHand().withPlayer(secondPlayerName).withCards(secondPlayerCards).build();
-        addRankingCategories();
+        this.firstPlayerHand = aHand().withPlayer(firstPlayerName).withCards(firstPlayerCards).build();
+        this.secondPlayerHand = aHand().withPlayer(secondPlayerName).withCards(secondPlayerCards).build();
+        initializeRankingCategories();
     }
 
-    private void addRankingCategories() {
+    private void initializeRankingCategories() {
         ranks.add(new RoyalFlush(firstPlayerHand, secondPlayerHand));
         ranks.add(new StraightFlush(firstPlayerHand, secondPlayerHand));
         ranks.add(new FourOfAKind(firstPlayerHand, secondPlayerHand));

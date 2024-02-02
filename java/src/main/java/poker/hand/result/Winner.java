@@ -1,6 +1,6 @@
 package poker.hand.result;
 
-class Winner extends Result {
+public class Winner extends Result {
 
     Winner(String message) {
         super(true, message);

@@ -1,6 +1,6 @@
 package poker.hand.result;
 
-class Tie extends Result {
+public class Tie extends Result {
 
     public Tie() {
         super(true, "Tie.");
