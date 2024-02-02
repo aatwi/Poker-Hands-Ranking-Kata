@@ -18,7 +18,6 @@ public class TwoPairs extends RankingCategory {
 
     private final List<CardNumber> blackPairOfCards;
     private final List<CardNumber> whitePairOfCards;
-    private Result result = aNoWinner();
 
     public TwoPairs(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
@@ -27,37 +26,29 @@ public class TwoPairs extends RankingCategory {
     }
 
     @Override
-    public boolean isMatch() {
+    public Result evaluate() {
+        if (noHandHasTwoPairs()) {
+            return aNoWinner();
+        }
+
         if (bothHandsHaveTwoPairs()) {
             return getHigherHand();
         }
 
-        if (noHandHasTwoPairs()) {
-            return false;
-        }
-
-        result = blackPairOfCards.size() == 2 ?
+        return blackPairOfCards.size() == 2 ?
                 aTwoPairWinningResult(blackHand, blackPairOfCards.get(0), blackPairOfCards.get(1), false) :
                 aTwoPairWinningResult(whiteHand, whitePairOfCards.get(0), whitePairOfCards.get(1), false);
-        return true;
     }
 
-    @Override
-    public Result evaluate() {
-        isMatch();
-        return result;
-    }
-
-    private boolean getHigherHand() {
+    private Result getHigherHand() {
         int comparison = compareForHigherHands();
         if (comparison == 0) {
-            return false;
+            return aNoWinner();
         }
 
-        result = comparison > 0 ?
+        return comparison > 0 ?
                 aTwoPairWinningResult(blackHand, blackPairOfCards.get(0), blackPairOfCards.get(1), true) :
                 aTwoPairWinningResult(whiteHand, whitePairOfCards.get(0), whitePairOfCards.get(1), true);
-        return true;
     }
 
     private boolean bothHandsHaveTwoPairs() {

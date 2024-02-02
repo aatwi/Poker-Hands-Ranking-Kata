@@ -1,8 +1,9 @@
 package poker.hand.ranking;
 
-import poker.hand.*;
+import poker.hand.Card;
+import poker.hand.CardNumber;
+import poker.hand.Hand;
 import poker.hand.result.Result;
-import poker.hand.result.ResultHelper;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -11,11 +12,11 @@ import java.util.Optional;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static poker.hand.result.ResultHelper.aFourOfAKindWinningResult;
+import static poker.hand.result.ResultHelper.aNoWinner;
 
 
 public class FourOfAKind extends RankingCategory {
 
-    private Result result = ResultHelper.aNoWinner();
     private final Optional<CardNumber> blackFourOfKindCard;
     private final Optional<CardNumber> whiteFourOfKindCard;
 
@@ -34,28 +35,21 @@ public class FourOfAKind extends RankingCategory {
     }
 
     @Override
-    public boolean isMatch() {
+    public Result evaluate() {
         if (noHandHasFourOfAKind()) {
-            return false;
+            return aNoWinner();
         }
 
         if (bothHaveFourOfAKind()) {
             int comparison = blackFourOfKindCard.get().compareTo(whiteFourOfKindCard.get());
-            Hand winningHand = comparison > 0 ? blackHand : whiteHand;
-            result = buildMatchingResultWithHigherHand(winningHand);
-            return true;
+            return comparison > 0 ?
+                    buildMatchingResultWithHigherHand(blackHand) :
+                    buildMatchingResultWithHigherHand(whiteHand);
         }
 
-        result = blackFourOfKindCard.isPresent() ?
+        return blackFourOfKindCard.isPresent() ?
                 buildMatchingResult(blackHand) :
                 buildMatchingResult(whiteHand);
-        return true;
-    }
-
-    @Override
-    public Result evaluate() {
-        isMatch();
-        return result;
     }
 
     private boolean bothHaveFourOfAKind() {

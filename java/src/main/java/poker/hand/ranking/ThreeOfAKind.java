@@ -17,7 +17,6 @@ import static poker.hand.result.ResultHelper.aThreeOfAKindWinningResult;
 public class ThreeOfAKind extends RankingCategory {
     private final Optional<CardNumber> blackThreeOfAKindCards;
     private final Optional<CardNumber> whiteThreeOfAKindCards;
-    private Result result = aNoWinner();
 
     public ThreeOfAKind(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
@@ -27,24 +26,16 @@ public class ThreeOfAKind extends RankingCategory {
 
     @Override
     public Result evaluate() {
-        isMatch();
-        return result;
-    }
-
-    @Override
-    public boolean isMatch() {
         if (noHandHasThreeOfAKindCards()) {
-            return false;
+            return aNoWinner();
         }
         if (bothHaveThreeOfAKindCards()) {
-            result = getHigherHand();
-            return true;
+            return getHigherHand();
         }
-        
-        result = blackThreeOfAKindCards.isPresent() ?
+
+        return blackThreeOfAKindCards.isPresent() ?
                 aThreeOfAKindWinningResult(blackHand, blackThreeOfAKindCards.get(), false) :
                 aThreeOfAKindWinningResult(whiteHand, whiteThreeOfAKindCards.get(), false);
-        return true;
     }
 
     private Result getHigherHand() {

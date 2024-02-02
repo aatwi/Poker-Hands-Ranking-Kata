@@ -2,14 +2,10 @@ package poker.hand.ranking;
 
 import poker.hand.Hand;
 import poker.hand.result.Result;
-import poker.hand.result.ResultHelper;
 
-import static poker.hand.result.ResultHelper.aStraightFlushWinningResult;
-import static poker.hand.result.ResultHelper.aTie;
+import static poker.hand.result.ResultHelper.*;
 
 public class StraightFlush extends RankingCategory {
-
-    private Result result = ResultHelper.aNoWinner();
 
     public StraightFlush(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
@@ -19,28 +15,19 @@ public class StraightFlush extends RankingCategory {
         return Straight.isStraight(hand) && Flush.isFlush(hand);
     }
 
-
     @Override
     public Result evaluate() {
-        isMatch();
-        return result;
-    }
-
-    @Override
-    public boolean isMatch() {
         if (!isStraightFlush(blackHand) && !isStraightFlush(whiteHand)) {
-            return false;
+            return aNoWinner();
         }
 
         if (isStraightFlush(blackHand) && isStraightFlush(whiteHand)) {
-            result = getHigherHand();
-            return true;
+            return getHigherHand();
         }
 
-        result = isStraightFlush(blackHand) ?
+        return isStraightFlush(blackHand) ?
                 aStraightFlushWinningResult(blackHand, false) :
                 aStraightFlushWinningResult(whiteHand, false);
-        return true;
     }
 
     private Result getHigherHand() {

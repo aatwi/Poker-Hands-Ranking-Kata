@@ -2,7 +2,6 @@ package poker.hand.ranking;
 
 import poker.hand.*;
 import poker.hand.result.Result;
-import poker.hand.result.ResultHelper;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -10,12 +9,12 @@ import java.util.Map;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static poker.hand.result.ResultHelper.aFullHouseWinningResult;
+import static poker.hand.result.ResultHelper.aNoWinner;
 
 public class FullHouse extends RankingCategory {
 
     private final Map<CardNumber, Long> blackCardsCountMap;
     private final Map<CardNumber, Long> whiteCardsCountMap;
-    private Result result = ResultHelper.aNoWinner();
 
     public FullHouse(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
@@ -24,26 +23,18 @@ public class FullHouse extends RankingCategory {
     }
 
     @Override
-    public boolean isMatch() {
+    public Result evaluate() {
         if (noHandHasFullHouse()) {
-            return false;
+            return aNoWinner();
         }
 
         if (bothHaveFullHouse()) {
-            result = aFullHouseWinningResult(getHigherHand(), true);
-            return true;
+            return aFullHouseWinningResult(getHigherHand(), true);
         }
 
-        result = hasFullHouse(blackCardsCountMap) ?
+        return hasFullHouse(blackCardsCountMap) ?
                 aFullHouseWinningResult(blackHand, false) :
                 aFullHouseWinningResult(whiteHand, false);
-        return true;
-    }
-
-    @Override
-    public Result evaluate() {
-        isMatch();
-        return result;
     }
 
     private boolean noHandHasFullHouse() {

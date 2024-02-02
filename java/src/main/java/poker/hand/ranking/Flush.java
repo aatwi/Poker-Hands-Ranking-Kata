@@ -9,8 +9,6 @@ import static poker.hand.result.ResultHelper.aNoWinner;
 
 public class Flush extends RankingCategory {
 
-    private Result result = aNoWinner();
-
     public Flush(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
@@ -25,43 +23,34 @@ public class Flush extends RankingCategory {
     }
 
     @Override
-    public boolean isMatch() {
-        if (bothHandsHaveFlush()) {
-            computeHigherHand();
-            return true;
-        }
-
+    public Result evaluate() {
         if (noHandHasAFlush()) {
-            return false;
+            return aNoWinner();
         }
 
-        result = isFlush(blackHand) ?
+        if (bothHandsHaveFlush()) {
+            return evaluateHigherHand();
+        }
+
+        return isFlush(blackHand) ?
                 aFlushWinningResult(blackHand, false) :
                 aFlushWinningResult(whiteHand, false);
-        return true;
-    }
-
-    @Override
-    public Result evaluate() {
-        isMatch();
-        return result;
     }
 
     private boolean noHandHasAFlush() {
         return !isFlush(blackHand) && !isFlush(whiteHand);
     }
 
-    private void computeHigherHand() {
+    private Result evaluateHigherHand() {
         for (int index = 4; index >= 0; index--) {
             int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));
             if (cardComparison != 0) {
-                result = cardComparison > 0 ?
+                return cardComparison > 0 ?
                         aFlushWinningResult(blackHand, true) :
                         aFlushWinningResult(whiteHand, true);
-                return;
             }
         }
-        result = ResultHelper.aTie();
+        return ResultHelper.aTie();
     }
 
     private boolean bothHandsHaveFlush() {

@@ -3,43 +3,31 @@ package poker.hand.ranking;
 import poker.hand.CardNumber;
 import poker.hand.Hand;
 import poker.hand.result.Result;
-import poker.hand.result.ResultHelper;
 
-import static poker.hand.result.ResultHelper.aRoyalFlushWinningResult;
-import static poker.hand.result.ResultHelper.aTie;
+import static poker.hand.result.ResultHelper.*;
 
 public class RoyalFlush extends RankingCategory {
-
-    private Result result = ResultHelper.aNoWinner();
 
     public RoyalFlush(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 
     @Override
-    public boolean isMatch() {
+    public Result evaluate() {
         if (!isRoyalFlush(blackHand) && !isRoyalFlush(whiteHand)) {
-            return false;
+            return aNoWinner();
         }
 
         if (isRoyalFlush(blackHand) && isRoyalFlush(whiteHand)) {
-            result = aTie();
-            return true;
+            return aTie();
         }
 
-        result= isRoyalFlush(blackHand) ?
+        return isRoyalFlush(blackHand) ?
                 aRoyalFlushWinningResult(blackHand) :
                 aRoyalFlushWinningResult(whiteHand);
-        return true;
     }
 
-    @Override
-    public Result evaluate() {
-        isMatch();
-        return result;
-    }
-
-    public boolean isRoyalFlush(Hand hand) {
+    private boolean isRoyalFlush(Hand hand) {
         if (StraightFlush.isStraightFlush(hand)) {
             return hand.getCardAt(4).getCardNumber().equals(CardNumber.ACE);
         }
