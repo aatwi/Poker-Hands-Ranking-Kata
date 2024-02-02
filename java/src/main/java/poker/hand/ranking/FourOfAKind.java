@@ -12,18 +12,16 @@ import java.util.Optional;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static poker.hand.result.ResultHelper.aFourOfAKindWinningResult;
-import static poker.hand.result.ResultHelper.aNoWinner;
-
 
 public final class FourOfAKind extends RankingCategory {
 
-    private final Optional<CardNumber> blackFourOfKindCard;
-    private final Optional<CardNumber> whiteFourOfKindCard;
+    private final Optional<CardNumber> firstFourOfKindCard;
+    private final Optional<CardNumber> secondFourOfKindCard;
 
-    public FourOfAKind(Hand blackHand, Hand whiteHand) {
-        super(blackHand, whiteHand);
-        this.blackFourOfKindCard = extractFourOfAKindCard(blackHand);
-        this.whiteFourOfKindCard = extractFourOfAKindCard(whiteHand);
+    public FourOfAKind(Hand firstHand, Hand secondHand) {
+        super(firstHand, secondHand);
+        this.firstFourOfKindCard = extractFourOfAKindCard(firstHand);
+        this.secondFourOfKindCard = extractFourOfAKindCard(secondHand);
     }
 
     private static Result buildMatchingResultWithHigherHand(Hand hand) {
@@ -37,31 +35,31 @@ public final class FourOfAKind extends RankingCategory {
     @Override
     public Result evaluate() {
         if (noHandHasFourOfAKind()) {
-            return aNoWinner();
+            return super.evaluate();
         }
 
         if (bothHaveFourOfAKind()) {
             return evaluateHigherHand();
         }
 
-        return blackFourOfKindCard.isPresent() ?
-                buildMatchingResult(blackHand) :
-                buildMatchingResult(whiteHand);
+        return firstFourOfKindCard.isPresent() ?
+                buildMatchingResult(firstHand) :
+                buildMatchingResult(secondHand);
     }
 
     private Result evaluateHigherHand() {
-        int comparison = blackFourOfKindCard.get().compareTo(whiteFourOfKindCard.get());
+        int comparison = firstFourOfKindCard.get().compareTo(secondFourOfKindCard.get());
         return comparison > 0 ?
-                buildMatchingResultWithHigherHand(blackHand) :
-                buildMatchingResultWithHigherHand(whiteHand);
+                buildMatchingResultWithHigherHand(firstHand) :
+                buildMatchingResultWithHigherHand(secondHand);
     }
 
     private boolean bothHaveFourOfAKind() {
-        return blackFourOfKindCard.isPresent() && whiteFourOfKindCard.isPresent();
+        return firstFourOfKindCard.isPresent() && secondFourOfKindCard.isPresent();
     }
 
     private boolean noHandHasFourOfAKind() {
-        return blackFourOfKindCard.isEmpty() && whiteFourOfKindCard.isEmpty();
+        return firstFourOfKindCard.isEmpty() && secondFourOfKindCard.isEmpty();
     }
 
     private Optional<CardNumber> extractFourOfAKindCard(Hand hand) {

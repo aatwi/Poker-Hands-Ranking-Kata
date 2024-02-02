@@ -11,50 +11,49 @@ import java.util.Optional;
 
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
-import static poker.hand.result.ResultHelper.aNoWinner;
 import static poker.hand.result.ResultHelper.aThreeOfAKindWinningResult;
 
 public final class ThreeOfAKind extends RankingCategory {
-    private final Optional<CardNumber> blackThreeOfAKindCards;
-    private final Optional<CardNumber> whiteThreeOfAKindCards;
+    private final Optional<CardNumber> firstThreeOfAKindCards;
+    private final Optional<CardNumber> secondThreeOfAKindCards;
 
-    public ThreeOfAKind(Hand blackHand, Hand whiteHand) {
-        super(blackHand, whiteHand);
-        this.blackThreeOfAKindCards = extractThreeOfAKind(blackHand);
-        this.whiteThreeOfAKindCards = extractThreeOfAKind(whiteHand);
+    public ThreeOfAKind(Hand firstHand, Hand secondHand) {
+        super(firstHand, secondHand);
+        this.firstThreeOfAKindCards = extractThreeOfAKind(firstHand);
+        this.secondThreeOfAKindCards = extractThreeOfAKind(secondHand);
     }
 
     @Override
     public Result evaluate() {
         if (noHandHasThreeOfAKindCards()) {
-            return aNoWinner();
+            return super.evaluate();
         }
         if (bothHaveThreeOfAKindCards()) {
             return evaluateHigherHand();
         }
 
-        return blackThreeOfAKindCards.isPresent() ?
-                aThreeOfAKindWinningResult(blackHand, blackThreeOfAKindCards.get(), false) :
-                aThreeOfAKindWinningResult(whiteHand, whiteThreeOfAKindCards.get(), false);
+        return firstThreeOfAKindCards.isPresent() ?
+                aThreeOfAKindWinningResult(firstHand, firstThreeOfAKindCards.get(), false) :
+                aThreeOfAKindWinningResult(secondHand, secondThreeOfAKindCards.get(), false);
     }
 
     private Result evaluateHigherHand() {
-        int comparison = blackThreeOfAKindCards.get().compareTo(whiteThreeOfAKindCards.get());
+        int comparison = firstThreeOfAKindCards.get().compareTo(secondThreeOfAKindCards.get());
         if (comparison == 0) {
             return super.evaluate();
         }
 
         return comparison > 0 ?
-                aThreeOfAKindWinningResult(blackHand, blackThreeOfAKindCards.get(), true) :
-                aThreeOfAKindWinningResult(whiteHand, whiteThreeOfAKindCards.get(), true);
+                aThreeOfAKindWinningResult(firstHand, firstThreeOfAKindCards.get(), true) :
+                aThreeOfAKindWinningResult(secondHand, secondThreeOfAKindCards.get(), true);
     }
 
     private boolean noHandHasThreeOfAKindCards() {
-        return blackThreeOfAKindCards.isEmpty() && whiteThreeOfAKindCards.isEmpty();
+        return firstThreeOfAKindCards.isEmpty() && secondThreeOfAKindCards.isEmpty();
     }
 
     private boolean bothHaveThreeOfAKindCards() {
-        return blackThreeOfAKindCards.isPresent() && whiteThreeOfAKindCards.isPresent();
+        return firstThreeOfAKindCards.isPresent() && secondThreeOfAKindCards.isPresent();
     }
 
     private Optional<CardNumber> extractThreeOfAKind(Hand hand) {

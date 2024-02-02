@@ -6,12 +6,12 @@ import poker.hand.result.Result;
 import static poker.hand.result.ResultHelper.aNoWinner;
 
 public abstract class RankingCategory {
-    protected final Hand blackHand;
-    protected final Hand whiteHand;
+    protected final Hand firstHand;
+    protected final Hand secondHand;
 
-    public RankingCategory(Hand blackHand, Hand whiteHand) {
-        this.blackHand = blackHand;
-        this.whiteHand = whiteHand;
+    public RankingCategory(Hand firstHand, Hand secondHand) {
+        this.firstHand = firstHand;
+        this.secondHand = secondHand;
     }
 
     public Result evaluate() {

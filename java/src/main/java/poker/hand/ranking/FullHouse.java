@@ -1,6 +1,8 @@
 package poker.hand.ranking;
 
-import poker.hand.*;
+import poker.hand.Card;
+import poker.hand.CardNumber;
+import poker.hand.Hand;
 import poker.hand.result.Result;
 
 import java.util.Arrays;
@@ -9,46 +11,45 @@ import java.util.Map;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static poker.hand.result.ResultHelper.aFullHouseWinningResult;
-import static poker.hand.result.ResultHelper.aNoWinner;
 
 public final class FullHouse extends RankingCategory {
 
-    private final Map<CardNumber, Long> blackCardsCountMap;
-    private final Map<CardNumber, Long> whiteCardsCountMap;
+    private final Map<CardNumber, Long> firstCardsCountMap;
+    private final Map<CardNumber, Long> secondCardsCountMap;
 
-    public FullHouse(Hand blackHand, Hand whiteHand) {
-        super(blackHand, whiteHand);
-        this.blackCardsCountMap = extractPairsAndTrioCards(blackHand);
-        this.whiteCardsCountMap = extractPairsAndTrioCards(whiteHand);
+    public FullHouse(Hand firstHand, Hand secondHand) {
+        super(firstHand, secondHand);
+        this.firstCardsCountMap = extractPairsAndTrioCards(firstHand);
+        this.secondCardsCountMap = extractPairsAndTrioCards(secondHand);
     }
 
     @Override
     public Result evaluate() {
         if (noHandHasFullHouse()) {
-            return aNoWinner();
+            return super.evaluate();
         }
 
         if (bothHaveFullHouse()) {
             return evaluateHigherHand();
         }
 
-        return hasFullHouse(blackCardsCountMap) ?
-                aFullHouseWinningResult(blackHand, false) :
-                aFullHouseWinningResult(whiteHand, false);
+        return hasFullHouse(firstCardsCountMap) ?
+                aFullHouseWinningResult(firstHand, false) :
+                aFullHouseWinningResult(secondHand, false);
     }
 
     private Result evaluateHigherHand() {
-        CardNumber blackCard = blackCardsCountMap.keySet().stream().filter(card -> blackCardsCountMap.get(card) == 3).findAny().get();
-        CardNumber whiteCard = whiteCardsCountMap.keySet().stream().filter(card -> whiteCardsCountMap.get(card) == 3).findAny().get();
+        CardNumber blackCard = firstCardsCountMap.keySet().stream().filter(card -> firstCardsCountMap.get(card) == 3).findAny().get();
+        CardNumber whiteCard = secondCardsCountMap.keySet().stream().filter(card -> secondCardsCountMap.get(card) == 3).findAny().get();
 
         int comparison = blackCard.compareTo(whiteCard);
         return comparison > 0 ?
-                aFullHouseWinningResult(blackHand, true):
-                aFullHouseWinningResult(whiteHand, true);
+                aFullHouseWinningResult(firstHand, true) :
+                aFullHouseWinningResult(secondHand, true);
     }
 
     private boolean noHandHasFullHouse() {
-        return !hasFullHouse(blackCardsCountMap) && !hasFullHouse(whiteCardsCountMap);
+        return !hasFullHouse(firstCardsCountMap) && !hasFullHouse(secondCardsCountMap);
     }
 
     private boolean hasFullHouse(Map<CardNumber, Long> cardsCountMap) {
@@ -57,7 +58,7 @@ public final class FullHouse extends RankingCategory {
     }
 
     private boolean bothHaveFullHouse() {
-        return hasFullHouse(blackCardsCountMap) && hasFullHouse(whiteCardsCountMap);
+        return hasFullHouse(firstCardsCountMap) && hasFullHouse(secondCardsCountMap);
     }
 
     private Map<CardNumber, Long> extractPairsAndTrioCards(Hand hand) {

@@ -5,12 +5,11 @@ import poker.hand.result.Result;
 import poker.hand.result.ResultHelper;
 
 import static poker.hand.result.ResultHelper.aFlushWinningResult;
-import static poker.hand.result.ResultHelper.aNoWinner;
 
 public final class Flush extends RankingCategory {
 
-    public Flush(Hand blackHand, Hand whiteHand) {
-        super(blackHand, whiteHand);
+    public Flush(Hand firstHand, Hand secondHand) {
+        super(firstHand, secondHand);
     }
 
     static boolean isFlush(Hand hand) {
@@ -25,35 +24,35 @@ public final class Flush extends RankingCategory {
     @Override
     public Result evaluate() {
         if (noHandHasAFlush()) {
-            return aNoWinner();
+            return super.evaluate();
         }
 
         if (bothHandsHaveFlush()) {
             return evaluateHigherHand();
         }
 
-        return isFlush(blackHand) ?
-                aFlushWinningResult(blackHand, false) :
-                aFlushWinningResult(whiteHand, false);
+        return isFlush(firstHand) ?
+                aFlushWinningResult(firstHand, false) :
+                aFlushWinningResult(secondHand, false);
     }
 
     private boolean noHandHasAFlush() {
-        return !isFlush(blackHand) && !isFlush(whiteHand);
+        return !isFlush(firstHand) && !isFlush(secondHand);
     }
 
     private Result evaluateHigherHand() {
         for (int index = 4; index >= 0; index--) {
-            int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));
+            int cardComparison = firstHand.getCardAt(index).compareTo(secondHand.getCardAt(index));
             if (cardComparison != 0) {
                 return cardComparison > 0 ?
-                        aFlushWinningResult(blackHand, true) :
-                        aFlushWinningResult(whiteHand, true);
+                        aFlushWinningResult(firstHand, true) :
+                        aFlushWinningResult(secondHand, true);
             }
         }
         return ResultHelper.aTie();
     }
 
     private boolean bothHandsHaveFlush() {
-        return isFlush(blackHand) && isFlush(whiteHand);
+        return isFlush(firstHand) && isFlush(secondHand);
     }
 }

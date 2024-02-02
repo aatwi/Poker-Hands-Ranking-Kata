@@ -3,39 +3,42 @@ package poker.hand.ranking;
 import poker.hand.Hand;
 import poker.hand.result.Result;
 
-import static poker.hand.result.ResultHelper.*;
+import static poker.hand.ranking.Flush.isFlush;
+import static poker.hand.ranking.Straight.isStraight;
+import static poker.hand.result.ResultHelper.aStraightFlushWinningResult;
+import static poker.hand.result.ResultHelper.aTie;
 
 public final class StraightFlush extends RankingCategory {
 
-    public StraightFlush(Hand blackHand, Hand whiteHand) {
-        super(blackHand, whiteHand);
+    public StraightFlush(Hand firstHand, Hand secondHand) {
+        super(firstHand, secondHand);
     }
 
     public static boolean isStraightFlush(Hand hand) {
-        return Straight.isStraight(hand) && Flush.isFlush(hand);
+        return isStraight(hand) && isFlush(hand);
     }
 
     @Override
     public Result evaluate() {
-        if (!isStraightFlush(blackHand) && !isStraightFlush(whiteHand)) {
-            return aNoWinner();
+        if (!isStraightFlush(firstHand) && !isStraightFlush(secondHand)) {
+            return super.evaluate();
         }
 
-        if (isStraightFlush(blackHand) && isStraightFlush(whiteHand)) {
+        if (isStraightFlush(firstHand) && isStraightFlush(secondHand)) {
             return evaluateHigherHand();
         }
 
-        return isStraightFlush(blackHand) ?
-                aStraightFlushWinningResult(blackHand, false) :
-                aStraightFlushWinningResult(whiteHand, false);
+        return isStraightFlush(firstHand) ?
+                aStraightFlushWinningResult(firstHand, false) :
+                aStraightFlushWinningResult(secondHand, false);
     }
 
     private Result evaluateHigherHand() {
-        int comparison = blackHand.getCardAt(4).compareTo(whiteHand.getCardAt(4));
+        int comparison = firstHand.getCardAt(4).compareTo(secondHand.getCardAt(4));
         if (comparison == 0) {
             return aTie();
         }
-        Hand winningHand = comparison > 0 ? blackHand : whiteHand;
+        Hand winningHand = comparison > 0 ? firstHand : secondHand;
         return aStraightFlushWinningResult(winningHand, true);
     }
 }

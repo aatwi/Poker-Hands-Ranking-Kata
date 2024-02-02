@@ -1,6 +1,8 @@
 package poker.hand.ranking;
 
-import poker.hand.*;
+import poker.hand.Card;
+import poker.hand.CardNumber;
+import poker.hand.Hand;
 import poker.hand.result.Result;
 
 import java.util.Arrays;
@@ -9,51 +11,50 @@ import java.util.Optional;
 
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
-import static poker.hand.result.ResultHelper.aNoWinner;
 import static poker.hand.result.ResultHelper.aPairWinningResult;
 
 public final class Pair extends RankingCategory {
-    private final Optional<CardNumber> blackPairCards;
-    private final Optional<CardNumber> whitePairCards;
+    private final Optional<CardNumber> firstPairCards;
+    private final Optional<CardNumber> secondPairCards;
 
-    public Pair(Hand blackHand, Hand whiteHand) {
-        super(blackHand, whiteHand);
-        this.blackPairCards = extractCardOfPairs(blackHand);
-        this.whitePairCards = extractCardOfPairs(whiteHand);
+    public Pair(Hand firstHand, Hand secondHand) {
+        super(firstHand, secondHand);
+        this.firstPairCards = extractCardOfPairs(firstHand);
+        this.secondPairCards = extractCardOfPairs(secondHand);
     }
 
     @Override
     public Result evaluate() {
         if (noHandHasPair()) {
-            return aNoWinner();
+            return super.evaluate();
         }
 
         if (bothHandsHavePair()) {
             return evaluateHigherHand();
         }
 
-        return blackPairCards.isPresent() ?
-                aPairWinningResult(blackHand, blackPairCards.get(), false) :
-                aPairWinningResult(whiteHand, whitePairCards.get(), false);
+        return firstPairCards.isPresent() ?
+                aPairWinningResult(firstHand, firstPairCards.get(), false) :
+                aPairWinningResult(secondHand, secondPairCards.get(), false);
     }
 
     private Result evaluateHigherHand() {
-        int comparison = blackPairCards.get().compareTo(whitePairCards.get());
+        int comparison = firstPairCards.get().compareTo(secondPairCards.get());
         if (comparison == 0) {
-            return aNoWinner();
+            return super.evaluate();
         }
 
         return comparison > 0 ?
-                aPairWinningResult(blackHand, blackPairCards.get(), true) :
-                aPairWinningResult(whiteHand, whitePairCards.get(), true);
+                aPairWinningResult(firstHand, firstPairCards.get(), true) :
+                aPairWinningResult(secondHand, secondPairCards.get(), true);
     }
 
     private boolean noHandHasPair() {
-        return blackPairCards.isEmpty() && whitePairCards.isEmpty();
+        return firstPairCards.isEmpty() && secondPairCards.isEmpty();
     }
 
     private boolean bothHandsHavePair() {
-        return blackPairCards.isPresent() && whitePairCards.isPresent();
+        return firstPairCards.isPresent() && secondPairCards.isPresent();
     }
 
     private Optional<CardNumber> extractCardOfPairs(Hand hand) {
