@@ -6,7 +6,7 @@ import poker.hand.result.ResultHelper;
 
 import static poker.hand.result.ResultHelper.aNoWinner;
 
-public class Tie extends RankingCategory {
+public final class Tie extends RankingCategory {
 
     public Tie(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);

@@ -11,7 +11,7 @@ import static java.util.stream.Collectors.groupingBy;
 import static poker.hand.result.ResultHelper.aFullHouseWinningResult;
 import static poker.hand.result.ResultHelper.aNoWinner;
 
-public class FullHouse extends RankingCategory {
+public final class FullHouse extends RankingCategory {
 
     private final Map<CardNumber, Long> blackCardsCountMap;
     private final Map<CardNumber, Long> whiteCardsCountMap;
@@ -29,12 +29,22 @@ public class FullHouse extends RankingCategory {
         }
 
         if (bothHaveFullHouse()) {
-            return aFullHouseWinningResult(getHigherHand(), true);
+            return evaluateHigherHand();
         }
 
         return hasFullHouse(blackCardsCountMap) ?
                 aFullHouseWinningResult(blackHand, false) :
                 aFullHouseWinningResult(whiteHand, false);
+    }
+
+    private Result evaluateHigherHand() {
+        CardNumber blackCard = blackCardsCountMap.keySet().stream().filter(card -> blackCardsCountMap.get(card) == 3).findAny().get();
+        CardNumber whiteCard = whiteCardsCountMap.keySet().stream().filter(card -> whiteCardsCountMap.get(card) == 3).findAny().get();
+
+        int comparison = blackCard.compareTo(whiteCard);
+        return comparison > 0 ?
+                aFullHouseWinningResult(blackHand, true):
+                aFullHouseWinningResult(whiteHand, true);
     }
 
     private boolean noHandHasFullHouse() {
@@ -48,14 +58,6 @@ public class FullHouse extends RankingCategory {
 
     private boolean bothHaveFullHouse() {
         return hasFullHouse(blackCardsCountMap) && hasFullHouse(whiteCardsCountMap);
-    }
-
-    private Hand getHigherHand() {
-        CardNumber blackCard = blackCardsCountMap.keySet().stream().filter(card -> blackCardsCountMap.get(card) == 3).findAny().get();
-        CardNumber whiteCard = whiteCardsCountMap.keySet().stream().filter(card -> whiteCardsCountMap.get(card) == 3).findAny().get();
-
-        int comparison = blackCard.compareTo(whiteCard);
-        return comparison > 0 ? blackHand : whiteHand;
     }
 
     private Map<CardNumber, Long> extractPairsAndTrioCards(Hand hand) {

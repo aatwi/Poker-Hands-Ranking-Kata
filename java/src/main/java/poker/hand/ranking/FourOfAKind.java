@@ -15,7 +15,7 @@ import static poker.hand.result.ResultHelper.aFourOfAKindWinningResult;
 import static poker.hand.result.ResultHelper.aNoWinner;
 
 
-public class FourOfAKind extends RankingCategory {
+public final class FourOfAKind extends RankingCategory {
 
     private final Optional<CardNumber> blackFourOfKindCard;
     private final Optional<CardNumber> whiteFourOfKindCard;
@@ -41,15 +41,19 @@ public class FourOfAKind extends RankingCategory {
         }
 
         if (bothHaveFourOfAKind()) {
-            int comparison = blackFourOfKindCard.get().compareTo(whiteFourOfKindCard.get());
-            return comparison > 0 ?
-                    buildMatchingResultWithHigherHand(blackHand) :
-                    buildMatchingResultWithHigherHand(whiteHand);
+            return evaluateHigherHand();
         }
 
         return blackFourOfKindCard.isPresent() ?
                 buildMatchingResult(blackHand) :
                 buildMatchingResult(whiteHand);
+    }
+
+    private Result evaluateHigherHand() {
+        int comparison = blackFourOfKindCard.get().compareTo(whiteFourOfKindCard.get());
+        return comparison > 0 ?
+                buildMatchingResultWithHigherHand(blackHand) :
+                buildMatchingResultWithHigherHand(whiteHand);
     }
 
     private boolean bothHaveFourOfAKind() {

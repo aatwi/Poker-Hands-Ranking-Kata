@@ -7,13 +7,13 @@ import poker.hand.result.ResultHelper;
 import static poker.hand.result.ResultHelper.aFlushWinningResult;
 import static poker.hand.result.ResultHelper.aNoWinner;
 
-public class Flush extends RankingCategory {
+public final class Flush extends RankingCategory {
 
     public Flush(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
     }
 
-    protected static boolean isFlush(Hand hand) {
+    static boolean isFlush(Hand hand) {
         for (int index = 1; index < 5; index++) {
             if (!hand.getCardAt(index - 1).getSuite().equals(hand.getCardAt(index).getSuite())) {
                 return false;

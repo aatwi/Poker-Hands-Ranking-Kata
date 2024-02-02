@@ -6,7 +6,7 @@ import poker.hand.result.Result;
 
 import static poker.hand.result.ResultHelper.*;
 
-public class RoyalFlush extends RankingCategory {
+public final class RoyalFlush extends RankingCategory {
 
     public RoyalFlush(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);

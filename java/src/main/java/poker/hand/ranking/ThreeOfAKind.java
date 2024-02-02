@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.groupingBy;
 import static poker.hand.result.ResultHelper.aNoWinner;
 import static poker.hand.result.ResultHelper.aThreeOfAKindWinningResult;
 
-public class ThreeOfAKind extends RankingCategory {
+public final class ThreeOfAKind extends RankingCategory {
     private final Optional<CardNumber> blackThreeOfAKindCards;
     private final Optional<CardNumber> whiteThreeOfAKindCards;
 
@@ -30,7 +30,7 @@ public class ThreeOfAKind extends RankingCategory {
             return aNoWinner();
         }
         if (bothHaveThreeOfAKindCards()) {
-            return getHigherHand();
+            return evaluateHigherHand();
         }
 
         return blackThreeOfAKindCards.isPresent() ?
@@ -38,7 +38,7 @@ public class ThreeOfAKind extends RankingCategory {
                 aThreeOfAKindWinningResult(whiteHand, whiteThreeOfAKindCards.get(), false);
     }
 
-    private Result getHigherHand() {
+    private Result evaluateHigherHand() {
         int comparison = blackThreeOfAKindCards.get().compareTo(whiteThreeOfAKindCards.get());
         if (comparison == 0) {
             return super.evaluate();

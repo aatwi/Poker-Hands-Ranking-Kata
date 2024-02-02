@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.groupingBy;
 import static poker.hand.result.ResultHelper.aNoWinner;
 import static poker.hand.result.ResultHelper.aTwoPairWinningResult;
 
-public class TwoPairs extends RankingCategory {
+public final class TwoPairs extends RankingCategory {
 
     private final List<CardNumber> blackPairOfCards;
     private final List<CardNumber> whitePairOfCards;
@@ -32,7 +32,7 @@ public class TwoPairs extends RankingCategory {
         }
 
         if (bothHandsHaveTwoPairs()) {
-            return getHigherHand();
+            return evaluateHigherHand();
         }
 
         return blackPairOfCards.size() == 2 ?
@@ -40,7 +40,7 @@ public class TwoPairs extends RankingCategory {
                 aTwoPairWinningResult(whiteHand, whitePairOfCards.get(0), whitePairOfCards.get(1), false);
     }
 
-    private Result getHigherHand() {
+    private Result evaluateHigherHand() {
         int comparison = compareForHigherHands();
         if (comparison == 0) {
             return aNoWinner();

@@ -6,7 +6,7 @@ import poker.hand.result.Result;
 import static poker.hand.result.ResultHelper.aHighCardWinningResult;
 import static poker.hand.result.ResultHelper.aNoWinner;
 
-public class HighCard extends RankingCategory {
+public final class HighCard extends RankingCategory {
 
     public HighCard(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);

@@ -6,7 +6,7 @@ import poker.hand.result.ResultHelper;
 
 import static poker.hand.result.ResultHelper.*;
 
-public class Straight extends RankingCategory {
+public final class Straight extends RankingCategory {
 
     public Straight(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
@@ -19,7 +19,7 @@ public class Straight extends RankingCategory {
         }
 
         if (bothHandsHaveStraight()) {
-            return getHigherHand();
+            return evaluateHigherHand();
         }
 
         return isStraight(blackHand) ?
@@ -35,17 +35,18 @@ public class Straight extends RankingCategory {
         return isStraight(whiteHand) && isStraight(blackHand);
     }
 
-    private Result getHigherHand() {
+    private Result evaluateHigherHand() {
         int comparison = blackHand.getCardAt(0).compareTo(whiteHand.getCardAt(0));
         if (comparison == 0) {
             return aTie();
         }
+
         return comparison > 0 ?
                 aStraightWinningResult(blackHand, true) :
                 aStraightWinningResult(whiteHand, true);
     }
 
-    protected static boolean isStraight(Hand hand) {
+     static boolean isStraight(Hand hand) {
         for (int i = 1; i < hand.cards().length; i++) {
             int previousCard = hand.getCardAt(i - 1).getIntValue();
             int currentCard = hand.getCardAt(i).getIntValue();
