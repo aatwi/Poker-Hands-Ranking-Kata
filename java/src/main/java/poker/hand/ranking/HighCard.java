@@ -15,11 +15,6 @@ public class HighCard extends RankingCategory {
     }
 
     @Override
-    public String getResult() {
-        return result.getMessage();
-    }
-
-    @Override
     public boolean isMatch() {
         for (int index = 4; index >= 0; index--) {
             int cardComparison = blackHand.getCardAt(index).compareTo(whiteHand.getCardAt(index));

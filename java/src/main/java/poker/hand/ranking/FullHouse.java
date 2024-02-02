@@ -24,11 +24,6 @@ public class FullHouse extends RankingCategory {
     }
 
     @Override
-    public String getResult() {
-        return result.getMessage();
-    }
-
-    @Override
     public boolean isMatch() {
         if (noHandHasFullHouse()) {
             return false;

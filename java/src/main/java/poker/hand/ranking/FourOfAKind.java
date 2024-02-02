@@ -34,11 +34,6 @@ public class FourOfAKind extends RankingCategory {
     }
 
     @Override
-    public String getResult() {
-        return result.getMessage();
-    }
-
-    @Override
     public boolean isMatch() {
         if (noHandHasFourOfAKind()) {
             return false;

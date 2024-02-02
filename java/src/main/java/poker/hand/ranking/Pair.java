@@ -24,11 +24,6 @@ public class Pair extends RankingCategory {
     }
 
     @Override
-    public String getResult() {
-        return result.getMessage();
-    }
-
-    @Override
     public boolean isMatch() {
         if (bothHandsHavePair()) {
             return getHigherPair();

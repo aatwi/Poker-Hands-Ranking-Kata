@@ -5,15 +5,9 @@ import poker.hand.result.Result;
 import poker.hand.result.ResultHelper;
 
 public class Tie extends RankingCategory {
-    private String message = "";
 
     public Tie(Hand blackHand, Hand whiteHand) {
         super(blackHand, whiteHand);
-    }
-
-    @Override
-    public String getResult() {
-        return message;
     }
 
     @Override
@@ -23,7 +17,6 @@ public class Tie extends RankingCategory {
                 return false;
             }
         }
-        this.message = ResultHelper.aTie().getMessage();
         return true;
     }
 

@@ -27,11 +27,6 @@ public class TwoPairs extends RankingCategory {
     }
 
     @Override
-    public String getResult() {
-        return result.getMessage();
-    }
-
-    @Override
     public boolean isMatch() {
         if (bothHandsHaveTwoPairs()) {
             return getHigherHand();

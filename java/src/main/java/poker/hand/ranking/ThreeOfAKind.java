@@ -26,11 +26,6 @@ public class ThreeOfAKind extends RankingCategory {
     }
 
     @Override
-    public String getResult() {
-        return result.getMessage();
-    }
-
-    @Override
     public Result evaluate() {
         isMatch();
         return result;

@@ -17,11 +17,6 @@ public class RoyalFlush extends RankingCategory {
     }
 
     @Override
-    public String getResult() {
-        return result.getMessage();
-    }
-
-    @Override
     public boolean isMatch() {
         if (!isRoyalFlush(blackHand) && !isRoyalFlush(whiteHand)) {
             return false;

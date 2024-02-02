@@ -19,11 +19,6 @@ public class StraightFlush extends RankingCategory {
         return Straight.isStraight(hand) && Flush.isFlush(hand);
     }
 
-    @Override
-    public String getResult() {
-        return result.getMessage();
-    }
-
 
     @Override
     public Result evaluate() {
