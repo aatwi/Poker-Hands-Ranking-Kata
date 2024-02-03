@@ -22,14 +22,24 @@ SOFTWARE.
 
 package poker.hand;
 
-import poker.hand.ranking.Tie;
-import poker.hand.ranking.*;
+import poker.hand.ranking.RankingCategory;
 import poker.hand.result.Result;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static poker.hand.HandBuilder.aHand;
+import static poker.hand.ranking.Flush.aFlush;
+import static poker.hand.ranking.FourOfAKind.aFourOfAKind;
+import static poker.hand.ranking.FullHouse.aFullHouse;
+import static poker.hand.ranking.HighCard.aHighCard;
+import static poker.hand.ranking.Pair.aPair;
+import static poker.hand.ranking.RoyalFlush.aRoyalFlush;
+import static poker.hand.ranking.Straight.aStraight;
+import static poker.hand.ranking.StraightFlush.aStraightFlush;
+import static poker.hand.ranking.ThreeOfAKind.aThreeOfAKind;
+import static poker.hand.ranking.Tie.aTie;
+import static poker.hand.ranking.TwoPairs.aTwoPairs;
 
 class PokerGame {
     private final Hand firstPlayerHand;
@@ -43,17 +53,17 @@ class PokerGame {
     }
 
     private void initializeRankingCategories() {
-        ranks.add(new RoyalFlush(firstPlayerHand, secondPlayerHand));
-        ranks.add(new StraightFlush(firstPlayerHand, secondPlayerHand));
-        ranks.add(new FourOfAKind(firstPlayerHand, secondPlayerHand));
-        ranks.add(new FullHouse(firstPlayerHand, secondPlayerHand));
-        ranks.add(new Flush(firstPlayerHand, secondPlayerHand));
-        ranks.add(new Straight(firstPlayerHand, secondPlayerHand));
-        ranks.add(new ThreeOfAKind(firstPlayerHand, secondPlayerHand));
-        ranks.add(new TwoPairs(firstPlayerHand, secondPlayerHand));
-        ranks.add(new Pair(firstPlayerHand, secondPlayerHand));
-        ranks.add(new HighCard(firstPlayerHand, secondPlayerHand));
-        ranks.add(new Tie(firstPlayerHand, secondPlayerHand));
+        ranks.add(aRoyalFlush(firstPlayerHand, secondPlayerHand));
+        ranks.add(aStraightFlush(firstPlayerHand, secondPlayerHand));
+        ranks.add(aFourOfAKind(firstPlayerHand, secondPlayerHand));
+        ranks.add(aFullHouse(firstPlayerHand, secondPlayerHand));
+        ranks.add(aFlush(firstPlayerHand, secondPlayerHand));
+        ranks.add(aStraight(firstPlayerHand, secondPlayerHand));
+        ranks.add(aThreeOfAKind(firstPlayerHand, secondPlayerHand));
+        ranks.add(aTwoPairs(firstPlayerHand, secondPlayerHand));
+        ranks.add(aPair(firstPlayerHand, secondPlayerHand));
+        ranks.add(aHighCard(firstPlayerHand, secondPlayerHand));
+        ranks.add(aTie(firstPlayerHand, secondPlayerHand));
     }
 
     public String play() {

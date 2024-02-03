@@ -9,8 +9,12 @@ import static poker.hand.result.ResultHelper.aTie;
 
 public final class RoyalFlush extends RankingCategory {
 
-    public RoyalFlush(Hand firstHand, Hand secondHand) {
+    private RoyalFlush(Hand firstHand, Hand secondHand) {
         super(firstHand, secondHand);
+    }
+
+    public static RoyalFlush aRoyalFlush(Hand firstHand, Hand secondHand) {
+        return new RoyalFlush(firstHand, secondHand);
     }
 
     @Override

@@ -16,7 +16,7 @@ public class ResultHelper {
     public static final String ROYAL_FLUSH = "ROYAL FLUSH";
 
     public static Result aNoWinner() {
-        return new Result();
+        return new DefaultResult();
     }
 
     public static Result aTie() {

@@ -14,7 +14,7 @@ class RoyalFlushRankingCategoryTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("7H 8C TD KH AS").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("2D 3H 5C 9S KH").build();
 
-        RoyalFlush handRanking = new RoyalFlush(blackHand, whiteHand);
+        RoyalFlush handRanking = RoyalFlush.aRoyalFlush(blackHand, whiteHand);
         assertEquals(aNoWinner(), handRanking.evaluate());
     }
 
@@ -23,7 +23,7 @@ class RoyalFlushRankingCategoryTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("TH JH QH KH AH").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("TS JS QS KS AS").build();
 
-        RoyalFlush handRanking = new RoyalFlush(blackHand, whiteHand);
+        RoyalFlush handRanking = RoyalFlush.aRoyalFlush(blackHand, whiteHand);
         assertEquals(aTie(), handRanking.evaluate());
     }
 
@@ -32,7 +32,7 @@ class RoyalFlushRankingCategoryTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("7H 8H 9H TH JH").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("TS JS QS KS AS").build();
 
-        RoyalFlush handRanking = new RoyalFlush(blackHand, whiteHand);
+        RoyalFlush handRanking = RoyalFlush.aRoyalFlush(blackHand, whiteHand);
         assertEquals(aRoyalFlushWinningResult(whiteHand), handRanking.evaluate());
     }
 
@@ -41,7 +41,7 @@ class RoyalFlushRankingCategoryTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("TH JH QH KH AH").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("7H 8H 9H TH JH").build();
 
-        RoyalFlush handRanking = new RoyalFlush(blackHand, whiteHand);
+        RoyalFlush handRanking = RoyalFlush.aRoyalFlush(blackHand, whiteHand);
         assertEquals(aRoyalFlushWinningResult(blackHand), handRanking.evaluate());
     }
 }

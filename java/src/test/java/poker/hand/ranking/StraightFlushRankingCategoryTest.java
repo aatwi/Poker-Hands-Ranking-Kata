@@ -14,7 +14,7 @@ class StraightFlushRankingCategoryTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("7H 8C TD KH AS").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("2D 3H 5C 9S KH").build();
 
-        StraightFlush handRanking = new StraightFlush(blackHand, whiteHand);
+        StraightFlush handRanking = StraightFlush.aStraightFlush(blackHand, whiteHand);
         assertEquals(aNoWinner(), handRanking.evaluate());
     }
 
@@ -23,7 +23,7 @@ class StraightFlushRankingCategoryTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("7H 8H 9H TH JH").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("7S 8S 9S TS JS").build();
 
-        StraightFlush handRanking = new StraightFlush(blackHand, whiteHand);
+        StraightFlush handRanking = StraightFlush.aStraightFlush(blackHand, whiteHand);
         assertEquals(aTie(), handRanking.evaluate());
     }
 
@@ -32,7 +32,7 @@ class StraightFlushRankingCategoryTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("7H 8C TD KH AS").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("2D 3D 4D 5D 6D").build();
 
-        StraightFlush handRanking = new StraightFlush(blackHand, whiteHand);
+        StraightFlush handRanking = StraightFlush.aStraightFlush(blackHand, whiteHand);
         assertEquals(aStraightFlushWinningResult(whiteHand, false), handRanking.evaluate());
     }
 
@@ -41,7 +41,7 @@ class StraightFlushRankingCategoryTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("2D 3D 4D 5D 6D").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("7H 8C TD KH AS").build();
 
-        StraightFlush handRanking = new StraightFlush(blackHand, whiteHand);
+        StraightFlush handRanking = StraightFlush.aStraightFlush(blackHand, whiteHand);
         assertEquals(aStraightFlushWinningResult(blackHand, false), handRanking.evaluate());
     }
 
@@ -51,7 +51,7 @@ class StraightFlushRankingCategoryTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("7H 8H 9H TH JH").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("2D 3D 4D 5D 6D").build();
 
-        StraightFlush handRanking = new StraightFlush(blackHand, whiteHand);
+        StraightFlush handRanking = StraightFlush.aStraightFlush(blackHand, whiteHand);
         assertEquals(aStraightFlushWinningResult(blackHand, true), handRanking.evaluate());
     }
 
@@ -60,7 +60,7 @@ class StraightFlushRankingCategoryTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("7H 8H 9H TH JH").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("8D 9D TD JD QD").build();
 
-        StraightFlush handRanking = new StraightFlush(blackHand, whiteHand);
+        StraightFlush handRanking = StraightFlush.aStraightFlush(blackHand, whiteHand);
         assertEquals(aStraightFlushWinningResult(whiteHand, true), handRanking.evaluate());
     }
 }

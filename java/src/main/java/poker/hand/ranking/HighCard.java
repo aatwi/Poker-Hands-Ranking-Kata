@@ -7,8 +7,12 @@ import static poker.hand.result.ResultHelper.aHighCardWinningResult;
 
 public final class HighCard extends RankingCategory {
 
-    public HighCard(Hand firstHand, Hand secondHand) {
+    private HighCard(Hand firstHand, Hand secondHand) {
         super(firstHand, secondHand);
+    }
+
+    public static HighCard aHighCard(Hand firstHand, Hand secondHand) {
+        return new HighCard(firstHand, secondHand);
     }
 
     @Override

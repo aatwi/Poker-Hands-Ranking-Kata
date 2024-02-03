@@ -18,7 +18,7 @@ public final class FourOfAKind extends RankingCategory {
     private final Optional<CardNumber> firstFourOfKindCard;
     private final Optional<CardNumber> secondFourOfKindCard;
 
-    public FourOfAKind(Hand firstHand, Hand secondHand) {
+    private FourOfAKind(Hand firstHand, Hand secondHand) {
         super(firstHand, secondHand);
         this.firstFourOfKindCard = extractFourOfAKindCard(firstHand);
         this.secondFourOfKindCard = extractFourOfAKindCard(secondHand);
@@ -30,6 +30,10 @@ public final class FourOfAKind extends RankingCategory {
 
     private static Result buildMatchingResult(Hand hand) {
         return aFourOfAKindWinningResult(hand, false);
+    }
+
+    public static FourOfAKind aFourOfAKind(Hand firstHand, Hand secondHand) {
+        return new FourOfAKind(firstHand, secondHand);
     }
 
     @Override

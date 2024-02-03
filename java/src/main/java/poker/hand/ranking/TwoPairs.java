@@ -18,10 +18,14 @@ public final class TwoPairs extends RankingCategory {
     private final List<CardNumber> firstPairOfCards;
     private final List<CardNumber> secondPairOfCards;
 
-    public TwoPairs(Hand firstHand, Hand secondHand) {
+    private TwoPairs(Hand firstHand, Hand secondHand) {
         super(firstHand, secondHand);
         firstPairOfCards = extractPairs(firstHand);
         secondPairOfCards = extractPairs(secondHand);
+    }
+
+    public static TwoPairs aTwoPairs(Hand firstHand, Hand secondHand) {
+        return new TwoPairs(firstHand, secondHand);
     }
 
     @Override

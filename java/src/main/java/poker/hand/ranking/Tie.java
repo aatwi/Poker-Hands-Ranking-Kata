@@ -2,13 +2,16 @@ package poker.hand.ranking;
 
 import poker.hand.Hand;
 import poker.hand.result.Result;
-
-import static poker.hand.result.ResultHelper.aTie;
+import poker.hand.result.ResultHelper;
 
 public final class Tie extends RankingCategory {
 
-    public Tie(Hand firstHand, Hand secondHand) {
+    private Tie(Hand firstHand, Hand secondHand) {
         super(firstHand, secondHand);
+    }
+
+    public static Tie aTie(Hand firstHand, Hand secondHand) {
+        return new Tie(firstHand, secondHand);
     }
 
     @Override
@@ -18,6 +21,6 @@ public final class Tie extends RankingCategory {
                 return super.evaluate();
             }
         }
-        return aTie();
+        return ResultHelper.aTie();
     }
 }

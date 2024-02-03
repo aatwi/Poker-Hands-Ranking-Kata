@@ -11,7 +11,7 @@ import static poker.hand.HandBuilder.aHand;
 class PairCardRankingTest {
 
     private static Result buildPairCardResult(Hand blackHand, Hand whiteHand) {
-        Pair pair = new Pair(blackHand, whiteHand);
+        Pair pair = Pair.aPair(blackHand, whiteHand);
         return pair.evaluate();
     }
 

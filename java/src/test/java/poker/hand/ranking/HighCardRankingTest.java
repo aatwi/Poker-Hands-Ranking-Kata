@@ -13,7 +13,7 @@ import static poker.hand.result.ResultHelper.aNoWinner;
 class HighCardRankingTest {
 
     private static Result buildHighCardResult(Hand black, Hand white) {
-        HighCard highCard = new HighCard(black, white);
+        HighCard highCard = HighCard.aHighCard(black, white);
         return highCard.evaluate();
     }
 
@@ -21,7 +21,7 @@ class HighCardRankingTest {
     public void it_should_return_a_no_matching_result_when_there_is_no_high_hand() {
         Hand black = aHand().withPlayer("Black").withCards("2H 3D 5S 9C KD").build();
         Hand white = aHand().withPlayer("White").withCards("2D 3S 5C 9D KC").build();
-        HighCard highCard = new HighCard(black, white);
+        HighCard highCard = HighCard.aHighCard(black, white);
 
         assertEquals(aNoWinner(), highCard.evaluate());
     }

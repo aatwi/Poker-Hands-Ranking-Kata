@@ -15,7 +15,7 @@ class FourOfAKindTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("3H 3S 4C AH AD").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("4D 5S 7D JS AC").build();
 
-        FourOfAKind fourOfAKind = new FourOfAKind(blackHand, whiteHand);
+        FourOfAKind fourOfAKind = FourOfAKind.aFourOfAKind(blackHand, whiteHand);
         assertEquals(aNoWinner(), fourOfAKind.evaluate());
     }
 
@@ -24,7 +24,7 @@ class FourOfAKindTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("3H 3S 3C 3D AD").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("4D 5S 7D JS AC").build();
 
-        FourOfAKind fourOfAKind = new FourOfAKind(blackHand, whiteHand);
+        FourOfAKind fourOfAKind = FourOfAKind.aFourOfAKind(blackHand, whiteHand);
         assertEquals(aFourOfAKindWinningResult(blackHand, false), fourOfAKind.evaluate());
     }
 
@@ -33,7 +33,7 @@ class FourOfAKindTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("4D 5S 7D JS AC").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("2H 4S 4C 4D 4H").build();
 
-        FourOfAKind fourOfAKind = new FourOfAKind(blackHand, whiteHand);
+        FourOfAKind fourOfAKind = FourOfAKind.aFourOfAKind(blackHand, whiteHand);
         assertEquals(aFourOfAKindWinningResult(whiteHand, false), fourOfAKind.evaluate());
     }
 
@@ -42,7 +42,7 @@ class FourOfAKindTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("7D 7S 7H 7C AC").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("2H 4S 4C 4D 4H").build();
 
-        FourOfAKind fourOfAKind = new FourOfAKind(blackHand, whiteHand);
+        FourOfAKind fourOfAKind = FourOfAKind.aFourOfAKind(blackHand, whiteHand);
         assertEquals(aFourOfAKindWinningResult(blackHand, true), fourOfAKind.evaluate());
     }
 
@@ -51,7 +51,7 @@ class FourOfAKindTest {
         Hand blackHand = aHand().withPlayer("Black").withCards("7D 7S 7H 7C AC").build();
         Hand whiteHand = aHand().withPlayer("White").withCards("2H TS TC TD TH").build();
 
-        FourOfAKind fourOfAKind = new FourOfAKind(blackHand, whiteHand);
+        FourOfAKind fourOfAKind = FourOfAKind.aFourOfAKind(blackHand, whiteHand);
         assertEquals(aFourOfAKindWinningResult(whiteHand, true), fourOfAKind.evaluate());
     }
 

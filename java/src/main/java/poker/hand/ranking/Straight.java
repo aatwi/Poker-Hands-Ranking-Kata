@@ -8,7 +8,7 @@ import static poker.hand.result.ResultHelper.aTie;
 
 public final class Straight extends RankingCategory {
 
-    public Straight(Hand firstHand, Hand secondHand) {
+    private Straight(Hand firstHand, Hand secondHand) {
         super(firstHand, secondHand);
     }
 
@@ -21,6 +21,10 @@ public final class Straight extends RankingCategory {
             }
         }
         return true;
+    }
+
+    public static Straight aStraight(Hand firstHand, Hand secondHand) {
+        return new Straight(firstHand, secondHand);
     }
 
     @Override

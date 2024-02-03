@@ -8,7 +8,7 @@ import static poker.hand.result.ResultHelper.aFlushWinningResult;
 
 public final class Flush extends RankingCategory {
 
-    public Flush(Hand firstHand, Hand secondHand) {
+    private Flush(Hand firstHand, Hand secondHand) {
         super(firstHand, secondHand);
     }
 
@@ -19,6 +19,10 @@ public final class Flush extends RankingCategory {
             }
         }
         return true;
+    }
+
+    public static Flush aFlush(Hand firstHand, Hand secondHand) {
+        return new Flush(firstHand, secondHand);
     }
 
     @Override

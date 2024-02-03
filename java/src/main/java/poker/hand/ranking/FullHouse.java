@@ -17,10 +17,14 @@ public final class FullHouse extends RankingCategory {
     private final Map<CardNumber, Long> firstCardsCountMap;
     private final Map<CardNumber, Long> secondCardsCountMap;
 
-    public FullHouse(Hand firstHand, Hand secondHand) {
+    private FullHouse(Hand firstHand, Hand secondHand) {
         super(firstHand, secondHand);
         this.firstCardsCountMap = extractPairsAndTrioCards(firstHand);
         this.secondCardsCountMap = extractPairsAndTrioCards(secondHand);
+    }
+
+    public static FullHouse aFullHouse(Hand firstHand, Hand secondHand) {
+        return new FullHouse(firstHand, secondHand);
     }
 
     @Override

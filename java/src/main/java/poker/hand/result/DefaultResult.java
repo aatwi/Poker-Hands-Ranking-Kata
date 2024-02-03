@@ -2,16 +2,12 @@ package poker.hand.result;
 
 import java.util.Objects;
 
-public class Tie implements Result {
-
-    private final String message = "Tie.";
-
-    public Tie() {
-    }
+public class DefaultResult implements Result{
+    private final String message = "";
 
     @Override
     public boolean isMatch() {
-        return true;
+        return false;
     }
 
     @Override

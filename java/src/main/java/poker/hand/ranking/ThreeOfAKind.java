@@ -17,10 +17,14 @@ public final class ThreeOfAKind extends RankingCategory {
     private final Optional<CardNumber> firstThreeOfAKindCards;
     private final Optional<CardNumber> secondThreeOfAKindCards;
 
-    public ThreeOfAKind(Hand firstHand, Hand secondHand) {
+    private ThreeOfAKind(Hand firstHand, Hand secondHand) {
         super(firstHand, secondHand);
         this.firstThreeOfAKindCards = extractThreeOfAKind(firstHand);
         this.secondThreeOfAKindCards = extractThreeOfAKind(secondHand);
+    }
+
+    public static ThreeOfAKind aThreeOfAKind(Hand firstHand, Hand secondHand) {
+        return new ThreeOfAKind(firstHand, secondHand);
     }
 
     @Override

@@ -17,10 +17,14 @@ public final class Pair extends RankingCategory {
     private final Optional<CardNumber> firstPairCards;
     private final Optional<CardNumber> secondPairCards;
 
-    public Pair(Hand firstHand, Hand secondHand) {
+    private Pair(Hand firstHand, Hand secondHand) {
         super(firstHand, secondHand);
         this.firstPairCards = extractCardOfPairs(firstHand);
         this.secondPairCards = extractCardOfPairs(secondHand);
+    }
+
+    public static Pair aPair(Hand firstHand, Hand secondHand) {
+        return new Pair(firstHand, secondHand);
     }
 
     @Override

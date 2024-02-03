@@ -10,12 +10,16 @@ import static poker.hand.result.ResultHelper.aTie;
 
 public final class StraightFlush extends RankingCategory {
 
-    public StraightFlush(Hand firstHand, Hand secondHand) {
+    private StraightFlush(Hand firstHand, Hand secondHand) {
         super(firstHand, secondHand);
     }
 
     public static boolean isStraightFlush(Hand hand) {
         return isStraight(hand) && isFlush(hand);
+    }
+
+    public static StraightFlush aStraightFlush(Hand firstHand, Hand secondHand) {
+        return new StraightFlush(firstHand, secondHand);
     }
 
     @Override
