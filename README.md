@@ -1,4 +1,4 @@
-# Poker Hand Ranking Kata
+# Poker Hands Ranking Kata
 
 ![Kata Image](images/PokerHandRanking.jpg) <br>
 "[Image Name](https://xxx)" by [Image Author](https://xxx/) is licenced under [License Name](https://xxx)

@@ -19,13 +19,13 @@
 ### 1 - Clone the kata repository
 
 ```shell
-git clone https://github.com/murex/Kata-PokerHand.git
+git clone https://github.com/aatwi/Poker-Hands-Ranking-Kata.git
 ```
 
 ### 2 - Go to the kata's `java` directory
 
 ```shell
-cd Kata-PokerHand/java
+cd Poker-Hands-Ranking-Kata/java
 ```
 
 ## Running the kata
@@ -48,7 +48,7 @@ You may also run it using [TCR](../tcr/TCR.md) if you want to add a bit of spice
 
 ### Running the kata from a terminal with Gradle
 
-> ***Reminder***: the command below should be run from [Kata-PokerHand/java]() directory
+> ***Reminder***: the command below should be run from [Poker-Hands-Ranking-Kata/java]() directory
 
 The kata comes with Gradle wrapper pre-installed. Just type the following to run it.
 
@@ -60,7 +60,7 @@ The kata comes with Gradle wrapper pre-installed. Just type the following to run
 
 ### Running the kata from a terminal with Maven
 
-> ***Reminder***: the command below should be run from [Kata-PokerHand/java]() directory
+> ***Reminder***: the command below should be run from [Poker-Hands-Ranking-Kata/java]() directory
 
 The kata comes with Maven wrapper pre-installed. Just type the following to run it.
 
@@ -91,13 +91,12 @@ Refer to [Using TCR](#using-tcr) section for additional details about TCR and av
 
 Open Intellij IDEA and select:
 
-`File` > `Open` > `Kata-PokerHand` > `java`
+`File` > `Open` > `Poker-Hands-Ranking-Kata` > `java`
 
 After loading the project into IntelliJ, you can build the project
 using either the Maven or Gradle built-in build tools.
 
-Run all the tests in the [PokerHandTest](./src/test/java/com/murex/PokerHandTest.java)
-class.
+Run all the tests under the [test](./src/test/java/dev/aatwi/) folder.
 
 The "**Run**" tool window should display all the executed tests.
 
@@ -112,7 +111,7 @@ You can run it from IntelliJ IDEA directly, through leveraging on its built-in t
 
 Open Intellij IDEA and select:
 
-`File` > `Open` > `Kata-PokerHand` > `java`
+`File` > `Open` > `Poker-Hands-Ranking-Kata` > `java`
 
 #### 2. Turn off auto-save
 
@@ -148,7 +147,7 @@ different location.
 
 #### 5. Launch TCR
 
-> ***Reminder***: the command below should be run from [Kata-PokerHand/java]() directory
+> ***Reminder***: the command below should be run from [Poker-Hands-Ranking-Kata/java]() directory
 
 From the built-in terminal:
 
@@ -164,13 +163,12 @@ Refer to [Using TCR](#using-tcr) section for additional details about TCR and av
 
 Open Visual Studio Code and select:
 
-`File` > `Open Folder` > `Kata-PokerHand` > `java`
+`File` > `Open Folder` > `Poker-Hands-Ranking-Kata` > `java`
 
 After loading the project into Visual Studio Code, you can build the project
 using either the Maven or Gradle built-in build tools.
 
-Run all the tests in the [PokerHandTest](./src/test/java/com/murex/PokerHandTest.java)
-class.
+Run all the tests in the [test](./src/test/java/dev/aatwi/) folder.
 
 Open the `Testing` tab to view all the executed tests.
 
@@ -182,7 +180,7 @@ Open the `Testing` tab to view all the executed tests.
 
 Open Visual Studio Code and select:
 
-`File` > `Open Folder` > `Kata-PokerHand` > `java`
+`File` > `Open Folder` > `Poker-Hands-Ranking-Kata` > `java`
 
 #### 2. Turn off auto-save
 
@@ -202,7 +200,7 @@ button to open a new "Git Bash" terminal.
 
 #### 4. Launch TCR
 
-> ***Reminder***: the command below should be run from [Kata-PokerHand/java]() directory
+> ***Reminder***: the command below should be run from [Poker-Hands-Ranking-Kata/java]() directory
 
 From the built-in terminal:
 
@@ -218,13 +216,12 @@ Refer to [Using TCR](#using-tcr) section for additional details about TCR and av
 
 Open the kata in Eclipse:
 
-`File` > `Open Projects from File System...` > `Kata-PokerHand`
+`File` > `Open Projects from File System...` > `Poker-Hands-Ranking-Kata`
 
 After loading the project into Eclipse, you can build the project
 using either the Maven or Gradle built-in build tools.
 
-Run all the tests in the [PokerHandTest](./src/test/java/com/murex/PokerHandTest.java)
-class.
+Run all the tests in the [test](./src/test/java/dev/aatwi/) folder.
 
 Navigate to the test class then:
 
@@ -240,7 +237,7 @@ A `JUnit` tab should be opened that displays all the executed tests.
 
 Open the kata in Eclipse:
 
-`File` > `Open Projects from File System...` > `Kata-PokerHand`
+`File` > `Open Projects from File System...` > `Poker-Hands-Ranking-Kata`
 
 #### 2. Open a Git Bash terminal
 
@@ -252,11 +249,11 @@ To start a `git bash` terminal:
 
 1. Click on the `Open Terminal` button or use the shortcut `(Ctrl+Alt+Shift+T)`.
 2. From the opened pop-up window select `Git Bash` then `OK`
-3. From the terminal navigate to [Kata-PokerHand/java]() directory
+3. From the terminal navigate to [Poker-Hands-Ranking-Kata/java]() directory
 
 #### 3. Launch TCR
 
-> ***Reminder***: the command below should be run from [Kata-PokerHand/java]() directory
+> ***Reminder***: the command below should be run from [Poker-Hands-Ranking-Kata/java]() directory
 
 From the built-in terminal:
 

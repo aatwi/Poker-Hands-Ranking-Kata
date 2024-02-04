@@ -43,7 +43,7 @@ test {
     }
 }
 
-group = 'com.murex.xpcoaching'
+group = 'dev.aatwi'
 version = '1.0-SNAPSHOT'
 
 tasks.withType(JavaCompile).configureEach {
