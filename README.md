@@ -55,7 +55,7 @@ _`Indicate main focus points covered during this kata`_
 
 ## License
 
-`Kata-PokerHand` and the accompanying materials are made available
+`Poker-Hands-Ranking-Kata` and the accompanying materials are made available
 under the terms of the [MIT License](LICENSE.md) which accompanies this
 distribution, and is available at the [Open Source site](https://opensource.org/licenses/MIT)
 
